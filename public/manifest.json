@@ -1,0 +1,72 @@
+{
+  "name": "adinfo",
+  "description": "adinfo",
+  "manifest_version": 2,
+  "version": "0.0.1",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png"
+    },
+    "default_popup": "popup.html"
+  },
+
+  "permissions": [
+    "clipboardWrite",
+    "storage",
+    "https://www.monster.com/",
+    "https://www.monster.at/",
+    "https://www.monster.ch/",
+    "https://www.monster.co.uk/",
+    "https://www.monster.com/",
+    "https://www.monster.se/",
+    "https://www.monster.ca/",
+    "https://www.monster.fr/",
+    "https://www.monster.es/",
+    "https://www.monster.lu/",
+    "https://www.monster.it/",
+    "https://www.monsterboard.nl/",
+    "https://www.monster.be/",
+    "https://www.monster.ie/"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.monster.at/jobs/*",
+        "*://*.monster.at/de/jobs/*",
+        "*://*.monster.be/nl/vacatures/*",
+        "*://*.monster.ca/jobs/*",
+        "*://*.monster.ca/fr/emploi/*",
+        "*://*.monster.de/jobs/*",
+        "*://*.monster.fr/emploi/*",
+        "*://*.monster.ie/jobs/*",
+        "*://*.monster.it/lavoro/*",
+        "*://*.monster.lu/fr/emploi/*",
+        "*://*.monsterboard.nl/vacatures/*",
+        "*://*.monster.es/trabajo/*",
+        "*://*.monster.se/jobb/*",
+        "*://*.monster.ch.de/jobs/*",
+        "*://*.monster.co.uk/jobs/*",
+        "*://*.monster.com/jobs/*"
+      ],
+
+      "js": [
+        "content.js"
+      ]
+    }
+  ]
+
+
+
+}
