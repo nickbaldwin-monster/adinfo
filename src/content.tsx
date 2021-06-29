@@ -46,12 +46,13 @@ const listenToScripts = () => {
 };
 
 const updateDisplay = (isDisplay: boolean) => {
+    display = isDisplay;
     if (isDisplay) {
         header?.appendChild(displayContainer);
     } else {
         displayContainer?.parentNode?.removeChild(displayContainer);
     }
-    display = isDisplay;
+
 }
 
 const handleMessage = (message: MessageType) => {
