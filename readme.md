@@ -19,10 +19,15 @@ To install the extension:
 5. Select the `dist` directory
 
 ## todo
+ - install jest, testing library etc
+ - transform jobsList
+ - other info?
+ - move stateful settings stuff into Settings
+ - replicate stateful stuff in Display
 
-- implement messages
-- enable multiple tabs - need to store state for each? react state? background? local?
-(if updating state in bg, need to tie it to id of tab)
+
+## todo later
+  - add licence keys to env var for build/CI (see kendo doc)
   
 ## info
 
@@ -39,6 +44,11 @@ We will start by listening to messages from our background script.
 As the popup's state is lost every time it is closed, we should ask the 
 background for the current state
 
+As users can have multiple tabs open, either need to store state for each  
+(if updating state in bg, need to tie it to id of tab) - or - 
+just keep job state within the content script (starting with this simpler option)
+ 
+
 ## Notes
 
 The job search results are persisted in sessionStorage, and updated after each search/paging action.
@@ -51,3 +61,4 @@ So... the only way to listen for sessionStorage events is within a frame on that
 useful links
 https://react.christmas/2020/12
 https://betterprogramming.pub/inject-html-in-react-using-iframe-ea3c85bdeec0
+https://www.telerik.com/kendo-react-ui/my-license/?utm_medium=product&utm_source=kendoreact&utm_campaign=kendo-ui-react-purchase-license-keys-warning
