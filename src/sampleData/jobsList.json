@@ -1,0 +1,278 @@
+{
+  "totalSize": 10,
+  "estimatedTotalSize": 6772,
+  "jobResults": [
+    {
+      "schemaVersion": "2.0.13",
+      "jobId": "db65fdbe-cba4-4ecb-8c56-a88f76cf6f93",
+      "externalIdentifiers": [
+        {
+          "identifierName": "NOW_POSTING_ID",
+          "identifierValue": "6ca5a144-bc5b-4eba-9fc9-70cb172b6f1a"
+        }
+      ],
+      "status": "ACTIVE",
+      "jobPosting": {
+        "@context": "http://schema.org",
+        "@type": "JobPosting",
+        "description": "Java + Microservices, 2 years of Min experience required on the below skills, , Primary Technology Skillset :65533X JavaCore java + Java 8, Java Frameworks :Spring Boot XML Based Approach,Spring MVC (MVC Controller, RESTController, Validator),Spring Configuration,Spring Data JPA (w) Hibernate,Maven / Gradle,Junit Mockito,Spring Security,Spring Cloud NetFLix, ,Eureka Service,Cloud Gateway,Hystrix,Feign and Rest Template, , Strong in Core Java and Java 8 Programming, Strong in Object Oriented programming, Strong in Collections, Generics, IO, Threads, and Functional Programming, Good Working knowledge in Spring Framework and its associated modules like AOP, Data, MVC, Controllers, RestControllers, Property Configuration, Spring Security, Able to write REST API end point using Spring MVC Framework, Able to develop JSP with JSTL or ThyemLeaf based UI development, able to integrate with standard layout engine in the view layer, Able to work both in Spring Boot and Spring Vanilla Flavors., Good Working Knowledge in ORM Frameworks like Hibernate/JPA with in depth skills in Criteria Query, Projections API6553365533s, JPA Repo, Entity Mapping 65533V Association, Inheritance, 2 way Cache etc, Good knowledge on Distributed and MicroService Patterns, Able to perform slicing and dicing a given business requirements into multiple corelated distributed microservice components., Good Working Knowledge in Spring Boot Cloud APIs such as Eureka, Cloud Data Flow, Cloud Gateway, Hystrix, Feign Client, Rest Template, Service Mesh topology, Good working knowledge on Message platform such as ActiveMQ / Apache Kafka, Working knowledge on Transaction Consistency that cut across multiple components, Bounded Context, DDD model",
+        "url": "https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93",
+        "datePosted": "2021-04-22T11:35:13.844Z",
+        "hiringOrganization": {
+          "@context": "http://schema.org",
+          "@type": "Organization",
+          "description": "<p style=\"background-image: initial; background-size: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgba(255, 255, 255, 1); margin: 15pt 0\"><span style=\"color: rgba(0, 0, 0, 1); font-family: Calibri; font-size: medium\">Virtusa is a leading worldwide provider of information technology (IT) consulting and outsourcing services. We help accelerate business outcomes for Global 2000 businesses in banking and financial services, insurance, healthcare, telecommunications and media.</span></p>\n<p style=\"background-image: initial; background-size: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgba(255, 255, 255, 1); margin: 15pt 0\"><span style=\"color: rgba(0, 0, 0, 1); font-family: Calibri; font-size: medium\">Virtusa delivers targeted business outcomes through differentiated solutions by leveraging its proven platforming methodology, domain expertise and technology innovation. Virtusa’s operational excellence solutions allow businesses to improve business and operating efficiencies, and reduce costs using automation, effort compression and simplification. Virtusa’s digital transformation and innovation solutions empower companies to accelerate business growth by reimagining the consumer experience, and creating lasting value.</span></p>\n<p style=\"background-image: initial; background-size: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgba(255, 255, 255, 1); margin: 15pt 0\"><span style=\"color: rgba(0, 0, 0, 1); font-family: Calibri; font-size: medium\">Founded in 1996 and headquartered in Massachusetts, Virtusa has 50 offices across North America, Europe and Asia.</span></p>\n<p> </p>",
+          "url": "http://www.virtusa.com/",
+          "name": "Virtusa",
+          "foundingDate": "1996",
+          "numberOfEmployees": {
+            "@context": "http://schema.org",
+            "@type": "QuantitativeValue",
+            "unitText": "10,000 employees or more"
+          },
+          "logo": "https://media.newjobs.com/clu/xtpr/xtprox/branding/24443/Virtusa-logo-637497808963712225.png"
+        },
+        "identifier": {
+          "@context": "http://schema.org",
+          "@type": "PropertyValue",
+          "name": "Virtusa",
+          "value": "CREQ62192"
+        },
+        "industry": "Computer/IT Services",
+        "jobLocation": [
+          {
+            "@context": "http://schema.org",
+            "@type": "Place",
+            "address": {
+              "@context": "http://schema.org",
+              "@type": "PostalAddress",
+              "addressLocality": "Boston",
+              "addressRegion": "MA",
+              "postalCode": "",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@context": "http://schema.org",
+              "@type": "GeoCoordinates",
+              "latitude": "42.358",
+              "longitude": "-71.06"
+            }
+          }
+        ],
+        "occupationalCategory": "1500127001001",
+        "title": "Java Developer"
+      },
+      "createdDate": "2021-04-21T07:55:26.68Z",
+      "provider": {
+        "code": "e1947c00-c36f-40ed-b1f3-0dafb93cbd4e",
+        "name": "Virtusa"
+      },
+      "apply": {
+        "applyType": "OFFSITE",
+        "applyUrl": "https://virtusa.taleo.net/careersection/ex/jobdetail.ftl?job=CREQ62192&lang=en&src=JB-11"
+      },
+      "ingestionMethod": "ADAPTED_NOW",
+      "enrichments": {
+        "language": {
+          "languageCode": "en"
+        },
+        "mescos": [
+          {
+            "id": "1500127001001"
+          }
+        ],
+        "normalizedJobLocations": [
+          {
+            "postalAddress": {
+              "@context": "http://schema.org",
+              "@type": "Place",
+              "address": {
+                "@context": "http://schema.org",
+                "@type": "PostalAddress",
+                "addressLocality": "Boston",
+                "addressRegion": "MA",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@context": "http://schema.org",
+                "@type": "GeoCoordinates",
+                "latitude": "42.35843",
+                "longitude": "-71.05977"
+              }
+            },
+            "locationId": "4930956",
+            "countryCode": "US"
+          }
+        ],
+        "companyKb": {
+          "normalizedCompanyName": "Virtusa",
+          "normalizedCompanyGuid": "k4wafni6cnf33hebxhwcdmodrf"
+        },
+        "normalizedTitles": [
+          {
+            "title": "Java Software Engineer"
+          }
+        ],
+        "normalizedSalary": {
+          "currencyCode": {
+            "name": "USD",
+            "id": 920
+          },
+          "salaryBaseType": {
+            "name": "UNKNOWN",
+            "id": 239
+          }
+        },
+        "employmentTypes": [
+          {
+            "name": "UNKNOWN",
+            "id": 29
+          }
+        ],
+        "employmentTypeModifiers": [
+          {
+            "name": "UNKNOWN",
+            "id": 129
+          }
+        ],
+        "status": {
+          "name": "ACTIVE",
+          "id": 52
+        },
+        "applyType": {
+          "name": "OFFSITE",
+          "id": 51
+        },
+        "ingestionMethod": {
+          "name": "ADAPTED_NOW",
+          "id": 704
+        },
+        "localizedMonsterUrls": [
+          {
+            "locationId": "4930956",
+            "url": "https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93"
+          }
+        ],
+        "qualifiedForG4J": true,
+        "isPublicJob": true,
+        "googleSyntheticValidThrough": "2022-06-15T16:17:58.383690Z"
+      },
+      "attributeValuePairs": [
+        {
+          "name": "location_0_addressRegionName",
+          "value": "Massachusetts"
+        },
+        {
+          "name": "location_0_addressCountryName",
+          "value": "US"
+        }
+      ],
+      "now": {
+        "jobAdPricingTypeId": 2
+      },
+      "formattedDate": "2021-04-22T00:00:00",
+      "dateRecency": "30+ days ago",
+      "seoJobId": "java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93",
+      "fieldTranslations": [],
+      "jobAd": {
+        "type": "AdzerkJobAd",
+        "provider": "ADZERK",
+        "tracking": {
+          "clickUrl": "https://prod.monsterview.com/r?e=eyJ2IjoiMS43IiwiYXYiOjE0ODA1NDYsImF0IjoxNjIsImJ0IjowLCJjbSI6MTIyMzI5MjUsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6Mjc3MzY3NDcsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6MCwiaWkiOiI1MWNjZTM2ZTg0NDI0ZGZhYWUyMmMyNGFlZjhhNjc3ZSIsImRtIjozLCJmYyI6Mjg5Njg1MDMsImZsIjoyMTI5NzQ2MCwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MS4xLCJkcCI6MjEuOTgxMDQsImRuIjoyMS45ODEwNCwiZGciOjIxLjk4MTA0LCJlYyI6MzAuNTk3NiwiZXAiOm51bGwsInByIjoyMTc5MTMsInJ0IjozLCJycyI6NTAwLCJzYSI6ImJpZnJvc3QtYWRzZXJ2ZXJzLXRlcnRpYXJ5LXVzLWVhc3QtMSIsInNiIjoiaS0wMjliNzhhNjcxYmUwNDA2ZiIsInNwIjoyMzc5OCwic3QiOjExMjk3MTIsInVrIjoiM2ExODgzZGE3MGE2NWJjMzQwZWI1YWVlYTE2MWNkZGQiLCJ0cyI6MTYyNDkzMDUwMTA0OSwicG4iOiJtb25zdGVyOkpTUl9MSVNUX1ZJRVciLCJnYyI6dHJ1ZSwiZ0MiOnRydWUsImdzIjoibm9uZSIsImJpIjoxLCJ0eiI6IlVUQyIsInVyIjpudWxsfQ&s=V3737udkr_UKz1uojUgAQR_v3SM&property%3Aaid=fa7946af6328b91ecd0db5f313777dd0&property%3Aapp=monster&property%3Acname=Java+Developer&property%3Acsrc=ppc.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=db65fdbe-cba4-4ecb-8c56-a88f76cf6f93&property%3Ajloc=%5B%7B%22city%22%3A%22Boston%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%22%22%2C%22latitude%22%3A%2242.358%22%2C%22longitude%22%3A%22-71.06%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=db65fdbe-cba4-4ecb-8c56-a88f76cf6f93_Java+Developer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=e1947c00-c36f-40ed-b1f3-0dafb93cbd4e&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-05-10T21%3A20%3A39.68&property%3Asp=Software+Engineer",
+          "impressionUrl": "https://prod.monsterview.com/i.gif?e=eyJ2IjoiMS43IiwiYXYiOjE0ODA1NDYsImF0IjoxNjIsImJ0IjowLCJjbSI6MTIyMzI5MjUsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6Mjc3MzY3NDcsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6MCwiaWkiOiI1MWNjZTM2ZTg0NDI0ZGZhYWUyMmMyNGFlZjhhNjc3ZSIsImRtIjozLCJmYyI6Mjg5Njg1MDMsImZsIjoyMTI5NzQ2MCwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MS4xLCJkcCI6MjEuOTgxMDQsImRuIjoyMS45ODEwNCwiZGciOjIxLjk4MTA0LCJlYyI6MzAuNTk3NiwiZXAiOm51bGwsInByIjoyMTc5MTMsInJ0IjozLCJycyI6NTAwLCJzYSI6ImJpZnJvc3QtYWRzZXJ2ZXJzLXRlcnRpYXJ5LXVzLWVhc3QtMSIsInNiIjoiaS0wMjliNzhhNjcxYmUwNDA2ZiIsInNwIjoyMzc5OCwic3QiOjExMjk3MTIsInVrIjoiM2ExODgzZGE3MGE2NWJjMzQwZWI1YWVlYTE2MWNkZGQiLCJ0cyI6MTYyNDkzMDUwMTA1MCwicG4iOiJtb25zdGVyOkpTUl9MSVNUX1ZJRVciLCJnYyI6dHJ1ZSwiZ0MiOnRydWUsImdzIjoibm9uZSIsImJpIjoxLCJ0eiI6IlVUQyIsImJhIjozNywiZnEiOjB9&s=DsFihendOleL6y-CU8TdlSq4RvM&property%3Aaid=fa7946af6328b91ecd0db5f313777dd0&property%3Aapp=monster&property%3Acname=Java+Developer&property%3Acsrc=ppc.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=db65fdbe-cba4-4ecb-8c56-a88f76cf6f93&property%3Ajloc=%5B%7B%22city%22%3A%22Boston%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%22%22%2C%22latitude%22%3A%2242.358%22%2C%22longitude%22%3A%22-71.06%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=db65fdbe-cba4-4ecb-8c56-a88f76cf6f93_Java+Developer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=e1947c00-c36f-40ed-b1f3-0dafb93cbd4e&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-05-10T21%3A20%3A39.68&property%3Asp=Software+Engineer"
+        }
+      },
+      "brandingExt": {
+        "companyBannerUrl": "https://media.newjobs.com/clu/xtpr/xtprox/branding/24443/Virtusa-banner-637496930456955738.png",
+        "companyPhotos": [],
+        "companyBenefits": []
+      },
+      "bespokeJob": false,
+      "_gctsid": "7e1ea752-cf18-40cb-a90e-999c98cc64cd:APAb7IRsamN7HtIROjkxcyhKKZE6q4sivw==",
+      "_searchid": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+      "hasValidCompanyLogo": {}
+    }
+  ],
+  "jobRequest": {
+    "offset": 0,
+    "pageSize": 10,
+    "jobQuery": {
+      "query": "Software Engineer",
+      "locations": [
+        {
+          "address": "Boston, MA",
+          "country": "us",
+          "radius": {
+            "unit": "mi",
+            "value": 20
+          }
+        }
+      ],
+      "disableSpellCheck": false,
+      "excludeJobs": [],
+      "companyDisplayNames": [],
+      "queryLanguageCode": "en-us"
+    },
+    "orderBy": "relevance",
+    "debug": false,
+    "overrideOptions": false,
+    "enableDiversification": false,
+    "disableKeywordMatch": false,
+    "enableBroadening": false,
+    "paidJobsOnly": false,
+    "jobAdsRequest": {
+      "placement": {
+        "component": "JSR_LIST_VIEW",
+        "appName": "monster"
+      },
+      "position": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "searchId": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+    "fingerprintId": "3a1883da70a65bc340eb5aeea161cddd",
+    "gctsrequest": {
+      "offset": 0,
+      "pageSize": 10,
+      "jobQuery": {
+        "query": "Software Engineer",
+        "locations": [
+          {
+            "address": "Boston, MA",
+            "country": "us",
+            "radius": {
+              "unit": "mi",
+              "value": 20
+            }
+          }
+        ],
+        "disableSpellCheck": false,
+        "excludeJobs": [],
+        "companyDisplayNames": [],
+        "queryLanguageCode": "en-us"
+      },
+      "orderBy": "relevance",
+      "debug": false,
+      "overrideOptions": false,
+      "enableDiversification": false,
+      "disableKeywordMatch": false,
+      "enableBroadening": false,
+      "paidJobsOnly": false
+    }
+  },
+  "histogramQueryResult": [],
+  "searchId": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+  "gctsReqId": "7e1ea752-cf18-40cb-a90e-999c98cc64cd:APAb7IRsamN7HtIROjkxcyhKKZE6q4sivw==",
+  "clientIP": "121.200.2.238",
+  "noJobsFound": false,
+  "lastNumberOfJobsReturned": 10
+}

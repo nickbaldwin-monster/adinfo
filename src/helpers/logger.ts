@@ -1,4 +1,4 @@
-
+const app = 'adinfo: ';
 
 interface Log {
     moduleName?: string,
@@ -47,21 +47,21 @@ export const log = ({ moduleName, functionName, logType, message, payload, error
         functionName = "unknown";
     }
     if (logType === 'LOADED') {
-        console.log(`${logType}: `, { logType, moduleName });
+        console.log(`${app} ${logType}: `, { logType, moduleName });
     }
     if (logType === 'FUNCTION') {
-        console.log(`${logType}: `, { logType, moduleName, functionName, message });
+        console.log(`${app} ${logType}: `, { logType, moduleName, functionName, message });
     }
     if (logType === 'MESSAGE_RECEIVED') {
-        console.log(`${logType}: `, { logType, moduleName, functionName, payload });
+        console.log(`${app} ${logType}: `, { logType, moduleName, functionName, payload });
     }
     if (logType === 'MESSAGE_SENT') {
-        console.log(`${logType}: `, { logType, moduleName, functionName, payload });
+        console.log(`${app} ${logType}: `, { logType, moduleName, functionName, payload });
     }
     if (logType === 'ERROR') {
-        console.log(`${logType}: `, { logType, moduleName, functionName, payload, error });
+        console.log(`${app} ${logType}: `, { logType, moduleName, functionName, payload, error });
     }
     if (logType === 'CUSTOM') {
-        console.log(`${logType}: `, { logType, moduleName, functionName, payload, message });
+        console.log(`${app} ${logType}: `, { logType, moduleName, functionName, payload, message });
     }
 };

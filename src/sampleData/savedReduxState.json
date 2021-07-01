@@ -1,0 +1,2658 @@
+{
+  "country": "us",
+  "language": "en",
+  "domain": "www.monster.com",
+  "job": {
+    "name": "Error"
+  },
+  "alertBanners": [],
+  "languageTag": "en-US",
+  "locale": "en-US",
+  "appVersion": "0.2.1",
+  "config": {
+    "audience": "profiles-profile-app-service",
+    "authClientId": "sBnw72m4O6A1axuOgQqP0Fh8nH5zrDre",
+    "authServerBaseUrl": "https://identity.monster.com/",
+    "scope": "openid profile email",
+    "serverCallbackPath": "/api/svx/auth-callback",
+    "siteHost": "www.monster.com",
+    "siteProto": "https",
+    "useRefreshTokens": true,
+    "country": "us"
+  },
+  "countriesDropDown": [
+    {
+      "country": "United States",
+      "languages": [
+        {
+          "language": "English",
+          "url": "/en-us"
+        }
+      ]
+    },
+    {
+      "country": "Austria",
+      "languages": [
+        {
+          "language": "Deutsch",
+          "url": "/de-at"
+        }
+      ]
+    },
+    {
+      "country": "Belgium",
+      "languages": [
+        {
+          "language": "English",
+          "url": "/en-be"
+        },
+        {
+          "language": "Nederlands",
+          "url": "/nl-be"
+        },
+        {
+          "language": "Français",
+          "url": "/fr-be"
+        }
+      ]
+    },
+    {
+      "country": "Canada",
+      "languages": [
+        {
+          "language": "English",
+          "url": "/en-ca"
+        },
+        {
+          "language": "Français",
+          "url": "/fr-ca"
+        }
+      ]
+    },
+    {
+      "country": "Czech Republic",
+      "languages": [
+        {
+          "language": "Czech",
+          "url": "/cs-cz"
+        }
+      ]
+    },
+    {
+      "country": "Finland",
+      "languages": [
+        {
+          "language": "Finnish",
+          "url": "/fi-fi"
+        }
+      ]
+    },
+    {
+      "country": "France",
+      "languages": [
+        {
+          "language": "Français",
+          "url": "/fr-fr"
+        }
+      ]
+    },
+    {
+      "country": "Germany",
+      "languages": [
+        {
+          "language": "Deutsch",
+          "url": "/de-de"
+        }
+      ]
+    },
+    {
+      "country": "Ireland",
+      "languages": [
+        {
+          "language": "en",
+          "url": "/en-ie"
+        }
+      ]
+    },
+    {
+      "country": "Italy",
+      "languages": [
+        {
+          "language": "Italian",
+          "url": "/it-it"
+        }
+      ]
+    },
+    {
+      "country": "Luxembourg",
+      "languages": [
+        {
+          "language": "English",
+          "url": "/en-lu"
+        },
+        {
+          "language": "Français",
+          "url": "/fr-lu"
+        },
+        {
+          "language": "Deutsch",
+          "url": "/de-lu"
+        }
+      ]
+    },
+    {
+      "country": "Netherlands",
+      "languages": [
+        {
+          "language": "Dutch",
+          "url": "/nl-nl"
+        }
+      ]
+    },
+    {
+      "country": "Spain",
+      "languages": [
+        {
+          "language": "Spanish",
+          "url": "/es-es"
+        }
+      ]
+    },
+    {
+      "country": "Sweden",
+      "languages": [
+        {
+          "language": "Swedish",
+          "url": "/sv-se"
+        }
+      ]
+    },
+    {
+      "country": "Switzerland",
+      "languages": [
+        {
+          "language": "Français",
+          "url": "/fr-ch"
+        },
+        {
+          "language": "Deutsch",
+          "url": "/de-ch"
+        }
+      ]
+    },
+    {
+      "country": "United Kingdom",
+      "languages": [
+        {
+          "language": "English",
+          "url": "/en-gb"
+        }
+      ]
+    }
+  ],
+  "tenantId": "8ac30c3a7057a2ec01705d1709660000",
+  "tenant": "monster",
+  "clientIP": "121.200.2.238",
+  "routeJson": [
+    {
+      "path": "/jobs/(q-|l-|search)([^?]*)",
+      "navigationPath": "/jobs/search",
+      "locale": [
+        "en-CA",
+        "en-US",
+        "en-IE",
+        "en-GB"
+      ],
+      "exact": false,
+      "pageName": "results"
+    },
+    {
+      "path": "/health",
+      "navigationPath": "/health",
+      "locale": [
+        "en-CA",
+        "en-US",
+        "fr-FR",
+        "nl-NL",
+        "en-GB",
+        "it-IT",
+        "nl-BE",
+        "es-ES",
+        "de-LU",
+        "fi-FI",
+        "cs-CZ",
+        "sv-SE",
+        "de-DE",
+        "de-CH",
+        "de-AT",
+        "en-IE"
+      ],
+      "exact": true,
+      "pageName": "health"
+    },
+    {
+      "path": "/job-openings/:id",
+      "navigationPath": "/job-openings/:id",
+      "locale": [
+        "en-CA",
+        "en-US",
+        "en-GB",
+        "en-IE"
+      ],
+      "exact": true,
+      "pageName": "job"
+    },
+    {
+      "path": "/job-openings/:id/redirect",
+      "navigationPath": "/job-openings/:id/redirect",
+      "locale": [
+        "en-CA",
+        "en-US",
+        "en-GB",
+        "en-IE"
+      ],
+      "exact": true,
+      "pageName": "redirect"
+    }
+  ],
+  "siteId": "monster.com",
+  "siteProto": "https",
+  "spaEntryPage": "results",
+  "spaEntryUrl": {
+    "url": "/jobs/search?cn=Odyssey+Systems+Consulting+Group%2C+Ltd.&page=2",
+    "host": "https://jobs-svx-ui-v2.jobs.svc.cluster.local"
+  },
+  "requestOrigin": {
+    "url": "/jobs/search?cn=Odyssey+Systems+Consulting+Group%2C+Ltd.&page=2"
+  },
+  "jobsList": {
+    "totalSize": 10,
+    "estimatedTotalSize": 6772,
+    "jobResults": [
+      {
+        "schemaVersion": "2.0.13",
+        "jobId": "db65fdbe-cba4-4ecb-8c56-a88f76cf6f93",
+        "externalIdentifiers": [
+          {
+            "identifierName": "NOW_POSTING_ID",
+            "identifierValue": "6ca5a144-bc5b-4eba-9fc9-70cb172b6f1a"
+          }
+        ],
+        "status": "ACTIVE",
+        "jobPosting": {
+          "@context": "http://schema.org",
+          "@type": "JobPosting",
+          "description": "Java + Microservices, 2 years of Min experience required on the below skills, , Primary Technology Skillset :65533X JavaCore java + Java 8, Java Frameworks :Spring Boot XML Based Approach,Spring MVC (MVC Controller, RESTController, Validator),Spring Configuration,Spring Data JPA (w) Hibernate,Maven / Gradle,Junit Mockito,Spring Security,Spring Cloud NetFLix, ,Eureka Service,Cloud Gateway,Hystrix,Feign and Rest Template, , Strong in Core Java and Java 8 Programming, Strong in Object Oriented programming, Strong in Collections, Generics, IO, Threads, and Functional Programming, Good Working knowledge in Spring Framework and its associated modules like AOP, Data, MVC, Controllers, RestControllers, Property Configuration, Spring Security, Able to write REST API end point using Spring MVC Framework, Able to develop JSP with JSTL or ThyemLeaf based UI development, able to integrate with standard layout engine in the view layer, Able to work both in Spring Boot and Spring Vanilla Flavors., Good Working Knowledge in ORM Frameworks like Hibernate/JPA with in depth skills in Criteria Query, Projections API6553365533s, JPA Repo, Entity Mapping 65533V Association, Inheritance, 2 way Cache etc, Good knowledge on Distributed and MicroService Patterns, Able to perform slicing and dicing a given business requirements into multiple corelated distributed microservice components., Good Working Knowledge in Spring Boot Cloud APIs such as Eureka, Cloud Data Flow, Cloud Gateway, Hystrix, Feign Client, Rest Template, Service Mesh topology, Good working knowledge on Message platform such as ActiveMQ / Apache Kafka, Working knowledge on Transaction Consistency that cut across multiple components, Bounded Context, DDD model",
+          "url": "https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93",
+          "datePosted": "2021-04-22T11:35:13.844Z",
+          "hiringOrganization": {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "description": "<p style=\"background-image: initial; background-size: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgba(255, 255, 255, 1); margin: 15pt 0\"><span style=\"color: rgba(0, 0, 0, 1); font-family: Calibri; font-size: medium\">Virtusa is a leading worldwide provider of information technology (IT) consulting and outsourcing services. We help accelerate business outcomes for Global 2000 businesses in banking and financial services, insurance, healthcare, telecommunications and media.</span></p>\n<p style=\"background-image: initial; background-size: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgba(255, 255, 255, 1); margin: 15pt 0\"><span style=\"color: rgba(0, 0, 0, 1); font-family: Calibri; font-size: medium\">Virtusa delivers targeted business outcomes through differentiated solutions by leveraging its proven platforming methodology, domain expertise and technology innovation. Virtusa’s operational excellence solutions allow businesses to improve business and operating efficiencies, and reduce costs using automation, effort compression and simplification. Virtusa’s digital transformation and innovation solutions empower companies to accelerate business growth by reimagining the consumer experience, and creating lasting value.</span></p>\n<p style=\"background-image: initial; background-size: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgba(255, 255, 255, 1); margin: 15pt 0\"><span style=\"color: rgba(0, 0, 0, 1); font-family: Calibri; font-size: medium\">Founded in 1996 and headquartered in Massachusetts, Virtusa has 50 offices across North America, Europe and Asia.</span></p>\n<p> </p>",
+            "url": "http://www.virtusa.com/",
+            "name": "Virtusa",
+            "foundingDate": "1996",
+            "numberOfEmployees": {
+              "@context": "http://schema.org",
+              "@type": "QuantitativeValue",
+              "unitText": "10,000 employees or more"
+            },
+            "logo": "https://media.newjobs.com/clu/xtpr/xtprox/branding/24443/Virtusa-logo-637497808963712225.png"
+          },
+          "identifier": {
+            "@context": "http://schema.org",
+            "@type": "PropertyValue",
+            "name": "Virtusa",
+            "value": "CREQ62192"
+          },
+          "industry": "Computer/IT Services",
+          "jobLocation": [
+            {
+              "@context": "http://schema.org",
+              "@type": "Place",
+              "address": {
+                "@context": "http://schema.org",
+                "@type": "PostalAddress",
+                "addressLocality": "Boston",
+                "addressRegion": "MA",
+                "postalCode": "",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@context": "http://schema.org",
+                "@type": "GeoCoordinates",
+                "latitude": "42.358",
+                "longitude": "-71.06"
+              }
+            }
+          ],
+          "occupationalCategory": "1500127001001",
+          "title": "Java Developer"
+        },
+        "createdDate": "2021-04-21T07:55:26.68Z",
+        "provider": {
+          "code": "e1947c00-c36f-40ed-b1f3-0dafb93cbd4e",
+          "name": "Virtusa"
+        },
+        "apply": {
+          "applyType": "OFFSITE",
+          "applyUrl": "https://virtusa.taleo.net/careersection/ex/jobdetail.ftl?job=CREQ62192&lang=en&src=JB-11"
+        },
+        "ingestionMethod": "ADAPTED_NOW",
+        "enrichments": {
+          "language": {
+            "languageCode": "en"
+          },
+          "mescos": [
+            {
+              "id": "1500127001001"
+            }
+          ],
+          "normalizedJobLocations": [
+            {
+              "postalAddress": {
+                "@context": "http://schema.org",
+                "@type": "Place",
+                "address": {
+                  "@context": "http://schema.org",
+                  "@type": "PostalAddress",
+                  "addressLocality": "Boston",
+                  "addressRegion": "MA",
+                  "addressCountry": "US"
+                },
+                "geo": {
+                  "@context": "http://schema.org",
+                  "@type": "GeoCoordinates",
+                  "latitude": "42.35843",
+                  "longitude": "-71.05977"
+                }
+              },
+              "locationId": "4930956",
+              "countryCode": "US"
+            }
+          ],
+          "companyKb": {
+            "normalizedCompanyName": "Virtusa",
+            "normalizedCompanyGuid": "k4wafni6cnf33hebxhwcdmodrf"
+          },
+          "normalizedTitles": [
+            {
+              "title": "Java Software Engineer"
+            }
+          ],
+          "normalizedSalary": {
+            "currencyCode": {
+              "name": "USD",
+              "id": 920
+            },
+            "salaryBaseType": {
+              "name": "UNKNOWN",
+              "id": 239
+            }
+          },
+          "employmentTypes": [
+            {
+              "name": "UNKNOWN",
+              "id": 29
+            }
+          ],
+          "employmentTypeModifiers": [
+            {
+              "name": "UNKNOWN",
+              "id": 129
+            }
+          ],
+          "status": {
+            "name": "ACTIVE",
+            "id": 52
+          },
+          "applyType": {
+            "name": "OFFSITE",
+            "id": 51
+          },
+          "ingestionMethod": {
+            "name": "ADAPTED_NOW",
+            "id": 704
+          },
+          "localizedMonsterUrls": [
+            {
+              "locationId": "4930956",
+              "url": "https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93"
+            }
+          ],
+          "qualifiedForG4J": true,
+          "isPublicJob": true,
+          "googleSyntheticValidThrough": "2022-06-15T16:17:58.383690Z"
+        },
+        "attributeValuePairs": [
+          {
+            "name": "location_0_addressRegionName",
+            "value": "Massachusetts"
+          },
+          {
+            "name": "location_0_addressCountryName",
+            "value": "US"
+          }
+        ],
+        "now": {
+          "jobAdPricingTypeId": 2
+        },
+        "formattedDate": "2021-04-22T00:00:00",
+        "dateRecency": "30+ days ago",
+        "seoJobId": "java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93",
+        "fieldTranslations": [],
+        "jobAd": {
+          "type": "AdzerkJobAd",
+          "provider": "ADZERK",
+          "tracking": {
+            "clickUrl": "https://prod.monsterview.com/r?e=eyJ2IjoiMS43IiwiYXYiOjE0ODA1NDYsImF0IjoxNjIsImJ0IjowLCJjbSI6MTIyMzI5MjUsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6Mjc3MzY3NDcsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6MCwiaWkiOiI1MWNjZTM2ZTg0NDI0ZGZhYWUyMmMyNGFlZjhhNjc3ZSIsImRtIjozLCJmYyI6Mjg5Njg1MDMsImZsIjoyMTI5NzQ2MCwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MS4xLCJkcCI6MjEuOTgxMDQsImRuIjoyMS45ODEwNCwiZGciOjIxLjk4MTA0LCJlYyI6MzAuNTk3NiwiZXAiOm51bGwsInByIjoyMTc5MTMsInJ0IjozLCJycyI6NTAwLCJzYSI6ImJpZnJvc3QtYWRzZXJ2ZXJzLXRlcnRpYXJ5LXVzLWVhc3QtMSIsInNiIjoiaS0wMjliNzhhNjcxYmUwNDA2ZiIsInNwIjoyMzc5OCwic3QiOjExMjk3MTIsInVrIjoiM2ExODgzZGE3MGE2NWJjMzQwZWI1YWVlYTE2MWNkZGQiLCJ0cyI6MTYyNDkzMDUwMTA0OSwicG4iOiJtb25zdGVyOkpTUl9MSVNUX1ZJRVciLCJnYyI6dHJ1ZSwiZ0MiOnRydWUsImdzIjoibm9uZSIsImJpIjoxLCJ0eiI6IlVUQyIsInVyIjpudWxsfQ&s=V3737udkr_UKz1uojUgAQR_v3SM&property%3Aaid=fa7946af6328b91ecd0db5f313777dd0&property%3Aapp=monster&property%3Acname=Java+Developer&property%3Acsrc=ppc.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=db65fdbe-cba4-4ecb-8c56-a88f76cf6f93&property%3Ajloc=%5B%7B%22city%22%3A%22Boston%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%22%22%2C%22latitude%22%3A%2242.358%22%2C%22longitude%22%3A%22-71.06%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=db65fdbe-cba4-4ecb-8c56-a88f76cf6f93_Java+Developer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=e1947c00-c36f-40ed-b1f3-0dafb93cbd4e&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-05-10T21%3A20%3A39.68&property%3Asp=Software+Engineer",
+            "impressionUrl": "https://prod.monsterview.com/i.gif?e=eyJ2IjoiMS43IiwiYXYiOjE0ODA1NDYsImF0IjoxNjIsImJ0IjowLCJjbSI6MTIyMzI5MjUsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6Mjc3MzY3NDcsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6MCwiaWkiOiI1MWNjZTM2ZTg0NDI0ZGZhYWUyMmMyNGFlZjhhNjc3ZSIsImRtIjozLCJmYyI6Mjg5Njg1MDMsImZsIjoyMTI5NzQ2MCwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MS4xLCJkcCI6MjEuOTgxMDQsImRuIjoyMS45ODEwNCwiZGciOjIxLjk4MTA0LCJlYyI6MzAuNTk3NiwiZXAiOm51bGwsInByIjoyMTc5MTMsInJ0IjozLCJycyI6NTAwLCJzYSI6ImJpZnJvc3QtYWRzZXJ2ZXJzLXRlcnRpYXJ5LXVzLWVhc3QtMSIsInNiIjoiaS0wMjliNzhhNjcxYmUwNDA2ZiIsInNwIjoyMzc5OCwic3QiOjExMjk3MTIsInVrIjoiM2ExODgzZGE3MGE2NWJjMzQwZWI1YWVlYTE2MWNkZGQiLCJ0cyI6MTYyNDkzMDUwMTA1MCwicG4iOiJtb25zdGVyOkpTUl9MSVNUX1ZJRVciLCJnYyI6dHJ1ZSwiZ0MiOnRydWUsImdzIjoibm9uZSIsImJpIjoxLCJ0eiI6IlVUQyIsImJhIjozNywiZnEiOjB9&s=DsFihendOleL6y-CU8TdlSq4RvM&property%3Aaid=fa7946af6328b91ecd0db5f313777dd0&property%3Aapp=monster&property%3Acname=Java+Developer&property%3Acsrc=ppc.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=db65fdbe-cba4-4ecb-8c56-a88f76cf6f93&property%3Ajloc=%5B%7B%22city%22%3A%22Boston%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%22%22%2C%22latitude%22%3A%2242.358%22%2C%22longitude%22%3A%22-71.06%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=db65fdbe-cba4-4ecb-8c56-a88f76cf6f93_Java+Developer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=e1947c00-c36f-40ed-b1f3-0dafb93cbd4e&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-05-10T21%3A20%3A39.68&property%3Asp=Software+Engineer"
+          }
+        },
+        "brandingExt": {
+          "companyBannerUrl": "https://media.newjobs.com/clu/xtpr/xtprox/branding/24443/Virtusa-banner-637496930456955738.png",
+          "companyPhotos": [],
+          "companyBenefits": []
+        },
+        "bespokeJob": false,
+        "_gctsid": "7e1ea752-cf18-40cb-a90e-999c98cc64cd:APAb7IRsamN7HtIROjkxcyhKKZE6q4sivw==",
+        "_searchid": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+        "hasValidCompanyLogo": {}
+      },
+      {
+        "schemaVersion": "2.0.13",
+        "jobId": "837a4cea-d5fd-42ce-b9f0-1198c31ec9a5",
+        "externalIdentifiers": [
+          {
+            "identifierName": "NOW_POSTING_ID",
+            "identifierValue": "d4ff294a-78ae-4ac4-9efc-e66a4e5d1c9c"
+          }
+        ],
+        "status": "ACTIVE",
+        "jobPosting": {
+          "@context": "http://schema.org",
+          "@type": "JobPosting",
+          "description": "<h2>Position Summary</h2><p>Our client creates and transitions advanced technologies for ensuring the security and resiliency of next-generation mission-critical systems. The group's research and development in this area focus on a wide range of systems from drones and satellites, to handheld devices and miniature sensors, to high-performance secure cloud computing, to many others.The group comprises computer scientists; software, hardware, and electrical engineers; cryptographers; system analysts; and security architects, all of whom share a common passion for helping solve some of the hardest technical problems relevant to national security. The group pursues innovative, high-impact, practical research in small focused teams, and it succeeds by participating in all R&D phases, including problem analysis and innovative solution design, system architecture, rapid prototyping, field testing, and, ultimately, transfer of the technology to Department of Defense and Intelligence Community users, sponsors, and industry.This role is a software developer with a broad range of experience that is responsible for designing, implementing, and testing software systems and testbeds to support research and development (R&D) programs with our client. Developers in this group work closely with software architects, system administrators, and researchers in an agile, devops environment.As a federally funded research and development center, our client delivers a mix of long-term technology products as well as rapid system prototyping and demonstration. Successful candidates will be comfortable implementing and maintaining software systems for efforts in both areas. This involves interpreting mission and R&D requirements into software implementations for local testbed environments as well as forward-deployed systems.</p><p> </p><h2>Responsibilities</h2><p><strong>Duties include, but not limited to: </strong></p><p> </p><p><strong>RESPONSIBILITIES AND DUTIES</strong>Full lifecycle application development. Designing, coding and debugging applications in various software languages. Software analysis, code analysis, requirements analysis, software review, identification of code metrics, system risk analysis, software reliability analysis. Object-oriented Design and Analysis (OOA and OOD). Software modeling and simulation. Front end graphical user interface design. Software testing and quality assurance. Performance tuning, improvement, balancing, usability, automation. Supports, maintains and documents software functionality. Integrates software with existing systems. Evaluates and identifies new technologies for implementation. Maintains standards compliance. Implements localization or globalization of softwareThe software developer’s primary role as an implementer and integrator will be to:• Develop Python-based analysis capabilities for resiliency testbed• This includes ingesting and processing experimental data from the Testbed and producing value and insights using statistical and ML-based techniques• Develop Angular web front ends• Develop webapp front ends in Angular that communicate with various backend technologies and APIs• Infrastructure Automation with Docker, Ansible and Terraform• This includes developing automation for configuration and deployment of the software services to AWS and ESX environments using containers and Ansible, and including infrastructure configuration with Terraform. This task also includes using automation to secure and harden deployed services• Java-based applications for data processing and adaptation• Develop Java applications primarily focused on ingesting, adapting and normalizing data for downstream analytics. Secondary tasks include developing Springboot-based Java microservices.• The software developer will also perform related testing, and compose, compile, and maintain documentation for users and administrators. A secondary role will be to assist the development team in the planning and execution of effective agile software development practices. The software developer must be able to communicate, collaborate and work effectively within our RST team.• The software developer must have a willingness to take on new technologies and work in areas and take on responsibilities that they are not necessarily an expert in.</p><p> </p><p>LI-IM-1</p><p> </p><p> </p><h2>Qualifications</h2><p><strong>MINIMUM QUALIFICATIONS</strong>• Must be a U.S. citizen with eligibility to obtain and maintain a secret clearance• Bachelor's Degree with 5 years of relevant experience• Experience developing non-trivial applications using Python, Java, Angular, JSON, Protobufs, Maven, Agile software development, source code version control systems (i.e., git & Github)• Experience developing deployment pipelines using Docker, Ansible and Terraform• Experience securing and hardening deployed services using Ansible• Experience with Elastic Stack, Apache NIFI• Unit testing and integration testing• Developing, debugging, and executing software in a Windows and Linux environment.• Producing, editing and maintaining documentation aimed at users and other developers• Experience with ActiveMQ, Kafka and other middleware and messaging platforms</p><p><strong>PREFERRED QUALIFICATIONS</strong> • Experience working in agile, scrum-based teams• Experience building secure software systems using secure software development best practices• Familiar with software build systems, such as Bamboo or Jenkins• Familiar with user interface technologies, such as JavaScript, HTML and CSS• Experience with big data applications: Hadoop, Spark• Experience with Springboot and XML tooling</p><p><strong>WORKING LOCATIONS & ADDITIONAL INFO</strong>• Location: Lexington, MA• Travel: Yes, on as needed basis • Employment Status: Full-Time Employee with full benefits (Medical, Dental, Vision, STD, LTD, PTO, Retirement)• Other: All candidates must also successfully pass a Commercial Background Investigation (CBI). Investigation (CBI).</p><p>This job posting sets forth the authorities and responsibilities of this position, which may be changed from time to time as shall be determined.</p><h2>Company Overview</h2><p><strong>Odyssey Systems Consulting Group, </strong>is an innovative small business committed to providing world-class technical, management, and training support services to government and public sector clients. We focus on people, processes, and performance to deliver superior results. Since our inception in 1997, our commitment to mission success and customer satisfaction has been recognized with exponential growth and exceptional past performance ratings. We accept challenging assignments and drive projects from the planning stages, through implementation, and into operations and support.</p><p> </p><p><em>Equal Opportunity Employer/Protected Veterans/Individuals with Disabilities</em></p>",
+          "url": "https://www.monster.com/job-openings/software-engineer-lexington-ma--837a4cea-d5fd-42ce-b9f0-1198c31ec9a5",
+          "datePosted": "2021-06-18T21:45:35.608Z",
+          "hiringOrganization": {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "description": "<p>Established in 1997, Odyssey Systems Consulting Group, Ltd. is a leading provider of management, analytical, and technical support services for government and private-sector customers. Odyssey delivers innovative solutions in response to complex and challenging customer requirements.</p>\n<p>Our portfolio of successful projects demonstrates our ability to efficiently plan, staff, and manage efforts of all scopes and sizes. Our employees provide tailored functional expertise in technology, engineering, and management principles. We offer vast experience in acquisition strategy development and document generation; source selection support; cost, schedule, and performance management; systems engineering and analysis; risk management; cost/benefit and earned value analysis; computer-based training development; communication planning and operations; and lifecycle sustainment and product support. Odyssey also offers research and acquisition support services to the DoD medical domain, leading DoD medical mission support through several prime services contracts.</p>\n<div>\n<div>\n<div>\n<div>\n<div>\n<div>\n<p><strong>A six-time Inc. 5000 honoree, Odyssey has earned recognition on the 2019 Inc. 5000 as one of the most successful companies in America.</strong> In Inc.’s annual guide to the 5,000 fastest-growing privately held companies in the U.S., we were ranked #162 in the Government Services category, delivering a wide range of services to DoD customers and beyond.</p>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>",
+            "url": "http://www.odysseyconsult.com",
+            "name": "Odyssey Systems Consulting Group, Ltd.",
+            "foundingDate": "1997",
+            "numberOfEmployees": {
+              "@context": "http://schema.org",
+              "@type": "QuantitativeValue",
+              "unitText": "1,000 to 1,499 employees"
+            },
+            "logo": "https://media.newjobs.com/clu/xw74/xw74189178wx/branding/9641/Odyssey-Systems-logo-637468371276068861.jpg"
+          },
+          "identifier": {
+            "@context": "http://schema.org",
+            "@type": "PropertyValue",
+            "name": "Odyssey Systems Consulting Group, Ltd.",
+            "value": "2021-1493"
+          },
+          "industry": "Aerospace and Defense",
+          "jobLocation": [
+            {
+              "@context": "http://schema.org",
+              "@type": "Place",
+              "address": {
+                "@context": "http://schema.org",
+                "@type": "PostalAddress",
+                "addressLocality": "Lexington",
+                "addressRegion": "MA",
+                "postalCode": "",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@context": "http://schema.org",
+                "@type": "GeoCoordinates",
+                "latitude": "42.447",
+                "longitude": "-71.224"
+              }
+            }
+          ],
+          "occupationalCategory": "1500127001001",
+          "title": "Software Engineer"
+        },
+        "createdDate": "2021-06-18T21:59:57.929Z",
+        "provider": {
+          "code": "b3f44edb-6f70-401a-8a4d-cc1ae663f00a",
+          "name": " Odyssey Systems Consulting Group"
+        },
+        "apply": {
+          "applyType": "OFFSITE",
+          "applyUrl": "https://careers-odysseyconsult.icims.com/jobs/1493/software-engineer/job?mode=job&iis=Job+Board&iisn=Monster.com&in_iframe=1"
+        },
+        "ingestionMethod": "ADAPTED_NOW",
+        "enrichments": {
+          "language": {
+            "languageCode": "en"
+          },
+          "mescos": [
+            {
+              "id": "1500127001001"
+            }
+          ],
+          "normalizedJobLocations": [
+            {
+              "postalAddress": {
+                "@context": "http://schema.org",
+                "@type": "Place",
+                "address": {
+                  "@context": "http://schema.org",
+                  "@type": "PostalAddress",
+                  "addressLocality": "Lexington",
+                  "addressRegion": "MA",
+                  "addressCountry": "US"
+                },
+                "geo": {
+                  "@context": "http://schema.org",
+                  "@type": "GeoCoordinates",
+                  "latitude": "42.44732",
+                  "longitude": "-71.2245"
+                }
+              },
+              "locationId": "4941935",
+              "countryCode": "US"
+            }
+          ],
+          "companyKb": {
+            "normalizedCompanyName": "Odyssey Systems Consulting Group",
+            "normalizedCompanyGuid": "cgyj3bge6fao5jep4cach66wbf"
+          },
+          "normalizedTitles": [
+            {
+              "title": "Software Engineer"
+            }
+          ],
+          "normalizedSalary": {
+            "currencyCode": {
+              "name": "USD",
+              "id": 920
+            },
+            "salaryBaseType": {
+              "name": "UNKNOWN",
+              "id": 239
+            }
+          },
+          "employmentTypes": [
+            {
+              "name": "UNKNOWN",
+              "id": 29
+            }
+          ],
+          "employmentTypeModifiers": [
+            {
+              "name": "UNKNOWN",
+              "id": 129
+            }
+          ],
+          "status": {
+            "name": "ACTIVE",
+            "id": 52
+          },
+          "applyType": {
+            "name": "OFFSITE",
+            "id": 51
+          },
+          "ingestionMethod": {
+            "name": "ADAPTED_NOW",
+            "id": 704
+          },
+          "localizedMonsterUrls": [
+            {
+              "locationId": "4941935",
+              "url": "https://www.monster.com/job-openings/software-engineer-lexington-ma--837a4cea-d5fd-42ce-b9f0-1198c31ec9a5"
+            }
+          ],
+          "qualifiedForG4J": true,
+          "isPublicJob": true,
+          "googleSyntheticValidThrough": "2022-06-18T21:59:57.269392Z"
+        },
+        "attributeValuePairs": [
+          {
+            "name": "location_0_addressRegionName",
+            "value": "Massachusetts"
+          },
+          {
+            "name": "location_0_addressCountryName",
+            "value": "US"
+          }
+        ],
+        "now": {
+          "jobAdPricingTypeId": 2
+        },
+        "formattedDate": "2021-06-18T00:00:00",
+        "dateRecency": "11 days ago",
+        "seoJobId": "software-engineer-lexington-ma--837a4cea-d5fd-42ce-b9f0-1198c31ec9a5",
+        "fieldTranslations": [],
+        "jobAd": {
+          "type": "AdzerkJobAd",
+          "provider": "ADZERK",
+          "tracking": {
+            "clickUrl": "https://prod.monsterview.com/r?e=eyJ2IjoiMS43IiwiYXYiOjE1NjI4NDcsImF0IjoxNjIsImJ0IjowLCJjbSI6MTczODQ4OTYsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6MzMwOTQwNDgsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6MSwiaWkiOiI2MzQzOTRiNGI2Nzc0OTkxYWQ4YTZjZWNkNzU1NjJlMCIsImRtIjozLCJmYyI6MzQyMzU5NzMsImZsIjoyNjUxNzc0NCwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC45MSwiZHAiOjIxLjA5OTg0LCJkbiI6MjEuMDk5ODQsImRnIjoyMS4wOTk4NCwiZWMiOjIxLjk3MTA0LCJlcCI6bnVsbCwicHIiOjIxNzkxMywicnQiOjMsInJzIjo1MDAsInNhIjoiYmlmcm9zdC1hZHNlcnZlcnMtdGVydGlhcnktdXMtZWFzdC0xIiwic2IiOiJpLTAyOWI3OGE2NzFiZTA0MDZmIiwic3AiOjIzNzk4LCJzdCI6MTEyOTcxMiwidWsiOiIzYTE4ODNkYTcwYTY1YmMzNDBlYjVhZWVhMTYxY2RkZCIsInRzIjoxNjI0OTMwNTAxMDUxLCJwbiI6Im1vbnN0ZXI6SlNSX0xJU1RfVklFVyIsImdjIjp0cnVlLCJnQyI6dHJ1ZSwiZ3MiOiJub25lIiwiYmkiOjEsInR6IjoiVVRDIiwidXIiOm51bGx9&s=lBvCA87ivQ78pXpWrH-kBH1cQKA&property%3Aaid=f496b6c3b3083f9ee8245c7df30bd18c&property%3Aapp=monster&property%3Acname=Software+Engineer&property%3Acsrc=ppc.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=837a4cea-d5fd-42ce-b9f0-1198c31ec9a5&property%3Ajloc=%5B%7B%22city%22%3A%22Lexington%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%22%22%2C%22latitude%22%3A%2242.447%22%2C%22longitude%22%3A%22-71.224%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=Software+Engineer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=b3f44edb-6f70-401a-8a4d-cc1ae663f00a&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-06-18T21%3A59%3A58.417&property%3Asp=Software+Engineer",
+            "impressionUrl": "https://prod.monsterview.com/i.gif?e=eyJ2IjoiMS43IiwiYXYiOjE1NjI4NDcsImF0IjoxNjIsImJ0IjowLCJjbSI6MTczODQ4OTYsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6MzMwOTQwNDgsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6MSwiaWkiOiI2MzQzOTRiNGI2Nzc0OTkxYWQ4YTZjZWNkNzU1NjJlMCIsImRtIjozLCJmYyI6MzQyMzU5NzMsImZsIjoyNjUxNzc0NCwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC45MSwiZHAiOjIxLjA5OTg0LCJkbiI6MjEuMDk5ODQsImRnIjoyMS4wOTk4NCwiZWMiOjIxLjk3MTA0LCJlcCI6bnVsbCwicHIiOjIxNzkxMywicnQiOjMsInJzIjo1MDAsInNhIjoiYmlmcm9zdC1hZHNlcnZlcnMtdGVydGlhcnktdXMtZWFzdC0xIiwic2IiOiJpLTAyOWI3OGE2NzFiZTA0MDZmIiwic3AiOjIzNzk4LCJzdCI6MTEyOTcxMiwidWsiOiIzYTE4ODNkYTcwYTY1YmMzNDBlYjVhZWVhMTYxY2RkZCIsInRzIjoxNjI0OTMwNTAxMDUyLCJwbiI6Im1vbnN0ZXI6SlNSX0xJU1RfVklFVyIsImdjIjp0cnVlLCJnQyI6dHJ1ZSwiZ3MiOiJub25lIiwiYmkiOjEsInR6IjoiVVRDIiwiYmEiOjM2LCJmcSI6MH0&s=N6D3myCxKc3FzHwctvVUnegQmCM&property%3Aaid=f496b6c3b3083f9ee8245c7df30bd18c&property%3Aapp=monster&property%3Acname=Software+Engineer&property%3Acsrc=ppc.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=837a4cea-d5fd-42ce-b9f0-1198c31ec9a5&property%3Ajloc=%5B%7B%22city%22%3A%22Lexington%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%22%22%2C%22latitude%22%3A%2242.447%22%2C%22longitude%22%3A%22-71.224%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=Software+Engineer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=b3f44edb-6f70-401a-8a4d-cc1ae663f00a&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-06-18T21%3A59%3A58.417&property%3Asp=Software+Engineer"
+          }
+        },
+        "brandingExt": {
+          "companyBannerUrl": "https://media.newjobs.com/clu/xw74/xw74189178wx/branding/9641/Odyssey-Systems-banner-637468371277006402.jpg",
+          "companyPhotos": [
+            {
+              "url": "https://media.newjobs.com/clu/xw74/xw74189178wx/branding/9641/98acfe2f-a53c-46bd-9753-b0a0ddbfa088.jpeg",
+              "caption": ""
+            }
+          ],
+          "companyBenefits": [
+            {
+              "name": "401K",
+              "iconClass": "fa fa-money"
+            },
+            {
+              "name": "Employee Events",
+              "iconClass": "fa fa-calendar-o"
+            },
+            {
+              "name": "Employee Referral Program",
+              "iconClass": "fa fa-user-plus"
+            },
+            {
+              "name": "Flexible Spending Accounts",
+              "iconClass": "fa fa-university"
+            },
+            {
+              "name": "Gym Memberships",
+              "iconClass": "fa fa-users"
+            },
+            {
+              "name": "Life Insurance",
+              "iconClass": "fa fa-plus-square"
+            },
+            {
+              "name": "Maternity/Paternity Paid Leave",
+              "iconClass": "fa fa-heartbeat"
+            },
+            {
+              "name": "Medical, Dental and Vision",
+              "iconClass": "fa fa-medkit"
+            },
+            {
+              "name": "Military Leave",
+              "iconClass": "fa fa-bookmark"
+            },
+            {
+              "name": "On Site Cafeteria",
+              "iconClass": "fa fa-cutlery"
+            },
+            {
+              "name": "Paid Holidays",
+              "iconClass": "fa fa-smile-o"
+            },
+            {
+              "name": "Paid sick days",
+              "iconClass": "fa fa-thermometer-three-quarters"
+            },
+            {
+              "name": "Parking ",
+              "iconClass": "fa fa-product-hunt"
+            },
+            {
+              "name": "Professional Development",
+              "iconClass": "fa fa-graduation-cap"
+            },
+            {
+              "name": "Retirement / Pension Plans",
+              "iconClass": "fa fa-database"
+            },
+            {
+              "name": "Tuition Reimbursement",
+              "iconClass": "fa fa-thumbs-up"
+            },
+            {
+              "name": "Vacation/paid time off",
+              "iconClass": "fa fa-plane"
+            }
+          ]
+        },
+        "bespokeJob": false,
+        "_gctsid": "7e1ea752-cf18-40cb-a90e-999c98cc64cd:APAb7IRsamN7HtIROjkxcyhKKZE6q4sivw==",
+        "_searchid": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+        "hasValidCompanyLogo": {}
+      },
+      {
+        "schemaVersion": "2.0.13",
+        "jobId": "837edf73-e551-4fa6-94bf-030b3a458173",
+        "externalIdentifiers": [
+          {
+            "identifierName": "NOW_POSTING_ID",
+            "identifierValue": "a75e17c3-7a1a-41cf-9ef7-744406e2dc5c"
+          },
+          {
+            "identifierName": "POSITION_AD_ID",
+            "identifierValue": "228684909"
+          }
+        ],
+        "status": "ACTIVE",
+        "jobPosting": {
+          "@context": "http://schema.org",
+          "@type": "JobPosting",
+          "description": "<div class=\"section-data\">***THIS POSITION WILL START REMOTE BUT REQUIRE RELOCATION TO BOSTON SOMETIME THIS SUMMER***<br/><br/>\nIf you are a React developer looking to advance your career towards technical expertise in AI, Big Data and medicine at a fast-growing tech company, please read on!<br/><br/>\nWe're a fast-paced, high-growth, international health-tech company founded in 2011. We've been on a mission to disrupt the modern healthcare industry and democratize data driven medicine for healthcare professionals and patients worldwide. Over 1000 leading hospitals worldwide utilize our software. We foster a collaborative atmosphere for the brightest minds in healthcare! According to a 2017 MIT Technology we're one of the \"50 Smartest Companies\" in the world!</div><h4 class=\"section-title\">Top Reasons to Work with Us</h4><div class=\"section-data section-data-title\">- Lucrative Pay Package (varies DOE)!<br/>- Standard Benefits Package (Health, Dental, Vision)<br/>\n- 20 days PTO<br/>\n- 401k Matching<br/>\n...and more!</div><h4 class=\"section-title\">What You Will Be Doing</h4><div class=\"section-data section-data-title\">- Develop/the/clinical decision support system/based on our /innovative AI platform/which will help thousands of/patients/to receive the best treatment<br/>- Own several architectural units/(modules, libraries, executables)<br/>\n- Independently design, develop,/and/modify/modules aligned with/the Chief Architects vision</div><h4 class=\"section-title\">What You Need for this Position</h4><div class=\"section-data section-data-title\">At least 2 years of development experience including:<br/><br/>\n- React (REQUIRED)- typescript, graphql, node.js<br/>\n- Good Java knowledge<br/>\n- Good software skills- Architecture, UX, UI<br/>\n- Experience with testing frameworks- JUnit, Cucumber, Google Test<br/><br/>\nBONUS<br/>\n- Microservices<br/>\n- Agile<br/>\n- Redux</div><div class=\"section-data\">So, if you are a React with experience, please apply today!</div>",
+          "url": "https://www.monster.com/job-openings/react-developer-boston-ma--837edf73-e551-4fa6-94bf-030b3a458173",
+          "datePosted": "2021-06-23T09:29:03.303Z",
+          "educationRequirements": "Professional",
+          "employmentType": [
+            "Fulltime",
+            "Employee"
+          ],
+          "hiringOrganization": {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "description": "<p>CyberCoders, a division of ASGN, is a leading permanent placement recruiting firm. Through our innovative technology and efficient recruiters, CyberCoders helps find the right candidate fast.</p>\n<p>Founded in 1999, CyberCoders is built on a success oriented culture. Above all – we know both candidates and clients want quality and they want it now. No other recruiting firm can offer Cyrus, our proprietary technology built to search smarter and quicker, matching the best applicant to the right job.</p>",
+            "url": "http://www.cybercoders.com",
+            "name": "CyberCoders",
+            "foundingDate": "1999",
+            "numberOfEmployees": {
+              "@context": "http://schema.org",
+              "@type": "QuantitativeValue",
+              "unitText": "100 to 499 employees"
+            },
+            "logo": "https://securemedia.newjobs.com/clu/xcyb/xcyberc3x/JobLogo.gif"
+          },
+          "identifier": {
+            "@context": "http://schema.org",
+            "@type": "PropertyValue",
+            "name": "CyberCoders",
+            "value": "kj2-1620648119"
+          },
+          "industry": "Biotechnology/Pharmaceuticals",
+          "jobLocation": [
+            {
+              "@context": "http://schema.org",
+              "@type": "Place",
+              "address": {
+                "@context": "http://schema.org",
+                "@type": "PostalAddress",
+                "streetAddress": "",
+                "addressLocality": "Boston",
+                "addressRegion": "MA",
+                "postalCode": "02127",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@context": "http://schema.org",
+                "@type": "GeoCoordinates",
+                "latitude": "42.336",
+                "longitude": "-71.041"
+              }
+            }
+          ],
+          "occupationalCategory": "1500127001001",
+          "title": "React Developer",
+          "validThrough": "2021-07-23T09:29:03.303Z"
+        },
+        "createdDate": "2021-06-23T09:50:23.85Z",
+        "provider": {
+          "code": "monster",
+          "name": "monster"
+        },
+        "apply": {
+          "applyType": "INTEGRATED",
+          "applyUrl": "https://job-openings.monster.com/v2/job/apply?jobid=228684909",
+          "applyPath": "/v2/job/apply?jobid=228684909",
+          "resolvedRedirectUrl": "https://www.monster.com/jobs/404"
+        },
+        "jobViewPreferences": {
+          "hiringOrganizationConfidential": false
+        },
+        "ingestionMethod": "ADAPTED_NOW",
+        "enrichments": {
+          "language": {
+            "languageCode": "en"
+          },
+          "mescos": [
+            {
+              "id": "1500127001001"
+            }
+          ],
+          "normalizedJobLocations": [
+            {
+              "postalAddress": {
+                "@context": "http://schema.org",
+                "@type": "Place",
+                "address": {
+                  "@context": "http://schema.org",
+                  "@type": "PostalAddress",
+                  "addressLocality": "Boston",
+                  "addressRegion": "MA",
+                  "postalCode": "02127",
+                  "addressCountry": "US"
+                },
+                "geo": {
+                  "@context": "http://schema.org",
+                  "@type": "GeoCoordinates",
+                  "latitude": "42.35843",
+                  "longitude": "-71.05977"
+                }
+              },
+              "locationId": "4930956",
+              "countryCode": "US"
+            }
+          ],
+          "companyKb": {
+            "normalizedCompanyName": "Cybercoders",
+            "code": "xcyberc3x",
+            "normalizedCompanyGuid": "eovlbna6fzfeda5w5ksbbbabpf"
+          },
+          "normalizedTitles": [
+            {
+              "title": "Software Engineer"
+            }
+          ],
+          "normalizedSalary": {
+            "currencyCode": {
+              "name": "USD",
+              "id": 920
+            },
+            "salaryBaseType": {
+              "name": "UNKNOWN",
+              "id": 239
+            }
+          },
+          "employmentTypes": [
+            {
+              "name": "FULL_TIME",
+              "id": 20
+            }
+          ],
+          "employmentTypeModifiers": [
+            {
+              "name": "FULL_TIME",
+              "id": 121
+            }
+          ],
+          "status": {
+            "name": "ACTIVE",
+            "id": 52
+          },
+          "applyType": {
+            "name": "INTEGRATED",
+            "id": 53
+          },
+          "ingestionMethod": {
+            "name": "ADAPTED_NOW",
+            "id": 704
+          },
+          "localizedMonsterUrls": [
+            {
+              "locationId": "4930956",
+              "url": "https://www.monster.com/job-openings/react-developer-boston-ma--837edf73-e551-4fa6-94bf-030b3a458173"
+            }
+          ],
+          "qualifiedForG4J": true,
+          "isPublicJob": true
+        },
+        "attributeValuePairs": [
+          {
+            "name": "location_0_addressRegionName",
+            "value": "Massachusetts"
+          },
+          {
+            "name": "location_0_addressCountryName",
+            "value": "US"
+          }
+        ],
+        "now": {
+          "jobAdPricingTypeId": 1,
+          "folderId": 273510825,
+          "boardId": 1,
+          "templateId": 35865
+        },
+        "formattedDate": "2021-06-23T00:00:00",
+        "dateRecency": "6 days ago",
+        "seoJobId": "react-developer-boston-ma--837edf73-e551-4fa6-94bf-030b3a458173",
+        "fieldTranslations": [
+          {
+            "fieldName": "EmploymentType",
+            "name": "FULL_TIME",
+            "locale": "en-us",
+            "translation": "full-time"
+          }
+        ],
+        "jobAd": {
+          "type": "AdzerkJobAd",
+          "provider": "ADZERK",
+          "tracking": {
+            "clickUrl": "https://prod.monsterview.com/r?e=eyJ2IjoiMS43IiwiYXYiOjE0MzExODEsImF0IjoxNjIsImJ0IjowLCJjbSI6MTc4OTM1NDksImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6MzM2MTg1NzUsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6MiwiaWkiOiJiMGY1MjllYzg4MjU0NTRkYTM2MTQ3YTc4NDZmYzUwMiIsImRtIjozLCJmYyI6MzQ3NjE1MzMsImZsIjoyNzAzOTExMCwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC43OSwiZHAiOjIwLjIwMjQsImRuIjoyMC4yMDI0LCJkZyI6MjAuMjAyNCwiZWMiOjIxLjA4OTg0LCJlcCI6bnVsbCwicHIiOjIxNzkxMywicnQiOjMsInJzIjo1MDAsInNhIjoiYmlmcm9zdC1hZHNlcnZlcnMtdGVydGlhcnktdXMtZWFzdC0xIiwic2IiOiJpLTAyOWI3OGE2NzFiZTA0MDZmIiwic3AiOjIzNzk4LCJzdCI6MTEyOTcxMiwidWsiOiIzYTE4ODNkYTcwYTY1YmMzNDBlYjVhZWVhMTYxY2RkZCIsInRzIjoxNjI0OTMwNTAxMDUyLCJwbiI6Im1vbnN0ZXI6SlNSX0xJU1RfVklFVyIsImdjIjp0cnVlLCJnQyI6dHJ1ZSwiZ3MiOiJub25lIiwiYmkiOjEsInR6IjoiVVRDIiwidXIiOm51bGx9&s=tmUUrrmBQhY0vU4rY_SMkQkiP7Q&property%3Aaid=0061993497a929ff6000e7dd39616afd&property%3Aapp=monster&property%3Acname=React+Developer&property%3Acsrc=duration.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=837edf73-e551-4fa6-94bf-030b3a458173&property%3Ajloc=%5B%7B%22city%22%3A%22Boston%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202127%22%2C%22latitude%22%3A%2242.336%22%2C%22longitude%22%3A%22-71.041%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=React+Developer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=monster&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-06-23T09%3A50%3A29.147&property%3Axcd=xcyberc3x&property%3Asp=Software+Engineer",
+            "impressionUrl": "https://prod.monsterview.com/i.gif?e=eyJ2IjoiMS43IiwiYXYiOjE0MzExODEsImF0IjoxNjIsImJ0IjowLCJjbSI6MTc4OTM1NDksImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6MzM2MTg1NzUsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6MiwiaWkiOiJiMGY1MjllYzg4MjU0NTRkYTM2MTQ3YTc4NDZmYzUwMiIsImRtIjozLCJmYyI6MzQ3NjE1MzMsImZsIjoyNzAzOTExMCwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC43OSwiZHAiOjIwLjIwMjQsImRuIjoyMC4yMDI0LCJkZyI6MjAuMjAyNCwiZWMiOjIxLjA4OTg0LCJlcCI6bnVsbCwicHIiOjIxNzkxMywicnQiOjMsInJzIjo1MDAsInNhIjoiYmlmcm9zdC1hZHNlcnZlcnMtdGVydGlhcnktdXMtZWFzdC0xIiwic2IiOiJpLTAyOWI3OGE2NzFiZTA0MDZmIiwic3AiOjIzNzk4LCJzdCI6MTEyOTcxMiwidWsiOiIzYTE4ODNkYTcwYTY1YmMzNDBlYjVhZWVhMTYxY2RkZCIsInRzIjoxNjI0OTMwNTAxMDUzLCJwbiI6Im1vbnN0ZXI6SlNSX0xJU1RfVklFVyIsImdjIjp0cnVlLCJnQyI6dHJ1ZSwiZ3MiOiJub25lIiwiYmkiOjEsInR6IjoiVVRDIiwiYmEiOjM1LCJmcSI6MH0&s=7KNU6riBy_3LAiRdgTkCJChT2TM&property%3Aaid=0061993497a929ff6000e7dd39616afd&property%3Aapp=monster&property%3Acname=React+Developer&property%3Acsrc=duration.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=837edf73-e551-4fa6-94bf-030b3a458173&property%3Ajloc=%5B%7B%22city%22%3A%22Boston%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202127%22%2C%22latitude%22%3A%2242.336%22%2C%22longitude%22%3A%22-71.041%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=React+Developer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=monster&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-06-23T09%3A50%3A29.147&property%3Axcd=xcyberc3x&property%3Asp=Software+Engineer"
+          }
+        },
+        "brandingExt": {
+          "companyBannerUrl": "",
+          "companyPhotos": [],
+          "companyBenefits": []
+        },
+        "bespokeJob": false,
+        "_gctsid": "7e1ea752-cf18-40cb-a90e-999c98cc64cd:APAb7IRsamN7HtIROjkxcyhKKZE6q4sivw==",
+        "_searchid": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+        "hasValidCompanyLogo": {}
+      },
+      {
+        "schemaVersion": "2.0.13",
+        "jobId": "2d28c575-173b-4c55-92c2-8b692f1de831",
+        "externalIdentifiers": [
+          {
+            "identifierName": "NOW_POSTING_ID",
+            "identifierValue": "f09a33f1-28bb-4c74-85e7-400220cd6988"
+          },
+          {
+            "identifierName": "POSITION_AD_ID",
+            "identifierValue": "227907120"
+          }
+        ],
+        "status": "ACTIVE",
+        "jobPosting": {
+          "@context": "http://schema.org",
+          "@type": "JobPosting",
+          "description": "<p>We are looking for a <strong>Senior Data Engineer</strong> for one of the biggest Amazon partners on the market. Our client raised $750 million so far at an evaluation that could be between $3 billion and $4 billion, or higher. </p><p><strong><br/>About the Company</strong></p><p>Our client is one of the fastest-growing acquirers of Amazon third-party FBA (Fulfillment By Amazon) brands. They are becoming one of the largest and most profitable consumer product companies in the Amazon ecosystem while building an amazing place to work, full of people who love to come in every day. So what does the company actually do? It finds the “top-reviewed, bestselling” essential everyday products on Amazon, and buys the brands from the small business owners. Many of those (usually seven-figure) businesses have grown faster than the owners have expected</p><br/><p><strong>Position Requirements</strong></p><p>The company is looking for candidates with strong experience across the following:</p><br/><p>Must have:</p><ul><li style=\"font-weight:400\">5+ years of information and <strong>database architecture</strong> expertise</li><li style=\"font-weight:400\">Demonstrated expertise in <strong>Information Architecture</strong>, <strong>Data Engineering,</strong> and <strong>data warehousing</strong></li><li style=\"font-weight:400\">Familiarity with Analytics and Data Science</li><li style=\"font-weight:400\">Strong experience designing <strong>distributed systems</strong> for scale and high availability.</li><li style=\"font-weight:400\">Extensive experience in designing <strong>microservice</strong> based applications and data pipelines, concepts of ETLs.</li><li style=\"font-weight:400\">Strong experience with SQL including advanced techniques and stored procedures.</li><li style=\"font-weight:400\">Demonstrated data management experience with at least one, preferably two major SQL database platforms: <strong>MySQL, Postgres, Redshift, Snowflake, Oracle, SQL Server.</strong></li><li style=\"font-weight:400\">Deep experience with at least one cloud platform; Azure, Amazon, or Google. We use Amazon.</li><li style=\"font-weight:400\">Proven ability to collaborate, build relationships and influence stakeholders at all levels in a matrix-management environment (as well as external vendors and service providers) to ensure that segregation and overlapping roles are identified and coordinated.</li><li style=\"font-weight:400\">Ability to present complicated analytical methodology and results to a non-technical audience.</li><li style=\"font-weight:400\">Experience working in a fast-paced, high-tech and customer obsessed environment.</li></ul><br/><p>Significant plus:</p><ul><li style=\"font-weight:400\">Experience with Amazon Web Services: RedShift, S3, EC2, EMR, etc and industry standard Data Warehousing technologies: Snowflake, Spark, Apache Airflow, celery, etc.</li><li style=\"font-weight:400\">Understanding of columnar formats such as parquet, avro</li><li style=\"font-weight:400\">Deep experience with micro service orchestration platforms such as Kubernetes</li><li style=\"font-weight:400\">Experience using data transformation tools such as panda, pyspark, etc.</li><li style=\"font-weight:400\">Experience leading onshore or offshore teams, or mentoring junior engineers</li><li style=\"font-weight:400\">Related experience in an e-commerce organization with a recurring revenue model is a strong plus </li></ul><br/><p><strong>The Team:</strong></p><p>The Data Connectivity Team designs, builds and maintains the integrated platform that securely procures and links critical business data from disparate internal and external sources.  This involves assimilating all structured, unstructured and semi-structured data and normalizing it to a form conducive to the company's business needs (think supply chain, marketing, finance).  We are the first mile in the data engine and enable delivery of business value from data.</p><br/><p><strong>Key Responsibilities</strong></p><ul><li style=\"font-weight:400\">Work with other architects and engineers to define, execute, and update core data systems while maintaining a high level of availability and transactional correctness. </li><li style=\"font-weight:400\">Provide technical leadership in coordination with data analytics and product management to define, deliver, and update the entities, entity relationships, and their representation as tables, constraints, and stored procedures in the company’s data systems.</li><li style=\"font-weight:400\">Help define future technical direction for the data systems in collaboration with senior management, product management and stakeholders.</li></ul><br/><p><strong>Perks and Benefits:</strong></p><ul><li style=\"font-weight:400\">Employee stock incentive</li><li style=\"font-weight:400\">Remote work option</li><li style=\"font-weight:400\">Unlimited PTO</li><li style=\"font-weight:400\">Health Insurance, Dental Insurance, Vision Insurance</li><li style=\"font-weight:400\">Frequent parties, swag, food</li></ul><br/><h3><strong>About Employa</strong></h3><p>Apply to this position with Employa and get brand new hiring experience.</p><p>Employa is a smart recruiting assistant that connects tech talents with the best employers to make the hiring process fast and easy for both sides. Employa AI-driven engines eliminate biases and limitations of human-to-human interaction, so candidates can always make sure that their CVs will be delivered, considered, and evaluated properly. It also enables candidates to track the hiring progress and improve their ranking for the position by answering additional questions from the potential employer.</p>",
+          "url": "https://www.monster.com/job-openings/data-engineer-brookline-ma--2d28c575-173b-4c55-92c2-8b692f1de831",
+          "baseSalary": {
+            "@context": "http://schema.org",
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": {
+              "@context": "http://schema.org",
+              "@type": "QuantitativeValue",
+              "unitText": "Per Year"
+            }
+          },
+          "datePosted": "2021-06-16T22:01:30.060Z",
+          "employmentType": [
+            "Fulltime",
+            "Employee"
+          ],
+          "hiringOrganization": {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "name": "Employa"
+          },
+          "jobLocation": [
+            {
+              "@context": "http://schema.org",
+              "@type": "Place",
+              "address": {
+                "@context": "http://schema.org",
+                "@type": "PostalAddress",
+                "streetAddress": "1309 BEACON ST STE 300",
+                "addressLocality": "BROOKLINE",
+                "addressRegion": "MA",
+                "postalCode": "02446",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@context": "http://schema.org",
+                "@type": "GeoCoordinates",
+                "latitude": "42.344",
+                "longitude": "-71.123"
+              }
+            }
+          ],
+          "occupationalCategory": "1500127001001",
+          "salaryCurrency": "USD",
+          "title": "Data Engineer",
+          "validThrough": "2021-07-17T04:59:00.000Z"
+        },
+        "createdDate": "2021-06-03T07:04:51.283Z",
+        "provider": {
+          "code": "monster",
+          "name": "monster"
+        },
+        "apply": {
+          "applyType": "ONSITE",
+          "applyUrl": "https://job-openings.monster.com/v2/job/apply?jobid=227907120",
+          "applyPath": "/v2/job/apply?jobid=227907120",
+          "resolvedRedirectUrl": "https://www.monster.com/jobs/404",
+          "onsiteApplyEmail": "marketing@employa.com"
+        },
+        "jobViewPreferences": {
+          "hiringOrganizationConfidential": false
+        },
+        "ingestionMethod": "ADAPTED_NOW",
+        "enrichments": {
+          "language": {
+            "languageCode": "en"
+          },
+          "mescos": [
+            {
+              "id": "1500127001001"
+            }
+          ],
+          "normalizedJobLocations": [
+            {
+              "postalAddress": {
+                "@context": "http://schema.org",
+                "@type": "Place",
+                "address": {
+                  "@context": "http://schema.org",
+                  "@type": "PostalAddress",
+                  "addressLocality": "Brookline",
+                  "addressRegion": "MA",
+                  "postalCode": "02446",
+                  "addressCountry": "US"
+                },
+                "geo": {
+                  "@context": "http://schema.org",
+                  "@type": "GeoCoordinates",
+                  "latitude": "42.33176",
+                  "longitude": "-71.12116"
+                }
+              },
+              "locationId": "4931482",
+              "countryCode": "US"
+            }
+          ],
+          "companyKb": {
+            "code": "xw315905046wx"
+          },
+          "normalizedTitles": [
+            {
+              "title": "Data Engineer"
+            }
+          ],
+          "normalizedSalary": {
+            "currencyCode": {
+              "name": "USD",
+              "id": 920
+            },
+            "salaryBaseType": {
+              "name": "YEAR",
+              "id": 235
+            }
+          },
+          "employmentTypes": [
+            {
+              "name": "FULL_TIME",
+              "id": 20
+            }
+          ],
+          "employmentTypeModifiers": [
+            {
+              "name": "FULL_TIME",
+              "id": 121
+            }
+          ],
+          "status": {
+            "name": "ACTIVE",
+            "id": 52
+          },
+          "applyType": {
+            "name": "ONSITE",
+            "id": 52
+          },
+          "ingestionMethod": {
+            "name": "ADAPTED_NOW",
+            "id": 704
+          },
+          "localizedMonsterUrls": [
+            {
+              "locationId": "4931482",
+              "url": "https://www.monster.com/job-openings/data-engineer-brookline-ma--2d28c575-173b-4c55-92c2-8b692f1de831"
+            }
+          ],
+          "qualifiedForG4J": true,
+          "isPublicJob": true
+        },
+        "attributeValuePairs": [
+          {
+            "name": "location_0_addressRegionName",
+            "value": "Massachusetts"
+          },
+          {
+            "name": "location_0_addressCountryName",
+            "value": "US"
+          }
+        ],
+        "now": {
+          "jobAdPricingTypeId": 1,
+          "folderId": 272830105,
+          "boardId": 1,
+          "templateId": 1
+        },
+        "formattedDate": "2021-06-16T00:00:00",
+        "dateRecency": "13 days ago",
+        "seoJobId": "data-engineer-brookline-ma--2d28c575-173b-4c55-92c2-8b692f1de831",
+        "fieldTranslations": [
+          {
+            "fieldName": "SalaryBaseType",
+            "name": "YEAR",
+            "locale": "en-us",
+            "translation": "Per Year"
+          },
+          {
+            "fieldName": "EmploymentType",
+            "name": "FULL_TIME",
+            "locale": "en-us",
+            "translation": "full-time"
+          }
+        ],
+        "jobAd": {
+          "type": "AdzerkJobAd",
+          "provider": "ADZERK",
+          "tracking": {
+            "clickUrl": "https://prod.monsterview.com/r?e=eyJ2IjoiMS43IiwiYXYiOjE0NDA5NjQsImF0IjoxNjIsImJ0IjowLCJjbSI6MTUxNjg5OTAsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6MzA4MzM2NDcsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6MywiaWkiOiIyMTUwZmE1NDc3MGM0MWEzOTJhNWEyYTg3NWU4Mjg1MyIsImRtIjozLCJmYyI6MzE5NzM1MTMsImZsIjoyNDI3NjgxNCwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC43OSwiZHAiOjIwLjA4ODY0LCJkbiI6MjAuMDg4NjQsImRnIjoyMC4wODg2NCwiZWMiOjIwLjE5MjQsImVwIjpudWxsLCJwciI6MjE3OTEzLCJydCI6MywicnMiOjUwMCwic2EiOiJiaWZyb3N0LWFkc2VydmVycy10ZXJ0aWFyeS11cy1lYXN0LTEiLCJzYiI6ImktMDI5Yjc4YTY3MWJlMDQwNmYiLCJzcCI6MjM3OTgsInN0IjoxMTI5NzEyLCJ1ayI6IjNhMTg4M2RhNzBhNjViYzM0MGViNWFlZWExNjFjZGRkIiwidHMiOjE2MjQ5MzA1MDEwNTMsInBuIjoibW9uc3RlcjpKU1JfTElTVF9WSUVXIiwiZ2MiOnRydWUsImdDIjp0cnVlLCJncyI6Im5vbmUiLCJiaSI6MSwidHoiOiJVVEMiLCJ1ciI6bnVsbH0&s=1J3iDfUZHkP6PrVCEdYzdcx_SSE&property%3Aaid=1b71368d8ba80797c36e26db99617ee2&property%3Aapp=monster&property%3Acname=Data+Engineer&property%3Acsrc=duration.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=2d28c575-173b-4c55-92c2-8b692f1de831&property%3Ajloc=%5B%7B%22city%22%3A%22BROOKLINE%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202446%22%2C%22latitude%22%3A%2242.344%22%2C%22longitude%22%3A%22-71.123%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=Data+Engineer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=monster&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-06-03T07%3A04%3A51.5&property%3Axcd=xw315905046wx&property%3Asp=Software+Engineer",
+            "impressionUrl": "https://prod.monsterview.com/i.gif?e=eyJ2IjoiMS43IiwiYXYiOjE0NDA5NjQsImF0IjoxNjIsImJ0IjowLCJjbSI6MTUxNjg5OTAsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6MzA4MzM2NDcsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6MywiaWkiOiIyMTUwZmE1NDc3MGM0MWEzOTJhNWEyYTg3NWU4Mjg1MyIsImRtIjozLCJmYyI6MzE5NzM1MTMsImZsIjoyNDI3NjgxNCwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC43OSwiZHAiOjIwLjA4ODY0LCJkbiI6MjAuMDg4NjQsImRnIjoyMC4wODg2NCwiZWMiOjIwLjE5MjQsImVwIjpudWxsLCJwciI6MjE3OTEzLCJydCI6MywicnMiOjUwMCwic2EiOiJiaWZyb3N0LWFkc2VydmVycy10ZXJ0aWFyeS11cy1lYXN0LTEiLCJzYiI6ImktMDI5Yjc4YTY3MWJlMDQwNmYiLCJzcCI6MjM3OTgsInN0IjoxMTI5NzEyLCJ1ayI6IjNhMTg4M2RhNzBhNjViYzM0MGViNWFlZWExNjFjZGRkIiwidHMiOjE2MjQ5MzA1MDEwNTQsInBuIjoibW9uc3RlcjpKU1JfTElTVF9WSUVXIiwiZ2MiOnRydWUsImdDIjp0cnVlLCJncyI6Im5vbmUiLCJiaSI6MSwidHoiOiJVVEMiLCJiYSI6MzQsImZxIjowfQ&s=WxczTt6sTt8c_44dZKWT-ZfbnNU&property%3Aaid=1b71368d8ba80797c36e26db99617ee2&property%3Aapp=monster&property%3Acname=Data+Engineer&property%3Acsrc=duration.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=2d28c575-173b-4c55-92c2-8b692f1de831&property%3Ajloc=%5B%7B%22city%22%3A%22BROOKLINE%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202446%22%2C%22latitude%22%3A%2242.344%22%2C%22longitude%22%3A%22-71.123%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=Data+Engineer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=monster&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-06-03T07%3A04%3A51.5&property%3Axcd=xw315905046wx&property%3Asp=Software+Engineer"
+          }
+        },
+        "brandingExt": {
+          "companyBannerUrl": null,
+          "companyPhotos": null,
+          "companyBenefits": null
+        },
+        "bespokeJob": false,
+        "_gctsid": "7e1ea752-cf18-40cb-a90e-999c98cc64cd:APAb7IRsamN7HtIROjkxcyhKKZE6q4sivw==",
+        "_searchid": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+        "hasValidCompanyLogo": false
+      },
+      {
+        "schemaVersion": "2.0.13",
+        "jobId": "ed2f6c2f-e596-4f48-8961-5e92c8cb7cc3",
+        "externalIdentifiers": [
+          {
+            "identifierName": "NOW_POSTING_ID",
+            "identifierValue": "9053b59e-36f8-48a8-a6ea-38825bff0a3e"
+          },
+          {
+            "identifierName": "POSITION_AD_ID",
+            "identifierValue": "228644086"
+          }
+        ],
+        "status": "ACTIVE",
+        "jobPosting": {
+          "@context": "http://schema.org",
+          "@type": "JobPosting",
+          "description": "<div class=\"section-data\">If you are a STARLIMS Developer with experience, please read on!</div><h4 class=\"section-title\">What You Will Be Doing</h4><div class=\"section-data section-data-title\">Delivering client and partner needs. You will be responsible for STARLIMS implementations!</div><h4 class=\"section-title\">What You Need for this Position</h4><div class=\"section-data section-data-title\">- STARLIMS V11<br/>- STARLIMS V 12<br/>\n- .NET<br/>\n- SQL<br/>\n- JavaScript<br/>\n- HTML<br/>\n- CSS<br/>\n- Informatics</div><h4 class=\"section-title\">What's In It for You</h4><div class=\"section-data section-data-title\">Competitive pay and bonus structure<br/>Extensive healthcare plan(s) for you and your family<br/>\nVision plan<br/>\nDental plan<br/>\n401(k), including mandatory company 3% contribution annually<br/>\nCompany-paid life insurance<br/>\nCompany-paid short and long term disability insurance<br/>\nGenerous paid time off<br/>\nComprehensive training and career planning</div><div class=\"section-data\">So, if you are a STARLIMS Developer with experience, please apply today!</div>",
+          "url": "https://www.monster.com/job-openings/starlims-developer-boston-ma--ed2f6c2f-e596-4f48-8961-5e92c8cb7cc3",
+          "baseSalary": {
+            "@context": "http://schema.org",
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": {
+              "@context": "http://schema.org",
+              "@type": "QuantitativeValue",
+              "minValue": 100000,
+              "maxValue": 150000,
+              "unitText": "Per Year"
+            }
+          },
+          "datePosted": "2021-06-17T09:07:00.000Z",
+          "educationRequirements": "Professional",
+          "employmentType": [
+            "Fulltime",
+            "Employee"
+          ],
+          "hiringOrganization": {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "description": "<p>CyberCoders, a division of ASGN, is a leading permanent placement recruiting firm. Through our innovative technology and efficient recruiters, CyberCoders helps find the right candidate fast.</p>\n<p>Founded in 1999, CyberCoders is built on a success oriented culture. Above all – we know both candidates and clients want quality and they want it now. No other recruiting firm can offer Cyrus, our proprietary technology built to search smarter and quicker, matching the best applicant to the right job.</p>",
+            "url": "http://www.cybercoders.com",
+            "name": "CyberCoders",
+            "foundingDate": "1999",
+            "numberOfEmployees": {
+              "@context": "http://schema.org",
+              "@type": "QuantitativeValue",
+              "unitText": "100 to 499 employees"
+            },
+            "logo": "https://securemedia.newjobs.com/clu/xcyb/xcyberc3x/JobLogo.gif"
+          },
+          "identifier": {
+            "@context": "http://schema.org",
+            "@type": "PropertyValue",
+            "name": "CyberCoders",
+            "value": "jg2-1637240101"
+          },
+          "industry": "Computer Software",
+          "jobLocation": [
+            {
+              "@context": "http://schema.org",
+              "@type": "Place",
+              "address": {
+                "@context": "http://schema.org",
+                "@type": "PostalAddress",
+                "streetAddress": "",
+                "addressLocality": "Boston",
+                "addressRegion": "MA",
+                "postalCode": "02127",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@context": "http://schema.org",
+                "@type": "GeoCoordinates",
+                "latitude": "42.336",
+                "longitude": "-71.041"
+              }
+            }
+          ],
+          "occupationalCategory": "1500127001001",
+          "salaryCurrency": "USD",
+          "title": "STARLIMS Developer",
+          "validThrough": "2021-07-22T09:07:10.247Z"
+        },
+        "createdDate": "2021-06-22T11:42:58.907Z",
+        "provider": {
+          "code": "monster",
+          "name": "monster"
+        },
+        "apply": {
+          "applyType": "INTEGRATED",
+          "applyUrl": "https://job-openings.monster.com/v2/job/apply?jobid=228644086",
+          "applyPath": "/v2/job/apply?jobid=228644086",
+          "resolvedRedirectUrl": "https://www.monster.com/jobs/404"
+        },
+        "jobViewPreferences": {
+          "hiringOrganizationConfidential": false
+        },
+        "ingestionMethod": "ADAPTED_NOW",
+        "enrichments": {
+          "language": {
+            "languageCode": "en"
+          },
+          "mescos": [
+            {
+              "id": "1500127001001"
+            }
+          ],
+          "normalizedJobLocations": [
+            {
+              "postalAddress": {
+                "@context": "http://schema.org",
+                "@type": "Place",
+                "address": {
+                  "@context": "http://schema.org",
+                  "@type": "PostalAddress",
+                  "addressLocality": "Boston",
+                  "addressRegion": "MA",
+                  "postalCode": "02127",
+                  "addressCountry": "US"
+                },
+                "geo": {
+                  "@context": "http://schema.org",
+                  "@type": "GeoCoordinates",
+                  "latitude": "42.35843",
+                  "longitude": "-71.05977"
+                }
+              },
+              "locationId": "4930956",
+              "countryCode": "US"
+            }
+          ],
+          "companyKb": {
+            "normalizedCompanyName": "Cybercoders",
+            "code": "xcyberc3x",
+            "normalizedCompanyGuid": "eovlbna6fzfeda5w5ksbbbabpf"
+          },
+          "normalizedTitles": [
+            {
+              "title": "Software Engineer"
+            }
+          ],
+          "normalizedSalary": {
+            "currencyCode": {
+              "name": "USD",
+              "id": 920
+            },
+            "salaryBaseType": {
+              "name": "YEAR",
+              "id": 235
+            }
+          },
+          "employmentTypes": [
+            {
+              "name": "FULL_TIME",
+              "id": 20
+            }
+          ],
+          "employmentTypeModifiers": [
+            {
+              "name": "FULL_TIME",
+              "id": 121
+            }
+          ],
+          "status": {
+            "name": "ACTIVE",
+            "id": 52
+          },
+          "applyType": {
+            "name": "INTEGRATED",
+            "id": 53
+          },
+          "ingestionMethod": {
+            "name": "ADAPTED_NOW",
+            "id": 704
+          },
+          "localizedMonsterUrls": [
+            {
+              "locationId": "4930956",
+              "url": "https://www.monster.com/job-openings/starlims-developer-boston-ma--ed2f6c2f-e596-4f48-8961-5e92c8cb7cc3"
+            }
+          ],
+          "qualifiedForG4J": true,
+          "isPublicJob": true
+        },
+        "attributeValuePairs": [
+          {
+            "name": "location_0_addressRegionName",
+            "value": "Massachusetts"
+          },
+          {
+            "name": "location_0_addressCountryName",
+            "value": "US"
+          }
+        ],
+        "now": {
+          "jobAdPricingTypeId": 1,
+          "folderId": 273475448,
+          "boardId": 1,
+          "templateId": 35865
+        },
+        "formattedDate": "2021-06-17T00:00:00",
+        "dateRecency": "12 days ago",
+        "seoJobId": "starlims-developer-boston-ma--ed2f6c2f-e596-4f48-8961-5e92c8cb7cc3",
+        "fieldTranslations": [
+          {
+            "fieldName": "SalaryBaseType",
+            "name": "YEAR",
+            "locale": "en-us",
+            "translation": "Per Year"
+          },
+          {
+            "fieldName": "EmploymentType",
+            "name": "FULL_TIME",
+            "locale": "en-us",
+            "translation": "full-time"
+          }
+        ],
+        "jobAd": {
+          "type": "AdzerkJobAd",
+          "provider": "ADZERK",
+          "tracking": {
+            "clickUrl": "https://prod.monsterview.com/r?e=eyJ2IjoiMS43IiwiYXYiOjE0MzExODEsImF0IjoxNjIsImJ0IjowLCJjbSI6MTc4MDM2MjYsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6MzM1MjIxMzEsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6NCwiaWkiOiI4ZDIwYTZlZTQ3ZTc0M2M0ODhhYjEwNjQwNzI1YWFhMCIsImRtIjozLCJmYyI6MzQ2NjQ5NTgsImZsIjoyNjk0MzkyMCwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC43OSwiZHAiOjE5LjYzMzYsImRuIjoxOS42MzM2LCJkZyI6MTkuNjMzNiwiZWMiOjIwLjA3ODY0LCJlcCI6bnVsbCwicHIiOjIxNzkxMywicnQiOjMsInJzIjo1MDAsInNhIjoiYmlmcm9zdC1hZHNlcnZlcnMtdGVydGlhcnktdXMtZWFzdC0xIiwic2IiOiJpLTAyOWI3OGE2NzFiZTA0MDZmIiwic3AiOjIzNzk4LCJzdCI6MTEyOTcxMiwidWsiOiIzYTE4ODNkYTcwYTY1YmMzNDBlYjVhZWVhMTYxY2RkZCIsInRzIjoxNjI0OTMwNTAxMDU1LCJwbiI6Im1vbnN0ZXI6SlNSX0xJU1RfVklFVyIsImdjIjp0cnVlLCJnQyI6dHJ1ZSwiZ3MiOiJub25lIiwiYmkiOjEsInR6IjoiVVRDIiwidXIiOm51bGx9&s=WmGL631EQLksg9Yfxk_LmyR-mlM&property%3Aaid=0061993497a929ff6000e7dd39616afd&property%3Aapp=monster&property%3Acname=STARLIMS+Developer&property%3Acsrc=duration.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=ed2f6c2f-e596-4f48-8961-5e92c8cb7cc3&property%3Ajloc=%5B%7B%22city%22%3A%22Boston%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202127%22%2C%22latitude%22%3A%2242.336%22%2C%22longitude%22%3A%22-71.041%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=STARLIMS+Developer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=monster&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-06-22T11%3A58%3A18.187&property%3Axcd=xcyberc3x&property%3Asp=Software+Engineer",
+            "impressionUrl": "https://prod.monsterview.com/i.gif?e=eyJ2IjoiMS43IiwiYXYiOjE0MzExODEsImF0IjoxNjIsImJ0IjowLCJjbSI6MTc4MDM2MjYsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6MzM1MjIxMzEsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6NCwiaWkiOiI4ZDIwYTZlZTQ3ZTc0M2M0ODhhYjEwNjQwNzI1YWFhMCIsImRtIjozLCJmYyI6MzQ2NjQ5NTgsImZsIjoyNjk0MzkyMCwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC43OSwiZHAiOjE5LjYzMzYsImRuIjoxOS42MzM2LCJkZyI6MTkuNjMzNiwiZWMiOjIwLjA3ODY0LCJlcCI6bnVsbCwicHIiOjIxNzkxMywicnQiOjMsInJzIjo1MDAsInNhIjoiYmlmcm9zdC1hZHNlcnZlcnMtdGVydGlhcnktdXMtZWFzdC0xIiwic2IiOiJpLTAyOWI3OGE2NzFiZTA0MDZmIiwic3AiOjIzNzk4LCJzdCI6MTEyOTcxMiwidWsiOiIzYTE4ODNkYTcwYTY1YmMzNDBlYjVhZWVhMTYxY2RkZCIsInRzIjoxNjI0OTMwNTAxMDU1LCJwbiI6Im1vbnN0ZXI6SlNSX0xJU1RfVklFVyIsImdjIjp0cnVlLCJnQyI6dHJ1ZSwiZ3MiOiJub25lIiwiYmkiOjEsInR6IjoiVVRDIiwiYmEiOjMzLCJmcSI6MH0&s=SNCPreSv5ohQOa1HaySUVULxAYc&property%3Aaid=0061993497a929ff6000e7dd39616afd&property%3Aapp=monster&property%3Acname=STARLIMS+Developer&property%3Acsrc=duration.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=ed2f6c2f-e596-4f48-8961-5e92c8cb7cc3&property%3Ajloc=%5B%7B%22city%22%3A%22Boston%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202127%22%2C%22latitude%22%3A%2242.336%22%2C%22longitude%22%3A%22-71.041%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=STARLIMS+Developer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=monster&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-06-22T11%3A58%3A18.187&property%3Axcd=xcyberc3x&property%3Asp=Software+Engineer"
+          }
+        },
+        "brandingExt": {
+          "companyBannerUrl": "",
+          "companyPhotos": [],
+          "companyBenefits": []
+        },
+        "bespokeJob": false,
+        "_gctsid": "7e1ea752-cf18-40cb-a90e-999c98cc64cd:APAb7IRsamN7HtIROjkxcyhKKZE6q4sivw==",
+        "_searchid": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+        "hasValidCompanyLogo": {}
+      },
+      {
+        "schemaVersion": "2.0.13",
+        "jobId": "c8bca395-6fd6-4113-95ee-3e8eae171894",
+        "externalIdentifiers": [
+          {
+            "identifierName": "NOW_POSTING_ID",
+            "identifierValue": "c8bca395-6fd6-4113-95ee-3e8eae171894"
+          },
+          {
+            "identifierName": "POSITION_AD_ID",
+            "identifierValue": "207871830"
+          }
+        ],
+        "status": "ACTIVE",
+        "jobPosting": {
+          "@context": "http://schema.org",
+          "@type": "JobPosting",
+          "description": "<p style=\"color:rgb( 34 , 34 , 34 );font-size:15px\">Come join oneZero Financial Systems! An exciting, fast-growing company with Headquarters in Cambridge MA, oneZero empowers banks, brokerages and hedge funds with cutting edge trade routing and execution technology. Our platform, deployed with 100+ entities globally, features a low-latency trading environment, integrations to the world’s leading execution venues, and reliable IT infrastructure and technical support—all designed to be customized and scaled to serve any business model and any size of market participant. We take pride in our great work atmosphere and highly motivated team of engineers.  We are currently looking for a motivated and talented Junior Accountant to join our Cambridge office.  </p><p style=\"color:rgb( 34 , 34 , 34 );font-size:15px\"><br/></p><p style=\"color:rgb( 34 , 34 , 34 );font-size:15px\">Please see oneZero featured in e-Forex Magazine (September 2016) to learn more about the company and our talented and dynamic team (<a href=\"https://goo.gl/vbXw8i\" rel=\"nofollow nofollow\" style=\"color:rgb( 0 , 110 , 194 )\">https://goo.gl/vbXw8i</a>).</p><p style=\"color:rgb( 34 , 34 , 34 );font-size:15px\"><br/></p><p style=\"color:rgb( 34 , 34 , 34 );font-size:15px\">The successful applicant will assist the company Controller with day to day accounting responsibilities, maintaining and reconciling accounts, month-end procedures.</p><p style=\"color:rgb( 34 , 34 , 34 );font-size:15px\"><br/></p><p style=\"font-size:14px\"><strong>Specific Job Duties</strong></p><p style=\"font-size:14px\"><strong><br/></strong></p><p style=\"font-size:14px\">- Under the direction of the company Controller:</p><p style=\"font-size:14px\"><br/></p><ul style=\"font-size:14px\"><li>Maintaining and reconciling accounts</li><li>Recording payments/deposits in company's accounting system</li><li>Collecting information for credit card transactions and reconciling the credit card account</li><li>Reconcile general and subsidiary bank accounts by gathering and balancing information</li><li>Support month-end and year-end processes</li><li>Fixed Assets reconciliation, recording depreciation journal entries and managing Wasp tracking system for accounting purposes</li><li>Create manuals for the accounting procedures</li><li>Completing special projects</li></ul><p style=\"font-size:14px\"><br/></p><p style=\"font-size:14px\">- Is responsible, along with all other management and staff, for creating a work environment conducive to exceptional productivity and high employee morale.</p><p style=\"font-size:14px\"><br/></p><p style=\"font-size:14px\">- Other duties as assigned.</p><p style=\"font-size:14px\"><br/></p><p style=\"font-size:14px\"><b>Required Skills and Qualifications</b></p><ul style=\"font-size:14px\"><li>Bachelor's Degree in Accounting or closely related field</li><li>General Math Skills</li><li>MS Excel Proficiency</li><li>Deadline-Oriented</li><li>Strong oral and written communication skills</li><li>Reporting skills</li><li>Attention to Detail</li><li>Confidentiality</li><li>Coordination</li><li>Thoroughness</li><li>Quality Focus</li><li>Objectivity</li></ul>",
+          "url": "https://www.monster.com/job-openings/junior-accountant-cambridge-ma--c8bca395-6fd6-4113-95ee-3e8eae171894",
+          "baseSalary": {
+            "@context": "http://schema.org",
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": {
+              "@context": "http://schema.org",
+              "@type": "QuantitativeValue",
+              "unitText": "Per Year"
+            }
+          },
+          "datePosted": "2021-05-31T17:01:22.837Z",
+          "employmentType": [
+            "Fulltime",
+            "Employee"
+          ],
+          "hiringOrganization": {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "name": "oneZero Financial Systems",
+            "logo": "https://securemedia.newjobs.com/CompanyJobPostingLogo/63431774/638610.png"
+          },
+          "industry": "Computer Software",
+          "incentiveCompensation": "Dependent on Relevant Experience",
+          "jobLocation": [
+            {
+              "@context": "http://schema.org",
+              "@type": "Place",
+              "address": {
+                "@context": "http://schema.org",
+                "@type": "PostalAddress",
+                "streetAddress": "196 BROADWAY",
+                "addressLocality": "Cambridge",
+                "addressRegion": "MA",
+                "postalCode": "02139",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@context": "http://schema.org",
+                "@type": "GeoCoordinates",
+                "latitude": "42.363",
+                "longitude": "-71.103"
+              }
+            }
+          ],
+          "occupationalCategory": "1300101001001",
+          "salaryCurrency": "USD",
+          "title": "Junior Accountant",
+          "validThrough": "2021-07-01T04:59:00.000Z"
+        },
+        "createdDate": "2020-07-02T23:35:34.523Z",
+        "provider": {
+          "code": "monster",
+          "name": "monster"
+        },
+        "apply": {
+          "applyType": "OFFSITE",
+          "applyUrl": "https://onezero.bamboohr.com/jobs/view.php?id=107"
+        },
+        "jobViewPreferences": {
+          "hiringOrganizationConfidential": false
+        },
+        "ingestionMethod": "ADAPTED_NOW",
+        "enrichments": {
+          "language": {
+            "languageCode": "en"
+          },
+          "mescos": [
+            {
+              "id": "1300101001001"
+            }
+          ],
+          "normalizedJobLocations": [
+            {
+              "postalAddress": {
+                "@context": "http://schema.org",
+                "@type": "Place",
+                "address": {
+                  "@context": "http://schema.org",
+                  "@type": "PostalAddress",
+                  "addressLocality": "Cambridge",
+                  "addressRegion": "MA",
+                  "postalCode": "02139",
+                  "addressCountry": "US"
+                },
+                "geo": {
+                  "@context": "http://schema.org",
+                  "@type": "GeoCoordinates",
+                  "latitude": "42.3751",
+                  "longitude": "-71.10561"
+                }
+              },
+              "locationId": "4931972",
+              "countryCode": "US"
+            }
+          ],
+          "companyKb": {
+            "code": "xw257602557wx"
+          },
+          "normalizedTitles": [
+            {
+              "title": "Accountant"
+            }
+          ],
+          "normalizedSalary": {
+            "currencyCode": {
+              "name": "USD",
+              "id": 920
+            },
+            "salaryBaseType": {
+              "name": "YEAR",
+              "id": 235
+            }
+          },
+          "employmentTypes": [
+            {
+              "name": "FULL_TIME",
+              "id": 20
+            }
+          ],
+          "employmentTypeModifiers": [
+            {
+              "name": "FULL_TIME",
+              "id": 121
+            }
+          ],
+          "status": {
+            "name": "ACTIVE",
+            "id": 52
+          },
+          "applyType": {
+            "name": "OFFSITE",
+            "id": 51
+          },
+          "ingestionMethod": {
+            "name": "ADAPTED_NOW",
+            "id": 704
+          },
+          "localizedMonsterUrls": [
+            {
+              "locationId": "4931972",
+              "url": "https://www.monster.com/job-openings/junior-accountant-cambridge-ma--c8bca395-6fd6-4113-95ee-3e8eae171894"
+            }
+          ],
+          "qualifiedForG4J": true,
+          "isPublicJob": true
+        },
+        "attributeValuePairs": [
+          {
+            "name": "location_0_addressRegionName",
+            "value": "Massachusetts"
+          },
+          {
+            "name": "location_0_addressCountryName",
+            "value": "US"
+          }
+        ],
+        "now": {
+          "jobAdPricingTypeId": 1,
+          "folderId": 248218654,
+          "boardId": 1,
+          "templateId": 1
+        },
+        "formattedDate": "2021-05-31T00:00:00",
+        "dateRecency": "29 days ago",
+        "seoJobId": "junior-accountant-cambridge-ma--c8bca395-6fd6-4113-95ee-3e8eae171894",
+        "fieldTranslations": [
+          {
+            "fieldName": "SalaryBaseType",
+            "name": "YEAR",
+            "locale": "en-us",
+            "translation": "Per Year"
+          },
+          {
+            "fieldName": "EmploymentType",
+            "name": "FULL_TIME",
+            "locale": "en-us",
+            "translation": "full-time"
+          }
+        ],
+        "jobAd": {
+          "type": "AdzerkJobAd",
+          "provider": "ADZERK",
+          "tracking": {
+            "clickUrl": "https://prod.monsterview.com/r?e=eyJ2IjoiMS43IiwiYXYiOjE0NDEwOTUsImF0IjoxNjIsImJ0IjowLCJjbSI6ODE2MDUxMywiY2giOjUwNDc1LCJjayI6e30sImNyIjoyMzYzODkxNywiZGkiOiIyNDdjZjIwZmJjNjY0NGJjYTY2ODBjMzU3OTk4M2M5ZSIsImRqIjo1LCJpaSI6IjRmZjJhOTlkZTkwZTQzYjE4ZWZiNGZhOWYxZjZkNmY1IiwiZG0iOjMsImZjIjoyNDg3NDA2OCwiZmwiOjE3MjUzOTcxLCJpcCI6IjEyMS4yMDAuMi4yMzgiLCJrdyI6InVzLDE1MDAxMjcwMDEwMDEsd2l0aGxhdGxvbmciLCJtayI6InVzLHdpdGhsYXRsb25nLDE1MDAxMjcwMDEwMDEiLCJudyI6MTA1MTUsInBjIjowLjc5LCJkcCI6MTYuMjE3NjQwMDAwMDAwMDAzLCJkbiI6MTYuMjE3NjQwMDAwMDAwMDAzLCJkZyI6MTYuMjE3NjQwMDAwMDAwMDAzLCJlYyI6MTkuNjIzNiwiZXAiOm51bGwsInByIjoyMTc5MTMsInJ0IjozLCJycyI6NTAwLCJzYSI6ImJpZnJvc3QtYWRzZXJ2ZXJzLXRlcnRpYXJ5LXVzLWVhc3QtMSIsInNiIjoiaS0wMjliNzhhNjcxYmUwNDA2ZiIsInNwIjoyMzc5OCwic3QiOjExMjk3MTIsInVrIjoiM2ExODgzZGE3MGE2NWJjMzQwZWI1YWVlYTE2MWNkZGQiLCJ0cyI6MTYyNDkzMDUwMTA1NiwicG4iOiJtb25zdGVyOkpTUl9MSVNUX1ZJRVciLCJnYyI6dHJ1ZSwiZ0MiOnRydWUsImdzIjoibm9uZSIsImJpIjoxLCJ0eiI6IlVUQyIsInVyIjpudWxsfQ&s=J0t4F0QT-eD6n8oGJ-d3_TF1wXs&property%3Aaid=monster.com%233cdabbd7462673a3017e301e0d45964a&property%3Aapp=monster&property%3Acname=Senior+Software+Engineer&property%3Acsrc=duration.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=c8bca395-6fd6-4113-95ee-3e8eae171894&property%3Ajloc=%7B%22city%22%3A%22Cambridge%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202139%22%2C%22latitude%22%3A%2242.363%22%2C%22longitude%22%3A%22-71.103%22%7D&property%3Ajmsc=1500127001001&property%3Ajtit=Senior+Software+Engineer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=monster&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-04-11T18%3A09%3A26.027&property%3Axcd=xw257602557wx&property%3Asp=Software+Engineer",
+            "impressionUrl": "https://prod.monsterview.com/i.gif?e=eyJ2IjoiMS43IiwiYXYiOjE0NDEwOTUsImF0IjoxNjIsImJ0IjowLCJjbSI6ODE2MDUxMywiY2giOjUwNDc1LCJjayI6e30sImNyIjoyMzYzODkxNywiZGkiOiIyNDdjZjIwZmJjNjY0NGJjYTY2ODBjMzU3OTk4M2M5ZSIsImRqIjo1LCJpaSI6IjRmZjJhOTlkZTkwZTQzYjE4ZWZiNGZhOWYxZjZkNmY1IiwiZG0iOjMsImZjIjoyNDg3NDA2OCwiZmwiOjE3MjUzOTcxLCJpcCI6IjEyMS4yMDAuMi4yMzgiLCJrdyI6InVzLDE1MDAxMjcwMDEwMDEsd2l0aGxhdGxvbmciLCJtayI6InVzLHdpdGhsYXRsb25nLDE1MDAxMjcwMDEwMDEiLCJudyI6MTA1MTUsInBjIjowLjc5LCJkcCI6MTYuMjE3NjQwMDAwMDAwMDAzLCJkbiI6MTYuMjE3NjQwMDAwMDAwMDAzLCJkZyI6MTYuMjE3NjQwMDAwMDAwMDAzLCJlYyI6MTkuNjIzNiwiZXAiOm51bGwsInByIjoyMTc5MTMsInJ0IjozLCJycyI6NTAwLCJzYSI6ImJpZnJvc3QtYWRzZXJ2ZXJzLXRlcnRpYXJ5LXVzLWVhc3QtMSIsInNiIjoiaS0wMjliNzhhNjcxYmUwNDA2ZiIsInNwIjoyMzc5OCwic3QiOjExMjk3MTIsInVrIjoiM2ExODgzZGE3MGE2NWJjMzQwZWI1YWVlYTE2MWNkZGQiLCJ0cyI6MTYyNDkzMDUwMTA1NiwicG4iOiJtb25zdGVyOkpTUl9MSVNUX1ZJRVciLCJnYyI6dHJ1ZSwiZ0MiOnRydWUsImdzIjoibm9uZSIsImJpIjoxLCJ0eiI6IlVUQyIsImJhIjozMiwiZnEiOjB9&s=tnun5fpueQNaX6b2CTw-HEGA4jQ&property%3Aaid=monster.com%233cdabbd7462673a3017e301e0d45964a&property%3Aapp=monster&property%3Acname=Senior+Software+Engineer&property%3Acsrc=duration.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=c8bca395-6fd6-4113-95ee-3e8eae171894&property%3Ajloc=%7B%22city%22%3A%22Cambridge%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202139%22%2C%22latitude%22%3A%2242.363%22%2C%22longitude%22%3A%22-71.103%22%7D&property%3Ajmsc=1500127001001&property%3Ajtit=Senior+Software+Engineer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=monster&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-04-11T18%3A09%3A26.027&property%3Axcd=xw257602557wx&property%3Asp=Software+Engineer"
+          }
+        },
+        "brandingExt": {
+          "companyBannerUrl": null,
+          "companyPhotos": null,
+          "companyBenefits": null
+        },
+        "bespokeJob": false,
+        "_gctsid": "7e1ea752-cf18-40cb-a90e-999c98cc64cd:APAb7IRsamN7HtIROjkxcyhKKZE6q4sivw==",
+        "_searchid": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+        "hasValidCompanyLogo": {}
+      },
+      {
+        "schemaVersion": "2.0.13",
+        "jobId": "26f51c27-3d87-4d2f-818a-b9f1532652ce",
+        "externalIdentifiers": [
+          {
+            "identifierName": "NOW_POSTING_ID",
+            "identifierValue": "48fed199-9762-4fa1-b2a9-3abddb0a9d26"
+          },
+          {
+            "identifierName": "POSITION_AD_ID",
+            "identifierValue": "228165193"
+          },
+          {
+            "identifierName": "POSITION_AD_ID",
+            "identifierValue": "228165194"
+          },
+          {
+            "identifierName": "POSITION_AD_ID",
+            "identifierValue": "228165195"
+          }
+        ],
+        "status": "ACTIVE",
+        "jobPosting": {
+          "@context": "http://schema.org",
+          "@type": "JobPosting",
+          "description": "<p style=\"font-family:'times new roman'\">Cognizant is seeking a strong ServiceNow Developer for an immediate need. This is a client-facing role & the candidate will have regular interactions with various client managers. </p><p style=\"font-family:'times new roman'\">“Remote Candidates will be considered, however must be willing to relocate post Covid”<br/>  <br/> Job Description :  </p><ul><li>Service now Implementation Specialist & Admin </li><li>Core module (Normal Incident, MIM, Problem, Knowledge, Change, ESS, CMS(optional) ) </li><li>Good Communication and presentation skills, Client handling. </li><li>CMDB Implementation, Support and Data Normalization  </li><li>Java Scripting knowledge and hands on experience on it. </li><li>Hands-on with ITIL Process implementation. </li><li>Service-now for custom Application Design & Development. </li><li>Hands-on technical delivery including required documentation of cost-effective Service-now solutions, Ability to create and Modify Workflows. </li><li>Hands-on design, development and deployment experience with the Service-now platform. </li><li>Hands-on migrating data from different tools into ServiceNow. </li><li>Good at creating required information for Reporting and Dashboards </li><li>Knowledge of ITIL methodologies and processes. </li></ul><p style=\"font-family:'times new roman'\"><br/> Technical Expertise :  </p><ul><li>Creation of script based Assignment and Approval rule. </li><li>Creation of Business Rule, UI Action by using Glide script. </li><li>Creation of Glide Record object and use of several other important objects as these objects are     created for you when your script is called. </li><li>Creation of custom related list. </li><li>Creation of Access Control List with the help of Scripting. </li><li>Creation of Script based UI Policy and Client Script. </li><li>Glide Ajax, Glide Form (g_form), Glide User (g_user), Glide Record, Glide System, Glide Element, Glide Aggregate  </li><li>Querying the table by using Glide Record </li><li>Referencing Glide List </li><li>Debugging script  </li><li>Creating and customizing UI and pages using Jelly </li><li>Working with complex Log Files. </li><li>Render forms, lists, UI Pages, and many other things in Service-now.com with the help of Jelly </li><li>Designing of Macros and Formatters. </li><li>User Administration </li><li>CMDB Update, Troubleshooting, CI Relationship, CI Attribute update </li><li>Web Service Integration </li><li>User Interface Level Integration </li><li>MID Server Integration </li><li>Use of Import Sets for data loading from external file or database to the service-now.com </li><li>Knowledge of ITIL V3 processes</li></ul><p style=\"font-family:'times new roman'\">***Cognizant is recognized as a Military Friendly Employer and is a coalition member of the Veteran Jobs Mission. Our Cognizant Veterans Network assists Veterans in building and growing a career at Cognizant that allows them to leverage the leadership, loyalty, integrity, and commitment to excellence instilled in them through participation in military service.</p><p style=\"font-family:'times new roman'\">**Applicants are required to be eligible to lawfully work in the U.S. immediately; employer will not sponsor applicants for U.S. work authorization (such as an H-1B visa) for this opportunity.</p><p/><p style=\"font-weight:bold;font-family:'arial';font-size:14px;margin-top:0px;margin-bottom:0px\"><br/>  </p><p><img alt=\" \" src=\"https://ars2.equest.com/?response_id=bb2d87d7ce5dc43f7b49df18cf0691c1&view\"/></p>",
+          "url": "https://www.monster.com/job-openings/servicenow-developer-boston-ma--26f51c27-3d87-4d2f-818a-b9f1532652ce",
+          "datePosted": "2021-06-10T14:21:45.550Z",
+          "employmentType": [
+            "Fulltime",
+            "Employee"
+          ],
+          "hiringOrganization": {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "description": "<p>Cognizant is one of the world's leading professional services companies, transforming clients' business, operating and technology models for the digital era. Our unique industry-based, consultative approach helps clients envision, build and run more innovative and efficient businesses. Headquartered in the U.S., Cognizant, a member of the NASDAQ-100, is ranked 230 on the Fortune 500 and is consistently listed among the most admired companies in the world. <br><br> <strong>We're driven by a passion to help our clients build stronger, more agile and more innovative businesses.</strong> <br><br> Cognizant enables global enterprises to address a dual mandate: to make their current operations as efficient and cost-effective as possible and to invest in innovation to unleash new potential across their organizations.<br><br> What makes Cognizant unique is our ability to help clients meet both challenges. We help them enhance productivity by ensuring that vital business functions work faster, cheaper and better. And, our ability to conceptualize, architect and implement new and expanded capabilities allows clients to transform legacy models to take their business to the next level.</p>",
+            "url": "https://www.cognizant.com",
+            "name": "Cognizant",
+            "foundingDate": "1994",
+            "numberOfEmployees": {
+              "@context": "http://schema.org",
+              "@type": "QuantitativeValue",
+              "unitText": "10,000 employees or more"
+            },
+            "logo": "https://securemedia.newjobs.com/clu/xcog/xcognizantx/JobLogo.gif"
+          },
+          "identifier": {
+            "@context": "http://schema.org",
+            "@type": "PropertyValue",
+            "name": "Cognizant",
+            "value": "00043156192"
+          },
+          "industry": "Computer/IT Services",
+          "jobLocation": [
+            {
+              "@context": "http://schema.org",
+              "@type": "Place",
+              "address": {
+                "@context": "http://schema.org",
+                "@type": "PostalAddress",
+                "streetAddress": "",
+                "addressLocality": "Boston",
+                "addressRegion": "MA",
+                "postalCode": "02108",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@context": "http://schema.org",
+                "@type": "GeoCoordinates",
+                "latitude": "42.358",
+                "longitude": "-71.065"
+              }
+            }
+          ],
+          "occupationalCategory": "1500127001001",
+          "title": "ServiceNOW Developer",
+          "validThrough": "2021-07-10T14:21:45.550Z"
+        },
+        "createdDate": "2021-06-10T14:36:46.061Z",
+        "provider": {
+          "code": "monster",
+          "name": "monster"
+        },
+        "apply": {
+          "applyType": "OFFSITE",
+          "applyUrl": "https://ars2.equest.com/?response_id=bb2d87d7ce5dc43f7b49df18cf0691c1"
+        },
+        "jobViewPreferences": {
+          "hiringOrganizationConfidential": false
+        },
+        "ingestionMethod": "ADAPTED_NOW",
+        "enrichments": {
+          "language": {
+            "languageCode": "en"
+          },
+          "mescos": [
+            {
+              "id": "1500127001001"
+            }
+          ],
+          "normalizedJobLocations": [
+            {
+              "postalAddress": {
+                "@context": "http://schema.org",
+                "@type": "Place",
+                "address": {
+                  "@context": "http://schema.org",
+                  "@type": "PostalAddress",
+                  "addressLocality": "Boston",
+                  "addressRegion": "MA",
+                  "postalCode": "02108",
+                  "addressCountry": "US"
+                },
+                "geo": {
+                  "@context": "http://schema.org",
+                  "@type": "GeoCoordinates",
+                  "latitude": "42.35843",
+                  "longitude": "-71.05977"
+                }
+              },
+              "locationId": "4930956",
+              "countryCode": "US"
+            }
+          ],
+          "companyKb": {
+            "normalizedCompanyName": "Cognizant",
+            "code": "xcognizantx",
+            "normalizedCompanyGuid": "zm357c7bvrde7ijsyzy2p4rt3c"
+          },
+          "normalizedTitles": [
+            {
+              "title": "Software Engineer"
+            }
+          ],
+          "normalizedSalary": {
+            "currencyCode": {
+              "name": "USD",
+              "id": 920
+            },
+            "salaryBaseType": {
+              "name": "UNKNOWN",
+              "id": 239
+            }
+          },
+          "employmentTypes": [
+            {
+              "name": "FULL_TIME",
+              "id": 20
+            }
+          ],
+          "employmentTypeModifiers": [
+            {
+              "name": "FULL_TIME",
+              "id": 121
+            }
+          ],
+          "status": {
+            "name": "ACTIVE",
+            "id": 52
+          },
+          "applyType": {
+            "name": "OFFSITE",
+            "id": 51
+          },
+          "ingestionMethod": {
+            "name": "ADAPTED_NOW",
+            "id": 704
+          },
+          "localizedMonsterUrls": [
+            {
+              "locationId": "4930956",
+              "url": "https://www.monster.com/job-openings/servicenow-developer-boston-ma--26f51c27-3d87-4d2f-818a-b9f1532652ce"
+            }
+          ],
+          "qualifiedForG4J": true,
+          "isPublicJob": true
+        },
+        "attributeValuePairs": [
+          {
+            "name": "location_0_addressRegionName",
+            "value": "Massachusetts"
+          },
+          {
+            "name": "location_0_addressCountryName",
+            "value": "US"
+          }
+        ],
+        "now": {
+          "jobAdPricingTypeId": 1,
+          "folderId": 273053507,
+          "boardId": 1,
+          "templateId": 48841
+        },
+        "formattedDate": "2021-06-10T00:00:00",
+        "dateRecency": "19 days ago",
+        "seoJobId": "servicenow-developer-boston-ma--26f51c27-3d87-4d2f-818a-b9f1532652ce",
+        "fieldTranslations": [
+          {
+            "fieldName": "EmploymentType",
+            "name": "FULL_TIME",
+            "locale": "en-us",
+            "translation": "full-time"
+          }
+        ],
+        "jobAd": {
+          "type": "AdzerkJobAd",
+          "provider": "ADZERK",
+          "tracking": {
+            "clickUrl": "https://prod.monsterview.com/r?e=eyJ2IjoiMS43IiwiYXYiOjE0MzExMTIsImF0IjoxNjIsImJ0IjowLCJjbSI6MTYxOTQxMjMsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6MzE4Nzk5NzMsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6NiwiaWkiOiIxM2I4ZGM4NzRjOTI0MTQ3OTZlMTFlNDdlMDA4Yzg4OCIsImRtIjozLCJmYyI6MzMwMjAyMTksImZsIjoyNTMwOTcwNiwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC41MDUsImRwIjoxNS45NTU3NDAwMDAwMDAwMDIsImRuIjoxNS45NTU3NDAwMDAwMDAwMDIsImRnIjoxNS45NTU3NDAwMDAwMDAwMDIsImVjIjoxNi4yMDc2NCwiZXAiOm51bGwsInByIjoyMTc5MTMsInJ0IjozLCJycyI6NTAwLCJzYSI6ImJpZnJvc3QtYWRzZXJ2ZXJzLXRlcnRpYXJ5LXVzLWVhc3QtMSIsInNiIjoiaS0wMjliNzhhNjcxYmUwNDA2ZiIsInNwIjoyMzc5OCwic3QiOjExMjk3MTIsInVrIjoiM2ExODgzZGE3MGE2NWJjMzQwZWI1YWVlYTE2MWNkZGQiLCJ0cyI6MTYyNDkzMDUwMTA1NywicG4iOiJtb25zdGVyOkpTUl9MSVNUX1ZJRVciLCJnYyI6dHJ1ZSwiZ0MiOnRydWUsImdzIjoibm9uZSIsImJpIjoxLCJ0eiI6IlVUQyIsInVyIjpudWxsfQ&s=qln7eNl8QcCrBWM-oEw173UjzK8&property%3Aaid=7f539120be1dd3a38138a8a66cb036d2&property%3Aapp=monster&property%3Acname=ServiceNOW+Developer&property%3Acsrc=duration.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=26f51c27-3d87-4d2f-818a-b9f1532652ce&property%3Ajloc=%5B%7B%22city%22%3A%22Boston%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202108%22%2C%22latitude%22%3A%2242.358%22%2C%22longitude%22%3A%22-71.065%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=ServiceNOW+Developer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=monster&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-06-10T14%3A36%3A46.24&property%3Axcd=xcognizantx&property%3Asp=Software+Engineer",
+            "impressionUrl": "https://prod.monsterview.com/i.gif?e=eyJ2IjoiMS43IiwiYXYiOjE0MzExMTIsImF0IjoxNjIsImJ0IjowLCJjbSI6MTYxOTQxMjMsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6MzE4Nzk5NzMsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6NiwiaWkiOiIxM2I4ZGM4NzRjOTI0MTQ3OTZlMTFlNDdlMDA4Yzg4OCIsImRtIjozLCJmYyI6MzMwMjAyMTksImZsIjoyNTMwOTcwNiwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC41MDUsImRwIjoxNS45NTU3NDAwMDAwMDAwMDIsImRuIjoxNS45NTU3NDAwMDAwMDAwMDIsImRnIjoxNS45NTU3NDAwMDAwMDAwMDIsImVjIjoxNi4yMDc2NCwiZXAiOm51bGwsInByIjoyMTc5MTMsInJ0IjozLCJycyI6NTAwLCJzYSI6ImJpZnJvc3QtYWRzZXJ2ZXJzLXRlcnRpYXJ5LXVzLWVhc3QtMSIsInNiIjoiaS0wMjliNzhhNjcxYmUwNDA2ZiIsInNwIjoyMzc5OCwic3QiOjExMjk3MTIsInVrIjoiM2ExODgzZGE3MGE2NWJjMzQwZWI1YWVlYTE2MWNkZGQiLCJ0cyI6MTYyNDkzMDUwMTA1NywicG4iOiJtb25zdGVyOkpTUl9MSVNUX1ZJRVciLCJnYyI6dHJ1ZSwiZ0MiOnRydWUsImdzIjoibm9uZSIsImJpIjoxLCJ0eiI6IlVUQyIsImJhIjozMSwiZnEiOjB9&s=AfKU9hf9rkSXrJP4J4Io8CN4bCI&property%3Aaid=7f539120be1dd3a38138a8a66cb036d2&property%3Aapp=monster&property%3Acname=ServiceNOW+Developer&property%3Acsrc=duration.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=26f51c27-3d87-4d2f-818a-b9f1532652ce&property%3Ajloc=%5B%7B%22city%22%3A%22Boston%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202108%22%2C%22latitude%22%3A%2242.358%22%2C%22longitude%22%3A%22-71.065%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=ServiceNOW+Developer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=monster&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-06-10T14%3A36%3A46.24&property%3Axcd=xcognizantx&property%3Asp=Software+Engineer"
+          }
+        },
+        "brandingExt": {
+          "companyBannerUrl": "https://media.newjobs.com/clu/xcog/xcognizantx/branding/58Cognizant-Technology-Solutions/Cognizant-Technology-Solutions-banner.jpg",
+          "companyPhotos": [],
+          "companyBenefits": []
+        },
+        "bespokeJob": false,
+        "_gctsid": "7e1ea752-cf18-40cb-a90e-999c98cc64cd:APAb7IRsamN7HtIROjkxcyhKKZE6q4sivw==",
+        "_searchid": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+        "hasValidCompanyLogo": {}
+      },
+      {
+        "schemaVersion": "2.0.13",
+        "jobId": "3153ed2e-71b8-438c-8c0a-56a7df25ad85",
+        "externalIdentifiers": [
+          {
+            "identifierName": "NOW_POSTING_ID",
+            "identifierValue": "816b5f64-1791-430d-9a48-f24b057f6e33"
+          },
+          {
+            "identifierName": "POSITION_AD_ID",
+            "identifierValue": "228043301"
+          },
+          {
+            "identifierName": "POSITION_AD_ID",
+            "identifierValue": "228043302"
+          },
+          {
+            "identifierName": "POSITION_AD_ID",
+            "identifierValue": "228043303"
+          }
+        ],
+        "status": "ACTIVE",
+        "jobPosting": {
+          "@context": "http://schema.org",
+          "@type": "JobPosting",
+          "description": "<p style=\"font-family:'times new roman'\"><b>Java developer - AWS</b></p><p style=\"font-family:'times new roman'\"><b>Job description:</b></p><p style=\"font-family:'times new roman'\"><b>Responsibilities:</b></p><ul><li>Build application modules independently or with a team</li><li>Design the complete solution of modules within a software ecosystem</li><li>Work in an agile development environment, collaborating with Application Development and Architecture teams</li><li>Provide technical guidance to your team in order to build quality software</li><li>Bring industry best practices in terms of technology and process </li></ul><p style=\"font-family:'times new roman'\"><b>Skills:</b></p><ul><li>10-12 years of experience as software engineer</li><li>Strong knowledge of Java and other open source stack (spring, apache)</li><li>Working knowledge on React Framework</li><li>Working Experience with distributed SCM (GitHub a plus), DevOps, AWS</li><li>6 + years API development or engineering at scale</li><li>Experience working across fully automated stacks in a CI/CD ecosystem</li><li>Experience with distributed data stores at scale</li><li>Strong Experience with lightweight middleware technologies, integration patterns, micro services</li><li>Experience building applications using AWS services</li><li>Experience  in building event Streams with  Kafka & No-SQL</li><li>BS degree in Computer Science, a similar technical field of study, or equivalent practical experience</li><li>Position may require travel  </li></ul><p style=\"font-family:'times new roman'\"><b>Primary Skills:</b></p><ul><li>Java back-end programming, micro-services, API development and AWS</li></ul><p style=\"font-family:'times new roman'\">Cognizant is committed to veteran and military communities. Cognizant has been often recognized as a military friendly employer and is a coalition member of the Veteran Jobs Mission. Our business resource group Veterans Network assists our military associates in building and growing a career at Cognizant that allows them to demonstrate the leadership, loyalty, integrity, and dedication to perfection.</p><p style=\"font-family:'times new roman'\">Cognizant (NASDAQ: CTSH) is a leading provider of information technology, consulting, and business process outsourcing services, dedicated to helping the world's leading companies build stronger businesses. Headquartered in Teaneck, New Jersey (U.S.). Cognizant is a member of the NASDAQ-100, the S&P 500, the Forbes Global 1000, and the Fortune 500, and we are among the top performing and fastest growing companies in the world.</p><p style=\"font-family:'times new roman'\">Our strength is built on our ability to work together. Our diverse backgrounds offer different perspectives and new ways of thinking. It encourages lively discussions, inspires thought leadership, and helps us build better solutions for our clients. We want someone who thrives in this setting and is encouraged to craft significant solutions through true teamwork.</p><p style=\"font-family:'times new roman'\"/><p/><p style=\"font-weight:bold;font-family:'arial';font-size:14px;margin-top:0px;margin-bottom:0px\"><br/>  </p><p><img alt=\" \" src=\"https://ars2.equest.com/?response_id=85712adad1643364ce33bd2beda12ebb&view\"/></p>",
+          "url": "https://www.monster.com/job-openings/java-developer-aws-boston-ma--3153ed2e-71b8-438c-8c0a-56a7df25ad85",
+          "datePosted": "2021-06-07T19:47:21.400Z",
+          "employmentType": [
+            "Fulltime",
+            "Employee"
+          ],
+          "hiringOrganization": {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "description": "<p>Cognizant is one of the world's leading professional services companies, transforming clients' business, operating and technology models for the digital era. Our unique industry-based, consultative approach helps clients envision, build and run more innovative and efficient businesses. Headquartered in the U.S., Cognizant, a member of the NASDAQ-100, is ranked 230 on the Fortune 500 and is consistently listed among the most admired companies in the world. <br><br> <strong>We're driven by a passion to help our clients build stronger, more agile and more innovative businesses.</strong> <br><br> Cognizant enables global enterprises to address a dual mandate: to make their current operations as efficient and cost-effective as possible and to invest in innovation to unleash new potential across their organizations.<br><br> What makes Cognizant unique is our ability to help clients meet both challenges. We help them enhance productivity by ensuring that vital business functions work faster, cheaper and better. And, our ability to conceptualize, architect and implement new and expanded capabilities allows clients to transform legacy models to take their business to the next level.</p>",
+            "url": "https://www.cognizant.com",
+            "name": "Cognizant",
+            "foundingDate": "1994",
+            "numberOfEmployees": {
+              "@context": "http://schema.org",
+              "@type": "QuantitativeValue",
+              "unitText": "10,000 employees or more"
+            },
+            "logo": "https://securemedia.newjobs.com/clu/xcog/xcognizantx/JobLogo.gif"
+          },
+          "identifier": {
+            "@context": "http://schema.org",
+            "@type": "PropertyValue",
+            "name": "Cognizant",
+            "value": "00043104386"
+          },
+          "industry": "Computer/IT Services",
+          "jobLocation": [
+            {
+              "@context": "http://schema.org",
+              "@type": "Place",
+              "address": {
+                "@context": "http://schema.org",
+                "@type": "PostalAddress",
+                "streetAddress": "",
+                "addressLocality": "Boston",
+                "addressRegion": "MA",
+                "postalCode": "02108",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@context": "http://schema.org",
+                "@type": "GeoCoordinates",
+                "latitude": "42.358",
+                "longitude": "-71.065"
+              }
+            }
+          ],
+          "occupationalCategory": "1500127001001",
+          "title": "Java developer-AWS",
+          "validThrough": "2021-07-07T19:47:21.400Z"
+        },
+        "createdDate": "2021-06-07T20:23:08.931Z",
+        "provider": {
+          "code": "monster",
+          "name": "monster"
+        },
+        "apply": {
+          "applyType": "OFFSITE",
+          "applyUrl": "https://ars2.equest.com/?response_id=85712adad1643364ce33bd2beda12ebb",
+          "resolvedRedirectUrl": "https://careers.cognizant.com/global/en/job/00043104386/Java-developer-AWS?utm_source=Monster.com&utm_medium=equest"
+        },
+        "jobViewPreferences": {
+          "hiringOrganizationConfidential": false
+        },
+        "ingestionMethod": "ADAPTED_NOW",
+        "enrichments": {
+          "language": {
+            "languageCode": "en"
+          },
+          "mescos": [
+            {
+              "id": "1500127001001"
+            }
+          ],
+          "normalizedJobLocations": [
+            {
+              "postalAddress": {
+                "@context": "http://schema.org",
+                "@type": "Place",
+                "address": {
+                  "@context": "http://schema.org",
+                  "@type": "PostalAddress",
+                  "addressLocality": "Boston",
+                  "addressRegion": "MA",
+                  "postalCode": "02108",
+                  "addressCountry": "US"
+                },
+                "geo": {
+                  "@context": "http://schema.org",
+                  "@type": "GeoCoordinates",
+                  "latitude": "42.35843",
+                  "longitude": "-71.05977"
+                }
+              },
+              "locationId": "4930956",
+              "countryCode": "US"
+            }
+          ],
+          "companyKb": {
+            "normalizedCompanyName": "Cognizant",
+            "code": "xcognizantx",
+            "normalizedCompanyGuid": "zm357c7bvrde7ijsyzy2p4rt3c"
+          },
+          "normalizedTitles": [
+            {
+              "title": "Java Software Engineer"
+            }
+          ],
+          "normalizedSalary": {
+            "currencyCode": {
+              "name": "USD",
+              "id": 920
+            },
+            "salaryBaseType": {
+              "name": "UNKNOWN",
+              "id": 239
+            }
+          },
+          "employmentTypes": [
+            {
+              "name": "FULL_TIME",
+              "id": 20
+            }
+          ],
+          "employmentTypeModifiers": [
+            {
+              "name": "FULL_TIME",
+              "id": 121
+            }
+          ],
+          "status": {
+            "name": "ACTIVE",
+            "id": 52
+          },
+          "applyType": {
+            "name": "OFFSITE",
+            "id": 51
+          },
+          "ingestionMethod": {
+            "name": "ADAPTED_NOW",
+            "id": 704
+          },
+          "localizedMonsterUrls": [
+            {
+              "locationId": "4930956",
+              "url": "https://www.monster.com/job-openings/java-developer-aws-boston-ma--3153ed2e-71b8-438c-8c0a-56a7df25ad85"
+            }
+          ],
+          "qualifiedForG4J": true,
+          "isPublicJob": true
+        },
+        "attributeValuePairs": [
+          {
+            "name": "location_0_addressRegionName",
+            "value": "Massachusetts"
+          },
+          {
+            "name": "location_0_addressCountryName",
+            "value": "US"
+          }
+        ],
+        "now": {
+          "jobAdPricingTypeId": 1,
+          "folderId": 272951831,
+          "boardId": 1,
+          "templateId": 48841
+        },
+        "formattedDate": "2021-06-07T00:00:00",
+        "dateRecency": "22 days ago",
+        "seoJobId": "java-developer-aws-boston-ma--3153ed2e-71b8-438c-8c0a-56a7df25ad85",
+        "fieldTranslations": [
+          {
+            "fieldName": "EmploymentType",
+            "name": "FULL_TIME",
+            "locale": "en-us",
+            "translation": "full-time"
+          }
+        ],
+        "jobAd": {
+          "type": "AdzerkJobAd",
+          "provider": "ADZERK",
+          "tracking": {
+            "clickUrl": "https://prod.monsterview.com/r?e=eyJ2IjoiMS43IiwiYXYiOjE0MzExMTIsImF0IjoxNjIsImJ0IjowLCJjbSI6MTU3Mzg1MTAsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6MzE0MTAwMjAsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6NywiaWkiOiI4NDY5YWUyOTZmNjg0NDFhOTkwNTZlMWUzZTA2NWNhYSIsImRtIjozLCJmYyI6MzI1NTAyNzIsImZsIjoyNDg1MDM5MiwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC41MDUsImRwIjoxNS45MTk0LCJkbiI6MTUuOTE5NCwiZGciOjE1LjkxOTQsImVjIjoxNS45NDU3NCwiZXAiOm51bGwsInByIjoyMTc5MTMsInJ0IjozLCJycyI6NTAwLCJzYSI6ImJpZnJvc3QtYWRzZXJ2ZXJzLXRlcnRpYXJ5LXVzLWVhc3QtMSIsInNiIjoiaS0wMjliNzhhNjcxYmUwNDA2ZiIsInNwIjoyMzc5OCwic3QiOjExMjk3MTIsInVrIjoiM2ExODgzZGE3MGE2NWJjMzQwZWI1YWVlYTE2MWNkZGQiLCJ0cyI6MTYyNDkzMDUwMTA1OCwicG4iOiJtb25zdGVyOkpTUl9MSVNUX1ZJRVciLCJnYyI6dHJ1ZSwiZ0MiOnRydWUsImdzIjoibm9uZSIsImJpIjoxLCJ0eiI6IlVUQyIsInVyIjpudWxsfQ&s=zJ76wkkI4VJhKDFFYbZ3an3PQnA&property%3Aaid=7f539120be1dd3a38138a8a66cb036d2&property%3Aapp=monster&property%3Acname=Java+developer-AWS&property%3Acsrc=duration.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=3153ed2e-71b8-438c-8c0a-56a7df25ad85&property%3Ajloc=%5B%7B%22city%22%3A%22Boston%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202108%22%2C%22latitude%22%3A%2242.358%22%2C%22longitude%22%3A%22-71.065%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=Java+developer-AWS&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=monster&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-06-07T20%3A23%3A09.137&property%3Axcd=xcognizantx&property%3Asp=Software+Engineer",
+            "impressionUrl": "https://prod.monsterview.com/i.gif?e=eyJ2IjoiMS43IiwiYXYiOjE0MzExMTIsImF0IjoxNjIsImJ0IjowLCJjbSI6MTU3Mzg1MTAsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6MzE0MTAwMjAsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6NywiaWkiOiI4NDY5YWUyOTZmNjg0NDFhOTkwNTZlMWUzZTA2NWNhYSIsImRtIjozLCJmYyI6MzI1NTAyNzIsImZsIjoyNDg1MDM5MiwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC41MDUsImRwIjoxNS45MTk0LCJkbiI6MTUuOTE5NCwiZGciOjE1LjkxOTQsImVjIjoxNS45NDU3NCwiZXAiOm51bGwsInByIjoyMTc5MTMsInJ0IjozLCJycyI6NTAwLCJzYSI6ImJpZnJvc3QtYWRzZXJ2ZXJzLXRlcnRpYXJ5LXVzLWVhc3QtMSIsInNiIjoiaS0wMjliNzhhNjcxYmUwNDA2ZiIsInNwIjoyMzc5OCwic3QiOjExMjk3MTIsInVrIjoiM2ExODgzZGE3MGE2NWJjMzQwZWI1YWVlYTE2MWNkZGQiLCJ0cyI6MTYyNDkzMDUwMTA1OCwicG4iOiJtb25zdGVyOkpTUl9MSVNUX1ZJRVciLCJnYyI6dHJ1ZSwiZ0MiOnRydWUsImdzIjoibm9uZSIsImJpIjoxLCJ0eiI6IlVUQyIsImJhIjozMCwiZnEiOjB9&s=NPySMFF6WtL50i7r9tEIUqbz4jQ&property%3Aaid=7f539120be1dd3a38138a8a66cb036d2&property%3Aapp=monster&property%3Acname=Java+developer-AWS&property%3Acsrc=duration.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=3153ed2e-71b8-438c-8c0a-56a7df25ad85&property%3Ajloc=%5B%7B%22city%22%3A%22Boston%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202108%22%2C%22latitude%22%3A%2242.358%22%2C%22longitude%22%3A%22-71.065%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=Java+developer-AWS&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=monster&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-06-07T20%3A23%3A09.137&property%3Axcd=xcognizantx&property%3Asp=Software+Engineer"
+          }
+        },
+        "brandingExt": {
+          "companyBannerUrl": "https://media.newjobs.com/clu/xcog/xcognizantx/branding/58Cognizant-Technology-Solutions/Cognizant-Technology-Solutions-banner.jpg",
+          "companyPhotos": [],
+          "companyBenefits": []
+        },
+        "bespokeJob": false,
+        "_gctsid": "7e1ea752-cf18-40cb-a90e-999c98cc64cd:APAb7IRsamN7HtIROjkxcyhKKZE6q4sivw==",
+        "_searchid": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+        "hasValidCompanyLogo": {}
+      },
+      {
+        "schemaVersion": "2.0.13",
+        "jobId": "0245f5aa-5fe4-4091-a2dd-078be0d78cc6",
+        "externalIdentifiers": [
+          {
+            "identifierName": "NOW_POSTING_ID",
+            "identifierValue": "31cda34b-51cf-4434-9a02-db98071b2b43"
+          },
+          {
+            "identifierName": "POSITION_AD_ID",
+            "identifierValue": "228437601"
+          },
+          {
+            "identifierName": "POSITION_AD_ID",
+            "identifierValue": "228437602"
+          },
+          {
+            "identifierName": "POSITION_AD_ID",
+            "identifierValue": "228437603"
+          }
+        ],
+        "status": "ACTIVE",
+        "jobPosting": {
+          "@context": "http://schema.org",
+          "@type": "JobPosting",
+          "description": "<strong>Genesis10 is currently seeking an Android/iOS Developer with our client in the financial industry in their Boston, MA location. This is a 12 month + contract-to-hire position.<br/><br/>Description:</strong><ul><li>The manager is looking for Solid Android or IOS Developers</li><li>Translate requirements created by functional analysts into the architecture for that solution and describing it through the set of architecture and design documents</li><li>Lead in the creation and maintenance of documentation related to solutions mentioned above</li><li>Ensure selected solutions are technically and operationally feasible</li><li>Design, develop, and prototype Android native customer applications for internal and external use</li><li>Participate in full app life cycle: concept, design, build, deploy, test and release to app store</li><li>Work with product teams on new product ideas and strategy</li><li>Adhere to all enterprise standards as they relate to the proposed solution</li><li>Drive a best practices approach to the continuous improvement of our products, processes, and tools</li><li>Lead, train, guide, and mentor other developers on the team</li></ul><br/><strong>Requirements:</strong><ul><li>B.S. or greater in Computer Science, related field, or commensurate practical experience OR demonstrable equivalent professional experience</li><li>Over 6+ years of hands-on experience developing applications in Java/J2EE and on any platform (mobile, web, etc.)</li><li>Over 4+ years of strong hands-on experience in Android (Java) native app design and development</li><li>Strong mobile UI design and implementation experience, including prototyping</li><li>A solid understanding of object-oriented design patterns and Java</li><li>Experience with multithreading, memory management, and caching mechanisms specific to mobile devices</li><li>Passion for analyzing and improving runtime efficiency and memory footprint</li><li>Excellent problem solving, critical thinking, and communication skills</li><li>Public showcase and repository of Mobile Apps and work desirable</li><li>Developer tools: Maven, Gradle, Git, Android Studio/Eclipse </li><li>JSON/XML </li><li>Web services </li><li>Continuous Delivery and Continuous Integration </li><li>Test-Driven Development (TDD)  </li><li>Jenkins </li><li>Network layer like Volley </li><li>Retrofit</li><li>Able to work as a W2 employee of Genesis10 (no Corp-to-Corp)</li></ul><br/><strong>If you have the described qualifications and are interested in this exciting opportunity, please apply!<br/><br/>About Genesis10:</strong><br/>Genesis10 is a leading U.S. business and technology consulting firm with hundreds of clients needing proven talent and solutions to power their strategic initiatives.  If you are a high performing business or IT professional with solid, referenced experience, we want to meet you.  Genesis10 recruiters and delivery professionals are highly accomplished career advocates, who get to know you beyond your resume to position you with the opportunities that fit your skills, experience and aspirations.  We have benefit options to fit your needs and a support staff that works with you from placement throughout your engagement – project after project.   To learn more about Genesis10 and to view all our available career opportunities, please visit us at www.genesis10.com.  \"Genesis10 is an Equal Opportunity Employer, M/F/D/V”<br/><br/> ",
+          "url": "https://www.monster.com/job-openings/android-ios-developer-boston-ma--0245f5aa-5fe4-4091-a2dd-078be0d78cc6",
+          "datePosted": "2021-06-16T15:08:51.767Z",
+          "educationRequirements": "Bachelors Degree",
+          "employmentType": [
+            "Fulltime",
+            "Contract"
+          ],
+          "hiringOrganization": {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "description": "Welcome to Genesis10 - dedicated to helping business and technology professionals turn consulting into a lifetime career. Genesis10 is a professional technology services firm and career advocate for experienced business and elite technology professionals, recent college graduates and U.S. military veterans. With more than 150 clients in diverse industries, Genesis10 gives candidates and consultants access to hundreds of business and technology career opportunities locally and nationally.",
+            "url": "http://www.genesis10.com/",
+            "name": "Genesis10",
+            "foundingDate": "1999",
+            "numberOfEmployees": {
+              "@context": "http://schema.org",
+              "@type": "QuantitativeValue",
+              "unitText": "2,500 to 4,999 employees"
+            },
+            "logo": "https://securemedia.newjobs.com/clu/xgen/xgen10x/JobLogo.gif"
+          },
+          "identifier": {
+            "@context": "http://schema.org",
+            "@type": "PropertyValue",
+            "name": "Genesis10",
+            "value": "21-05532"
+          },
+          "industry": "Banking",
+          "jobLocation": [
+            {
+              "@context": "http://schema.org",
+              "@type": "Place",
+              "address": {
+                "@context": "http://schema.org",
+                "@type": "PostalAddress",
+                "streetAddress": "",
+                "addressLocality": "Boston",
+                "addressRegion": "MA",
+                "postalCode": "02110",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@context": "http://schema.org",
+                "@type": "GeoCoordinates",
+                "latitude": "42.357",
+                "longitude": "-71.054"
+              }
+            }
+          ],
+          "occupationalCategory": "1500127001001",
+          "title": "Android/iOS Developer",
+          "validThrough": "2021-07-16T15:08:51.767Z"
+        },
+        "createdDate": "2021-06-16T17:20:49.164Z",
+        "provider": {
+          "code": "monster",
+          "name": "monster"
+        },
+        "apply": {
+          "applyType": "INTEGRATED",
+          "applyUrl": "https://job-openings.monster.com/v2/job/apply?jobid=228437601",
+          "applyPath": "/v2/job/apply?jobid=228437601",
+          "resolvedRedirectUrl": "https://www.monster.com/jobs/404"
+        },
+        "jobViewPreferences": {
+          "hiringOrganizationConfidential": false
+        },
+        "hiringOrganizationExt": {
+          "companyVideos": [
+            {
+              "@context": "http://schema.org",
+              "@type": "VideoObject",
+              "contentUrl": "https://www.youtube.com/watch?v=TkHnnVmodcg"
+            }
+          ]
+        },
+        "ingestionMethod": "ADAPTED_NOW",
+        "enrichments": {
+          "language": {
+            "languageCode": "en"
+          },
+          "mescos": [
+            {
+              "id": "1500127001001"
+            }
+          ],
+          "normalizedJobLocations": [
+            {
+              "postalAddress": {
+                "@context": "http://schema.org",
+                "@type": "Place",
+                "address": {
+                  "@context": "http://schema.org",
+                  "@type": "PostalAddress",
+                  "addressLocality": "Boston",
+                  "addressRegion": "MA",
+                  "postalCode": "02110",
+                  "addressCountry": "US"
+                },
+                "geo": {
+                  "@context": "http://schema.org",
+                  "@type": "GeoCoordinates",
+                  "latitude": "42.35843",
+                  "longitude": "-71.05977"
+                }
+              },
+              "locationId": "4930956",
+              "countryCode": "US"
+            }
+          ],
+          "companyKb": {
+            "normalizedCompanyName": "Genesis10",
+            "code": "xgen10x",
+            "normalizedCompanyGuid": "ojf2o6tqivfizgpfzlq4ydi37b"
+          },
+          "normalizedTitles": [
+            {
+              "title": "iOS Developer"
+            }
+          ],
+          "normalizedSalary": {
+            "currencyCode": {
+              "name": "USD",
+              "id": 920
+            },
+            "salaryBaseType": {
+              "name": "UNKNOWN",
+              "id": 239
+            }
+          },
+          "employmentTypes": [
+            {
+              "name": "CONTRACTOR",
+              "id": 22
+            }
+          ],
+          "employmentTypeModifiers": [
+            {
+              "name": "FULL_TIME",
+              "id": 121
+            }
+          ],
+          "status": {
+            "name": "ACTIVE",
+            "id": 52
+          },
+          "applyType": {
+            "name": "INTEGRATED",
+            "id": 53
+          },
+          "ingestionMethod": {
+            "name": "ADAPTED_NOW",
+            "id": 704
+          },
+          "localizedMonsterUrls": [
+            {
+              "locationId": "4930956",
+              "url": "https://www.monster.com/job-openings/android-ios-developer-boston-ma--0245f5aa-5fe4-4091-a2dd-078be0d78cc6"
+            }
+          ],
+          "qualifiedForG4J": true,
+          "isPublicJob": true
+        },
+        "attributeValuePairs": [
+          {
+            "name": "location_0_addressRegionName",
+            "value": "Massachusetts"
+          },
+          {
+            "name": "location_0_addressCountryName",
+            "value": "US"
+          }
+        ],
+        "now": {
+          "jobAdPricingTypeId": 1,
+          "folderId": 273301107,
+          "boardId": 1,
+          "templateId": 1
+        },
+        "formattedDate": "2021-06-16T00:00:00",
+        "dateRecency": "13 days ago",
+        "seoJobId": "android-ios-developer-boston-ma--0245f5aa-5fe4-4091-a2dd-078be0d78cc6",
+        "fieldTranslations": [
+          {
+            "fieldName": "EmploymentType",
+            "name": "CONTRACTOR",
+            "locale": "en-us",
+            "translation": "Contractor"
+          }
+        ],
+        "jobAd": {
+          "type": "AdzerkJobAd",
+          "provider": "ADZERK",
+          "tracking": {
+            "clickUrl": "https://prod.monsterview.com/r?e=eyJ2IjoiMS43IiwiYXYiOjE0MzExMDIsImF0IjoxNjIsImJ0IjowLCJjbSI6MTY5OTI2MDEsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6MzI2OTIzMzQsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6OCwiaWkiOiJiZDA5MWQzOTRlNTU0OTc4OGNjMmY2YmNhYTU3Zjg5ZiIsImRtIjozLCJmYyI6MzM4MzM1MjIsImZsIjoyNjExNzYxOSwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC41MDQsImRwIjoxNS4wNzgxNiwiZG4iOjE1LjA3ODE2LCJkZyI6MTUuMDc4MTYsImVjIjoxNS41NDgyNiwiZXAiOm51bGwsInByIjoyMTc5MTMsInJ0IjozLCJycyI6NTAwLCJzYSI6ImJpZnJvc3QtYWRzZXJ2ZXJzLXRlcnRpYXJ5LXVzLWVhc3QtMSIsInNiIjoiaS0wMjliNzhhNjcxYmUwNDA2ZiIsInNwIjoyMzc5OCwic3QiOjExMjk3MTIsInVrIjoiM2ExODgzZGE3MGE2NWJjMzQwZWI1YWVlYTE2MWNkZGQiLCJ0cyI6MTYyNDkzMDUwMTA1OSwicG4iOiJtb25zdGVyOkpTUl9MSVNUX1ZJRVciLCJnYyI6dHJ1ZSwiZ0MiOnRydWUsImdzIjoibm9uZSIsImJpIjoxLCJ0eiI6IlVUQyIsInVyIjpudWxsfQ&s=mZxpu9DxxK8Pyl1NImRTmZtQ_UY&property%3Aaid=2d32625965c125074c1613c34c984f86&property%3Aapp=monster&property%3Acname=Android%2FiOS+Developer&property%3Acsrc=duration.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=0245f5aa-5fe4-4091-a2dd-078be0d78cc6&property%3Ajloc=%5B%7B%22city%22%3A%22Boston%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202110%22%2C%22latitude%22%3A%2242.357%22%2C%22longitude%22%3A%22-71.054%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=Android%2FiOS+Developer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=monster&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-06-16T17%3A20%3A49.35&property%3Axcd=xgen10x&property%3Asp=Software+Engineer",
+            "impressionUrl": "https://prod.monsterview.com/i.gif?e=eyJ2IjoiMS43IiwiYXYiOjE0MzExMDIsImF0IjoxNjIsImJ0IjowLCJjbSI6MTY5OTI2MDEsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6MzI2OTIzMzQsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6OCwiaWkiOiJiZDA5MWQzOTRlNTU0OTc4OGNjMmY2YmNhYTU3Zjg5ZiIsImRtIjozLCJmYyI6MzM4MzM1MjIsImZsIjoyNjExNzYxOSwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC41MDQsImRwIjoxNS4wNzgxNiwiZG4iOjE1LjA3ODE2LCJkZyI6MTUuMDc4MTYsImVjIjoxNS41NDgyNiwiZXAiOm51bGwsInByIjoyMTc5MTMsInJ0IjozLCJycyI6NTAwLCJzYSI6ImJpZnJvc3QtYWRzZXJ2ZXJzLXRlcnRpYXJ5LXVzLWVhc3QtMSIsInNiIjoiaS0wMjliNzhhNjcxYmUwNDA2ZiIsInNwIjoyMzc5OCwic3QiOjExMjk3MTIsInVrIjoiM2ExODgzZGE3MGE2NWJjMzQwZWI1YWVlYTE2MWNkZGQiLCJ0cyI6MTYyNDkzMDUwMTA1OSwicG4iOiJtb25zdGVyOkpTUl9MSVNUX1ZJRVciLCJnYyI6dHJ1ZSwiZ0MiOnRydWUsImdzIjoibm9uZSIsImJpIjoxLCJ0eiI6IlVUQyIsImJhIjoyNywiZnEiOjB9&s=N_GV9CBVNJwE2Z_-mvp9smuO8VA&property%3Aaid=2d32625965c125074c1613c34c984f86&property%3Aapp=monster&property%3Acname=Android%2FiOS+Developer&property%3Acsrc=duration.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=0245f5aa-5fe4-4091-a2dd-078be0d78cc6&property%3Ajloc=%5B%7B%22city%22%3A%22Boston%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202110%22%2C%22latitude%22%3A%2242.357%22%2C%22longitude%22%3A%22-71.054%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=Android%2FiOS+Developer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=monster&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-06-16T17%3A20%3A49.35&property%3Axcd=xgen10x&property%3Asp=Software+Engineer"
+          }
+        },
+        "brandingExt": {
+          "companyBannerUrl": "//media.newjobs.com/mm/xgen10x/cjt/bannerNEW.jpg",
+          "companyPhotos": [
+            {
+              "url": "//media.newjobs.com/mm/xgen10x/cjt/image8.jpg",
+              "caption": ""
+            },
+            {
+              "url": "//media.newjobs.com/mm/xgen10x/cjt/image4.jpg",
+              "caption": ""
+            },
+            {
+              "url": "//media.newjobs.com/mm/xgen10x/cjt/image2.jpg",
+              "caption": ""
+            },
+            {
+              "url": "//media.newjobs.com/mm/xgen10x/cjt/image7.jpg",
+              "caption": ""
+            },
+            {
+              "url": "//media.newjobs.com/mm/xgen10x/cjt/image5.jpg",
+              "caption": ""
+            },
+            {
+              "url": "//media.newjobs.com/mm/xgen10x/cjt/image6.jpg",
+              "caption": ""
+            },
+            {
+              "url": "//media.newjobs.com/mm/xgen10x/cjt/image3.jpg",
+              "caption": ""
+            },
+            {
+              "url": "//media.newjobs.com/mm/xgen10x/cjt/image9.jpg",
+              "caption": ""
+            },
+            {
+              "url": "//media.newjobs.com/mm/xgen10x/cjt/image10.jpg",
+              "caption": ""
+            },
+            {
+              "url": "//media.newjobs.com/mm/xgen10x/cjt/image1.jpg",
+              "caption": ""
+            }
+          ],
+          "companyBenefits": []
+        },
+        "bespokeJob": false,
+        "_gctsid": "7e1ea752-cf18-40cb-a90e-999c98cc64cd:APAb7IRsamN7HtIROjkxcyhKKZE6q4sivw==",
+        "_searchid": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+        "hasValidCompanyLogo": {}
+      },
+      {
+        "schemaVersion": "2.0.13",
+        "jobId": "7a37e3d2-ba97-425b-bfe9-86bd8f72ff58",
+        "externalIdentifiers": [
+          {
+            "identifierName": "NOW_POSTING_ID",
+            "identifierValue": "ca72a9b7-831a-42bd-8a05-e1af84f83579"
+          }
+        ],
+        "status": "ACTIVE",
+        "jobPosting": {
+          "@context": "http://schema.org",
+          "@type": "JobPosting",
+          "description": "<div><p>My biotech client is expanding and seeks a Cheminformatics Developer to make a significant impact.  The ideal candidate will take on the following tasks:</p><ul><li>Liaise with scientists to develop and deliver modern cheminformatic capabilities to help advance multiple early to late-stage projects.</li><li>Design, implement, and maintain robust tools, methods, and visualizations to enhance the understanding of structure activity relationships.</li><li>Collaborate with internal medicinal chemists, biologists, DMPK, and other scientists to address current needs and implement workable solutions.</li><li>Contribute to the design and execution of the overall data strategy for the company.</li><li>Partner with internal IT department on building company wide data solutions.</li><li>Build strong relationships with internal and external scientists and work in a highly collaborative manner.</li></ul><p> </p><p>The ideal candidate will possess the following qualities:</p><ul><li>PhD and pharma/biotech industry experience.</li><li>Cheminformatics expertise including 2D/3D similarity, clustering, chemical reaction and library enumeration, and others that are related to data mining and data visualizations.</li><li>Experience with enterprise informatics systems such as Knime, Pipeline Pilot, SQL databases, and data warehouses.</li><li>Strong Python programming skills and pipelining tools.</li><li>Familiarity with cloud computing including Google and AWS.</li><li>Demonstrated ability to think logically and critically to address cheminformatics needs across multiple projects.</li></ul></div>",
+          "url": "https://www.monster.com/job-openings/cheminformatics-developer-waltham-ma--7a37e3d2-ba97-425b-bfe9-86bd8f72ff58",
+          "datePosted": "2021-05-14T03:50:44.215Z",
+          "hiringOrganization": {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "description": "The Cameron Craig Group is an executive search firm representing job openings in virtually every industry and job function across the country.\n\nWe combine the efforts of over 1200 recruiters throughout the US. Together, we represent thousands of job openings and enter dozens of new jobs per day.",
+            "url": "https://www.cameroncraig.com/about-us/",
+            "name": "Cameron Craig Group",
+            "foundingDate": "0",
+            "numberOfEmployees": {
+              "@context": "http://schema.org",
+              "@type": "QuantitativeValue",
+              "unitText": "10 to 19 employees"
+            },
+            "logo": "https://media.newjobs.com/clu/xcam/xcamcgx/branding/177497/Cameron-Craig-Group-logo-637545411093766284.jpg"
+          },
+          "identifier": {
+            "@context": "http://schema.org",
+            "@type": "PropertyValue",
+            "name": "Cameron Craig Group",
+            "value": "975846da-6ad8-45b8-b206-96acb8795a7e"
+          },
+          "industry": "Staffing/Employment Agencies",
+          "jobLocation": [
+            {
+              "@context": "http://schema.org",
+              "@type": "Place",
+              "address": {
+                "@context": "http://schema.org",
+                "@type": "PostalAddress",
+                "addressLocality": "Waltham",
+                "addressRegion": "MA",
+                "postalCode": "02254",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@context": "http://schema.org",
+                "@type": "GeoCoordinates",
+                "latitude": "42.376",
+                "longitude": "-71.236"
+              }
+            }
+          ],
+          "occupationalCategory": "1500127001001",
+          "title": "Cheminformatics Developer"
+        },
+        "createdDate": "2021-05-14T06:11:05.872Z",
+        "provider": {
+          "code": "cameroncraigftpin",
+          "name": "Cameron Craig Group"
+        },
+        "apply": {
+          "applyType": "INTEGRATED",
+          "applyUrl": "https://click.appcast.io/track/9fylyb7?cs=c6o&jg=12be&bid=pjwETOQ3B5j5pPgUCrKqRQ==",
+          "applyPath": "/v2/job/apply?jobid=ca72a9b7-831a-42bd-8a05-e1af84f83579"
+        },
+        "ingestionMethod": "ADAPTED_NOW",
+        "enrichments": {
+          "language": {
+            "languageCode": "en"
+          },
+          "mescos": [
+            {
+              "id": "1500127001001"
+            }
+          ],
+          "normalizedJobLocations": [
+            {
+              "postalAddress": {
+                "@context": "http://schema.org",
+                "@type": "Place",
+                "address": {
+                  "@context": "http://schema.org",
+                  "@type": "PostalAddress",
+                  "addressLocality": "Waltham",
+                  "addressRegion": "MA",
+                  "addressCountry": "US"
+                },
+                "geo": {
+                  "@context": "http://schema.org",
+                  "@type": "GeoCoordinates",
+                  "latitude": "42.37649",
+                  "longitude": "-71.23561"
+                }
+              },
+              "locationId": "4954380",
+              "countryCode": "US"
+            }
+          ],
+          "companyKb": {
+            "normalizedCompanyName": "Cameron Craig Group",
+            "normalizedCompanyGuid": "r5n46tqlybaxtccovg4ik7gmpd"
+          },
+          "normalizedTitles": [
+            {
+              "title": "Software Engineer"
+            }
+          ],
+          "normalizedSalary": {
+            "currencyCode": {
+              "name": "USD",
+              "id": 920
+            },
+            "salaryBaseType": {
+              "name": "UNKNOWN",
+              "id": 239
+            }
+          },
+          "employmentTypes": [
+            {
+              "name": "UNKNOWN",
+              "id": 29
+            }
+          ],
+          "employmentTypeModifiers": [
+            {
+              "name": "UNKNOWN",
+              "id": 129
+            }
+          ],
+          "status": {
+            "name": "ACTIVE",
+            "id": 52
+          },
+          "applyType": {
+            "name": "INTEGRATED",
+            "id": 53
+          },
+          "ingestionMethod": {
+            "name": "ADAPTED_NOW",
+            "id": 704
+          },
+          "localizedMonsterUrls": [
+            {
+              "locationId": "4954380",
+              "url": "https://www.monster.com/job-openings/cheminformatics-developer-waltham-ma--7a37e3d2-ba97-425b-bfe9-86bd8f72ff58"
+            }
+          ],
+          "qualifiedForG4J": true,
+          "isPublicJob": true,
+          "googleSyntheticValidThrough": "2022-06-24T04:04:34.568380Z"
+        },
+        "attributeValuePairs": [
+          {
+            "name": "location_0_addressRegionName",
+            "value": "Massachusetts"
+          },
+          {
+            "name": "location_0_addressCountryName",
+            "value": "US"
+          }
+        ],
+        "now": {
+          "jobAdPricingTypeId": 2,
+          "trackingUrl": "https://click.appcast.io/jview-te8/a31.png?ent=222&e=4918&jid=4918_975846da-6ad8-45b8-b206-96acb8795a7e&org=false&src=15792&bid=pjwETOQ3B5j5pPgUCrKqRQ==&jg=12be"
+        },
+        "formattedDate": "2021-05-14T00:00:00",
+        "dateRecency": "30+ days ago",
+        "seoJobId": "cheminformatics-developer-waltham-ma--7a37e3d2-ba97-425b-bfe9-86bd8f72ff58",
+        "fieldTranslations": [],
+        "jobAd": {
+          "type": "AdzerkJobAd",
+          "provider": "ADZERK",
+          "tracking": {
+            "clickUrl": "https://prod.monsterview.com/r?e=eyJ2IjoiMS43IiwiYXYiOjE1NjY0MjIsImF0IjoxNjIsImJ0IjowLCJjbSI6MTI5OTE2OTQsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6Mjg1ODUzMDEsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6OSwiaWkiOiI3M2MwZmExYzg3YjM0YTAwOTkzYWUzMzU1NGQ3N2JmZCIsImRtIjozLCJmYyI6Mjk3MzQ5MTgsImZsIjoyMjA2MjI2MCwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC40OCwiZHAiOjE0LjI4NDEsImRuIjoxNC4yODQxLCJkZyI6MTQuMjg0MSwiZWMiOjE1LjA2ODE2LCJlcCI6bnVsbCwicHIiOjIxNzkxMywicnQiOjMsInJzIjo1MDAsInNhIjoiYmlmcm9zdC1hZHNlcnZlcnMtdGVydGlhcnktdXMtZWFzdC0xIiwic2IiOiJpLTAyOWI3OGE2NzFiZTA0MDZmIiwic3AiOjIzNzk4LCJzdCI6MTEyOTcxMiwidWsiOiIzYTE4ODNkYTcwYTY1YmMzNDBlYjVhZWVhMTYxY2RkZCIsInRzIjoxNjI0OTMwNTAxMDYwLCJwbiI6Im1vbnN0ZXI6SlNSX0xJU1RfVklFVyIsImdjIjp0cnVlLCJnQyI6dHJ1ZSwiZ3MiOiJub25lIiwiYmkiOjEsInR6IjoiVVRDIiwidXIiOm51bGx9&s=3td0SJl2jnI1baoWB0yBThamfdI&property%3Aaid=3a71bb32e93307e9e76dd01840f7253c&property%3Aapp=monster&property%3Acname=Cheminformatics+Developer&property%3Acsrc=ppc.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=7a37e3d2-ba97-425b-bfe9-86bd8f72ff58&property%3Ajloc=%5B%7B%22city%22%3A%22Waltham%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202254%22%2C%22latitude%22%3A%2242.376%22%2C%22longitude%22%3A%22-71.236%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=7a37e3d2-ba97-425b-bfe9-86bd8f72ff58_Cheminformatics+Developer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=cameroncraigftpin&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-05-14T06%3A11%3A06.033&property%3Asp=Software+Engineer",
+            "impressionUrl": "https://prod.monsterview.com/i.gif?e=eyJ2IjoiMS43IiwiYXYiOjE1NjY0MjIsImF0IjoxNjIsImJ0IjowLCJjbSI6MTI5OTE2OTQsImNoIjo1MDQ3NSwiY2siOnt9LCJjciI6Mjg1ODUzMDEsImRpIjoiMjQ3Y2YyMGZiYzY2NDRiY2E2NjgwYzM1Nzk5ODNjOWUiLCJkaiI6OSwiaWkiOiI3M2MwZmExYzg3YjM0YTAwOTkzYWUzMzU1NGQ3N2JmZCIsImRtIjozLCJmYyI6Mjk3MzQ5MTgsImZsIjoyMjA2MjI2MCwiaXAiOiIxMjEuMjAwLjIuMjM4Iiwia3ciOiJ1cywxNTAwMTI3MDAxMDAxLHdpdGhsYXRsb25nIiwibWsiOiJ1cyx3aXRobGF0bG9uZywxNTAwMTI3MDAxMDAxIiwibnciOjEwNTE1LCJwYyI6MC40OCwiZHAiOjE0LjI4NDEsImRuIjoxNC4yODQxLCJkZyI6MTQuMjg0MSwiZWMiOjE1LjA2ODE2LCJlcCI6bnVsbCwicHIiOjIxNzkxMywicnQiOjMsInJzIjo1MDAsInNhIjoiYmlmcm9zdC1hZHNlcnZlcnMtdGVydGlhcnktdXMtZWFzdC0xIiwic2IiOiJpLTAyOWI3OGE2NzFiZTA0MDZmIiwic3AiOjIzNzk4LCJzdCI6MTEyOTcxMiwidWsiOiIzYTE4ODNkYTcwYTY1YmMzNDBlYjVhZWVhMTYxY2RkZCIsInRzIjoxNjI0OTMwNTAxMDYwLCJwbiI6Im1vbnN0ZXI6SlNSX0xJU1RfVklFVyIsImdjIjp0cnVlLCJnQyI6dHJ1ZSwiZ3MiOiJub25lIiwiYmkiOjEsInR6IjoiVVRDIiwiYmEiOjI2LCJmcSI6MH0&s=tg548OYbDzqnSetSbPEI9gY7F5g&property%3Aaid=3a71bb32e93307e9e76dd01840f7253c&property%3Aapp=monster&property%3Acname=Cheminformatics+Developer&property%3Acsrc=ppc.now&property%3Acmp=JSR_LIST_VIEW&property%3Acur=USD&property%3Aexr=1.0&property%3Ajid=7a37e3d2-ba97-425b-bfe9-86bd8f72ff58&property%3Ajloc=%5B%7B%22city%22%3A%22Waltham%22%2C%22state%22%3A%22MA%22%2C%22country%22%3A%22US%22%2C%22zipcode%22%3A%2202254%22%2C%22latitude%22%3A%2242.376%22%2C%22longitude%22%3A%22-71.236%22%7D%5D&property%3Ajmsc=1500127001001&property%3Ajtit=7a37e3d2-ba97-425b-bfe9-86bd8f72ff58_Cheminformatics+Developer&property%3Asid=aa43aa98-cba0-4e64-8ac6-93a79c73475a&property%3Alat=42.3600825&property%3Alng=-71.0588801&property%3Apcd=cameroncraigftpin&property%3Asmsc=1500127001001&property%3Aua=Java-http-client%2F11.0.11&property%3Arip=121.200.2.238&property%3Asname=Web&property%3Asdate=2021-05-14T06%3A11%3A06.033&property%3Asp=Software+Engineer"
+          }
+        },
+        "brandingExt": {
+          "companyBannerUrl": null,
+          "companyPhotos": null,
+          "companyBenefits": []
+        },
+        "bespokeJob": false,
+        "_gctsid": "7e1ea752-cf18-40cb-a90e-999c98cc64cd:APAb7IRsamN7HtIROjkxcyhKKZE6q4sivw==",
+        "_searchid": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+        "hasValidCompanyLogo": {}
+      }
+    ],
+    "jobRequest": {
+      "offset": 0,
+      "pageSize": 10,
+      "jobQuery": {
+        "query": "Software Engineer",
+        "locations": [
+          {
+            "address": "Boston, MA",
+            "country": "us",
+            "radius": {
+              "unit": "mi",
+              "value": 20
+            }
+          }
+        ],
+        "disableSpellCheck": false,
+        "excludeJobs": [],
+        "companyDisplayNames": [],
+        "queryLanguageCode": "en-us"
+      },
+      "orderBy": "relevance",
+      "debug": false,
+      "overrideOptions": false,
+      "enableDiversification": false,
+      "disableKeywordMatch": false,
+      "enableBroadening": false,
+      "paidJobsOnly": false,
+      "jobAdsRequest": {
+        "placement": {
+          "component": "JSR_LIST_VIEW",
+          "appName": "monster"
+        },
+        "position": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "searchId": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+      "fingerprintId": "3a1883da70a65bc340eb5aeea161cddd",
+      "gctsrequest": {
+        "offset": 0,
+        "pageSize": 10,
+        "jobQuery": {
+          "query": "Software Engineer",
+          "locations": [
+            {
+              "address": "Boston, MA",
+              "country": "us",
+              "radius": {
+                "unit": "mi",
+                "value": 20
+              }
+            }
+          ],
+          "disableSpellCheck": false,
+          "excludeJobs": [],
+          "companyDisplayNames": [],
+          "queryLanguageCode": "en-us"
+        },
+        "orderBy": "relevance",
+        "debug": false,
+        "overrideOptions": false,
+        "enableDiversification": false,
+        "disableKeywordMatch": false,
+        "enableBroadening": false,
+        "paidJobsOnly": false
+      }
+    },
+    "histogramQueryResult": [],
+    "searchId": "aa43aa98-cba0-4e64-8ac6-93a79c73475a",
+    "gctsReqId": "7e1ea752-cf18-40cb-a90e-999c98cc64cd:APAb7IRsamN7HtIROjkxcyhKKZE6q4sivw==",
+    "clientIP": "121.200.2.238",
+    "noJobsFound": false,
+    "lastNumberOfJobsReturned": 10
+  },
+  "pspData": null,
+  "searchRequest": {
+    "jobQuery": {
+      "locations": [
+        {
+          "address": "Boston, MA",
+          "country": "us",
+          "radius": {
+            "unit": "mi",
+            "value": "20"
+          }
+        }
+      ],
+      "excludeJobs": [],
+      "companyDisplayNames": [],
+      "query": "Software Engineer"
+    },
+    "offset": 0,
+    "pageSize": 10,
+    "searchId": "",
+    "fingerprintId": "3a1883da70a65bc340eb5aeea161cddd",
+    "jobAdsRequest": {
+      "position": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "placement": {
+        "component": "JSR_LIST_VIEW",
+        "appName": "monster"
+      }
+    }
+  },
+  "authenticated": false,
+  "auth": {
+    "isAuthenticated": false,
+    "error": {
+      "error": "login_required",
+      "error_description": "Login required",
+      "state": "RUF+dWNLeFQwSFpINENaZDBMVl9INEpyOVc1bGF1VVJoWFBrR19vSmRoWA=="
+    },
+    "isErrorRecoverable": true
+  },
+  "relatedJobs": null
+}

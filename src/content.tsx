@@ -9,6 +9,7 @@ import { Iframe } from "./components/Iframe";
 import { Display } from "./panels/Display";
 import "./content.css";
 
+import { transformJobs } from './helpers/transformJobs';
 
 
 let header: any;
@@ -29,10 +30,16 @@ const listenToIframe = () => {
             let newState = e.data.payload;
             let json = JSON.parse(newState);
             const { jobsList } = json;
-            log({logType: 'CUSTOM', moduleName, message: 'job list updated', payload: jobsList});
-            chrome.runtime.sendMessage({ type: "JOB_STATE", source: 'content', payload: jobsList });
+            log({ logType: 'CUSTOM', moduleName, message: 'job list updated', payload: json });
+            log({ logType: 'CUSTOM', moduleName, message: 'job list updated', payload: jobsList });
+
+            let jobs = transformJobs(jobsList);
+            log({ logType: 'CUSTOM', moduleName, message: 'job list transformed', payload: jobs });
+            // todo - not needed?
+            // chrome.runtime.sendMessage({ type: "JOB_STATE", source: 'content', payload: jobsList });
 
             // todo - use the job list!
+
 
         }
     });

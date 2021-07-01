@@ -1,0 +1,8 @@
+
+if id =
+9f598051-9545-4a48-b98b-a4a1651f532b
+
+url =
+https://app.datadoghq.com/logs?query=env%3Aprod-ams%20service%3A%28adtech-sponsored-listings%20OR%20adtech-targeting-strategy%29%20domain%3Aadtech%20%229f598051-9545-4a48-b98b-a4a1651f532b%22&cols=core_host%2Ccore_service&index=&integration_id=&integration_short_name=&messageDisplay=inline&saved_view=319551&stream_sort=desc&viz=stream&from_ts=1624853960191&to_ts=1624857560191&live=true
+
+(here timestamp to and from = 1624853960191)

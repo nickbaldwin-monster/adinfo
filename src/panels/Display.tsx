@@ -24,19 +24,28 @@ let products = [
 ];
 
 export const Display = () => {
+
     return (
         <div>
             <p>hello</p>
             <Grid
                 data={products}>
-                <GridColumn field="position" />
-                <GridColumn field="company" />
-                <GridColumn field="title" />
-                <GridColumn field="location" />
-                <GridColumn field="ingestion" />
-                <GridColumn field="type" />
-                <GridColumn field="adProvider" />
-                <GridColumn field="mesco" />
+
+                <GridColumn field="position" title="pos" />
+                <GridColumn field="company" title="company" />
+                <GridColumn field="title" title="title" />
+                <GridColumn field="location" title="location" />
+                <GridColumn field="ingestionMethod" title="ingestion" />
+                <GridColumn field="pricingType" title="type" />
+                <GridColumn field="adProvider" title="adProvider" />
+                <GridColumn field="mesco" title="mesco" />
+                <GridColumn field="dateRecency" title="recency" />
+                <GridColumn field="formattedDate" title="date" />
+                <GridColumn field="provider" title="provider" />
+                <GridColumn field="applyType" title="apply" />
+
+
+
             </Grid>
         </div>
     );
