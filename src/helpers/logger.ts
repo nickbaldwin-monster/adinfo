@@ -1,4 +1,5 @@
-const app = 'adinfo: ';
+const app = '%c adinfo';
+const style = 'background: #444; color: #fff; font-weight: bold; padding-top: 3px; padding-bottom: 3px;';
 
 interface Log {
     moduleName?: string,
@@ -40,6 +41,9 @@ export const logger = (moduleName: string) => {
 }
 
 export const log = ({ moduleName, functionName, logType, message, payload, error }: Log) => {
+
+    let msg = app + " ::: " + logType.toLowerCase() + " ";
+
     if (!moduleName) {
         moduleName = "unknown" ;
     }
@@ -47,21 +51,21 @@ export const log = ({ moduleName, functionName, logType, message, payload, error
         functionName = "unknown";
     }
     if (logType === 'LOADED') {
-        console.log(`${app} ${logType}: `, { logType, moduleName });
+        console.log(msg, style, { logType, moduleName });
     }
     if (logType === 'FUNCTION') {
-        console.log(`${app} ${logType}: `, { logType, moduleName, functionName, message });
+        console.log(msg, style, { logType, moduleName, functionName, message });
     }
     if (logType === 'MESSAGE_RECEIVED') {
-        console.log(`${app} ${logType}: `, { logType, moduleName, functionName, payload });
+        console.log(msg, style, { logType, moduleName, functionName, payload });
     }
     if (logType === 'MESSAGE_SENT') {
-        console.log(`${app} ${logType}: `, { logType, moduleName, functionName, payload });
+        console.log(msg, style, { logType, moduleName, functionName, payload });
     }
     if (logType === 'ERROR') {
-        console.log(`${app} ${logType}: `, { logType, moduleName, functionName, payload, error });
+        console.log(msg, style, { logType, moduleName, functionName, payload, error });
     }
-    if (logType === 'CUSTOM') {
-        console.log(`${app} ${logType}: `, { logType, moduleName, functionName, payload, message });
+    if (logType === 'INFO') {
+        console.log(msg, style, { logType, moduleName, functionName, payload, message });
     }
 };

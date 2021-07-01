@@ -30,11 +30,11 @@ const listenToIframe = () => {
             let newState = e.data.payload;
             let json = JSON.parse(newState);
             const { jobsList } = json;
-            log({ logType: 'CUSTOM', moduleName, message: 'job list updated', payload: json });
-            log({ logType: 'CUSTOM', moduleName, message: 'job list updated', payload: jobsList });
+            log({ logType: 'INFO', moduleName, message: 'job list updated', payload: json });
+            log({ logType: 'INFO', moduleName, message: 'job list updated', payload: jobsList });
 
             let jobs = transformJobs(jobsList);
-            log({ logType: 'CUSTOM', moduleName, message: 'job list transformed', payload: jobs });
+            log({ logType: 'INFO', moduleName, message: 'job list transformed', payload: jobs });
             // todo - not needed?
             // chrome.runtime.sendMessage({ type: "JOB_STATE", source: 'content', payload: jobsList });
 
@@ -106,7 +106,7 @@ const addTable = () => {
 function onMutation(mutations: any) {
     const functionName = 'onMutation';
     if (mutations.length > 0) {
-        log({logType: 'CUSTOM', functionName, message: 'mutations observed'});
+        log({logType: 'INFO', functionName, message: 'mutations observed'});
         // todo update state
     }
 }

@@ -4,35 +4,44 @@ interface Props {
     content: any
 }
 
+const app = '%c adinfo';
+const style = 'background: #444; color: #fff; font-weight: bold; padding-top: 3px; padding-bottom: 3px;';
+
 const code = `
     <body>
         <script>
         
             const moduleName = 'IFRAME';
+            
+            const app = '%c adinfo';
+            const style = 'background: #444; color: #fff; font-weight: bold; padding-top: 3px; padding-bottom: 3px;';
+
         
             const log = ({ moduleName, functionName, logType, message, payload, error }) => {
                
+                let msg = app + " ::: " + logType.toLowerCase() + " ";
+                
                 if (logType === 'LOADED') {
-                    console.log(logType, { logType, moduleName });
+                    console.log(msg, style, { logType, moduleName });
                 }
                 if (logType === 'FUNCTION') {
-                    console.log(logType, { logType, moduleName, functionName, message });
+                    console.log(msg, style, { logType, moduleName, functionName, message });
                 }
                 if (logType === 'MESSAGE_RECEIVED') {
-                    console.log(logType, { logType, moduleName, functionName, payload });
+                    console.log(msg, style, { logType, moduleName, functionName, payload });
                 }
                 if (logType === 'MESSAGE_SENT') {
-                    console.log(logType, { logType, moduleName, functionName, payload });
+                    console.log(msg, style, { logType, moduleName, functionName, payload });
                 }
                 if (logType === 'ERROR') {
-                    console.log(logType, { logType, moduleName, functionName, payload, error });
+                    console.log(msg, style, { logType, moduleName, functionName, payload, error });
                 }
-                if (logType === 'CUSTOM') {
-                    console.log(logType, { logType, moduleName, functionName, payload, message });
+                if (logType === 'INFO') {
+                    console.log(msg, style, { logType, moduleName, functionName, payload, message });
                 }
             };
             
-            log({logType: 'LOADED', moduleName});
+            log( {logType: 'LOADED', moduleName} );
             
             
 
@@ -40,8 +49,8 @@ const code = `
 
                 if (e.key === 'savedReduxState') {
                     let message= "job state changed: " + e.key;
-                    log({ logType: 'CUSTOM', message });
-                    window.parent.postMessage({messageType: 'JOB_STATE', payload: e.newValue}, "*");
+                    log({ logType: 'INFO', message });
+                    window.parent.postMessage({ messageType: 'JOB_STATE', payload: e.newValue }, "*");
                     // todo
  
                 }
@@ -58,7 +67,10 @@ export const Iframe = (props: Props) => {
     const writeHTML = (frame: any) => {
         iframe_ref = frame;
         let doc = frame.contentDocument;
-        console.log("frame, doc: ", frame, doc)
+
+        let msg = app + " ::: " + 'info' + " ";
+        console.log(msg, style, { logType: 'INFO', payload: {frame: frame, doc: doc} });
+
         doc.open();
         doc.write(code);
         doc.close();
