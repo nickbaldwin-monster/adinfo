@@ -1,7 +1,6 @@
 import {transformJobs, transformJob, isJob, isDisplayJob} from './transformJobs';
 
 import jobsList from '../sampleData/jobsList.json';
-import objectContaining = jasmine.objectContaining;
 import {Provider} from "../types/Provider";
 
 
@@ -58,7 +57,8 @@ test('raw job IS a raw job', () => {
 
 test('transformed job has expected properties', () => {
     let job = jobsList.jobResults[0];
-    let newJob = transformJob(job);
+    let newJob = transformJob(job, 0);
+    expect(newJob).toHaveProperty('position');
     expect(newJob).toHaveProperty('jobId');
     expect(newJob).toHaveProperty('adProvider');
     expect(newJob).toHaveProperty('mesco');
@@ -69,15 +69,17 @@ test('transformed job has expected properties', () => {
     expect(newJob).toHaveProperty('provider');
     expect(newJob).toHaveProperty('providerCode');
     expect(newJob).toHaveProperty('applyType');
+    expect(newJob).toHaveProperty('company');
+    expect(newJob).toHaveProperty('title');
+    expect(newJob).toHaveProperty('location');
 });
 
 test('transformed job has correct values for props', () => {
     let job = jobsList.jobResults[0];
-    let newJob = transformJob(job);
-    console.log('hi');
+    let newJob = transformJob(job,0 );
 
     expect(newJob).toEqual({
-
+        position: 1,
         jobId: 'db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
         adProvider: 'AdTech',
         mesco: '1500127001001',
@@ -88,6 +90,11 @@ test('transformed job has correct values for props', () => {
         provider: 'Virtusa',
         providerCode: 'e1947c00-c36f-40ed-b1f3-0dafb93cbd4e',
         applyType: 'OFFSITE',
+        company: 'Virtusa',
+        location: 'Boston, MA, , US. ',
+        title: 'Java Developer'
+
+
     });
 });
 
@@ -108,6 +115,7 @@ test('jobList transformed into display jobs', () => {
     expect(list).toEqual(
         [
             {
+                position: 1,
                 jobId: 'db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
                 adProvider: 'AdTech',
                 mesco: '1500127001001',
@@ -118,6 +126,9 @@ test('jobList transformed into display jobs', () => {
                 provider: 'Virtusa',
                 providerCode: 'e1947c00-c36f-40ed-b1f3-0dafb93cbd4e',
                 applyType: 'OFFSITE',
+                company: 'Virtusa',
+                location: 'Boston, MA, , US. ',
+                title: 'Java Developer'
             }
         ]
     );

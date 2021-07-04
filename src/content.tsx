@@ -36,7 +36,8 @@ const listenToIframe = () => {
             let jobs = transformJobs(jobsList);
             log({ logType: 'INFO', moduleName, message: 'job list transformed', payload: jobs });
             // todo - not needed?
-            // chrome.runtime.sendMessage({ type: "JOB_STATE", source: 'content', payload: jobsList });
+            chrome.runtime.sendMessage({ type: "JOB_STATE", source: 'content', payload: jobs });
+            log({ logType: 'MESSAGE_SENT',  payload: { type: "JOB_STATE", source: 'content', payload: jobs }});
 
             // todo - use the job list!
 
@@ -103,6 +104,8 @@ const addTable = () => {
     }
 };
 
+
+
 function onMutation(mutations: any) {
     const functionName = 'onMutation';
     if (mutations.length > 0) {
@@ -167,6 +170,7 @@ if ( document.readyState !== 'loading' ) {
 }
 
 chrome.runtime.sendMessage({ type: "REQ_DISPLAY_STATUS", source: 'content' });
+log({ logType: 'MESSAGE_SENT',  payload: {type: "REQ_DISPLAY_STATUS"}});
 
 
 

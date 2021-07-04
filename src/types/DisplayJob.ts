@@ -1,5 +1,9 @@
 export interface DisplayJob  {
+    position: number;
+    title: string;
+    company: string;
     jobId: string;
+    location: string;
     adProvider: string;
     mesco: string;
     ingestionMethod: string; // IngestionMethod

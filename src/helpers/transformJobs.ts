@@ -55,6 +55,52 @@ const normalizeMesco = (jobPosting: object): string => {
 };
 
 
+
+const normalizePostCompany = (jobPosting: object): string => {
+    // @ts-ignore
+    if (!jobPosting || !jobPosting.hiringOrganization || !jobPosting.hiringOrganization.name) {
+        return '';
+    }
+
+    // @ts-ignore
+    return jobPosting.hiringOrganization.name;
+
+}
+
+const normalizePostTitle = (jobPosting: object): string => {
+    // @ts-ignore
+    if (!jobPosting || !jobPosting.title) {
+        return '';
+    }
+    // @ts-ignore
+    return jobPosting.title;
+
+}
+
+const normalizePostLocation = (jobPosting: object): string => {
+    // @ts-ignore
+    if (!jobPosting || !jobPosting.jobLocation ) {
+        return '';
+    }
+
+    let loc = '';
+    // @ts-ignore
+    jobPosting.jobLocation.forEach((a: object) => {
+        // @ts-ignore
+        let add = a?.address;
+        if (add) {
+            // @ts-ignore
+            loc += add.addressLocality + ", " + add.addressRegion + ", " + add.postalCode + ", " + add.addressCountry + ". ";
+        }
+
+    });
+
+    return loc;
+}
+
+
+
+
 // todo
 const formatDate = (date: string): string => {
     return date;
@@ -91,7 +137,7 @@ export const isDisplayJob = (object: any): object is DisplayJob => {
 
 
 
-export const transformJob = (object: object) => {
+export const transformJob = (object: object, i: number) => {
     if (!object || !isJob(object)) {
         return null;
     }
@@ -133,7 +179,30 @@ export const transformJob = (object: object) => {
             // todo check
             newObj.applyType = transformApplyType(v);
         }
+
+
+
+
+
+        if (k === 'jobPosting') {
+            // todo check
+            newObj.title = normalizePostTitle(v);
+            newObj.company = normalizePostCompany(v);
+            newObj.location = normalizePostLocation(v);
+
+        }
+
+        if (k === 'enrichments') {
+            // todo check
+            // normalizeEnrichedTitle(v, newObj.title);
+            // normalizeEnrichedCompany(v, newObj.company);
+            // normalizeEnrichedLocation(v, newObj.location);
+        }
+
+
     }
+
+    newObj.position = i + 1;
     return newObj;
 }
 
@@ -147,9 +216,9 @@ export const transformJobs = (jobsList: object) => {
 
     let list = <DisplayJob[]> [];
     // @ts-ignore
-    jobsList.jobResults.forEach( (job: object) => {
+    jobsList.jobResults.forEach( (job: object, i: number) => {
         // @ts-ignore
-            list.push(transformJob(job));
+            list.push(transformJob(job, i));
     });
 
     return list;
