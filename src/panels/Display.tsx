@@ -2,8 +2,14 @@ import * as React from "react";
 
 import '@progress/kendo-theme-default/dist/all.css';
 import { process } from '@progress/kendo-data-query';
-import { Grid, GridColumn } from '@progress/kendo-react-grid';
+import { Grid, GridColumn, getSelectedState } from '@progress/kendo-react-grid';
 import { orderBy } from "@progress/kendo-data-query";
+import { getter } from "@progress/kendo-react-common";
+
+const DATA_ITEM_KEY = "jobId";
+const SELECTED_FIELD = "selected";
+const idGetter = getter(DATA_ITEM_KEY);
+
 
 const initialSort = [
     {
@@ -59,7 +65,35 @@ const DetailComponent = (props: DataProps) => {
 export const Display = () => {
 
     const [sort, setSort] = React.useState(initialSort);
-        const [jobs, setJobs] = React.useState([]);
+    const [jobs, setJobs] = React.useState([]);
+
+
+    const [selectedState, setSelectedState] = React.useState({});
+    const onSelectionChange = React.useCallback(
+        (event) => {
+            const newSelectedState = getSelectedState({
+                event,
+                selectedState: selectedState,
+                dataItemKey: DATA_ITEM_KEY,
+            });
+            setSelectedState(newSelectedState);
+        },
+        [selectedState]
+    );
+
+    const onHeaderSelectionChange = React.useCallback((event) => {
+        const checkboxElement = event.syntheticEvent.target;
+        const checked = checkboxElement.checked;
+        const newSelectedState = {};
+        event.dataItems.forEach((item: any) => {
+
+            // @ts-ignore
+            newSelectedState[idGetter(item)] = checked;
+        });
+        setSelectedState(newSelectedState);
+    }, []);
+
+
 
 
     const expandChange = (event: any) => {
@@ -104,6 +138,17 @@ export const Display = () => {
                     let jobs = transformJobs(jobsList);
                     console.log('inside display: ', jobs);
 
+
+
+                    const newJobs =
+                        jobs.map((dataItem) =>
+                            Object.assign(
+                                {
+                                    selected: false,
+                                },
+                                dataItem
+                            )
+                        );
                     // @ts-ignore
                     setJobs(jobs);
 
@@ -128,12 +173,34 @@ export const Display = () => {
 
 
 
+
     return (
         <div>
             <p>hello</p>
             <Grid
-                // @ts-ignore
-                data={orderBy(jobs, sort)}
+
+               // data={orderBy(jobs, sort)}
+
+                data={orderBy(jobs.map((item) => ({
+                    // @ts-ignore
+                    ...item,
+                    [SELECTED_FIELD]: selectedState[idGetter(item)],
+                    // @ts-ignore
+                })), sort)}
+                dataItemKey={DATA_ITEM_KEY}
+                selectedField={SELECTED_FIELD}
+                selectable={{
+                    enabled: true,
+                    drag: false,
+                    cell: false,
+                    mode: "multiple",
+                }}
+                onSelectionChange={onSelectionChange}
+                onHeaderSelectionChange={onHeaderSelectionChange}
+
+
+
+
                 sortable={true}
                 // @ts-ignore
                 sort={sort}
@@ -146,6 +213,15 @@ export const Display = () => {
                 expandField="expanded"
                 onExpandChange={expandChange}
             >
+
+                <GridColumn
+                    field={SELECTED_FIELD}
+                    width="50px"
+                    headerSelectionValue={
+                        // @ts-ignore
+                        jobs.findIndex((item) => !selectedState[idGetter(item)]) === -1
+                    }
+                />
 
                 <GridColumn field="position" title="pos" />
                 <GridColumn field="company" title="company" />
