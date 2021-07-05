@@ -19,11 +19,16 @@ To install the extension:
 5. Select the `dist` directory
 
 ## todo
- - install jest, testing library etc
- - transform jobsList
- - other info?
+ - install testing library etc
+ - add further info into jobs - for display in extended section
  - move stateful settings stuff into Settings
  - replicate stateful stuff in Display
+ - hover interactions
+ - reference list of jobs in state (for selection, hover interactions)  
+ - export info into excel
+ - export info into json
+ - filter?
+ - use interface checking libraries?
 
 
 ## todo later
@@ -62,3 +67,7 @@ useful links
 https://react.christmas/2020/12
 https://betterprogramming.pub/inject-html-in-react-using-iframe-ea3c85bdeec0
 https://www.telerik.com/kendo-react-ui/my-license/?utm_medium=product&utm_source=kendoreact&utm_campaign=kendo-ui-react-purchase-license-keys-warning
+
+
+https://www.telerik.com/kendo-react-ui/components/grid/api/GridColumnProps/
+https://www.telerik.com/kendo-react-ui/components/grid/

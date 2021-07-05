@@ -52,10 +52,10 @@ const DetailComponent = (props: DataProps) => {
     return (
         <section>
             <p>
-                <strong>Mesco:</strong> {dataItem.mesco} units
+                <strong>Mesco:</strong> {dataItem.mesco || 'N/A'}
             </p>
             <p>
-                <strong>providerCode:</strong> {dataItem.providerCode} units
+                <strong>providerCode:</strong> {dataItem.providerCode || 'N/A'}
             </p>
 
         </section>
