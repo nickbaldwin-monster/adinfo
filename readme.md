@@ -89,6 +89,7 @@ So... the only way to listen for sessionStorage events is within a frame on that
 - https://betterprogramming.pub/inject-html-in-react-using-iframe-ea3c85bdeec0
 - https://www.telerik.com/kendo-react-ui/my-license/?utm_medium=product&utm_source=kendoreact&utm_campaign=kendo-ui-react-purchase-license-keys-warning
 
-
 - https://www.telerik.com/kendo-react-ui/components/grid/api/GridColumnProps/
 - https://www.telerik.com/kendo-react-ui/components/grid/
+- https://www.telerik.com/kendo-react-ui/components/grid/styling/
+- https://github.com/gristlabs/ts-interface-checker

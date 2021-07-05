@@ -2,9 +2,10 @@ import * as React from "react";
 
 import '@progress/kendo-theme-default/dist/all.css';
 import { process } from '@progress/kendo-data-query';
-import { Grid, GridColumn, getSelectedState } from '@progress/kendo-react-grid';
+import { Grid, GridColumn, getSelectedState, GridToolbar } from '@progress/kendo-react-grid';
 import { orderBy } from "@progress/kendo-data-query";
 import { getter } from "@progress/kendo-react-common";
+import { ExcelExport } from "@progress/kendo-react-excel-export";
 
 const DATA_ITEM_KEY = "jobId";
 const SELECTED_FIELD = "selected";
@@ -63,6 +64,16 @@ const DetailComponent = (props: DataProps) => {
 };
 
 export const Display = () => {
+
+    const _export = React.useRef(null);
+
+    const excelExport = () => {
+        if (_export.current !== null) {
+
+            // @ts-ignore
+            _export.current.save();
+        }
+    };
 
     const [sort, setSort] = React.useState(initialSort);
     const [jobs, setJobs] = React.useState([]);
@@ -177,6 +188,7 @@ export const Display = () => {
     return (
         <div>
             <p>hello</p>
+            <ExcelExport data={jobs} ref={_export}>
             <Grid
 
                // data={orderBy(jobs, sort)}
@@ -214,6 +226,19 @@ export const Display = () => {
                 onExpandChange={expandChange}
             >
 
+
+                <GridToolbar>
+                    <button
+                        title="Export Excel"
+                        className="k-button k-primary"
+                        onClick={excelExport}
+                    >
+                        Export to Excel
+                    </button>
+                </GridToolbar>
+
+
+
                 <GridColumn
                     field={SELECTED_FIELD}
                     width="50px"
@@ -239,6 +264,7 @@ export const Display = () => {
 
 
             </Grid>
+            </ExcelExport>
         </div>
     );
 };
