@@ -2,15 +2,17 @@
 
 ## Getting started
 
+
 To build/rebuild the extension:
 
 ```
-$ npm start
+$ npm run build
 ```
 
 After the project is built, a directory named `dist` will be created. 
 
-To install the extension:
+
+## To install the extension:
 
 1. Open Chrome
 2. Navigate to `chrome://extensions`
@@ -18,21 +20,40 @@ To install the extension:
 4. Click 'Load unpacked'
 5. Select the `dist` directory
 
-## todo
- - install testing library etc
- - add further info into jobs - for display in extended section
- - move stateful settings stuff into Settings
- - replicate stateful stuff in Display
- - hover interactions
- - reference list of jobs in state (for selection, hover interactions)  
- - export info into excel
- - export info into json
- - filter?
- - use interface checking libraries?
 
+
+## capabilities todo
+- check schema! e.g. enrichments vs posting info, what is mandatory etc
+- install testing library etc
+- add further info into jobs - for display in extended section
+- move stateful settings stuff into Settings
+- replicate stateful stuff in Display
+- hover interaction - show info?
+- hover - highlight item in table?
+- select item in table - highlight job in list?   
+- reference list of jobs in state (for selection, hover interactions)  
+- export info into excel
+- export info into json
+- filter?
+- use interface checking libraries?
+- add link to job
+- add link to datadog
+- add link to webadmin
+- make search info available too
+- show settings within page too
+
+## code todo
+- check schema! e.g. enrichments vs posting info, what is mandatory etc
+- refactor display component!
+
+## questions
+- what info to show / not show in table?!
+- what settings should there be?
+- where should the table be shown?
+- settings within the page (rather than popup)?
 
 ## todo later
-  - add licence keys to env var for build/CI (see kendo doc)
+- add licence keys to env var for build/CI (see kendo doc)
   
 ## info
 
@@ -63,11 +84,11 @@ Unfortunately the current page cannot listen to changes in storage triggered by 
 So... the only way to listen for sessionStorage events is within a frame on that page.
 
 
-useful links
-https://react.christmas/2020/12
-https://betterprogramming.pub/inject-html-in-react-using-iframe-ea3c85bdeec0
-https://www.telerik.com/kendo-react-ui/my-license/?utm_medium=product&utm_source=kendoreact&utm_campaign=kendo-ui-react-purchase-license-keys-warning
+## useful links
+- https://react.christmas/2020/12
+- https://betterprogramming.pub/inject-html-in-react-using-iframe-ea3c85bdeec0
+- https://www.telerik.com/kendo-react-ui/my-license/?utm_medium=product&utm_source=kendoreact&utm_campaign=kendo-ui-react-purchase-license-keys-warning
 
 
-https://www.telerik.com/kendo-react-ui/components/grid/api/GridColumnProps/
-https://www.telerik.com/kendo-react-ui/components/grid/
+- https://www.telerik.com/kendo-react-ui/components/grid/api/GridColumnProps/
+- https://www.telerik.com/kendo-react-ui/components/grid/
