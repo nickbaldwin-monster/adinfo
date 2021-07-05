@@ -21,10 +21,15 @@ After the project is built, a directory named `dist` will be created.
 5. Select the `dist` directory
 
 
+##  important
+- check schema! e.g. enrichments vs posting info, what is mandatory etc
+- compare extension - where properties come from
+- use both post and enrichments
+- check source order of excel export
 
 ## capabilities todo
 - check schema! e.g. enrichments vs posting info, what is mandatory etc
-- install testing library etc
+- copy info to clipboard  
 - add further info into jobs - for display in extended section
 - add raw job json to item
 - move stateful settings stuff into Settings
@@ -43,12 +48,14 @@ After the project is built, a directory named `dist` will be created.
 - size columns
 - deal with locations etc better
 - deal with dates?
+- make header fixed
 
 ## could do later
 - export selected items only
 - filter
 
 ## code todo
+- install testing library etc
 - check schema! e.g. enrichments vs posting info, what is mandatory etc
 - refactor display component!
 
