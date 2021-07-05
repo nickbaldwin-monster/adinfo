@@ -7,6 +7,9 @@ import { orderBy } from "@progress/kendo-data-query";
 import { getter } from "@progress/kendo-react-common";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 
+import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
+
+
 const DATA_ITEM_KEY = "jobId";
 const SELECTED_FIELD = "selected";
 const idGetter = getter(DATA_ITEM_KEY);
@@ -105,6 +108,11 @@ export const Display = () => {
     }, []);
 
 
+    const saveJson = () => {
+        let json = JSON.stringify(jobs);
+        const dataURI = "data:text/plain;base64," + encodeBase64(json);
+        saveAs(dataURI, "exportJobData.json");
+    }
 
 
     const expandChange = (event: any) => {
@@ -235,6 +243,15 @@ export const Display = () => {
                     >
                         Export to Excel
                     </button>
+
+                    <button
+                        title="Export JSON"
+                        className="k-button k-primary"
+                        onClick={saveJson}
+                    >
+                        Export to JSON
+                    </button>
+
                 </GridToolbar>
 
 
