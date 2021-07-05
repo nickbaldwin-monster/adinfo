@@ -114,6 +114,12 @@ export const Display = () => {
         saveAs(dataURI, "exportJobData.json");
     }
 
+    const saveSelected = () => {
+
+
+        console.log("selected", selectedState);
+    }
+
 
     const expandChange = (event: any) => {
         let newData = jobs.map((item) => {
@@ -169,7 +175,7 @@ export const Display = () => {
                             )
                         );
                     // @ts-ignore
-                    setJobs(jobs);
+                    setJobs(newJobs);
 
                 }
                 /*
@@ -250,6 +256,14 @@ export const Display = () => {
                         onClick={saveJson}
                     >
                         Export to JSON
+                    </button>
+
+                    <button
+                        title="test selected"
+                        className="k-button k-primary"
+                        onClick={saveSelected}
+                    >
+                        test selected
                     </button>
 
                 </GridToolbar>

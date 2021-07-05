@@ -26,21 +26,27 @@ After the project is built, a directory named `dist` will be created.
 - check schema! e.g. enrichments vs posting info, what is mandatory etc
 - install testing library etc
 - add further info into jobs - for display in extended section
+- add raw job json to item
 - move stateful settings stuff into Settings
 - replicate stateful stuff in Display
 - hover interaction - show info?
 - hover - highlight item in table?
 - select item in table - highlight job in list?   
-- reference list of jobs in state (for selection, hover interactions)  
-- export info into excel
-- export info into json
-- filter?
+- reference list of jobs in state (for selection, hover interactions)
+- export full redux state into json
 - use interface checking libraries?
 - add link to job
 - add link to datadog
 - add link to webadmin
 - make search info available too
 - show settings within page too
+- size columns
+- deal with locations etc better
+- deal with dates?
+
+## could do later
+- export selected items only
+- filter
 
 ## code todo
 - check schema! e.g. enrichments vs posting info, what is mandatory etc
