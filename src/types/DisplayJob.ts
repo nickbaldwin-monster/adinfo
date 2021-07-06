@@ -13,4 +13,7 @@ export interface DisplayJob  {
     provider: string;
     providerCode: string;
     applyType: string;
+    xCode: string;
+    data: object;
+
 }

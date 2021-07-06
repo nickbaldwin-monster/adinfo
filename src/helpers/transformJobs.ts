@@ -197,11 +197,29 @@ export const transformJob = (object: object, i: number) => {
             // normalizeEnrichedTitle(v, newObj.title);
             // normalizeEnrichedCompany(v, newObj.company);
             // normalizeEnrichedLocation(v, newObj.location);
+
+            // @ts-ignore
+            newObj.xCode = object[k].companyKb?.code ?? 'n/a';
+
+            /*
+            if (newObj.pricingType === '3') {
+                if (monsterCountryCode !== 'us' && monsterCountryCode !== 'ca') {
+                newObj.xCode = 'aggregated';
+                }
+            }
+
+             */
+
+
         }
+
+
+
 
 
     }
 
+    newObj.data = object;
     newObj.position = i + 1;
     return newObj;
 }

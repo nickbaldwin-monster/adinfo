@@ -48,11 +48,15 @@ interface DataProps {
         provider: string;
         providerCode: string;
         applyType: string;
+        xCode: string;
+        data: object;
     };
 }
 
 const DetailComponent = (props: DataProps) => {
     const dataItem = props.dataItem;
+
+    // todo - remove json
     return (
         <section>
             <p>
@@ -60,6 +64,10 @@ const DetailComponent = (props: DataProps) => {
             </p>
             <p>
                 <strong>providerCode:</strong> {dataItem.providerCode || 'N/A'}
+            </p>
+
+            <p>
+                <strong>providerCode:</strong> {JSON.stringify(dataItem.data) || 'N/A'}
             </p>
 
         </section>
@@ -116,8 +124,9 @@ export const Display = () => {
 
     const saveSelected = () => {
 
-
-        console.log("selected", selectedState);
+        let keys = Object.keys(selectedState);
+        // console.log("selected", selectedState);
+        console.log(keys);
     }
 
 
@@ -202,6 +211,7 @@ export const Display = () => {
     return (
         <div>
 
+
             <ExcelExport data={jobs} ref={_export}>
             <Grid
 
@@ -279,6 +289,7 @@ export const Display = () => {
                     }
                 />
 
+
                 <GridColumn field="position" title="pos" />
                 <GridColumn field="company" title="company" />
                 <GridColumn field="title" title="title" />
@@ -291,7 +302,7 @@ export const Display = () => {
                 <GridColumn field="formattedDate" title="date" />
                 <GridColumn field="provider" title="provider" />
                 <GridColumn field="applyType" title="apply" />
-
+                <GridColumn field="xCode" title="xCode" />
 
 
             </Grid>
