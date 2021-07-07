@@ -28,7 +28,6 @@ After the project is built, a directory named `dist` will be created.
 ## capabilities todo
 - copy info to clipboard  
 - add further info into jobs - for display in extended section
-- move raw job json from expanded - or find better way to display it 
 - move stateful settings stuff into Settings
 - replicate stateful stuff in Display
 - hover interaction - show info?
@@ -44,8 +43,9 @@ After the project is built, a directory named `dist` will be created.
 - show settings within page too
 - size columns
 - deal with locations etc better
-- deal with dates?
+- other dates?
 - make header fixed
+- font size etc
 
 ## could do later
 - export selected items only
@@ -103,3 +103,5 @@ So... the only way to listen for sessionStorage events is within a frame on that
 - https://www.telerik.com/kendo-react-ui/components/grid/
 - https://www.telerik.com/kendo-react-ui/components/grid/styling/
 - https://github.com/gristlabs/ts-interface-checker
+- https://www.npmjs.com/package/react-json-view-ts
+- https://day.js.org/docs/en/installation/typescript

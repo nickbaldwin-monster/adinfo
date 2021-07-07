@@ -3,7 +3,7 @@ import { Provider }  from '../types/Provider';
 import { Apply }  from '../types/Apply';
 import { DisplayJob }  from '../types/DisplayJob';
 import jobsList from "../sampleData/jobsList.json";
-
+import dayjs from 'dayjs';
 
 type AdProvider = 'Unknown' | "AdTech" | 'GCTS' | '';
 type IngestionMethod = 'NOW' | 'JPW';
@@ -32,6 +32,9 @@ const normalizeAdProvider = (adProvider: object): AdProvider => {
 
 // todo - once know all values
 const normalizeIngestionMethod = (ingestionMethod: string): string => {
+    if (ingestionMethod === 'ADAPTED_NOW') {
+        return 'Adapted NOW';
+    }
     return ingestionMethod;
 };
 
@@ -103,7 +106,8 @@ const normalizePostLocation = (jobPosting: object): string => {
 
 // todo
 const formatDate = (date: string): string => {
-    return date;
+    let d = dayjs(date).format('D MMM YY');
+    return d || date;
 };
 
 
@@ -121,7 +125,7 @@ const transformApplyType = (applyType: Apply): string => {
     if (!applyType.applyType || applyType.applyType ==='') {
         return '';
     }
-    return applyType.applyType;
+    return applyType.applyType.toLowerCase();
 };
 
 
