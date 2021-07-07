@@ -1,12 +1,14 @@
 import * as React from "react";
 
+import { DisplayJob } from '../types/DisplayJob';
+
+// todo - cut down css
 import '@progress/kendo-theme-default/dist/all.css';
 import { process } from '@progress/kendo-data-query';
 import { Grid, GridColumn, getSelectedState, GridToolbar } from '@progress/kendo-react-grid';
 import { orderBy } from "@progress/kendo-data-query";
 import { getter } from "@progress/kendo-react-common";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
-
 import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
 
 
@@ -24,33 +26,17 @@ const initialSort = [
 
 // import "./Settings.css";
 import { loadSettings, saveSettings } from "../helpers/state";
-import {MessageType} from "../types";
-import {logger} from "../helpers/logger";
-import {transformJobs} from "../helpers/transformJobs";
+import { MessageType } from "../types";
+import { logger } from "../helpers/logger";
+import { transformJobs } from "../helpers/transformJobs";
 
 const moduleName = 'display';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
+// todo - don't repeat this - use interface?
 interface DataProps {
-    dataItem: {
-        position: number;
-        title: string;
-        company: string;
-        jobId: string;
-        location: string;
-        adProvider: string;
-        mesco: string;
-        ingestionMethod: string; // IngestionMethod
-        pricingType: string; // PricingType;
-        formattedDate: string;
-        dateRecency: string;
-        provider: string;
-        providerCode: string;
-        applyType: string;
-        xCode: string;
-        data: object;
-    };
+    dataItem: DisplayJob;
 }
 
 const DetailComponent = (props: DataProps) => {
@@ -125,7 +111,6 @@ export const Display = () => {
     const saveSelected = () => {
 
         let keys = Object.keys(selectedState);
-        // console.log("selected", selectedState);
         console.log(keys);
     }
 
@@ -173,7 +158,8 @@ export const Display = () => {
                     console.log('inside display: ', jobs);
 
 
-
+                    // is this actually needed?!
+                    // todo - test this out
                     const newJobs =
                         jobs.map((dataItem) =>
                             Object.assign(

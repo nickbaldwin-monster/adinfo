@@ -23,15 +23,12 @@ After the project is built, a directory named `dist` will be created.
 
 ##  important
 - check schema! e.g. enrichments vs posting info, what is mandatory etc
-- compare extension - where properties come from
 - use both post and enrichments
-- check source order of excel export
 
 ## capabilities todo
-- check schema! e.g. enrichments vs posting info, what is mandatory etc
 - copy info to clipboard  
 - add further info into jobs - for display in extended section
-- add raw job json to item
+- move raw job json from expanded - or find better way to display it 
 - move stateful settings stuff into Settings
 - replicate stateful stuff in Display
 - hover interaction - show info?
