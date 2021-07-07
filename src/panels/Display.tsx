@@ -12,7 +12,7 @@ import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
 
 import ReactJson from 'react-json-view-ts';
-
+ import { JobDetail } from '../components/JobDetail';
 
 
 
@@ -42,29 +42,8 @@ const moduleName = 'display';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
-// todo - don't repeat this - use interface?
-interface DataProps {
-    dataItem: DisplayJob;
-}
 
-const DetailComponent = (props: DataProps) => {
-    const dataItem = props.dataItem;
 
-    // todo - remove json
-    return (
-        <section>
-            <p>
-                <strong>Mesco:</strong> {dataItem.mesco || 'N/A'}
-            </p>
-            <p>
-                <strong>providerCode:</strong> {dataItem.providerCode || 'N/A'}
-            </p>
-
-            <ReactJson src={dataItem.data} collapsed={1} collapseStringsAfterLength={120}/>
-
-        </section>
-    );
-};
 
 export const Display = () => {
 
@@ -236,7 +215,7 @@ export const Display = () => {
                     // @ts-ignore
                     setSort(e.sort);
                 }}
-                detail={DetailComponent}
+                detail={JobDetail}
 
                 expandField="expanded"
                 onExpandChange={expandChange}

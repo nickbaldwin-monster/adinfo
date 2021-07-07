@@ -28,6 +28,7 @@ After the project is built, a directory named `dist` will be created.
 ## capabilities todo
 - copy info to clipboard  
 - add further info into jobs - for display in extended section
+- adjust height of results container (mobile and desktop) if staying with current approach  
 - move stateful settings stuff into Settings
 - replicate stateful stuff in Display
 - hover interaction - show info?
@@ -55,6 +56,7 @@ After the project is built, a directory named `dist` will be created.
 - install testing library etc
 - check schema! e.g. enrichments vs posting info, what is mandatory etc
 - refactor display component!
+- may need to monitor container and add back if missing
 
 ## questions
 - what info to show / not show in table?!
