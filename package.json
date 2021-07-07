@@ -52,6 +52,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-hot-loader": "^4.13.0",
+    "react-json-view-ts": "^1.16.7",
     "ts-interface-checker": "^1.0.0"
   }
 }

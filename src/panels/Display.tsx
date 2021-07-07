@@ -11,6 +11,19 @@ import { getter } from "@progress/kendo-react-common";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
 
+import ReactJson from 'react-json-view-ts';
+
+
+
+
+
+// import "./Settings.css";
+import { loadSettings, saveSettings } from "../helpers/state";
+import { MessageType } from "../types";
+import { logger } from "../helpers/logger";
+import { transformJobs } from "../helpers/transformJobs";
+
+
 
 const DATA_ITEM_KEY = "jobId";
 const SELECTED_FIELD = "selected";
@@ -24,11 +37,6 @@ const initialSort = [
     },
 ];
 
-// import "./Settings.css";
-import { loadSettings, saveSettings } from "../helpers/state";
-import { MessageType } from "../types";
-import { logger } from "../helpers/logger";
-import { transformJobs } from "../helpers/transformJobs";
 
 const moduleName = 'display';
 let log = logger(moduleName);
@@ -52,9 +60,7 @@ const DetailComponent = (props: DataProps) => {
                 <strong>providerCode:</strong> {dataItem.providerCode || 'N/A'}
             </p>
 
-            <p>
-                <strong>providerCode:</strong> {JSON.stringify(dataItem.data) || 'N/A'}
-            </p>
+            <ReactJson src={dataItem.data} collapsed={1} collapseStringsAfterLength={120}/>
 
         </section>
     );
