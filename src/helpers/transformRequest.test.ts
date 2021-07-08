@@ -23,14 +23,10 @@ test('transformed request has expected properties', () => {
     expect(req).toHaveProperty('estimatedTotalSize');
     expect(req).toHaveProperty('searchRequest');
     expect(req).toHaveProperty('placement');
-    expect(req).toHaveProperty('data');
 });
 
 test('transformed request has expected values', () => {
     let req = transformRequest(savedReduxState);
-    // @ts-ignore
-    req.data = {};
-
     expect(req).toEqual({
         country: 'us',
         language: 'en',
@@ -43,7 +39,6 @@ test('transformed request has expected values', () => {
         gctsReqId: '7e1ea752-cf18-40cb-a90e-999c98cc64cd:APAb7IRsamN7HtIROjkxcyhKKZE6q4sivw==',
         searchRequest: 'Software Engineer : Boston, MA : US : 20 mi',
         placement: 'JSR_LIST_VIEW',
-        data: {},
         totalSize: '10',
         estimatedTotalSize: '6772',
     });

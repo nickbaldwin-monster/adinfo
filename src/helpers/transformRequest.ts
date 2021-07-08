@@ -71,7 +71,6 @@ export const transformRequest = (object: Request) => {
         }
     }
 
-    newObj.data = object;
     return newObj;
 }
 

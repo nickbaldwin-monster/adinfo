@@ -10,7 +10,6 @@ export interface DisplayRequest  {
     gctsReqId: string;
     searchRequest: string;
     placement: string;
-    data: object;
     totalSize: string;
     estimatedTotalSize: string;
 }

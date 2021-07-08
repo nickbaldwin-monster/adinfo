@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { DisplayJob } from '../types/DisplayJob';
 
+
 // todo - cut down css
 import '@progress/kendo-theme-default/dist/all.css';
 import { process } from '@progress/kendo-data-query';
@@ -10,6 +11,7 @@ import { orderBy } from "@progress/kendo-data-query";
 import { getter } from "@progress/kendo-react-common";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
+import { TabStrip, TabStripTab } from "@progress/kendo-react-layout";
 
 import ReactJson from 'react-json-view-ts';
  import { JobDetail } from '../components/JobDetail';
@@ -22,6 +24,7 @@ import { loadSettings, saveSettings } from "../helpers/state";
 import { MessageType } from "../types";
 import { logger } from "../helpers/logger";
 import { transformJobs } from "../helpers/transformJobs";
+import { transformRequest } from "../helpers/transformRequest";
 
 
 
@@ -59,6 +62,15 @@ export const Display = () => {
 
     const [sort, setSort] = React.useState(initialSort);
     const [jobs, setJobs] = React.useState([]);
+    const [request, setRequest] = React.useState([]);
+    const [redux, setRedux] = React.useState({});
+
+
+    // default tab is first - job list
+    const [selectedTab, setSelectedTab] = React.useState(0);
+    const handleSelectTab = (e: any) => {
+        setSelectedTab(e.selected);
+    };
 
 
     const [selectedState, setSelectedState] = React.useState({});
@@ -131,17 +143,14 @@ export const Display = () => {
 
             window.addEventListener("message", function (e) {
 
-
                 if (e.data?.messageType === 'JOB_STATE') {
                     let newState = e.data.payload;
                     let json = JSON.parse(newState);
-                    const {jobsList} = json;
+                    const { jobsList } = json;
                     log({logType: 'INFO', moduleName, message: 'job list updated', payload: json});
                     log({logType: 'INFO', moduleName, message: 'job list updated', payload: jobsList});
 
                     let jobs = transformJobs(jobsList);
-                    console.log('inside display: ', jobs);
-
 
                     // is this actually needed?!
                     // todo - test this out
@@ -157,6 +166,16 @@ export const Display = () => {
                     // @ts-ignore
                     setJobs(newJobs);
 
+                    let request = transformRequest(json);
+                    if (request) {
+                        let arr = [];
+                        for (const [k, v] of Object.entries(request)) {
+                            arr.push({key: k, value: v});
+                        }
+                        // @ts-ignore
+                        setRequest(arr)
+                    }
+                    setRedux(json);
                 }
                 /*
                 if (message.type === "JOB_STATE") {
@@ -181,7 +200,8 @@ export const Display = () => {
 
     return (
         <div>
-
+            <TabStrip selected={selectedTab} onSelect={handleSelectTab}>
+                <TabStripTab title="Jobs">
 
             <ExcelExport data={jobs} ref={_export}>
             <Grid
@@ -278,6 +298,18 @@ export const Display = () => {
 
             </Grid>
             </ExcelExport>
+                </TabStripTab>
+                <TabStripTab title="Search">
+                    <Grid data={request} >
+                        <GridColumn field="key" title="key" />
+                        <GridColumn field="value" title="value" />
+                    </Grid>
+
+                    <ReactJson src={redux} collapsed={1} collapseStringsAfterLength={120}/>
+
+                </TabStripTab>
+
+            </TabStrip>
         </div>
     );
 };
