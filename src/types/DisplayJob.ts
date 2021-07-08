@@ -15,5 +15,4 @@ export interface DisplayJob  {
     applyType: string;
     xCode: string;
     data: object;
-
 }

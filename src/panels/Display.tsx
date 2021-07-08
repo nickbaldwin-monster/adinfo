@@ -88,7 +88,7 @@ export const Display = () => {
 
 
     const saveJson = () => {
-        let json = JSON.stringify(jobs);
+        let json = JSON.stringify(jobs, null, 4);
         const dataURI = "data:text/plain;base64," + encodeBase64(json);
         saveAs(dataURI, "exportJobData.json");
     }
