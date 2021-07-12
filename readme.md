@@ -105,3 +105,10 @@ So... the only way to listen for sessionStorage events is within a frame on that
 - https://github.com/gristlabs/ts-interface-checker
 - https://www.npmjs.com/package/react-json-view-ts
 - https://day.js.org/docs/en/installation/typescript
+
+https://decipher.dev/30-seconds-of-typescript/docs/debounce/
+https://usehooks-typescript.com/react-hook/use-debounce
+https://usehooks-typescript.com/react-hook/use-hover
+https://usehooks-typescript.com/react-hook/use-local-storage
+https://www.30secondsofcode.org/react/s/use-persisted-state
+https://www.30secondsofcode.org/react/s/use-debounce

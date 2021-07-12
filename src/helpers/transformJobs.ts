@@ -206,13 +206,12 @@ export const transformJob = (object: object, i: number) => {
             newObj.xCode = object[k].companyKb?.code ?? 'n/a';
 
             /*
-            if (newObj.pricingType === '3') {
+            if (newObj.pricingType && newObj.pricingType === '3') {
                 if (monsterCountryCode !== 'us' && monsterCountryCode !== 'ca') {
                 newObj.xCode = 'aggregated';
                 }
             }
-
-             */
+            */
 
 
         }

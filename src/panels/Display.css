@@ -26155,8 +26155,14 @@ kendo-card-footer {
 
 .k-grid th,
 .k-grid td {
+    padding: 2px 4px;
+    border-style: none;
+    font-size: 75%;
+    /*
     padding: 8px 12px;
     border-style: solid;
+    */
+
     border-color: inherit;
     outline: 0;
     font-weight: inherit;
@@ -36911,4 +36917,3 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
 .k-map .k-attribution {
     background-color: rgba(255, 255, 255, 0.8);
 }
-

@@ -4,7 +4,9 @@ import { DisplayJob } from '../types/DisplayJob';
 
 
 // todo - cut down css
-import '@progress/kendo-theme-default/dist/all.css';
+// import '@progress/kendo-theme-default/dist/all.css';
+import './Display.css';
+
 import { process } from '@progress/kendo-data-query';
 import { Grid, GridColumn, getSelectedState, GridToolbar } from '@progress/kendo-react-grid';
 import { orderBy } from "@progress/kendo-data-query";
@@ -273,7 +275,7 @@ export const Display = () => {
 
                 <GridColumn
                     field={SELECTED_FIELD}
-                    width="50px"
+                    width="30px"
                     headerSelectionValue={
                         // @ts-ignore
                         jobs.findIndex((item) => !selectedState[idGetter(item)]) === -1
@@ -281,19 +283,19 @@ export const Display = () => {
                 />
 
 
-                <GridColumn field="position" title="pos" />
-                <GridColumn field="company" title="company" />
-                <GridColumn field="title" title="title" />
-                <GridColumn field="location" title="location" />
-                <GridColumn field="ingestionMethod" title="ingestion" />
-                <GridColumn field="pricingType" title="type" />
-                <GridColumn field="adProvider" title="adProvider" />
-                <GridColumn field="mesco" title="mesco" />
-                <GridColumn field="dateRecency" title="recency" />
-                <GridColumn field="formattedDate" title="date" />
-                <GridColumn field="provider" title="provider" />
-                <GridColumn field="applyType" title="apply" />
-                <GridColumn field="xCode" title="xCode" />
+                <GridColumn field="position" title="P" width="30px"/>
+                <GridColumn field="company" title="Company" width="100px"/>
+                <GridColumn field="title" title="Title" width="150px"/>
+                <GridColumn field="location" title="Location" width="120px"/>
+                <GridColumn field="ingestionMethod" title="ingestion" width="70px"/>
+                <GridColumn field="pricingType" title="T" width="20px"/>
+                <GridColumn field="adProvider" title="AdProvider" width="50px"/>
+                <GridColumn field="mesco" title="Mesco" width="100px"/>
+                <GridColumn field="dateRecency" title="Recency" width="80px"/>
+                <GridColumn field="formattedDate" title="Date" width="70px"/>
+                <GridColumn field="provider" title="Provider" width="70px"/>
+                <GridColumn field="applyType" title="Apply" width="70px"/>
+                <GridColumn field="xCode" title="xCode" width="80px"/>
 
 
             </Grid>
