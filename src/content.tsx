@@ -7,6 +7,11 @@ import { MessageType } from "./types";
 import { logger } from "./helpers/logger";
 import { Iframe } from "./components/Iframe";
 import { Display } from "./panels/Display";
+
+
+import { Drawer } from "./panels/Drawer";
+
+
 import "./content.css";
 
 import { transformJobs } from './helpers/transformJobs';
@@ -61,6 +66,8 @@ const updateDisplay = (isDisplay: boolean) => {
         displayContainer?.parentNode?.removeChild(displayContainer);
     }
 
+
+
 }
 
 const handleMessage = (message: MessageType) => {
@@ -101,6 +108,20 @@ const addTable = () => {
         displayContainer = document.createElement("div");
         displayContainer.className = "monsterInfo";
         ReactDOM.render(<Display/>, displayContainer);
+
+
+
+        let app = document.querySelector('#app');
+        let container = document.createElement("div");
+        container.className = "test";
+        container.id = 'appContainer';
+        app?.appendChild(container);
+        ReactDOM.render(<Drawer/>, container);
+
+
+
+
+
     }
 };
 

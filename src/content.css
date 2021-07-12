@@ -10,3 +10,10 @@
     height: 300px;
     overflow: scroll;
 }
+
+#appContainer {
+    position: fixed;
+    top: -20px;
+    right: 0;
+    z-index: 9999;
+}

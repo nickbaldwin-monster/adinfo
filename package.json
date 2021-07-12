@@ -50,12 +50,14 @@
     "@progress/kendo-react-progressbars": "^4.7.0",
     "@progress/kendo-react-treeview": "^4.7.0",
     "@progress/kendo-theme-default": "^4.39.0",
+    "@types/react-router-dom": "^5.1.8",
     "dayjs": "^1.10.6",
     "iframe-script-container": "^1.0.5",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-hot-loader": "^4.13.0",
     "react-json-view-ts": "^1.16.7",
+    "react-router-dom": "^5.2.0",
     "ts-interface-checker": "^1.0.0"
   }
 }
