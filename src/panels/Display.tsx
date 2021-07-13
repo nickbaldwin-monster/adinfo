@@ -228,6 +228,8 @@ export const Display = () => {
                 onHeaderSelectionChange={onHeaderSelectionChange}
 
 
+                style={{ height: '100%', overflow: 'auto', paddingBottom: '10px' }}
+
 
 
                 sortable={true}
