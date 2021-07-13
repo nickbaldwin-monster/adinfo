@@ -22517,6 +22517,8 @@ kendo-drawer .k-drawer-wrapper {
     position: fixed;
     z-index: 10002;
     border: 0;
+    /* */
+    top: 80px;
 }
 
 .k-drawer-overlay > .k-overlay {
@@ -22539,6 +22541,11 @@ kendo-drawer .k-drawer-wrapper {
     position: relative;
     -ms-flex-item-align: stretch;
     align-self: stretch;
+
+    /* */
+    position: fixed;
+    right: 0;
+    top: 80px;
 }
 
 .k-drawer-push .k-drawer.k-drawer-end,
@@ -36916,4 +36923,19 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
 
 .k-map .k-attribution {
     background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* overrides */
+.k-drawer-content {
+    position: absolute;
+    right: 0;
+    top: 80px;
+    z-index: 9999;
+    max-width: 80%;
+    margin-right: 50px;
+    width: 55%;
+}
+
+.k-widget .k-grid {
+    height: calc(100vh - 130px);
 }

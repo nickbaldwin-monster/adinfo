@@ -107,7 +107,7 @@ const addTable = () => {
     else {
         displayContainer = document.createElement("div");
         displayContainer.className = "monsterInfo";
-        ReactDOM.render(<Display/>, displayContainer);
+        // ReactDOM.render(<Display/>, displayContainer);
 
 
 

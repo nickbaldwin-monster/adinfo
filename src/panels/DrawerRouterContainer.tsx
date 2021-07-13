@@ -16,11 +16,19 @@ const items = [
         text: "Notifications",
         icon: "k-i-bell",
         route: "/notifications",
+    },
+    {
+        separator: true,
+    },
+    {
+        text: "Settings",
+        icon: "k-i-gear",
+        route: "/settings",
     }
 ];
 
 const DrawerRouterContainer = (props: any) => {
-    const [expanded, setExpanded] = React.useState(true);
+    const [expanded, setExpanded] = React.useState(false);
 
     const handleClick = () => {
         setExpanded(!expanded);
@@ -28,7 +36,7 @@ const DrawerRouterContainer = (props: any) => {
 
     const onSelect = (e: any) => {
         props.history.push(e.itemTarget.props.route);
-        setExpanded(!expanded);
+        // setExpanded(!expanded);
     };
 
     // @ts-ignore
@@ -45,10 +53,7 @@ const DrawerRouterContainer = (props: any) => {
     let selected = setSelectedItem(props.location.pathname);
     return (
         <div>
-            <div className="custom-toolbar">
-                <Button icon="menu" look="flat" onClick={handleClick} />
-                <span className="mail-box">Mail Box</span>
-            </div>
+
             <Drawer
                 expanded={expanded}
                 position={"end"}
