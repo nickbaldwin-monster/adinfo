@@ -1,12 +1,12 @@
 // this is run as a content script, injected into the web page
 
-import * as React from "react";
+import React, { useReducer, createContext } from 'react';
 import * as ReactDOM from "react-dom";
 
 import { MessageType } from "./types";
 import { logger } from "./helpers/logger";
 import { Iframe } from "./components/Iframe";
-import { Display } from "./panels/Display";
+import { JobTable } from "./components/JobTable";
 
 
 import { Drawer } from "./panels/Drawer";
@@ -17,13 +17,72 @@ import "./content.css";
 import { transformJobs } from './helpers/transformJobs';
 
 
-let header: any;
-let displayContainer: any;
-let display = false;
+
+
+
+
+
+
+import { ReduxProvider } from "./context/Context";
+import {Tabs} from "./panels/Tabs";
+
+
+
+
+
+
+
+
 
 const moduleName = 'content';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
+
+
+// @ts-ignore
+export const State = createContext();
+
+function reducer(state: any, item: any) {
+    return [...state, item]
+}
+
+const WrapContext = () => {
+
+    const [jobs, setJobs] = React.useState([]);
+    const [request, setRequest] = React.useState([]);
+    const [redux, setRedux] = React.useState({});
+    const [settings, setSettings] = React.useState({});
+    const [results, setResults] = React.useState([]);
+
+    const [salad, setSalad] = useReducer(reducer, ['a', 'b']);
+
+    return(
+        <State.Provider value={{
+            salad, setSalad,
+            jobs, setJobs,
+            request, setRequest,
+            redux, setRedux,
+            settings, setSettings,
+            results, setResults
+        }}>
+            <Drawer />
+        </State.Provider>
+    );
+};
+
+
+// <Drawer />
+//  <Tabs />
+
+const WithContext = () => {
+    return (
+        <ReduxProvider>
+            <Drawer />
+
+        </ReduxProvider>
+    );
+};
+
 
 
 
@@ -58,28 +117,16 @@ const listenToScripts = () => {
     });
 };
 
-const updateDisplay = (isDisplay: boolean) => {
-    display = isDisplay;
-    if (isDisplay) {
-        header?.appendChild(displayContainer);
-    } else {
-        displayContainer?.parentNode?.removeChild(displayContainer);
-    }
 
-
-
-}
 
 const handleMessage = (message: MessageType) => {
     log({ logType: 'MESSAGE_RECEIVED', functionName: 'N/A', payload: message });
     if (message.type === "DISPLAY_STATUS") {
-        updateDisplay(message.display);
+        // updateDisplay(message.display);
     }
     if (message.type === "SETTINGS_STATUS") {
         // todo - apply settings
-
     }
-
 };
 
 
@@ -100,23 +147,20 @@ const getReduxStore = () => {
 
 
 const addTable = () => {
-    header = document.querySelector('header');
-    if (header === null) {
+    let app = document.querySelector('#app');
+    if (app === null) {
         log({logType: 'ERROR', message: '#app not found - cannot mount display'});
     }
     else {
-        displayContainer = document.createElement("div");
-        displayContainer.className = "monsterInfo";
-        // ReactDOM.render(<Display/>, displayContainer);
-
-
-
-        let app = document.querySelector('#app');
         let container = document.createElement("div");
-        container.className = "test";
         container.id = 'appContainer';
-        app?.appendChild(container);
-        ReactDOM.render(<Drawer/>, container);
+        app.appendChild(container);
+        //ReactDOM.render(<WrapContext />, container);
+
+
+
+
+        ReactDOM.render(<WithContext />, container);
 
 
 
@@ -157,7 +201,6 @@ const init = () => {
     listenToIframe();
     listenToScripts();
     addTable();
-    updateDisplay(display);
 
 
     // todo - not needed - unless need to do something when list is loaded

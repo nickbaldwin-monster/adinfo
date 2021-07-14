@@ -4,7 +4,7 @@ import { Drawer, DrawerContent } from "@progress/kendo-react-layout";
 import { Button } from "@progress/kendo-react-buttons";
 const items = [
     {
-        text: "Inbox",
+        text: "Jobs",
         icon: "k-i-inbox",
         selected: true,
         route: "/",
@@ -13,9 +13,9 @@ const items = [
         separator: true,
     },
     {
-        text: "Notifications",
+        text: "Request",
         icon: "k-i-bell",
-        route: "/notifications",
+        route: "/request",
     },
     {
         separator: true,

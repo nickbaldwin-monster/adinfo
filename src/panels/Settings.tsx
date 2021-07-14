@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Button } from "../components/Button";
+import { Button } from "../elements/Button";
 import "./Settings.css";
 import { loadSettings, saveSettings } from "../helpers/state";
 

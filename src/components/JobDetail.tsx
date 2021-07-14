@@ -2,6 +2,11 @@ import * as React from "react";
 import ReactJson from "react-json-view-ts";
 
 import { DisplayJob } from "../types/DisplayJob";
+import { logger } from "../helpers/logger";
+
+const moduleName = 'JobDetail';
+let log = logger(moduleName);
+log({ logType: 'LOADED' });
 
 
 

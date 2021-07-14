@@ -30,7 +30,7 @@ After the project is built, a directory named `dist` will be created.
 - add further info into jobs - for display in extended section
 - adjust height of results container (mobile and desktop) if staying with current approach  
 - move stateful settings stuff into Settings
-- replicate stateful stuff in Display
+- replicate stateful stuff in JobTable
 - hover interaction - show info?
 - hover - highlight item in table?
 - select item in table - highlight job in list?   

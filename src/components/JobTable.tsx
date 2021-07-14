@@ -1,11 +1,11 @@
-import * as React from "react";
+import React, { useReducer, useContext } from 'react';
 
 import { DisplayJob } from '../types/DisplayJob';
 
 
 // todo - cut down css
 // import '@progress/kendo-theme-default/dist/all.css';
-import './Display.css';
+import './Table.css';
 
 import { process } from '@progress/kendo-data-query';
 import { Grid, GridColumn, getSelectedState, GridToolbar } from '@progress/kendo-react-grid';
@@ -16,7 +16,7 @@ import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
 import { TabStrip, TabStripTab } from "@progress/kendo-react-layout";
 
 import ReactJson from 'react-json-view-ts';
- import { JobDetail } from '../components/JobDetail';
+ import { JobDetail } from './JobDetail';
 
 
 
@@ -28,7 +28,7 @@ import { logger } from "../helpers/logger";
 import { transformJobs } from "../helpers/transformJobs";
 import { transformRequest } from "../helpers/transformRequest";
 
-
+import { useReduxContext } from "../context/Context";
 
 const DATA_ITEM_KEY = "jobId";
 const SELECTED_FIELD = "selected";
@@ -43,14 +43,22 @@ const initialSort = [
 ];
 
 
-const moduleName = 'display';
+const moduleName = 'JobTable';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
 
 
 
-export const Display = () => {
+export const JobTable = () => {
+
+
+
+    // @ts-ignore
+    const { jobs, setJobs } = useReduxContext();
+
+
+
 
     const _export = React.useRef(null);
 
@@ -63,19 +71,8 @@ export const Display = () => {
     };
 
     const [sort, setSort] = React.useState(initialSort);
-    const [jobs, setJobs] = React.useState([]);
-    const [request, setRequest] = React.useState([]);
-    const [redux, setRedux] = React.useState({});
-
-
-    // default tab is first - job list
-    const [selectedTab, setSelectedTab] = React.useState(0);
-    const handleSelectTab = (e: any) => {
-        setSelectedTab(e.selected);
-    };
-
-
     const [selectedState, setSelectedState] = React.useState({});
+
     const onSelectionChange = React.useCallback(
         (event) => {
             const newSelectedState = getSelectedState({
@@ -108,14 +105,14 @@ export const Display = () => {
     }
 
     const saveSelected = () => {
-
         let keys = Object.keys(selectedState);
         console.log(keys);
     }
 
 
     const expandChange = (event: any) => {
-        let newData = jobs.map((item) => {
+
+        let newData = jobs.map((item: any) => {
 
             // @ts-ignore
             if (item.jobId === event.dataItem.jobId) {
@@ -125,7 +122,31 @@ export const Display = () => {
 
             return item;
         });
+
+
+
+
+
+
+
+
+
+
+
+
+        // todo - CHECK!!!!!!!!!
         setJobs(newData);
+
+
+
+
+
+
+
+
+
+
+
     };
 
         React.useEffect(() => {
@@ -142,77 +163,28 @@ export const Display = () => {
             });
 
              */
-
-            window.addEventListener("message", function (e) {
-
-                if (e.data?.messageType === 'JOB_STATE') {
-                    let newState = e.data.payload;
-                    let json = JSON.parse(newState);
-                    const { jobsList } = json;
-                    log({logType: 'INFO', moduleName, message: 'job list updated', payload: json});
-                    log({logType: 'INFO', moduleName, message: 'job list updated', payload: jobsList});
-
-                    let jobs = transformJobs(jobsList);
-
-                    // is this actually needed?!
-                    // todo - test this out
-                    const newJobs =
-                        jobs.map((dataItem) =>
-                            Object.assign(
-                                {
-                                    selected: false,
-                                },
-                                dataItem
-                            )
-                        );
-                    // @ts-ignore
-                    setJobs(newJobs);
-
-                    let request = transformRequest(json);
-                    if (request) {
-                        let arr = [];
-                        for (const [k, v] of Object.entries(request)) {
-                            arr.push({key: k, value: v});
-                        }
-                        // @ts-ignore
-                        setRequest(arr)
-                    }
-                    setRedux(json);
-                }
-                /*
-                if (message.type === "JOB_STATE") {
-                    console.log('payload: ', message.payload);
-                    // @ts-ignore
-                    setJobs(message.payload);
-                }
-                */
-
-
-            });
-
-
-
         }, []);
 
 
 
+    console.log('######### ', pageYOffset);
 
 
 
-
+    // @ts-ignore
     return (
-        <div>
-            <TabStrip selected={selectedTab} onSelect={handleSelectTab}>
-                <TabStripTab title="Jobs">
+        <>
+
 
             <ExcelExport data={jobs} ref={_export}>
             <Grid
 
                // data={orderBy(jobs, sort)}
 
-                data={orderBy(jobs.map((item) => ({
+                data={orderBy(jobs.map((item: any) => ({
                     // @ts-ignore
                     ...item,
+                    // @ts-ignore
                     [SELECTED_FIELD]: selectedState[idGetter(item)],
                     // @ts-ignore
                 })), sort)}
@@ -302,19 +274,8 @@ export const Display = () => {
 
             </Grid>
             </ExcelExport>
-                </TabStripTab>
-                <TabStripTab title="Search">
-                    <Grid data={request} >
-                        <GridColumn field="key" title="key" />
-                        <GridColumn field="value" title="value" />
-                    </Grid>
 
-                    <ReactJson src={redux} collapsed={1} collapseStringsAfterLength={120}/>
-
-                </TabStripTab>
-
-            </TabStrip>
-        </div>
+        </>
     );
 };
 

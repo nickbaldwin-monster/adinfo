@@ -36928,14 +36928,17 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
 /* overrides */
 .k-drawer-content {
     position: absolute;
-    right: 0;
+    right: 45px;
     top: 80px;
     z-index: 9999;
     max-width: 80%;
-    margin-right: 50px;
+    background-color: #fff;
     width: 55%;
+    height: calc(100vh - 85px);
+    padding-bottom: 0;
+    overflow: scroll;
 }
 
-.k-widget .k-grid {
-    height: calc(100vh - 130px);
+.k-grid {
+    max-height: 100%;
 }

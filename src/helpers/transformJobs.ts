@@ -222,8 +222,12 @@ export const transformJob = (object: object, i: number) => {
 
     }
 
+    // decorating job with additional properties needed for display in the table
+    // @ts-ignore
+    newObj.selected = false;
     newObj.data = object;
     newObj.position = i + 1;
+
     return newObj;
 }
 
