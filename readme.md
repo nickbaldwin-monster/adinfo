@@ -1,7 +1,6 @@
 # Chrome Extension boilerplate created with React Typescript
 
-## Getting started
-
+## Getting started for dev
 
 To build/rebuild the extension:
 
@@ -26,35 +25,47 @@ After the project is built, a directory named `dist` will be created.
 - use both post and enrichments
 
 ## capabilities todo
+
+Data in table:
 - copy info to clipboard  
 - add further info into jobs - for display in extended section
-- adjust height of results container (mobile and desktop) if staying with current approach  
-- move stateful settings stuff into Settings
-- replicate stateful stuff in JobTable
+- deal with locations etc better
+- other dates?
+
+Associate results with data:
 - hover interaction - show info?
-- hover - highlight item in table?
-- select item in table - highlight job in list?   
-- reference list of jobs in state (for selection, hover interactions)
-- use interface checking libraries?
+- hover - highlight item in table
+- select item in table - highlight job in list  
+
+Link data:
 - add link to job
 - add link to datadog
 - add link to webadmin
-- show settings within page too
-- size columns
-- deal with locations etc better
-- other dates?
-- make header fixed
-- font size etc
+  
+Display:
+- font size of json
+- move json to another tab?
+- mobile styling
+- min/max sidebar
+
+Settings:
+- add settings panel
+- turn on/off specific data fields
+
 
 ## could do later
 - export selected items only
 - filter
 
 ## code todo
+- move stateful settings stuff into Settings panel
+- sync settings via background (due to potential multi-tab conflicts)  
+- use interface checking libraries?
 - install testing library etc
 - check schema! e.g. enrichments vs posting info, what is mandatory etc
-- refactor display component!
-- may need to monitor container and add back if missing
+- refactor content and display components
+- reference list of jobs in state (for selection, hover interactions)
+- may need to monitor page and add back if rerender removes app
 
 ## questions
 - what info to show / not show in table?!
@@ -99,16 +110,28 @@ So... the only way to listen for sessionStorage events is within a frame on that
 - https://betterprogramming.pub/inject-html-in-react-using-iframe-ea3c85bdeec0
 - https://www.telerik.com/kendo-react-ui/my-license/?utm_medium=product&utm_source=kendoreact&utm_campaign=kendo-ui-react-purchase-license-keys-warning
 
-- https://www.telerik.com/kendo-react-ui/components/grid/api/GridColumnProps/
-- https://www.telerik.com/kendo-react-ui/components/grid/
-- https://www.telerik.com/kendo-react-ui/components/grid/styling/
+  
 - https://github.com/gristlabs/ts-interface-checker
-- https://www.npmjs.com/package/react-json-view-ts
+
 - https://day.js.org/docs/en/installation/typescript
 
-https://decipher.dev/30-seconds-of-typescript/docs/debounce/
-https://usehooks-typescript.com/react-hook/use-debounce
-https://usehooks-typescript.com/react-hook/use-hover
-https://usehooks-typescript.com/react-hook/use-local-storage
-https://www.30secondsofcode.org/react/s/use-persisted-state
-https://www.30secondsofcode.org/react/s/use-debounce
+- https://decipher.dev/30-seconds-of-typescript/docs/debounce/
+- https://usehooks-typescript.com/react-hook/use-debounce
+- https://usehooks-typescript.com/react-hook/use-hover
+- https://usehooks-typescript.com/react-hook/use-local-storage
+  
+- https://www.30secondsofcode.org/react/s/use-persisted-state
+- https://www.30secondsofcode.org/react/s/use-debounce
+
+tracking position before render (dor scrolling?)
+- https://stackoverflow.com/questions/53537529/getsnapshotbeforeupdate-using-react-hooks
+
+inject content into page via script:
+- https://dev.to/anobjectisa/build-a-chrome-extension-using-reactjs-38o7
+- https://itnext.io/create-chrome-extension-with-reactjs-using-inject-page-strategy-137650de1f39
+
+
+## Libraries used:
+
+- https://www.telerik.com/kendo-react-ui/components/grid/
+- https://www.npmjs.com/package/react-json-view-ts

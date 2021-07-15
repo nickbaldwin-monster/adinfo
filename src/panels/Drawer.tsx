@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from 'react';
+import React, {useReducer, useContext, useEffect} from 'react';
 import * as ReactDOM from "react-dom";
 import {HashRouter, Switch, Route, withRouter} from "react-router-dom";
 import { Test } from "../components/Test";
@@ -24,44 +24,25 @@ log({ logType: 'LOADED' });
 
 export const Drawer = () => {
 
-    // todo - remove - TEST
-    // @ts-ignore
-    // const { salad, setSalad } = useContext(State);
-    // console.log('salad in draw: ', salad, setSalad);
+    /*
+    // move and trigger when list is rendered
+    useEffect(() => {
+        let resultLists = document.querySelectorAll('.results-list');
+        if (resultLists) {
+            const splitElements: Element[] = Array.from(resultLists[0].children);
+            const mobileElements: Element[] = Array.from(resultLists[1].children);
+            const elements = [...splitElements, ...mobileElements];
 
-
-
-
-    // const { request } = useContext(useReduxContext);
-    // console.log('DRAWER: request: ' + request);
-
-     //const {redux, request, dog, loading} = useContext(useReduxContext);
-
-   // log({ logType: 'INFO', message: 'using context in drawer', payload: {redux, request, dog, loading} });
-
-
-
-
-
-
-
-
-    window.addEventListener("message", function (e) {
-        if (e.data?.messageType === 'JOB_STATE') {
-            console.log('window event in Drawer')
+            elements.forEach((el: Element) => {
+                let container = document.createElement("div");
+                container.innerText = 'hi';
+                el.children[0].appendChild(container);
+            })
         }
+
     });
 
-
-    // @ts-ignore
-    window.onbeforeunload = (event) => {
-        const e = event || window.event;
-        // Cancel the event
-        console.log('adinfo ', );
-
-        //window.history.pushState({}, '', '/dummy-page')
-    };
-
+     */
 
     return (
     <>
