@@ -165,13 +165,62 @@ const addTable = () => {
     }
 };
 
+const addDecorations = () => {
+    let resultLists = document.querySelectorAll('.results-list');
 
+    if (resultLists) {
+        const splitElements: Element[] = Array.from(resultLists[0].children);
+        const mobileElements: Element[] = Array.from(resultLists[1].children);
+        const elements = [...splitElements, ...mobileElements];
+
+        elements.forEach((el: Element, i) => {
+            if (el.children[0].children.length === 2) {
+                let container = document.createElement("div");
+                container.innerText = '' + (i + 1);
+                el.children[0].appendChild(container);
+                container.setAttribute('style', 'position: absolute; right: 5px; top: 5px; background-color: yellow; height: 20px; width: 20px;');
+                container.setAttribute('class', 'pos-');
+            }
+        });
+    }
+};
 
 function onMutation(mutations: any) {
     const functionName = 'onMutation';
     if (mutations.length > 0) {
         log({logType: 'INFO', functionName, message: 'mutations observed' + mutations.length});
+
         // todo update state
+
+
+        // todo - only update mutations
+        let resultLists = document.querySelectorAll('.results-list');
+        console.log(resultLists);
+        if (resultLists) {
+            const splitElements: Element[] = Array.from(resultLists[0].children);
+            const mobileElements: Element[] = Array.from(resultLists[1].children);
+            const elements = [...splitElements, ...mobileElements];
+
+            elements.forEach((el: Element, i) => {
+                console.log(el);
+                console.log(el.children[0].children.length);
+                if (el.children[0].children.length === 2) {
+                    let container = document.createElement("div");
+                    container.innerText = '' + (i + 1);
+                    el.children[0].appendChild(container);
+                    container.setAttribute('style', 'position: absolute; right: 5px; top: 5px; background-color: yellow; height: 20px; width: 20px;');
+                    container.setAttribute('class', 'pos-');
+                }
+            })
+        }
+
+
+        // MutationRecord {target: div.results-list.split-screen-mode, addedNodes: NodeList : [div.results-card] }
+        mutations.forEach((m: any) => {
+
+
+            console.log(m);
+        })
     }
 }
 
@@ -199,12 +248,17 @@ const init = () => {
     addTable();
 
 
-    // todo - not needed - unless need to do something when list is loaded
+    // todo - may change this to poll AFTER table render e.g. when result size = state size
     // i.e. when react stops messing with dom
     const poller = setInterval(() => {
         if (document.querySelector('.results-list') !== null) {
             clearInterval(poller);
 
+
+            // add decorations to initial results
+            addDecorations();
+
+            // monitor additional results to add decorations
             const list = document.querySelector('.results-list');
             const observer = new MutationObserver(onMutation);
             // @ts-ignore
@@ -212,6 +266,7 @@ const init = () => {
                 childList: true, // report added/removed nodes
             });
         }
+
     }, 100);
 
 }
