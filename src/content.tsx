@@ -170,7 +170,7 @@ const addTable = () => {
 function onMutation(mutations: any) {
     const functionName = 'onMutation';
     if (mutations.length > 0) {
-        log({logType: 'INFO', functionName, message: 'mutations observed'});
+        log({logType: 'INFO', functionName, message: 'mutations observed' + mutations.length});
         // todo update state
     }
 }
