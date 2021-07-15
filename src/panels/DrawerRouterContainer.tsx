@@ -1,7 +1,6 @@
 import * as React from "react";
 import { withRouter } from "react-router-dom";
 import { Drawer, DrawerContent } from "@progress/kendo-react-layout";
-import { Button } from "@progress/kendo-react-buttons";
 const items = [
     {
         text: "Jobs",
@@ -34,6 +33,7 @@ const DrawerRouterContainer = (props: any) => {
         setExpanded(!expanded);
     };
 
+    // todo
     const onSelect = (e: any) => {
         props.history.push(e.itemTarget.props.route);
         // setExpanded(!expanded);

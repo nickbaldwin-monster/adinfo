@@ -78,7 +78,6 @@ const WithContext = () => {
     return (
         <ReduxProvider>
             <Drawer />
-
         </ReduxProvider>
     );
 };
@@ -156,9 +155,6 @@ const addTable = () => {
         container.id = 'appContainer';
         app.appendChild(container);
         //ReactDOM.render(<WrapContext />, container);
-
-
-
 
         ReactDOM.render(<WithContext />, container);
 

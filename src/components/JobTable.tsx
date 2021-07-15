@@ -1,10 +1,9 @@
 import React, { useReducer, useContext } from 'react';
 
-import { DisplayJob } from '../types/DisplayJob';
 
 
 // todo - cut down css
-// import '@progress/kendo-theme-default/dist/all.css';
+// original css - '@progress/kendo-theme-default/dist/all.css';
 import './Table.css';
 
 import { process } from '@progress/kendo-data-query';
@@ -13,35 +12,16 @@ import { orderBy } from "@progress/kendo-data-query";
 import { getter } from "@progress/kendo-react-common";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
-import { TabStrip, TabStripTab } from "@progress/kendo-react-layout";
-
-import ReactJson from 'react-json-view-ts';
- import { JobDetail } from './JobDetail';
-
-
-
-
-// import "./Settings.css";
-import { loadSettings, saveSettings } from "../helpers/state";
-import { MessageType } from "../types";
+import { JobDetail } from './JobDetail';
 import { logger } from "../helpers/logger";
-import { transformJobs } from "../helpers/transformJobs";
-import { transformRequest } from "../helpers/transformRequest";
-
 import { useReduxContext } from "../context/Context";
+
+
 
 const DATA_ITEM_KEY = "jobId";
 const SELECTED_FIELD = "selected";
 const idGetter = getter(DATA_ITEM_KEY);
-
-
-const initialSort = [
-    {
-        field: "position",
-        dir: "asc",
-    },
-];
-
+const initialSort = [ {field: "position", dir: "asc"} ];
 
 const moduleName = 'JobTable';
 let log = logger(moduleName);
@@ -49,22 +29,13 @@ log({ logType: 'LOADED' });
 
 
 
-
 export const JobTable = () => {
-
-
-
     // @ts-ignore
     const { jobs, setJobs } = useReduxContext();
-
-
-
-
     const _export = React.useRef(null);
 
     const excelExport = () => {
         if (_export.current !== null) {
-
             // @ts-ignore
             _export.current.save();
         }
@@ -111,42 +82,24 @@ export const JobTable = () => {
 
 
     const expandChange = (event: any) => {
-
         let newData = jobs.map((item: any) => {
-
             // @ts-ignore
             if (item.jobId === event.dataItem.jobId) {
                 // @ts-ignore
                 item.expanded = !event.dataItem.expanded;
             }
-
             return item;
         });
 
 
-
-
-
-
-
-
-
-
-
-
+        // todo
+        // todo
+        // todo
+        // todo
+        // todo
+        // todo
         // todo - CHECK!!!!!!!!!
         setJobs(newData);
-
-
-
-
-
-
-
-
-
-
-
     };
 
         React.useEffect(() => {
@@ -166,21 +119,12 @@ export const JobTable = () => {
         }, []);
 
 
-
-    console.log('######### ', pageYOffset);
-
-
-
     // @ts-ignore
     return (
         <>
-
-
             <ExcelExport data={jobs} ref={_export}>
             <Grid
-
                // data={orderBy(jobs, sort)}
-
                 data={orderBy(jobs.map((item: any) => ({
                     // @ts-ignore
                     ...item,
@@ -201,8 +145,6 @@ export const JobTable = () => {
 
 
                 // style={{ height: '100%', overflow: 'auto', paddingBottom: '10px' }}
-
-
 
                 sortable={true}
                 // @ts-ignore

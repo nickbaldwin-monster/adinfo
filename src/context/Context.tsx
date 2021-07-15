@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { getRedux } from "../adapters/redux";
 import { logger } from "../helpers/logger";
 import {transformJobs} from "../helpers/transformJobs";
 import {transformRequest} from "../helpers/transformRequest";
+
+
 
 const moduleName = 'Context';
 let log = logger(moduleName);
@@ -15,7 +16,6 @@ const { Provider, Consumer } = ReduxContext;
 // @ts-ignore
 const ReduxProvider = ({ children }) => {
 
-    const [dog, setDog] = useState({});
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [request, setRequest] = useState([]);
@@ -50,13 +50,13 @@ const ReduxProvider = ({ children }) => {
 
                 setLoading(false);
 
-                log({logType: 'INFO', message: 'Context - useEffect: state is updated:  ReduxProvider updated', payload: {jobs, dog, loading, redux, request}  })
+                log({logType: 'INFO', message: 'Context - useEffect: state is updated:  ReduxProvider updated', payload: {jobs, loading, redux, request}  })
             }
         });
     }, []);
 
     return (
-        <Provider value={{ jobs, setJobs, request, redux, dog, loading }} >
+        <Provider value={{ jobs, setJobs, request, redux, loading }} >
             {children}
         </Provider>
     );

@@ -5,9 +5,9 @@ import ReactJson from 'react-json-view-ts';
 // todo - cut down css
 import './Table.css';
 
-
-
 import { logger } from "../helpers/logger";
+import { useReduxContext } from "../context/Context";
+
 
 
 const moduleName = 'RequestTable';
@@ -15,16 +15,13 @@ let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
 
-import { useReduxContext } from "../context/Context";
 
 export const RequestTable = () => {
 
     log({logType: 'INFO', message: 'RequestTable mounted'});
 
-
     // @ts-ignore
     const { request, redux } = useReduxContext();
-
     log({logType: 'INFO', message: 'RequestTable', payload: {request, redux}});
 
     return (
@@ -34,7 +31,6 @@ export const RequestTable = () => {
                 <GridColumn field="key" title="key" />
                 <GridColumn field="value" title="value" />
             </Grid>
-
             <ReactJson src={redux} collapsed={1} collapseStringsAfterLength={120}/>
         </div>
     );

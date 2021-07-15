@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+
+
 interface Props {
     content: any
 }
@@ -41,24 +43,19 @@ const code = `
                 }
             };
             
-            log( {logType: 'LOADED', moduleName} );
+            log({ logType: 'LOADED', moduleName });
             
-            
-
+            // send message when state changes
             window.addEventListener('storage', function(e) {
-
                 if (e.key === 'savedReduxState') {
                     let message= "job state changed: " + e.key;
                     log({ logType: 'INFO', message });
                     window.parent.postMessage({ messageType: 'JOB_STATE', payload: e.newValue }, "*");
-                    // todo
- 
                 }
             });
             
-      
         </script>
-        I am not visible
+        I am not visible!
     </body>
 `;
 

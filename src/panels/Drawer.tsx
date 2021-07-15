@@ -2,18 +2,9 @@ import React, {useReducer, useContext, useEffect} from 'react';
 import * as ReactDOM from "react-dom";
 import {HashRouter, Switch, Route, withRouter} from "react-router-dom";
 import { Test } from "../components/Test";
-
 import DrawerRouterContainer from "./DrawerRouterContainer";
 import { JobTable } from "../components/JobTable";
 import { RequestTable } from "../components/RequestTable";
-import {transformJobs} from "../helpers/transformJobs";
-import {transformRequest} from "../helpers/transformRequest";
-
-
-
-
-import { State } from '../content';
-import { useReduxContext } from "../context/Context";
 import {logger} from "../helpers/logger";
 
 
