@@ -31,7 +31,7 @@ log({ logType: 'LOADED' });
 
 export const JobTable = () => {
     // @ts-ignore
-    const { jobs, setJobs } = useReduxContext();
+    const { loading, jobs, setJobs } = useReduxContext();
     const _export = React.useRef(null);
 
     const excelExport = () => {

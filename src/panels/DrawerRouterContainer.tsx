@@ -1,10 +1,12 @@
 import * as React from "react";
 import { withRouter } from "react-router-dom";
 import { Drawer, DrawerContent } from "@progress/kendo-react-layout";
+import { useReduxContext } from "../context/Context";
+import {MiniToggleDisplay} from "../elements/MiniToggleDisplay";
 const items = [
     {
         text: "Jobs",
-        icon: "k-i-inbox",
+        icon: "k-i-table",
         selected: true,
         route: "/",
     },
@@ -13,8 +15,16 @@ const items = [
     },
     {
         text: "Request",
-        icon: "k-i-bell",
+        icon: "k-i-list-unordered",
         route: "/request",
+    },
+    {
+        separator: true,
+    },
+    {
+        text: "JSON",
+        icon: "k-i-css",
+        route: "/json",
     },
     {
         separator: true,
@@ -23,10 +33,24 @@ const items = [
         text: "Settings",
         icon: "k-i-gear",
         route: "/settings",
+    },
+    {
+        separator: true,
+    },
+    {
+        text: "Display",
+        icon: "k-i-preview",
+        route: "/display",
     }
 ];
 
 const DrawerRouterContainer = (props: any) => {
+
+
+    // @ts-ignore
+    const { display, setDisplay } = useReduxContext();
+
+
     const [expanded, setExpanded] = React.useState(false);
 
     const handleClick = () => {
@@ -35,8 +59,18 @@ const DrawerRouterContainer = (props: any) => {
 
     // todo
     const onSelect = (e: any) => {
+
+        // todo - keep? or icon at bottom of toolbar
+        if (e.itemTarget.props.route === '/display') {
+            setDisplay(!display);
+            return;
+        }
+
         props.history.push(e.itemTarget.props.route);
         // setExpanded(!expanded);
+
+        // todo - keep? if click on any icon, display
+        setDisplay(true);
     };
 
     // @ts-ignore
@@ -50,7 +84,16 @@ const DrawerRouterContainer = (props: any) => {
         }
     };
 
+    let show = () => {
+        setDisplay(!display);
+    }
+
     let selected = setSelectedItem(props.location.pathname);
+    // @ts-ignore
+
+    // todo - could add an additional ite
+
+
     return (
         <div>
 
@@ -65,7 +108,10 @@ const DrawerRouterContainer = (props: any) => {
                 }))}
                 onSelect={onSelect}
             >
-                <DrawerContent>{props.children}</DrawerContent>
+                <MiniToggleDisplay handleClick={show}/>
+                {display &&
+                    <DrawerContent>{props.children}</DrawerContent>
+                }
             </Drawer>
         </div>
     );

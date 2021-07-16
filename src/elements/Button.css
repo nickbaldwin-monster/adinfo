@@ -1,9 +1,8 @@
-.snowButton {
+.toggleButton {
     border: 0;
     background-color: #1a1d22;
     color: white;
     padding: 5px 10px;
-    width: 100%;
     cursor: pointer;
 }
 

@@ -178,8 +178,7 @@ const addDecorations = () => {
                 let container = document.createElement("div");
                 container.innerText = '' + (i + 1);
                 el.children[0].appendChild(container);
-                container.setAttribute('style', 'position: absolute; right: 5px; top: 5px; background-color: yellow; height: 20px; width: 20px;');
-                container.setAttribute('class', 'pos-');
+                container.setAttribute('class', 'result-decoration');
             }
         });
     }
@@ -208,8 +207,7 @@ function onMutation(mutations: any) {
                     let container = document.createElement("div");
                     container.innerText = '' + (i + 1);
                     el.children[0].appendChild(container);
-                    container.setAttribute('style', 'position: absolute; right: 5px; top: 5px; background-color: yellow; height: 20px; width: 20px;');
-                    container.setAttribute('class', 'pos-');
+                    container.setAttribute('class', 'result-decoration');
                 }
             })
         }

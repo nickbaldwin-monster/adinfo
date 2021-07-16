@@ -13,9 +13,21 @@ log({ logType: 'LOADED' });
 const ReduxContext = createContext({});
 const { Provider, Consumer } = ReduxContext;
 
+
+// todo: may want to use a reducer for certain state  e.g. adding nodes to list -
+//  may also remove need to deal with re-renders if add elements to state rather than recreating...
+
+function reducer(state: any, item: any) {
+    return [...state, item]
+}
+// then instead of useState([]), useReducer(reducer, [])
+
+
+
 // @ts-ignore
 const ReduxProvider = ({ children }) => {
 
+    const [display, setDisplay] = useState(true);
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [request, setRequest] = useState([]);
@@ -56,7 +68,7 @@ const ReduxProvider = ({ children }) => {
     }, []);
 
     return (
-        <Provider value={{ jobs, setJobs, request, redux, loading }} >
+        <Provider value={{ display, setDisplay, jobs, setJobs, request, redux, loading }} >
             {children}
         </Provider>
     );

@@ -36943,7 +36943,7 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
     max-height: 100%;
 }
 
-.pos {
+.result-decoration {
     position: absolute;
     right: 5px;
     top: 5px;
@@ -36951,6 +36951,9 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
     height: 20px;
     width: 20px;
 }
-.pos-split {
 
+
+
+.pretty-json-container {
+    font-size: 12px;
 }

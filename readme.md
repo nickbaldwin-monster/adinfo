@@ -43,13 +43,13 @@ Link data:
 - add link to webadmin
   
 Display:
-- font size of json
-- move json to another tab?
 - mobile styling
-- min/max sidebar
+- decide on collapse/expand in sidebar
+- fix padding in grid header
+- loading indicator
 
 Settings:
-- add settings panel
+- add settings into panel
 - turn on/off specific data fields
 
 
@@ -106,6 +106,10 @@ So... the only way to listen for sessionStorage events is within a frame on that
 
 
 ## useful links
+
+job schema:
+- https://github.com/monster-next/jobs-job-dto-v2/blob/master/src/main/resources/job.ext.schema.json
+  
 - https://react.christmas/2020/12
 - https://betterprogramming.pub/inject-html-in-react-using-iframe-ea3c85bdeec0
 - https://www.telerik.com/kendo-react-ui/my-license/?utm_medium=product&utm_source=kendoreact&utm_campaign=kendo-ui-react-purchase-license-keys-warning
@@ -116,10 +120,15 @@ So... the only way to listen for sessionStorage events is within a frame on that
 - https://day.js.org/docs/en/installation/typescript
 
 - https://decipher.dev/30-seconds-of-typescript/docs/debounce/
+  https://davidwalsh.name/javascript-debounce-function
+  https://dev.to/gabe_ragland/debouncing-with-react-hooks-jci
 - https://usehooks-typescript.com/react-hook/use-debounce
+
+- https://usehooks.com/
 - https://usehooks-typescript.com/react-hook/use-hover
 - https://usehooks-typescript.com/react-hook/use-local-storage
   
+
 - https://www.30secondsofcode.org/react/s/use-persisted-state
 - https://www.30secondsofcode.org/react/s/use-debounce
 
