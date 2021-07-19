@@ -4,17 +4,15 @@ import React, { useReducer, createContext } from 'react';
 import * as ReactDOM from "react-dom";
 
 import { MessageType } from "./types";
+import { transformJobs } from './helpers/transformJobs';
 import { logger } from "./helpers/logger";
 import { Iframe } from "./components/Iframe";
-import { JobTable } from "./components/JobTable";
-
-
 import { Drawer } from "./panels/Drawer";
 
 
 import "./content.css";
 
-import { transformJobs } from './helpers/transformJobs';
+
 
 
 
@@ -194,15 +192,14 @@ function onMutation(mutations: any) {
 
         // todo - only update mutations
         let resultLists = document.querySelectorAll('.results-list');
-        console.log(resultLists);
+
         if (resultLists) {
             const splitElements: Element[] = Array.from(resultLists[0].children);
             const mobileElements: Element[] = Array.from(resultLists[1].children);
             const elements = [...splitElements, ...mobileElements];
 
             elements.forEach((el: Element, i) => {
-                console.log(el);
-                console.log(el.children[0].children.length);
+
                 if (el.children[0].children.length === 2) {
                     let container = document.createElement("div");
                     container.innerText = '' + (i + 1);
@@ -211,14 +208,6 @@ function onMutation(mutations: any) {
                 }
             })
         }
-
-
-        // MutationRecord {target: div.results-list.split-screen-mode, addedNodes: NodeList : [div.results-card] }
-        mutations.forEach((m: any) => {
-
-
-            console.log(m);
-        })
     }
 }
 

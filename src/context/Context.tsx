@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useReducer } from "react";
 import { logger } from "../helpers/logger";
-import {transformJobs} from "../helpers/transformJobs";
-import {transformRequest} from "../helpers/transformRequest";
+import { transformJobs } from "../helpers/transformJobs";
+import { transformRequest } from "../helpers/transformRequest";
 
 
 
@@ -17,9 +17,32 @@ const { Provider, Consumer } = ReduxContext;
 // todo: may want to use a reducer for certain state  e.g. adding nodes to list -
 //  may also remove need to deal with re-renders if add elements to state rather than recreating...
 
-function reducer(state: any, item: any) {
-    return [...state, item]
+const defaultSettings = {
+    title: true,
+    company: true,
+    jobId: true,
+    location: true,
+    adProvider: true,
+    mesco: true,
+    ingestionMethod: true,
+    pricingType: true,
+    formattedDate: true,
+    dateRecency: true,
+    provider: true,
+    providerCode: true,
+    applyType: true,
+    xCode: true
+};
+
+
+interface DisplayJobProperty {
+    [key: string]: boolean;
 }
+
+function settingsReducer(state: object, item: DisplayJobProperty): object {
+    return { ...state, item };
+}
+
 // then instead of useState([]), useReducer(reducer, [])
 
 
@@ -27,6 +50,10 @@ function reducer(state: any, item: any) {
 // @ts-ignore
 const ReduxProvider = ({ children }) => {
 
+    const [settings, setSettings] = useReducer(settingsReducer, defaultSettings);
+    const [numberResults, setNumberResults] = useState(0);
+    const [results, setResults] = useState(true);
+    const [mobileResults, setMobileResults] = useState(true);
     const [display, setDisplay] = useState(true);
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -36,6 +63,36 @@ const ReduxProvider = ({ children }) => {
     log({logType: 'INFO', message: 'ReduxProvider mounted' });
 
     useEffect(() => {
+
+        // todo - read hooks doc - will adding dependencies here remove unnecessary re-renders?!?!?!
+
+        // todo - should we do dom manipulation here?!??!?!?!
+        let something = document.querySelector('.ds-header');
+        if (something && !something.hasAttribute('data-something')) {
+            something.setAttribute('data-something', 'yes');
+        }
+        else {
+            console.log('failed');
+            console.log(something);
+
+        }
+
+
+
+
+        window.addEventListener("message", function (e) {
+            if (e.data?.messageType === 'RESULTS_UPDATED') {
+
+
+
+                // todo - cannot receive dom elements - so instead, just need to respond to x new elements
+
+
+
+            }
+        });
+
+
         // todo - need to detach this? does listener get added every render?
         window.addEventListener("message", function (e) {
 
@@ -68,7 +125,14 @@ const ReduxProvider = ({ children }) => {
     }, []);
 
     return (
-        <Provider value={{ display, setDisplay, jobs, setJobs, request, redux, loading }} >
+        <Provider value={{
+            display, setDisplay,
+            jobs, setJobs,
+            request,
+            redux,
+            loading,
+            settings
+        }} >
             {children}
         </Provider>
     );
