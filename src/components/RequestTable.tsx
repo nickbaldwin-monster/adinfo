@@ -6,6 +6,7 @@ import './Table.css';
 
 import { logger } from "../helpers/logger";
 import { useReduxContext } from "../context/Context";
+import {RequestLinks} from "./RequestLinks";
 
 
 
@@ -29,6 +30,7 @@ export const RequestTable = () => {
                 <GridColumn field="key" title="key" />
                 <GridColumn field="value" title="value" />
             </Grid>
+            <RequestLinks jobId={'1'} toTs={1} fromTs={1} />
         </div>
     );
 };
