@@ -24,13 +24,24 @@ export const RequestTable = () => {
     const { loading, request } = useReduxContext();
     log({logType: 'INFO', message: 'RequestTable', payload: {request}});
 
+    let searchId;
+    let isLink = false;
+    if (request && request.length) {
+        // @ts-ignore
+        searchId = request.find((el: object) => el.key === 'searchId').value;
+        isLink = true
+    }
+    // let toTs = Date.now() + 90000;
+    let toTs = Date.now();
+    let fromTs = toTs - 900000;
+
     return (
         <div>
             <Grid data={request} >
                 <GridColumn field="key" title="key" />
                 <GridColumn field="value" title="value" />
             </Grid>
-            <RequestLinks jobId={'1'} toTs={1} fromTs={1} />
+            {isLink && <RequestLinks searchId={searchId} toTs={toTs} fromTs={fromTs} />}
         </div>
     );
 };
