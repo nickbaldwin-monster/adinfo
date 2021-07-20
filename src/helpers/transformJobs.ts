@@ -11,6 +11,17 @@ type PricingType = 'NOW Aggregated' | 'NOW Duration' | 'NOW PPC' | 'Next Free' |
 type ApplyType = '' | 'Onsite' | 'Offsite';
 
 
+const returnAdProvider = (adProvider: object): string => {
+
+
+    // @ts-ignore
+    if (adProvider && adProvider.provider) {
+        // @ts-ignore
+        return adProvider.provider;
+    } else {
+        return '';
+    }
+}
 
 
 const normalizeAdProvider = (adProvider: object): AdProvider => {
@@ -18,6 +29,7 @@ const normalizeAdProvider = (adProvider: object): AdProvider => {
         return '';
     }
     // todo
+
 
     // @ts-ignore
     if (adProvider.provider.toLowerCase().match(/gcts_ad*/)) {
@@ -156,7 +168,10 @@ export const transformJob = (object: object, i: number) => {
             newObj[k] = v;
         }
         if (k === 'jobAd') {
-            newObj.adProvider = normalizeAdProvider(v);
+
+           // newObj.adProvider = normalizeAdProvider(v);
+            newObj.adProvider = returnAdProvider(v);
+
         }
         if (k === 'jobPosting') {
             newObj.mesco = normalizeMesco(v);

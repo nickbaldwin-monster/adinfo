@@ -1,0 +1,16 @@
+.setting {
+    padding: 1px 5px;
+}
+
+.settingSpacer {
+    padding: 5px;
+    width: 5px;
+}
+
+.settingPanel {
+    font-size: 14px;
+}
+
+.miniToggleContainer {
+    height: 24px;
+}

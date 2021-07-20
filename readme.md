@@ -52,6 +52,11 @@ Settings:
 - add settings into panel
 - turn on/off specific data fields
 
+Other
+- auto load results 
+- set/see cookies
+
+
 
 ## could do later
 - export selected items only
