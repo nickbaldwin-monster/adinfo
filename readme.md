@@ -34,17 +34,16 @@ Data in table:
 
 Associate results with data:
 - hover interaction - show info?
-- hover - highlight item in table
-- select item in table - highlight job in list  
+- hover - highlight item in table?
+- select item in table - highlight job in list?  
 
 Link data:
 - add link to job
-- add link to datadog
 - add link to webadmin
+- add link to nextadmin
   
 Display:
 - mobile styling
-- decide on collapse/expand in sidebar
 - fix padding in grid header
 - loading indicator
 

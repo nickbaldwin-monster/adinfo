@@ -5,7 +5,7 @@ import { DisplayJob }  from '../types/DisplayJob';
 import jobsList from "../sampleData/jobsList.json";
 import dayjs from 'dayjs';
 
-type AdProvider = 'Unknown' | "AdTech" | 'GCTS' | '';
+type AdProvider = 'Unknown' | "AdTech" | 'GCTS' | 'GCTS AdQuery' | '';
 type IngestionMethod = 'NOW' | 'JPW';
 type PricingType = 'NOW Aggregated' | 'NOW Duration' | 'NOW PPC' | 'Next Free' | 'Next';
 type ApplyType = '' | 'Onsite' | 'Offsite';
@@ -18,11 +18,15 @@ const normalizeAdProvider = (adProvider: object): AdProvider => {
         return '';
     }
     // todo
+
+    // @ts-ignore
+    if (adProvider.provider.toLowerCase().match(/gcts_ad*/)) {
+        return 'GCTS AdQuery';
+    }
     // @ts-ignore
     if (adProvider.provider.toLowerCase().match(/ad*/)) {
         return 'AdTech';
     }
-    // todo
     // @ts-ignore
     if (adProvider.provider.toLowerCase().match(/g*/)) {
         return 'GCTS';
@@ -186,14 +190,15 @@ export const transformJob = (object: object, i: number) => {
 
 
 
-
+        if (k === 'seoJobId') {
+            newObj.seoJobId = v;
+        }
 
         if (k === 'jobPosting') {
             // todo check
             newObj.title = normalizePostTitle(v);
             newObj.company = normalizePostCompany(v);
             newObj.location = normalizePostLocation(v);
-
         }
 
         if (k === 'enrichments') {

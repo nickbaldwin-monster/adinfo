@@ -3,6 +3,7 @@ import ReactJson from "react-json-view-ts";
 
 import { DisplayJob } from "../types/DisplayJob";
 import { logger } from "../helpers/logger";
+import {JobLinks} from "./JobLinks";
 
 const moduleName = 'JobDetail';
 let log = logger(moduleName);
@@ -25,6 +26,8 @@ export const JobDetail = (props: DataProps) => {
             <p>
                 <strong>providerCode:</strong> {dataItem.providerCode || 'N/A'}
             </p>
+
+            <JobLinks jobId={dataItem.jobId} accountId={undefined} seoJobId={dataItem.seoJobId}  />
 
             <ReactJson src={dataItem.data} collapsed={1} collapseStringsAfterLength={120}/>
 
