@@ -17,7 +17,7 @@ const { Provider, Consumer } = ReduxContext;
 // todo: may want to use a reducer for certain state  e.g. adding nodes to list -
 //  may also remove need to deal with re-renders if add elements to state rather than recreating...
 
-const defaultSettings = {
+export const defaultSettings = {
     title: true,
     company: true,
     jobId: true,
@@ -31,7 +31,8 @@ const defaultSettings = {
     provider: true,
     providerCode: true,
     applyType: true,
-    xCode: true
+    xCode: true,
+    seoJobId: true
 };
 
 

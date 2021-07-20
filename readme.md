@@ -38,14 +38,15 @@ Associate results with data:
 - select item in table - highlight job in list?  
 
 Link data:
-- add link to job
+- support all domains for links on site
 - add link to webadmin
-- add link to nextadmin
+- add links for accounts
   
 Display:
 - mobile styling
 - fix padding in grid header
 - loading indicator
+- revise order data
 
 Settings:
 - add settings into panel

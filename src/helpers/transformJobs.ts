@@ -6,7 +6,7 @@ import jobsList from "../sampleData/jobsList.json";
 import dayjs from 'dayjs';
 
 type AdProvider = 'Unknown' | "AdTech" | 'GCTS' | 'GCTS AdQuery' | '';
-type IngestionMethod = 'NOW' | 'JPW';
+type IngestionMethod = 'Adapted NOW' | 'JPW';
 type PricingType = 'NOW Aggregated' | 'NOW Duration' | 'NOW PPC' | 'Next Free' | 'Next';
 type ApplyType = '' | 'Onsite' | 'Offsite';
 
