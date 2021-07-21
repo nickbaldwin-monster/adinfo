@@ -2,7 +2,7 @@
   "name": "adinfo",
   "description": "adinfo",
   "manifest_version": 2,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
@@ -45,6 +45,7 @@
       "matches": [
         "*://*.monster.at/jobs/*",
         "*://*.monster.at/de/jobs/*",
+        "*://*.monster.be/en/jobs/*",
         "*://*.monster.be/nl/vacatures/*",
         "*://*.monster.ca/jobs/*",
         "*://*.monster.ca/fr/emploi/*",

@@ -19,6 +19,13 @@ After the project is built, a directory named `dist` will be created.
 4. Click 'Load unpacked'
 5. Select the `dist` directory
 
+## updates
+1.0.4
+ - wed 21 july 2021
+ - added settings for field display
+ - added permission/match for .be/en/
+
+
 
 ##  important
 - check schema! e.g. enrichments vs posting info, what is mandatory etc
@@ -132,7 +139,14 @@ job schema:
 - https://usehooks.com/
 - https://usehooks-typescript.com/react-hook/use-hover
 - https://usehooks-typescript.com/react-hook/use-local-storage
-  
+- https://github.com/akash-joshi/local-storage-hook
+- https://blog.bitsrc.io/how-to-start-using-react-query-4869e3d5680d
+- https://blog.logrocket.com/a-guide-to-usestate-in-react-ecb9952e406c/
+
+on hover
+- https://stackoverflow.com/questions/14795099/pure-javascript-to-check-if-something-has-hover-without-setting-on-mouseover-ou
+- https://developer.mozilla.org/en-US/docs/Web/API/Element/matches
+  - https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseover_event
 
 - https://www.30secondsofcode.org/react/s/use-persisted-state
 - https://www.30secondsofcode.org/react/s/use-debounce
@@ -144,8 +158,21 @@ inject content into page via script:
 - https://dev.to/anobjectisa/build-a-chrome-extension-using-reactjs-38o7
 - https://itnext.io/create-chrome-extension-with-reactjs-using-inject-page-strategy-137650de1f39
 
+testing with useContext
+- https://testing-library.com/docs/example-react-context/
+- https://www.youtube.com/watch?v=3yiialslPbc&ab_channel=KentC.Dodds
+- https://medium.com/@ryandrewjohnson/unit-testing-components-using-reacts-new-context-api-4a5219f4b3fe
+- https://polvara.me/posts/mocking-context-with-react-testing-library
+
+structure using context and adapters
+- https://www.freecodecamp.org/news/a-better-way-to-structure-react-projects/
+
 
 ## Libraries used:
 
 - https://www.telerik.com/kendo-react-ui/components/grid/
 - https://www.npmjs.com/package/react-json-view-ts
+
+
+structure and context used from:
+- https://github.com/akash-joshi/react-dogs-app/

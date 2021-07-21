@@ -31,7 +31,7 @@ log({ logType: 'LOADED' });
 
 export const JobTable = () => {
     // @ts-ignore
-    const { loading, jobs, setJobs } = useReduxContext();
+    const { loading, jobs, setJobs, settings } = useReduxContext();
     const _export = React.useRef(null);
 
     const excelExport = () => {
@@ -198,22 +198,19 @@ export const JobTable = () => {
                     }
                 />
 
-
                 <GridColumn field="position" title="P" width="30px"/>
-                <GridColumn field="company" title="Company" width="100px"/>
-                <GridColumn field="title" title="Title" width="150px"/>
-                <GridColumn field="location" title="Location" width="120px"/>
-                <GridColumn field="ingestionMethod" title="ingestion" width="70px"/>
-                <GridColumn field="pricingType" title="T" width="20px"/>
-                <GridColumn field="adProvider" title="AdProvider" width="50px"/>
-                <GridColumn field="mesco" title="Mesco" width="100px"/>
-                <GridColumn field="dateRecency" title="Recency" width="80px"/>
-                <GridColumn field="formattedDate" title="Date" width="70px"/>
-                <GridColumn field="provider" title="Provider" width="70px"/>
-                <GridColumn field="applyType" title="Apply" width="70px"/>
-                <GridColumn field="xCode" title="xCode" width="80px"/>
-
-
+                {settings.company && <GridColumn field="company" title="Company" width="100px"/>}
+                {settings.title && <GridColumn field="title" title="Title" width="150px"/>}
+                {settings.location && <GridColumn field="location" title="Location" width="120px"/>}
+                {settings.ingestionMethod && <GridColumn field="ingestionMethod" title="ingestion" width="70px"/>}
+                {settings.pricingType && <GridColumn field="pricingType" title="T" width="20px"/>}
+                {settings.adProvider && <GridColumn field="adProvider" title="AdProvider" width="50px"/>}
+                {settings.mesco && <GridColumn field="mesco" title="Mesco" width="100px"/>}
+                {settings.dateRecency && <GridColumn field="dateRecency" title="Recency" width="80px"/>}
+                {settings.formattedDate && <GridColumn field="formattedDate" title="Date" width="70px"/>}
+                {settings.provider && <GridColumn field="provider" title="Provider" width="70px"/>}
+                {settings.applyType && <GridColumn field="applyType" title="Apply" width="70px"/>}
+                {settings.xCode && <GridColumn field="xCode" title="xCode" width="80px"/>}
             </Grid>
             </ExcelExport>
 

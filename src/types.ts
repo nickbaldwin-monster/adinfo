@@ -44,8 +44,14 @@ interface SettingsUpdate {
     source: string;
 }
 
+interface ToggleSetting {
+    type: "TOGGLE_SETTING";
+    payload: string;
+    source: string;
+}
+
 
 export type MessageType =
     DisplayStateRequest | DisplayStateResponse | DisplayToggle |
     SettingsStateRequest | SettingsStateResponse | SettingsUpdate |
-    JobState;
+    JobState | ToggleSetting;

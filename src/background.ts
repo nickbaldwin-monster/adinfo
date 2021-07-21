@@ -28,30 +28,64 @@ const getSavedSettings = () => {
 };
 
 
-const sendStatus = (display: boolean) => {
-    const functionName = 'sendStatus';
-    const message: MessageType = { type: "DISPLAY_STATUS", display, source: 'background' };
+const sendSetting = (setting: string) => {
+    const functionName = 'sendSetting';
+    const message: MessageType = {type: "TOGGLE_SETTING", payload: setting, source: 'background'};
 
-    // send message to popup
-    chrome.runtime.sendMessage(message);
-    log({ logType: 'MESSAGE_SENT', functionName, payload: message});
-
-    // send message to every active tab - not ideal!
-    chrome.tabs.query({}, (tabs) => {
+    chrome.tabs.query({active: true}, function (tabs) {
         tabs.forEach((tab) => {
             if (tab.id) {
                 chrome.tabs.sendMessage(tab.id, message);
             }
         });
+    });
+    log({logType: 'MESSAGE_SENT', functionName, payload: message});
+};
+
+
+    const sendStatus = (display: boolean) => {
+    const functionName = 'sendStatus';
+    const message: MessageType = { type: "DISPLAY_STATUS", display, source: 'background' };
+
+    // send message to popup
+    // todo - needed?
+    chrome.runtime.sendMessage(message);
+    log({ logType: 'MESSAGE_SENT', functionName, payload: message});
+
+    // todo - check url match - might need to provide array of diff monster domains
+    // todo - add monsterboard
+    // todo - add query e.g. {url: '*://*.monster.co.uk/*'}
+
+
+    /*
+    chrome.tabs.query({url: '*://*.monster.co.uk/*'}, (tabs) => {
+        tabs.forEach((tab) => {
+            if (tab.id) {
+                chrome.tabs.sendMessage(tab.id, message);
+            }
+        });
+        */
+
+
 
         // todo - send only to monster tabs?
         // todo - register tabs?
         // todo - unload tabs?
-    });
+
 
     // todo - check this approach
-    /*
+
         chrome.tabs.query({active: true}, function(tabs){
+            tabs.forEach((tab) => {
+                if (tab.id) {
+                    chrome.tabs.sendMessage(tab.id, message);
+                }
+            });
+        });
+
+        /*
+
+         chrome.tabs.query({url: ''}, function(tabs){
             tabs.forEach((tab) => {
                 if (tab.id) {
                     chrome.tabs.sendMessage(tab.id, message);
@@ -76,6 +110,16 @@ const handleMessage = (message: MessageType) => {
         chrome.storage.local.set({ display: display });
 
         sendStatus(display);
+
+    }
+    if (message.type === "TOGGLE_SETTING") {
+        let setting = message.payload;
+        // todo use local storage
+        // window.localStorage.setItem("snowing", "true");
+        // chrome.storage.local.set({ display: display });
+
+        sendSetting(setting);
+
     }
 };
 
@@ -92,7 +136,9 @@ let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
 // get initial state and notify popup and content scripts
+// todo - test out having default settings applied here
 display = getSavedSettings();
+// todo - or applying defaults and saving
 sendStatus(display);
 
 // respond to messages

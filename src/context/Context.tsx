@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useReducer } fro
 import { logger } from "../helpers/logger";
 import { transformJobs } from "../helpers/transformJobs";
 import { transformRequest } from "../helpers/transformRequest";
+import {MessageType} from "../types";
 
 
 
@@ -20,7 +21,7 @@ const { Provider, Consumer } = ReduxContext;
 export const defaultSettings = {
     title: true,
     company: true,
-    jobId: true,
+    jobId: false,
     location: true,
     adProvider: true,
     mesco: true,
@@ -32,7 +33,7 @@ export const defaultSettings = {
     providerCode: true,
     applyType: true,
     xCode: true,
-    seoJobId: true
+    seoJobId: false
 };
 
 
@@ -40,8 +41,11 @@ interface DisplayJobProperty {
     [key: string]: boolean;
 }
 
-function settingsReducer(state: object, item: DisplayJobProperty): object {
-    return { ...state, item };
+function settingsReducer(settings: object, setting: DisplayJobProperty): object {
+    console.log('reducer');
+    console.log(settings);
+    console.log(setting);
+    return { ...settings, ...setting };
 }
 
 // then instead of useState([]), useReducer(reducer, [])
@@ -51,7 +55,23 @@ function settingsReducer(state: object, item: DisplayJobProperty): object {
 // @ts-ignore
 const ReduxProvider = ({ children }) => {
 
-    const [settings, setSettings] = useReducer(settingsReducer, defaultSettings);
+    const [settings, setSettings] = useState({
+        title: true,
+        company: true,
+        jobId: false,
+        location: true,
+        adProvider: true,
+        mesco: true,
+        ingestionMethod: true,
+        pricingType: true,
+        formattedDate: true,
+        dateRecency: true,
+        provider: true,
+        providerCode: true,
+        applyType: true,
+        xCode: true,
+        seoJobId: false
+    });
     const [numberResults, setNumberResults] = useState(0);
     const [results, setResults] = useState(true);
     const [mobileResults, setMobileResults] = useState(true);
@@ -62,6 +82,36 @@ const ReduxProvider = ({ children }) => {
     const [redux, setRedux] = useState({});
 
     log({logType: 'INFO', message: 'ReduxProvider mounted' });
+
+
+
+    const handleMessage = (message: MessageType) => {
+        log({ logType: 'MESSAGE_RECEIVED', functionName: 'handleMessage', payload: message });
+        if (message.type === "DISPLAY_STATUS") {
+            // updateDisplay(message.display);
+        }
+        if (message.type === "SETTINGS_STATUS") {
+            // todo - apply settings
+        }
+
+        // @ts-ignore    // checking property name is valid
+        if (message.type === "TOGGLE_SETTING" && defaultSettings[message.payload] !== 'undefined') {
+
+            // @ts-ignore
+            setSettings(settings => {
+                // @ts-ignore
+                    let prevSettingValue = settings[message.payload];
+                    let nextSetting = {};
+                    // @ts-ignore
+                    nextSetting[message.payload] = !prevSettingValue;
+
+                    log({logType: 'INFO', message: 'new state in reducer', payload: {...settings, ...nextSetting}});
+                    return { ...settings, ...nextSetting };
+                }
+            );
+        }
+    };
+
 
     useEffect(() => {
 
@@ -77,6 +127,14 @@ const ReduxProvider = ({ children }) => {
             console.log(something);
 
         }
+
+
+        chrome.runtime.onMessage.addListener((message: MessageType) => {
+            handleMessage(message);
+        });
+
+
+
 
 
 

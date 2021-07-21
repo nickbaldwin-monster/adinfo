@@ -9,6 +9,7 @@ import { Switch } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
 
 import "./SettingsPanel.css";
+import {MessageType} from "../types";
 
 const moduleName = 'SettingsPanel';
 let log = logger(moduleName);
@@ -26,7 +27,8 @@ export const SettingsPanel = () => {
 
 
     const handleClick = (setting: string) => {
-        // todo something
+        const message: MessageType = { type: "TOGGLE_SETTING",  source: 'SettingsPanel', payload: setting };
+        chrome.runtime.sendMessage(message);
     };
 
     let settingsArray: Setting[] = [];
@@ -51,6 +53,7 @@ export const SettingsPanel = () => {
                 <div className='setting'>
                     <Switch
                         onChange={() => {
+                            //console.log(setting.key);
                             handleClick(setting.key);
                         }}
                         checked={setting.value}
