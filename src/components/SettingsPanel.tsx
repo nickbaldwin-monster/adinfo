@@ -1,30 +1,32 @@
 import * as React from "react";
 
-import { logger } from "../helpers/logger";
-import "../elements/Button.css";
 import { useReduxContext } from "../context/Context";
+import { MessageType } from "../types";
+import { logger } from "../helpers/logger";
 
-import { defaultSettings} from "../context/Context";
 import { Switch } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
 
 import "./SettingsPanel.css";
-import {MessageType} from "../types";
+import "../elements/Button.css";
 
 const moduleName = 'SettingsPanel';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
+
+
 
 interface Setting {
     key: string;
     value: boolean;
 }
 
+
+
 export const SettingsPanel = () => {
 
     // @ts-ignore
     const { loading, display, setDisplay, settings } = useReduxContext();
-
 
     const handleClick = (setting: string) => {
         const message: MessageType = { type: "TOGGLE_SETTING",  source: 'SettingsPanel', payload: setting };

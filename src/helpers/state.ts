@@ -61,3 +61,18 @@ export const saveSettings = (state: any) => {
 
 
 // console.log(window.sessionStorage.getItem("savedReduxState"));
+
+
+
+
+// todo - duplicate????
+const getReduxStore = () => {
+    if (window.sessionStorage.getItem("savedReduxState")) {
+        const json = window.sessionStorage.getItem("savedReduxState");
+
+        if (json) {
+            let redux = JSON.parse(json);
+            //
+        }
+    }
+}

@@ -1,34 +1,30 @@
-// this is run as a content script, injected into the web page
+/*
+    this is run as a content script, injected into the Monster web page
+
+    responsibilities:
+        - add iframe to page (to enable listening to changes in storage - jobs)
+        - listen to changes in storage and pass on to context
+        - inject app: add container to page and mount react app in container
+        - monitor search results and pass on to context? or decorate items here?
+ */
+
+
 
 import React, { useReducer, createContext } from 'react';
 import * as ReactDOM from "react-dom";
 
-import { MessageType } from "./types";
-import { transformJobs } from './helpers/transformJobs';
 import { logger } from "./helpers/logger";
+import { ReduxProvider } from "./context/Context";
 import { Iframe } from "./components/Iframe";
-import { Drawer } from "./panels/Drawer";
 
+import { Drawer } from "./panels/Drawer";
+// alternative to Drawer - keep just in case
+// import {Tabs} from "./panels/Tabs";
 
 import "./content.css";
 
-
-
-
-
-
-
-
-
-
-import { ReduxProvider } from "./context/Context";
-import {Tabs} from "./panels/Tabs";
-
-
-
-
-
-
+// todo - refactor into context
+import { transformJobs } from './helpers/transformJobs';
 
 
 
@@ -37,42 +33,9 @@ let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
 
-// @ts-ignore
-export const State = createContext();
 
-function reducer(state: any, item: any) {
-    return [...state, item]
-}
-
-const WrapContext = () => {
-
-    const [jobs, setJobs] = React.useState([]);
-    const [request, setRequest] = React.useState([]);
-    const [redux, setRedux] = React.useState({});
-    const [settings, setSettings] = React.useState({});
-    const [results, setResults] = React.useState([]);
-
-    const [salad, setSalad] = useReducer(reducer, ['a', 'b']);
-
-    return(
-        <State.Provider value={{
-            salad, setSalad,
-            jobs, setJobs,
-            request, setRequest,
-            redux, setRedux,
-            settings, setSettings,
-            results, setResults
-        }}>
-            <Drawer />
-        </State.Provider>
-    );
-};
-
-
-// <Drawer />
-//  <Tabs />
-
-const WithContext = () => {
+// wrap the display with data and state managed by context
+const DrawerWithContext = () => {
     return (
         <ReduxProvider>
             <Drawer />
@@ -81,69 +44,29 @@ const WithContext = () => {
 };
 
 
-
-
 // listen to messages from the iframe
 // enables passing the session storage events to the window (and background fyi)
 const listenToIframe = () => {
     window.addEventListener("message", function (e) {
         if (e.data?.messageType === 'JOB_STATE') {
+
+            // todo - should manage the transformation in context
             let newState = e.data.payload;
             let json = JSON.parse(newState);
             const { jobsList } = json;
             log({ logType: 'INFO', moduleName, message: 'job list updated', payload: json });
-            log({ logType: 'INFO', moduleName, message: 'job list updated', payload: jobsList });
 
             let jobs = transformJobs(jobsList);
-            log({ logType: 'INFO', moduleName, message: 'job list transformed', payload: jobs });
-            // todo - not needed?
+            // todo - passed to context right?!
             chrome.runtime.sendMessage({ type: "JOB_STATE", source: 'content', payload: jobs });
             log({ logType: 'MESSAGE_SENT',  payload: { type: "JOB_STATE", source: 'content', payload: jobs }});
-
-            // todo - use the job list!
-
-
         }
     });
 }
 
 
-const listenToScripts = () => {
-    chrome.runtime.onMessage.addListener((message: MessageType) => {
-        handleMessage(message);
-    });
-};
 
-
-
-const handleMessage = (message: MessageType) => {
-    log({ logType: 'MESSAGE_RECEIVED', functionName: 'N/A', payload: message });
-    if (message.type === "DISPLAY_STATUS") {
-        // updateDisplay(message.display);
-    }
-    if (message.type === "SETTINGS_STATUS") {
-        // todo - apply settings
-    }
-};
-
-
-
-
-// don't need this, as we are getting new state directly from change event
-const getReduxStore = () => {
-    if (window.sessionStorage.getItem("savedReduxState")) {
-        const json = window.sessionStorage.getItem("savedReduxState");
-
-        if (json) {
-            let redux = JSON.parse(json);
-            //
-        }
-    }
-}
-
-
-
-const addTable = () => {
+const injectApp = () => {
     let app = document.querySelector('#app');
     if (app === null) {
         log({logType: 'ERROR', message: '#app not found - cannot mount display'});
@@ -152,14 +75,11 @@ const addTable = () => {
         let container = document.createElement("div");
         container.id = 'appContainer';
         app.appendChild(container);
-        //ReactDOM.render(<WrapContext />, container);
-
-        ReactDOM.render(<WithContext />, container);
-
-
-
-
-
+        ReactDOM.render(<DrawerWithContext />, container);
+        let display = document.querySelector('#appContainer');
+        if (display === null) {
+            log({logType: 'ERROR', message: 'display not mounted'});
+        }
     }
 };
 
@@ -227,20 +147,11 @@ const addIframe = () => {
     }
 }
 
-const init = () => {
-
-    addIframe();
-    listenToIframe();
-    listenToScripts();
-    addTable();
-
-
-    // todo - may change this to poll AFTER table render e.g. when result size = state size
-    // i.e. when react stops messing with dom
+// let poller;
+const monitor = () => {
     const poller = setInterval(() => {
         if (document.querySelector('.results-list') !== null) {
             clearInterval(poller);
-
 
             // add decorations to initial results
             addDecorations();
@@ -255,12 +166,24 @@ const init = () => {
         }
 
     }, 100);
-
 }
 
 
 
-// MAIN
+
+
+const init = () => {
+    addIframe();
+    listenToIframe();
+    injectApp();
+    monitor();
+
+    // todo - may change this to poll AFTER table render e.g. when result size = state size
+    // i.e. when react stops messing with dom
+
+}
+
+
 
 // todo - can this be removed and set in manifest?
 if ( document.readyState !== 'loading' ) {
@@ -270,9 +193,4 @@ if ( document.readyState !== 'loading' ) {
         init();
     });
 }
-
-chrome.runtime.sendMessage({ type: "REQ_DISPLAY_STATUS", source: 'content' });
-log({ logType: 'MESSAGE_SENT',  payload: {type: "REQ_DISPLAY_STATUS"}});
-
-
 

@@ -33,10 +33,18 @@ After the project is built, a directory named `dist` will be created.
 
 ## capabilities todo
 
+Deal with upcoming change in source of data!
+- need to understand how/when this is happening
+
+Fixes:
+- 2 fields not being displayed: id and provider code
+- display seo url in expanded details
+- deal with locations etc better
+
 Data in table:
 - copy info to clipboard  
 - add further info into jobs - for display in extended section
-- deal with locations etc better
+  - now id?
 - other dates?
 
 Associate results with data:
@@ -53,11 +61,10 @@ Display:
 - mobile styling
 - fix padding in grid header
 - loading indicator
-- revise order data
+- revise order of data
 
 Settings:
-- add settings into panel
-- turn on/off specific data fields
+- persist and retrieve
 
 Other
 - auto load results 
@@ -91,26 +98,28 @@ Other
 ## info
 
 Communication between the components
-The popup enables the user to toggle settings. 
-Since every component (popup, content scrip, and background script) is isolated, 
+
+
+Since every component (popup, content script, and background script) is isolated, 
 we have to use Chrome's communication API to be able to send a message between 
 the components. We want our background script to function as a browser wide state, 
-and therefore all the communication should go through it.
+and therefore all the communication about the plugin settings should go through it. However, 
+the state of the job results should be contained within the page as it is possible
+to have multiple tabs open (different searches, domains etc) at the same time.
 
-Communication between popup and content scripts to background script
-We will start by listening to messages from our background script.
+Whenever a content script page (or popup) is closed/refreshed, the state is lost. 
+Generally, we should ask the background for the current state (by listening to 
+messages from our background script), however we can  persist the settings in 
+local storage (or chrome storage) and use that for startup - then just need to 
+presist changes and communicate state changes to all tabs 
 
-As the popup's state is lost every time it is closed, we should ask the 
-background for the current state
-
-As users can have multiple tabs open, either need to store state for each  
-(if updating state in bg, need to tie it to id of tab) - or - 
-just keep job state within the content script (starting with this simpler option)
- 
+step 1: retrieve persisted settings via context
+step 2: any requests to change state are handled by context, persisted and sent to background
+step 3: state changes are sent to all content tabs from background
 
 ## Notes
 
-The job search results are persisted in sessionStorage, and updated after each search/paging action.
+The job search results are currently persisted in sessionStorage, and updated after each search/paging action.
 
 sessionStorage is isolated for each tab, so events in sessionStorage cannot be subscribed to in other tabs.
 Unfortunately the current page cannot listen to changes in storage triggered by that page.

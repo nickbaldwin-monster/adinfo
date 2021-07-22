@@ -1,10 +1,7 @@
 import React, { useReducer, useContext } from 'react';
 
-
-
-// todo - cut down css
-// original css - '@progress/kendo-theme-default/dist/all.css';
-import './Table.css';
+import { logger } from "../helpers/logger";
+import { useReduxContext } from "../context/Context";
 
 import { process } from '@progress/kendo-data-query';
 import { Grid, GridColumn, getSelectedState, GridToolbar } from '@progress/kendo-react-grid';
@@ -13,8 +10,10 @@ import { getter } from "@progress/kendo-react-common";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
 import { JobDetail } from './JobDetail';
-import { logger } from "../helpers/logger";
-import { useReduxContext } from "../context/Context";
+
+// original css - '@progress/kendo-theme-default/dist/all.css';
+// todo - cut down css
+import './Table.css';
 
 
 

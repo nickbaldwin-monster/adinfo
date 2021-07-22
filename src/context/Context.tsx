@@ -2,8 +2,8 @@ import React, { createContext, useContext, useState, useEffect, useReducer } fro
 import { logger } from "../helpers/logger";
 import { transformJobs } from "../helpers/transformJobs";
 import { transformRequest } from "../helpers/transformRequest";
-import {MessageType} from "../types";
-
+import { MessageType } from "../types";
+import { Settings, isSettings, isSetting, defaultSettings } from '../types/Settings';
 
 
 const moduleName = 'Context';
@@ -18,60 +18,26 @@ const { Provider, Consumer } = ReduxContext;
 // todo: may want to use a reducer for certain state  e.g. adding nodes to list -
 //  may also remove need to deal with re-renders if add elements to state rather than recreating...
 
-export const defaultSettings = {
-    title: true,
-    company: true,
-    jobId: false,
-    location: true,
-    adProvider: true,
-    mesco: true,
-    ingestionMethod: true,
-    pricingType: true,
-    formattedDate: true,
-    dateRecency: true,
-    provider: true,
-    providerCode: true,
-    applyType: true,
-    xCode: true,
-    seoJobId: false
-};
+
+
+
 
 
 interface DisplayJobProperty {
     [key: string]: boolean;
 }
 
-function settingsReducer(settings: object, setting: DisplayJobProperty): object {
-    console.log('reducer');
-    console.log(settings);
-    console.log(setting);
-    return { ...settings, ...setting };
+function settingsReducer(state: object, action: object): object {
+    return {};
 }
 
-// then instead of useState([]), useReducer(reducer, [])
 
 
 
 // @ts-ignore
 const ReduxProvider = ({ children }) => {
 
-    const [settings, setSettings] = useState({
-        title: true,
-        company: true,
-        jobId: false,
-        location: true,
-        adProvider: true,
-        mesco: true,
-        ingestionMethod: true,
-        pricingType: true,
-        formattedDate: true,
-        dateRecency: true,
-        provider: true,
-        providerCode: true,
-        applyType: true,
-        xCode: true,
-        seoJobId: false
-    });
+    const [settings, setSettings] = useState(defaultSettings);
     const [numberResults, setNumberResults] = useState(0);
     const [results, setResults] = useState(true);
     const [mobileResults, setMobileResults] = useState(true);
@@ -83,6 +49,30 @@ const ReduxProvider = ({ children }) => {
 
     log({logType: 'INFO', message: 'ReduxProvider mounted' });
 
+
+    const updateSettings = (settingName: string) => {
+        if (settings && isSetting(settingName)) {
+
+            setSettings((settings: Settings) => {
+
+                // @ts-ignore
+                let prevSettingValue = settings[settingName];
+                let nextSetting = {[settingName]: !prevSettingValue};
+
+                log({logType: 'INFO', message: 'new state in reducer', payload: {...settings, ...nextSetting}});
+                // @ts-ignore
+                let newSettings = {...settings, [settingName]: !settings[settingName]};
+                if (isSettings(newSettings)) {
+                    return newSettings;
+                }
+                else {
+                    // @ts-ignore
+                    log({logType: 'ERROR', message: 'unable to update Settings', payload: {[settingName]: !settings[settingName]}});
+                    return settings;
+                }
+            });
+        }
+    }
 
 
     const handleMessage = (message: MessageType) => {
@@ -97,6 +87,10 @@ const ReduxProvider = ({ children }) => {
         // @ts-ignore    // checking property name is valid
         if (message.type === "TOGGLE_SETTING" && defaultSettings[message.payload] !== 'undefined') {
 
+            updateSettings(message.payload);
+
+            // todo - remove
+            /*
             // @ts-ignore
             setSettings(settings => {
                 // @ts-ignore
@@ -109,6 +103,8 @@ const ReduxProvider = ({ children }) => {
                     return { ...settings, ...nextSetting };
                 }
             );
+            */
+
         }
     };
 

@@ -86,7 +86,7 @@ test('transformed job has correct values for props', () => {
     expect(newJob).toEqual({
         position: 1,
         jobId: 'db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
-        adProvider: 'AdTech',
+        adProvider: 'ADZERK',
         mesco: '1500127001001',
         ingestionMethod: 'Adapted NOW',
         pricingType: '2',
@@ -99,6 +99,8 @@ test('transformed job has correct values for props', () => {
         location: 'Boston, MA, , US. ',
         title: 'Java Developer',
         xCode: 'n/a',
+        selected: false,
+        seoJobId: 'java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
         data: {}
 
 
@@ -126,7 +128,7 @@ test('jobList transformed into display jobs', () => {
             {
                 position: 1,
                 jobId: 'db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
-                adProvider: 'AdTech',
+                adProvider: 'ADZERK',
                 mesco: '1500127001001',
                 ingestionMethod: 'Adapted NOW',
                 pricingType: '2',
@@ -139,6 +141,8 @@ test('jobList transformed into display jobs', () => {
                 location: 'Boston, MA, , US. ',
                 title: 'Java Developer',
                 xCode: 'n/a',
+                seoJobId: 'java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
+                selected: false,
                 data: {}
 
             }
