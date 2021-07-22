@@ -51,6 +51,14 @@ const ReduxProvider = ({ children }) => {
 
 
     const updateSettings = (settingName: string) => {
+        /*
+            message: {
+                type: "TOGGLE_SETTING"
+                payload: "title"
+                source?: "background" // ?
+            }
+        */
+
         if (settings && isSetting(settingName)) {
 
             setSettings((settings: Settings) => {
@@ -74,9 +82,60 @@ const ReduxProvider = ({ children }) => {
         }
     }
 
+    const updateJobsAndRequest = (jsonString: string) => {
+
+        /*
+            message: {
+                type: "JOB_STATE"
+                payload: "" // stringified json
+                source?: "background"
+            }
+        */
+        let json;
+        try {
+            json = JSON.parse(jsonString);
+        }
+        catch (e) {
+            log({
+                logType: 'ERROR',
+                message: 'Could not parse state from localStorage',
+                payload: {state: jsonString}
+            });
+        }
+
+        if (json) {
+            const {jobsList} = json;
+
+            let transformedJobs = transformJobs(jobsList);
+            // @ts-ignore
+            setJobs(transformedJobs);
+
+            let transformedRequest = transformRequest(json);
+            if (transformedRequest) {
+                let arr = [];
+                for (const [k, v] of Object.entries(transformedRequest)) {
+                    arr.push({key: k, value: v});
+                }
+                // @ts-ignore
+                setRequest(arr);
+            }
+
+            setRedux(json);
+
+            setLoading(false);
+
+            log({
+                logType: 'INFO',
+                message: 'Context - useEffect: state is updated:  ReduxProvider updated',
+                payload: { jobs, loading, redux, request }
+            });
+        }
+    }
 
     const handleMessage = (message: MessageType) => {
+
         log({ logType: 'MESSAGE_RECEIVED', functionName: 'handleMessage', payload: message });
+
         if (message.type === "DISPLAY_STATUS") {
             // updateDisplay(message.display);
         }
@@ -85,27 +144,19 @@ const ReduxProvider = ({ children }) => {
         }
 
         // @ts-ignore    // checking property name is valid
+        // todo - move this into handler
         if (message.type === "TOGGLE_SETTING" && defaultSettings[message.payload] !== 'undefined') {
-
             updateSettings(message.payload);
-
-            // todo - remove
-            /*
-            // @ts-ignore
-            setSettings(settings => {
-                // @ts-ignore
-                    let prevSettingValue = settings[message.payload];
-                    let nextSetting = {};
-                    // @ts-ignore
-                    nextSetting[message.payload] = !prevSettingValue;
-
-                    log({logType: 'INFO', message: 'new state in reducer', payload: {...settings, ...nextSetting}});
-                    return { ...settings, ...nextSetting };
-                }
-            );
-            */
-
         }
+
+        if (message.type === 'JOB_STATE') {
+            updateJobsAndRequest(message.payload);
+        }
+
+        if (message.type === 'RESULTS_UPDATED') {
+            // todo - cannot receive dom elements - so instead, just need to respond to x new elements
+        }
+
     };
 
 
@@ -125,58 +176,17 @@ const ReduxProvider = ({ children }) => {
         }
 
 
+        // todo - need to detach this? does listener get added every render?
+
         chrome.runtime.onMessage.addListener((message: MessageType) => {
             handleMessage(message);
         });
-
-
-
-
-
-
-
         window.addEventListener("message", function (e) {
-            if (e.data?.messageType === 'RESULTS_UPDATED') {
-
-
-
-                // todo - cannot receive dom elements - so instead, just need to respond to x new elements
-
-
-
+            if (e.data?.type) {
+                handleMessage(e.data);
             }
         });
 
-
-        // todo - need to detach this? does listener get added every render?
-        window.addEventListener("message", function (e) {
-
-            if (e.data?.messageType === 'JOB_STATE') {
-                let newState = e.data.payload;
-                let json = JSON.parse(newState);
-                const {jobsList} = json;
-
-                let transformedJobs = transformJobs(jobsList);
-                // @ts-ignore
-                setJobs(transformedJobs);
-
-                let transformedRequest = transformRequest(json);
-                if (transformedRequest) {
-                    let arr = [];
-                    for (const [k, v] of Object.entries(transformedRequest)) {
-                        arr.push({key: k, value: v});
-                    }
-                    // @ts-ignore
-                    setRequest(arr);
-                }
-
-                setRedux(json);
-
-                setLoading(false);
-
-                log({logType: 'INFO', message: 'Context - useEffect: state is updated:  ReduxProvider updated', payload: {jobs, loading, redux, request}  })
-            }
-        });
     }, []);
 
     return (

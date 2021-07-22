@@ -2,9 +2,9 @@
     this is run as a content script, injected into the Monster web page
 
     responsibilities:
-        - add iframe to page (to enable listening to changes in storage - jobs)
-        - listen to changes in storage and pass on to context
+        - add iframe to page (to enable context listening to changes in storage)
         - inject app: add container to page and mount react app in container
+        // todo - move into context?
         - monitor search results and pass on to context? or decorate items here?
  */
 
@@ -42,28 +42,6 @@ const DrawerWithContext = () => {
         </ReduxProvider>
     );
 };
-
-
-// listen to messages from the iframe
-// enables passing the session storage events to the window (and background fyi)
-const listenToIframe = () => {
-    window.addEventListener("message", function (e) {
-        if (e.data?.messageType === 'JOB_STATE') {
-
-            // todo - should manage the transformation in context
-            let newState = e.data.payload;
-            let json = JSON.parse(newState);
-            const { jobsList } = json;
-            log({ logType: 'INFO', moduleName, message: 'job list updated', payload: json });
-
-            let jobs = transformJobs(jobsList);
-            // todo - passed to context right?!
-            chrome.runtime.sendMessage({ type: "JOB_STATE", source: 'content', payload: jobs });
-            log({ logType: 'MESSAGE_SENT',  payload: { type: "JOB_STATE", source: 'content', payload: jobs }});
-        }
-    });
-}
-
 
 
 const injectApp = () => {
@@ -174,7 +152,6 @@ const monitor = () => {
 
 const init = () => {
     addIframe();
-    listenToIframe();
     injectApp();
     monitor();
 

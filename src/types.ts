@@ -22,7 +22,7 @@ interface DisplayToggle {
 
 interface JobState {
     type: "JOB_STATE";
-    payload: object;
+    payload: string;
     source: string;
 }
 
@@ -50,8 +50,15 @@ interface ToggleSetting {
     source: string;
 }
 
+interface JobResultsUpdated {
+    type: 'RESULTS_UPDATED';
+    payload: number;
+}
 
 export type MessageType =
     DisplayStateRequest | DisplayStateResponse | DisplayToggle |
-    SettingsStateRequest | SettingsStateResponse | SettingsUpdate |
-    JobState | ToggleSetting;
+    SettingsStateRequest | SettingsStateResponse |
+    SettingsUpdate | JobResultsUpdated |
+
+    // actually used
+    JobState | ToggleSetting  ;

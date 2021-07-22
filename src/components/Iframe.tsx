@@ -50,7 +50,7 @@ const code = `
                 if (e.key === 'savedReduxState') {
                     let message= "job state changed: " + e.key;
                     log({ logType: 'INFO', message });
-                    window.parent.postMessage({ messageType: 'JOB_STATE', payload: e.newValue }, "*");
+                    window.parent.postMessage({ type: 'JOB_STATE', payload: e.newValue }, "*");
                 }
             });
             
