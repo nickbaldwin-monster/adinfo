@@ -151,6 +151,10 @@ const ReduxProvider = ({ children }) => {
                 message: 'Context - useEffect: state is updated:  ReduxProvider updated',
                 payload: { jobs, loading, redux, request }
             });
+
+
+            // todo - hack?
+            decorateResults(transformedJobs);
         }
     }
 
@@ -173,46 +177,42 @@ const ReduxProvider = ({ children }) => {
 
         if (message.type === 'JOB_STATE') {
             updateJobsAndRequest(message.payload);
+
+            // todo - may need to ensure that results are handled too
+
         }
 
         if (message.type === 'RESULTS_UPDATED') {
+
             // todo - cannot receive dom elements - so instead, just need to respond to x new elements
-            console.log('RESULTS_UPDATED');
-            console.log(message);
-            decorateResults(message.payload);
+
+            // decorateResults(message.payload);
+            log({logType: 'INFO', message: message.type, payload: message})
         }
 
     };
 
 
+
     useEffect(() => {
 
         // todo - read hooks doc - will adding dependencies here remove unnecessary re-renders?!?!?!
-
-        // todo - should we do dom manipulation here?!??!?!?!
-        let something = document.querySelector('.ds-header');
-        if (something && !something.hasAttribute('data-something')) {
-            something.setAttribute('data-something', 'yes');
-        }
-        else {
-            console.log('failed');
-            console.log(something);
-
-        }
-
-
         // todo - need to detach this? does listener get added every render?
 
         chrome.runtime.onMessage.addListener((message: MessageType) => {
             handleMessage(message);
         });
+
+        // todo - augmenting message with jobs
         window.addEventListener("message", function (e) {
             if (e.data?.type) {
-                handleMessage(e.data);
+                let message = {...e.data, jobs };
+                handleMessage(message);
             }
         });
 
     }, []);
+
 
     return (
         <Provider value={{

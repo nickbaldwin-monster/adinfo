@@ -175,6 +175,11 @@ structure using context and adapters
 - https://www.freecodecamp.org/news/a-better-way-to-structure-react-projects/
 
 
+displaying popup and monitoring which result is hovered over:
+- https://css-tricks.com/popping-hidden-overflow/
+- http://jsfiddle.net/anureshkravi/t4oqw6zm/
+- https://medium.com/a-layman/experience-in-escape-css-overflow-39ed2f71abbd
+
 ## Libraries used:
 
 - https://www.telerik.com/kendo-react-ui/components/grid/

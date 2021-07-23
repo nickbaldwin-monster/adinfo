@@ -1,0 +1,42 @@
+.resultDecoration {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    background-color: lightgrey;
+    width: 150px;
+    overflow: hidden;
+    border-radius: 10px;
+    text-align: right;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+}
+
+.resultDecoration:hover {
+    position: absolute;
+    background-color: white;
+    height: 200px;
+    width: 150px;
+    overflow-x: visible;
+}
+
+.resultText {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.resultPosition {
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: solid 2px grey;
+}
+
+.spacer {
+    width: 15px;
+}
