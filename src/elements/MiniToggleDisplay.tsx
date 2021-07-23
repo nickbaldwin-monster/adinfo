@@ -1,5 +1,13 @@
 import * as React from "react";
+
+import { logger } from "../helpers/logger";
+
 import "./MiniToggleDisplay.css";
+
+
+const moduleName = 'MiniToggleDisplay';
+let log = logger(moduleName);
+log({ logType: 'LOADED' });
 
 
 

@@ -1,13 +1,13 @@
-import React, {useReducer, useContext, useEffect} from 'react';
-import * as ReactDOM from "react-dom";
-import {HashRouter, Switch, Route, withRouter} from "react-router-dom";
+import React from 'react';
+
+import { HashRouter, Switch, Route, withRouter } from "react-router-dom";
 import { SettingsPanel } from "../components/SettingsPanel";
 import DrawerRouterContainer from "./DrawerRouterContainer";
 import { JobTable } from "../components/JobTable";
 import { RequestTable } from "../components/RequestTable";
 import { JsonTree } from "../components/JsonTree";
-import {logger} from "../helpers/logger";
-import {MiniToggleDisplay} from "../elements/MiniToggleDisplay";
+import { logger } from "../helpers/logger";
+
 
 
 const moduleName = 'Drawer';

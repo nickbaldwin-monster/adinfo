@@ -3,6 +3,16 @@ import { withRouter } from "react-router-dom";
 import { Drawer, DrawerContent } from "@progress/kendo-react-layout";
 import { useReduxContext } from "../context/Context";
 import {MiniToggleDisplay} from "../elements/MiniToggleDisplay";
+import {logger} from "../helpers/logger";
+
+
+
+const moduleName = 'DrawerRouterContainer';
+let log = logger(moduleName);
+log({ logType: 'LOADED' });
+
+
+
 const items = [
     {
         text: "Jobs",
