@@ -7,10 +7,11 @@ export const resultDecoration = (job: DisplayJob, i: number): HTMLDivElement => 
     let adProvider = job.adProvider || '';
     // @ts-ignore
     container.innerHTML = `
-        
+            <div class="resultRow alignRight">
             <div class="resultText">${adProvider} </div>
-            <div class="spacer" >&nbsp;</div>
+            <div class="resultSpacer" >&nbsp;</div>
             <div class="resultPosition">${i + 1}</div>
+            </div>
         `;
     container.setAttribute('class', 'resultDecoration');
     if (adProvider === '') {

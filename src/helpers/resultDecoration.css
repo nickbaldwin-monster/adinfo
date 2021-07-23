@@ -6,16 +6,25 @@
     width: 150px;
     overflow: hidden;
     border-radius: 10px;
-    text-align: right;
     padding: 5px;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 9;
+}
+
+.resultRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.resultRow.alignRight {
     justify-content: flex-end;
-    align-items: end;
 }
 
 .resultDecoration:hover {
-    position: absolute;
-    background-color: white;
     height: 200px;
     width: 150px;
     overflow-x: visible;
@@ -37,6 +46,7 @@
     border: solid 2px grey;
 }
 
-.spacer {
+.resultSpacer {
     width: 15px;
+    height: 10px;
 }
