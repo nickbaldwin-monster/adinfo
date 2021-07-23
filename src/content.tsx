@@ -4,11 +4,8 @@
     responsibilities:
         - add iframe to page (to enable context listening to changes in storage)
         - inject app: add container to page and mount react app in container
-        // todo - move into context?
-        - monitor search results and pass on to context? or decorate items here?
+        - monitor search results and notify context
  */
-
-
 
 import React, { useReducer, createContext } from 'react';
 import * as ReactDOM from "react-dom";
@@ -23,14 +20,11 @@ import { Drawer } from "./panels/Drawer";
 
 import "./content.css";
 
-// todo - refactor into context
-import { transformJobs } from './helpers/transformJobs';
-
-
-
 const moduleName = 'content';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
+
+
 
 
 
@@ -42,6 +36,7 @@ const DrawerWithContext = () => {
         </ReduxProvider>
     );
 };
+
 
 
 const injectApp = () => {
@@ -61,53 +56,6 @@ const injectApp = () => {
     }
 };
 
-const addDecorations = () => {
-    let resultLists = document.querySelectorAll('.results-list');
-
-    if (resultLists) {
-        const splitElements: Element[] = Array.from(resultLists[0].children);
-        const mobileElements: Element[] = Array.from(resultLists[1].children);
-        const elements = [...splitElements, ...mobileElements];
-
-        elements.forEach((el: Element, i) => {
-            if (el.children[0].children.length === 2) {
-                let container = document.createElement("div");
-                container.innerText = '' + (i + 1);
-                el.children[0].appendChild(container);
-                container.setAttribute('class', 'result-decoration');
-            }
-        });
-    }
-};
-
-function onMutation(mutations: any) {
-    const functionName = 'onMutation';
-    if (mutations.length > 0) {
-        log({logType: 'INFO', functionName, message: 'mutations observed' + mutations.length});
-
-        // todo update state
-
-
-        // todo - only update mutations
-        let resultLists = document.querySelectorAll('.results-list');
-
-        if (resultLists) {
-            const splitElements: Element[] = Array.from(resultLists[0].children);
-            const mobileElements: Element[] = Array.from(resultLists[1].children);
-            const elements = [...splitElements, ...mobileElements];
-
-            elements.forEach((el: Element, i) => {
-
-                if (el.children[0].children.length === 2) {
-                    let container = document.createElement("div");
-                    container.innerText = '' + (i + 1);
-                    el.children[0].appendChild(container);
-                    container.setAttribute('class', 'result-decoration');
-                }
-            })
-        }
-    }
-}
 
 
 const addIframe = () => {
@@ -125,24 +73,24 @@ const addIframe = () => {
     }
 }
 
-// let poller;
+
+
 const monitor = () => {
     const poller = setInterval(() => {
-        if (document.querySelector('.results-list') !== null) {
+        const list = document.querySelector('.results-list');
+        if (list !== null) {
             clearInterval(poller);
-
-            // add decorations to initial results
-            addDecorations();
-
+            // notify initial results
+            window.postMessage({ type: 'RESULTS_UPDATED', payload: list.children.length }, "*");
             // monitor additional results to add decorations
-            const list = document.querySelector('.results-list');
-            const observer = new MutationObserver(onMutation);
+            const observer = new MutationObserver((mutations: any) => {
+                window.postMessage({ type: 'RESULTS_UPDATED', payload: mutations.length }, "*");
+            });
             // @ts-ignore
             observer.observe(list, {
-                childList: true, // report added/removed nodes
+                childList: true // report added/removed nodes
             });
         }
-
     }, 100);
 }
 
@@ -154,18 +102,13 @@ const init = () => {
     addIframe();
     injectApp();
     monitor();
-
-    // todo - may change this to poll AFTER table render e.g. when result size = state size
-    // i.e. when react stops messing with dom
-
 }
 
-
-
 // todo - can this be removed and set in manifest?
-if ( document.readyState !== 'loading' ) {
+if (document.readyState !== 'loading') {
     init();
-} else {
+}
+else {
     document.addEventListener('DOMContentLoaded', function () {
         init();
     });

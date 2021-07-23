@@ -4,7 +4,7 @@ import { transformJobs } from "../helpers/transformJobs";
 import { transformRequest } from "../helpers/transformRequest";
 import { MessageType } from "../types";
 import { Settings, isSettings, isSetting, defaultSettings } from '../types/Settings';
-
+import { decorateResults } from '../helpers/decorateResults';
 
 const moduleName = 'Context';
 let log = logger(moduleName);
@@ -177,6 +177,9 @@ const ReduxProvider = ({ children }) => {
 
         if (message.type === 'RESULTS_UPDATED') {
             // todo - cannot receive dom elements - so instead, just need to respond to x new elements
+            console.log('RESULTS_UPDATED');
+            console.log(message);
+            decorateResults(message.payload);
         }
 
     };
