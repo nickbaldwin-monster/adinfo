@@ -16,7 +16,9 @@ export interface Settings {
     seoJobId: boolean;
 }
 
-export const SettingsSchema: Record<keyof Settings, string> = {
+export type SettingsKey = keyof Settings;
+
+export const SettingsSchema: Record<SettingsKey, string> = {
     title: 'boolean',
     company: 'boolean',
     jobId: 'boolean',
@@ -34,6 +36,9 @@ export const SettingsSchema: Record<keyof Settings, string> = {
     seoJobId: 'boolean'
 };
 
+
+
+
 interface SettingProperty {
     [key: string]: boolean;
 }
@@ -50,21 +55,20 @@ export const isSettings = (input: any): input is Settings => {
         return false;
     }
 
-    let errors = 0;
-    // @ts-ignore
+    let errors = false;
     Object.values(input).forEach((value) => {
         if (typeof value !== 'boolean') {
-            errors++;
+            errors = true;
         }
     })
-    if (errors > 0) { return false};
+    if (errors) return false;
 
     const missingProperties = Object.keys(SettingsSchema)
         .filter(key => input[key] === undefined)
         .map(key => key as keyof Settings)
         .map(key => new Error(`Document is missing ${key} ${SettingsSchema[key]}`));
 
-    // throw the errors if you choose
+    // throw error?
 
     return missingProperties.length === 0;
 }

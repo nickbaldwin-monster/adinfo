@@ -77,7 +77,7 @@ Other
 - filter
 
 ## code todo
-- move stateful settings stuff into Settings panel
+- use redux?
 - sync settings via background (due to potential multi-tab conflicts)  
 - use interface checking libraries?
 - install testing library etc
@@ -90,7 +90,6 @@ Other
 - what info to show / not show in table?!
 - what settings should there be?
 - where should the table be shown?
-- settings within the page (rather than popup)?
 
 ## todo later
 - add licence keys to env var for build/CI (see kendo doc)
@@ -98,7 +97,6 @@ Other
 ## info
 
 Communication between the components
-
 
 Since every component (popup, content script, and background script) is isolated, 
 we have to use Chrome's communication API to be able to send a message between 
@@ -113,8 +111,8 @@ messages from our background script), however we can  persist the settings in
 local storage (or chrome storage) and use that for startup - then just need to 
 presist changes and communicate state changes to all tabs 
 
-step 1: retrieve persisted settings via context
-step 2: any requests to change state are handled by context, persisted and sent to background
+step 1: retrieve persisted settings (if exist) via context (otherwise use defaults)
+step 2: any requests to change state are handled by context, persisted (if possible) and sent to background
 step 3: state changes are sent to all content tabs from background
 
 ## Notes

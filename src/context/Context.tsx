@@ -99,16 +99,38 @@ const ReduxProvider = ({ children }) => {
             log({
                 logType: 'ERROR',
                 message: 'Could not parse state from localStorage',
-                payload: {state: jsonString}
+                payload: { state: jsonString }
             });
         }
 
         if (json) {
-            const {jobsList} = json;
+
+            // todo - prep for refactor
+            // split up updates, pass less data around
+            const {
+                country,
+                language,
+                domain,
+                locale,
+                appVersion,
+                clientIP,
+                jobsList,
+                searchRequest
+            } = json
+
+            const {
+                searchId,
+                gctsReqId,
+                totalSize,
+                estimatedTotalSize
+            } = jobsList;
+
+
 
             let transformedJobs = transformJobs(jobsList);
             // @ts-ignore
             setJobs(transformedJobs);
+
 
             let transformedRequest = transformRequest(json);
             if (transformedRequest) {

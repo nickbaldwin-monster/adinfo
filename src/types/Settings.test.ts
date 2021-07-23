@@ -1,6 +1,7 @@
-import {Settings, SettingsSchema, defaultSettings, isSetting, isSettings} from './Settings';
+import {Settings, SettingsSchema, defaultSettings, isSetting, isSettings, SettingsKey} from './Settings';
 
 
+// sanity check
 test('can access properties of defaultSettings', () => {
     expect(defaultSettings).toHaveProperty('title');
 });
@@ -8,9 +9,9 @@ test('can access properties of defaultSettings', () => {
 test('defaultSettings has many properties', () => {
     expect(defaultSettings).toHaveProperty('company');
     expect(defaultSettings).toHaveProperty('xCode');
-
 });
 
+// tests
 
 test('isSettings - defaultSettings', () => {
     expect(isSettings(defaultSettings)).toBeTruthy();
@@ -40,8 +41,15 @@ test('isSettings - missing a property', () => {
 
 test('isSetting - valid property', () => {
     expect(isSetting('title')).toBeTruthy();
+
 });
 
 test('isSetting - invalid property', () => {
     expect(isSetting('foo')).toBeFalsy();
+});
+
+test('default properties matches schema', () => {
+    let schemaProperties = Object.keys(SettingsSchema);
+    let defaultProperties = Object.keys(defaultSettings);
+    expect(schemaProperties).toStrictEqual(defaultProperties)
 });
