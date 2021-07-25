@@ -179,6 +179,7 @@ displaying popup and monitoring which result is hovered over:
 - https://css-tricks.com/popping-hidden-overflow/
 - http://jsfiddle.net/anureshkravi/t4oqw6zm/
 - https://medium.com/a-layman/experience-in-escape-css-overflow-39ed2f71abbd
+- http://michaelsoriano.com/better-tooltips-with-plain-javascript-css/
 
 ## Libraries used:
 

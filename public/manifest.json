@@ -19,6 +19,7 @@
   "permissions": [
     "clipboardWrite",
     "storage",
+    "cookies",
     "https://www.monster.com/",
     "https://www.monster.at/",
     "https://www.monster.ch/",
@@ -64,10 +65,8 @@
 
       "js": [
         "content.js"
-      ]
+      ],
+      "run_at": "document_end"
     }
   ]
-
-
-
 }

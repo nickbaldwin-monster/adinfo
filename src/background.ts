@@ -32,6 +32,8 @@ const sendSetting = (setting: string) => {
     const functionName = 'sendSetting';
     const message: MessageType = {type: "TOGGLE_SETTING", payload: setting, source: 'background'};
 
+    // todo need to use url (match) in query?
+    // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/query
     chrome.tabs.query({active: true}, function (tabs) {
         tabs.forEach((tab) => {
             if (tab.id) {

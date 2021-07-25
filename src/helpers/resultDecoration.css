@@ -13,6 +13,12 @@
     z-index: 9;
 }
 
+.resultDecoration:hover {
+    height: calc(100% - 10px);
+    width: 150px;
+    overflow-x: visible;
+}
+
 .resultRow {
     display: flex;
     flex-direction: row;
@@ -24,11 +30,6 @@
     justify-content: flex-end;
 }
 
-.resultDecoration:hover {
-    height: 200px;
-    width: 150px;
-    overflow-x: visible;
-}
 
 .resultText {
     font-size: 14px;
