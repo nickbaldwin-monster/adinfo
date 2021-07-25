@@ -36,10 +36,12 @@ After the project is built, a directory named `dist` will be created.
 Deal with upcoming change in source of data!
 - need to understand how/when this is happening
 
-Fixes:
+Fixes/next:
 - 2 fields not being displayed: id and provider code
 - display seo url in expanded details
 - deal with locations etc better
+- reorder items in table
+- add setting to display info in results
 
 Data in table:
 - copy info to clipboard  
@@ -48,7 +50,8 @@ Data in table:
 - other dates?
 
 Associate results with data:
-- hover interaction - show info?
+
+- add other info to hover
 - hover - highlight item in table?
 - select item in table - highlight job in list?  
 
