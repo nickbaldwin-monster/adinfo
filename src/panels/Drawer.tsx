@@ -7,6 +7,7 @@ import { JobTable } from "../components/JobTable";
 import { RequestTable } from "../components/RequestTable";
 import { JsonTree } from "../components/JsonTree";
 import { logger } from "../helpers/logger";
+import { ErrorsPanel } from "../components/ErrorsPanel";
 
 
 
@@ -26,6 +27,7 @@ export const Drawer = () => {
                     <Route exact={true} path="/request" component={RequestTable}/>
                     <Route exact={true} path="/json" component={JsonTree}/>
                     <Route exact={true} path="/settings" component={SettingsPanel}/>
+                    <Route exact={true} path="/errors" component={ErrorsPanel}/>
                 </Switch>
             </DrawerRouterContainer>
         </HashRouter>

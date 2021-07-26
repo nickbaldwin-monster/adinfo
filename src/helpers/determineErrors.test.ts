@@ -188,7 +188,7 @@ test('create Errors - 2 ads & 1 organic & 1 ad - 1 error', () => {
     let jobs: DisplayJob[] = [{...job1}, {...job2}, {...job3}, {...job4}];
     let error = determineErrors([...jobs]);
     let exp = {
-        message: '1 errors',
+        message: '1 error',
         number: 1,
         jobPositions: [3],
         items: [{
@@ -212,7 +212,7 @@ test('create Errors - 1 organic & 2 ads - 1 error', () => {
     const jobs: DisplayJob[] = [{...job3}, {...job1}, {...job2}];
     const error = determineErrors(jobs);
     const exp = {
-        message: '1 errors',
+        message: '1 error',
         number: 1,
         jobPositions: [1],
         items: [{

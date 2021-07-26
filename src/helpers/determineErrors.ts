@@ -50,7 +50,7 @@ export const determineErrors = (jobs: DisplayJob[]): Errors => {
 
     if (errors.number) {
         errors.isError = true;
-        errors.message = `${errors.number} errors`;
+        errors.message = `${errors.number} error${errors.number > 1 ? 's' : ''}`;
     }
 
     if (errors.numberAds + errors.numberOrganic !== errors.numberTotal) {

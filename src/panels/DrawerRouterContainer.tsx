@@ -48,6 +48,14 @@ const items = [
         separator: true,
     },
     {
+        text: "Errors",
+        icon: "k-i-error",
+        route: "/errors",
+    },
+    {
+        separator: true,
+    },
+    {
         text: "Display",
         icon: "k-i-preview",
         route: "/display",
