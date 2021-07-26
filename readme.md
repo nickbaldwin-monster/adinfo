@@ -25,6 +25,11 @@ After the project is built, a directory named `dist` will be created.
  - added settings for field display
  - added permission/match for .be/en/
 
+1.0.5
+ - mon 27 july 2021
+ - added overlay of info into search results with setting
+ - updated order of info and settings
+ - display number of results and errors (with additional panel for details)
 
 
 ##  important
