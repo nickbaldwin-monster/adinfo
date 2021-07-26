@@ -12,7 +12,12 @@ interface DisplayStateResponse {
     source: string;
 }
 
-
+// Popup requesting background script for status change
+interface DisplayToggle {
+    type: "TOGGLE_DISPLAY";
+    display: boolean;
+    source: string;
+}
 
 
 interface JobState {
@@ -45,26 +50,15 @@ interface ToggleSetting {
     source: string;
 }
 
-
-interface ToggleDisplay {
-    type: "TOGGLE_DISPLAY";
-    source: string;
-}
-
-interface ToggleDecorate {
-    type: "TOGGLE_DECORATE";
-    source: string;
-}
-
 interface JobResultsUpdated {
     type: 'RESULTS_UPDATED';
     payload: number;
 }
 
 export type MessageType =
-    DisplayStateRequest | DisplayStateResponse  |
+    DisplayStateRequest | DisplayStateResponse | DisplayToggle |
     SettingsStateRequest | SettingsStateResponse |
     SettingsUpdate | JobResultsUpdated |
 
     // actually used
-    JobState | ToggleSetting | ToggleDecorate | ToggleDisplay  ;
+    JobState | ToggleSetting  ;

@@ -30,7 +30,7 @@ log({ logType: 'LOADED' });
 
 export const JobTable = () => {
     // @ts-ignore
-    const { loading, jobs, setJobs, settings, numberResults } = useReduxContext();
+    const { loading, jobs, setJobs, settings } = useReduxContext();
     const _export = React.useRef(null);
 
     const excelExport = () => {
@@ -183,8 +183,6 @@ export const JobTable = () => {
                     >
                         test selected
                     </button>
-
-                    {numberResults} results
 
                 </GridToolbar>
 

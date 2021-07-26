@@ -3,17 +3,6 @@
 const settingsKey = 'savedReduxState';
 const storeKey = 'adinfo_settings';
 
-
-
-
-// todo use local storage
-// todo in context
-// window.localStorage.setItem("snowing", "true");
-// chrome.storage.local.set({ display: display });
-
-
-
-
 // todo interface of settings and store
 const loadState = (key: string, storage: any) => {
     try {
@@ -87,29 +76,3 @@ const getReduxStore = () => {
         }
     }
 }
-
-
-
-
-
-
-
-
-// todo - load state from local storage
-const getSavedSettings = () => {
-    let display = false;
-    if (chrome.storage.local) {
-        chrome.storage.local.get("display", (res) => {
-            if (res["display"]) {
-                display = true;
-            } else {
-                display = false;
-            }
-        });
-    }
-    return display;
-};
-
-
-
-

@@ -41,17 +41,13 @@ const ReduxProvider = ({ children }) => {
     const [numberResults, setNumberResults] = useState(0);
     const [results, setResults] = useState(true);
     const [mobileResults, setMobileResults] = useState(true);
-    const [decorate, setDecorate] = useState(false);
-    const [display, setDisplay] = useState(false);
+    const [display, setDisplay] = useState(true);
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [request, setRequest] = useState([]);
     const [redux, setRedux] = useState({});
 
-    log({
-        logType: 'INFO',
-        message: 'ReduxProvider mounted'
-    });
+    log({logType: 'INFO', message: 'ReduxProvider mounted' });
 
 
     const updateSettings = (settingName: string) => {
@@ -84,40 +80,6 @@ const ReduxProvider = ({ children }) => {
                 }
             });
         }
-    }
-
-    const updateDisplay = () => {
-        /*
-            message: {
-                type: "TOGGLE_DISPLAY"
-                source?: "background" // ?
-            }
-        */
-        setDisplay((display: boolean) => {
-            log({
-                logType: 'INFO',
-                message: 'new display state in reducer',
-                payload: { display: !display }
-            });
-            return !display;
-        });
-    }
-
-    const updateDecorate = () => {
-        /*
-            message: {
-                type: "TOGGLE_DECORATE"
-                source?: "background" // ?
-            }
-        */
-        setDecorate((decorate: boolean) => {
-            log({
-                logType: 'INFO',
-                message: 'new decorate state in reducer',
-                payload: { decorate: !decorate }
-            });
-            return !decorate;
-        });
     }
 
     const updateJobsAndRequest = (jsonString: string) => {
@@ -168,7 +130,7 @@ const ReduxProvider = ({ children }) => {
             let transformedJobs = transformJobs(jobsList);
             // @ts-ignore
             setJobs(transformedJobs);
-            setNumberResults(transformedJobs.length);
+
 
             let transformedRequest = transformRequest(json);
             if (transformedRequest) {
@@ -192,9 +154,7 @@ const ReduxProvider = ({ children }) => {
 
 
             // todo - hack?
-            if (decorate) {
-                decorateResults(transformedJobs);
-            }
+            decorateResults(transformedJobs);
         }
     }
 
@@ -207,12 +167,6 @@ const ReduxProvider = ({ children }) => {
         }
         if (message.type === "SETTINGS_STATUS") {
             // todo - apply settings
-        }
-        if (message.type === "TOGGLE_DISPLAY") {
-            updateDisplay();
-        }
-        if (message.type === "TOGGLE_DECORATE") {
-            updateDecorate();
         }
 
         // @ts-ignore    // checking property name is valid
@@ -263,13 +217,11 @@ const ReduxProvider = ({ children }) => {
     return (
         <Provider value={{
             display, setDisplay,
-            decorate,
             jobs, setJobs,
             request,
             redux,
             loading,
-            settings,
-            numberResults
+            settings
         }} >
             {children}
         </Provider>
