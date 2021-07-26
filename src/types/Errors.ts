@@ -1,3 +1,5 @@
+import {DisplayRequest} from "./DisplayRequest";
+
 export interface ErrorItem {
     message: string;
     jobPosition: number;
@@ -89,6 +91,25 @@ export const defaultErrors: Errors = {
     organicPositions: [],
     adPositions: []
 };
+
+export interface ErrorValue {
+    key: string;
+    value: string;
+}
+
+
+// todo - needed?
+export const displayErrors = (errors: Errors): ErrorValue[] => {
+    let list: ErrorValue[] = [];
+    if (!errors || !errors.number) {
+        return list;
+    }
+
+    errors.items.forEach((err) => {
+        //
+    });
+    return list;
+}
 
 
 export const defaultErrorItem = {

@@ -36,7 +36,8 @@ export const RequestTable = () => {
     let fromTs = toTs - 900000;
 
     return (
-        <div>
+        <div className='panel'>
+            <p>Request info</p>
             <Grid data={request} >
                 <GridColumn field="key" title="key" />
                 <GridColumn field="value" title="value" />

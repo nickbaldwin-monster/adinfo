@@ -24,7 +24,8 @@ export const JsonTree = () => {
     log({logType: 'INFO', message: 'JsonTree', payload: {redux}});
 
     return (
-        <div>
+        <div className='panel'>
+            <p>Request/response data</p>
             <ReactJson src={redux} collapsed={1} collapseStringsAfterLength={120}/>
         </div>
     );

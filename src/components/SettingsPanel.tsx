@@ -60,13 +60,12 @@ export const SettingsPanel = () => {
     }
 
     return (
-        <div className='settingsPanel'>
-
+        <div className='settingsPanel panel'>
+            <p>Settings</p>
             {settingsArray.map(setting => (
                 <div className='setting'>
                     <Switch
                         onChange={() => {
-                            //console.log(setting.key);
                             handleToggleSetting(setting.key);
                         }}
                         checked={setting.value}

@@ -33,11 +33,13 @@ export const ErrorsPanel = () => {
     );
 
     return (
-        <div>
-            <Grid data={[{ key: 'foo', value: 'bar' }]} >
-                <GridColumn field="key" title="key" />
-                <GridColumn field="value" title="value" />
+        <div className='panel'>
+            <p>Error info</p>
+            <Grid data={errors.items} >
+                <GridColumn field="message" title="Error" />
+                <GridColumn field="jobPosition" title="Position" />
             </Grid>
+            <br />
             <div>
                 <ReactJson src={errors} collapsed={1} collapseStringsAfterLength={120}/>
             </div>

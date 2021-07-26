@@ -36950,3 +36950,7 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
 .pretty-json-container {
     font-size: 12px;
 }
+
+.panel {
+    padding: 5px;
+}
