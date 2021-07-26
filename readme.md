@@ -36,13 +36,9 @@ After the project is built, a directory named `dist` will be created.
 Deal with upcoming change in source of data!
 - need to understand how/when this is happening
 
-Fixes/next:
-- 2 fields not being displayed: id and provider code
-- loading display
-- display seo url in expanded details
-- deal with locations etc better
-- reorder items in table
-- identify issues (breaks b/w ads etc)
+Next:
+- persist settings
+- deal with undefined locations
 
 Data in table:
 - copy info to clipboard  
@@ -64,7 +60,9 @@ Display:
 - mobile styling
 - fix padding in grid header
 - loading indicator
-- revise order of data
+- revise order of data?
+- loading display
+- deal with locations etc better
 
 Settings:
 - persist and retrieve

@@ -1,42 +1,59 @@
+
 export interface Settings {
-    title: boolean;
-    company: boolean;
-    jobId: boolean;
-    location: boolean;
     adProvider: boolean;
-    mesco: boolean;
     ingestionMethod: boolean;
     pricingType: boolean;
-    formattedDate: boolean;
+    applyType: boolean;
+    location: boolean;
     dateRecency: boolean;
+    formattedDate: boolean;
+    xCode: boolean;
+    company: boolean;
+    title: boolean;
+    mesco: boolean;
     provider: boolean;
     providerCode: boolean;
-    applyType: boolean;
-    xCode: boolean;
+    jobId: boolean;
     seoJobId: boolean;
 }
 
-export type SettingsKey = keyof Settings;
-
 export const SettingsSchema: Record<SettingsKey, string> = {
-    title: 'boolean',
-    company: 'boolean',
-    jobId: 'boolean',
-    location: 'boolean',
     adProvider: 'boolean',
-    mesco: 'boolean',
     ingestionMethod: 'boolean',
     pricingType: 'boolean',
-    formattedDate: 'boolean',
+    applyType: 'boolean',
+    location: 'boolean',
     dateRecency: 'boolean',
+    formattedDate: 'boolean',
+    xCode: 'boolean',
+    company: 'boolean',
+    title: 'boolean',
+    mesco: 'boolean',
     provider: 'boolean',
     providerCode: 'boolean',
-    applyType: 'boolean',
-    xCode: 'boolean',
-    seoJobId: 'boolean'
+    jobId: 'boolean',
+    seoJobId: 'boolean',
 };
 
+export const defaultSettings = {
+    adProvider: true,
+    ingestionMethod: true,
+    pricingType: true,
+    applyType: true,
+    location: true,
+    dateRecency: true,
+    formattedDate: true,
+    xCode: true,
+    company: true,
+    title: true,
+    mesco: true,
+    provider: true,
+    providerCode: false,
+    jobId: false,
+    seoJobId: false
+};
 
+export type SettingsKey = keyof Settings;
 
 
 interface SettingProperty {
@@ -73,20 +90,3 @@ export const isSettings = (input: any): input is Settings => {
     return missingProperties.length === 0;
 }
 
-export const defaultSettings = {
-    title: true,
-    company: true,
-    jobId: false,
-    location: true,
-    adProvider: true,
-    mesco: true,
-    ingestionMethod: true,
-    pricingType: true,
-    formattedDate: true,
-    dateRecency: true,
-    provider: true,
-    providerCode: true,
-    applyType: true,
-    xCode: true,
-    seoJobId: false
-};

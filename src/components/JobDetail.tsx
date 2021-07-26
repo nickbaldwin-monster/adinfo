@@ -26,6 +26,12 @@ export const JobDetail = (props: DataProps) => {
             <p>
                 <strong>providerCode:</strong> {dataItem.providerCode || 'N/A'}
             </p>
+            <p>
+                <strong>NEXT jobId:</strong> {dataItem.jobId || 'N/A'}
+            </p>
+            <p>
+                <strong>SEO id:</strong> {dataItem.seoJobId || 'N/A'}
+            </p>
 
             <JobLinks jobId={dataItem.jobId} accountId={undefined} seoJobId={dataItem.seoJobId}  />
 
