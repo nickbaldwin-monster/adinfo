@@ -9,41 +9,52 @@ export const determineErrors = (jobs: DisplayJob[]): Errors => {
         number: 0,
         jobPositions: [],
         items: [],
-        isError: false
+        isError: false,
+        numberAds: 0,
+        numberOrganic: 0,
+        numberTotal: 0,
+        organicPositions: [],
+        adPositions: []
     };
 
-    let numberErrors = 0;
-    let organicPositions: number[] = [];
-    let adPositions: number[] = [];
     let lastAd = 0;
+    errors.numberTotal = jobs.length;
     jobs.forEach((job, i) => {
-        if (job.adProvider === '') {
-            organicPositions.push(i + 1);
+        if (!job.adProvider || job.adProvider === '') {
+            errors.organicPositions.push(i + 1);
         }
         else {
-            // adPositions.push(i + 1);
+            errors.adPositions.push(i + 1);
             lastAd = i + 1;
         }
     });
-    organicPositions.forEach((position: number) => {
+
+    // todo - potential error if last job is organic
+
+    errors.organicPositions.forEach((position: number) => {
         if (position < lastAd) {
             let error: ErrorItem = {
                 message: 'Missing ad',
                 jobPosition: position,
                 detail: ''
             }
-            numberErrors++;
+            errors.number++;
             // @ts-ignore
             errors.jobPositions.push(position);
             // @ts-ignore
             errors.items.push(error);
         }
     });
+    errors.numberAds = errors.adPositions.length;
+    errors.numberOrganic = errors.organicPositions.length;
 
-    errors.number = numberErrors;
-    if (numberErrors) {
+    if (errors.number) {
         errors.isError = true;
-        errors.message = `${numberErrors} errors`;
+        errors.message = `${errors.number} errors`;
+    }
+
+    if (errors.numberAds + errors.numberOrganic !== errors.numberTotal) {
+        throw new Error('ERRORRRRRRR');
     }
     return errors;
 };

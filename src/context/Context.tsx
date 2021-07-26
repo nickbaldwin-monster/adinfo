@@ -4,8 +4,9 @@ import { transformJobs } from "../helpers/transformJobs";
 import { transformRequest } from "../helpers/transformRequest";
 import { MessageType } from "../types";
 import { Settings, isSettings, isSetting, defaultSettings } from '../types/Settings';
-import { defaultErrors } from '../types/Errors';
+import {defaultErrors, Errors} from '../types/Errors';
 import { decorateResults, removeDecorations } from '../helpers/decorateResults';
+import { determineErrors } from "../helpers/determineErrors";
 
 const moduleName = 'Context';
 let log = logger(moduleName);
@@ -120,7 +121,22 @@ const ReduxProvider = ({ children }) => {
 
      */
 
-    const myStateRef = React.useRef(decorate);
+    const errorsRef = React.useRef(errors);
+    const updateErrors = (newErrors: Errors) => {
+
+        setErrors(() => {
+            log({
+                logType: 'INFO',
+                message: 'new errors state in reducer',
+                payload: { errors: errors }
+            });
+            errorsRef.current = newErrors;
+            return newErrors;
+        });
+    }
+
+
+    const decorateRef = React.useRef(decorate);
     const updateDecorate = () => {
         /*
             message: {
@@ -134,7 +150,7 @@ const ReduxProvider = ({ children }) => {
                 message: 'new decorate state in reducer',
                 payload: { decorate: !decorate }
             });
-            myStateRef.current = !decorate;
+            decorateRef.current = !decorate;
             return !decorate;
         });
     }
@@ -203,6 +219,16 @@ const ReduxProvider = ({ children }) => {
 
             setLoading(false);
 
+
+            // todo?
+            let e = determineErrors(transformedJobs);
+            console.log('$');
+            console.log(e);
+            console.log('$');
+            setErrors(e);
+
+
+
             log({
                 logType: 'INFO',
                 message: 'Context - useEffect: state is updated:  ReduxProvider updated',
@@ -211,7 +237,7 @@ const ReduxProvider = ({ children }) => {
 
 
             // todo - hack? - can this be moved into useEffect now that there is a ref???
-            if (myStateRef.current) {
+            if (decorateRef.current) {
                 decorateResults(transformedJobs);
             }
             else {
@@ -281,6 +307,8 @@ const ReduxProvider = ({ children }) => {
         });
 
     }, []);
+
+
 
 
     return (

@@ -9,6 +9,11 @@ export interface Errors {
     jobPositions: number[] | [];
     items: ErrorItem[] | [];
     isError: boolean
+    numberAds: number,
+    numberOrganic: number,
+    numberTotal: number,
+    organicPositions: number[],
+    adPositions: number[]
 }
 
 export type ErrorsKey = keyof Errors;
@@ -19,7 +24,12 @@ export const ErrorsSchema: Record<ErrorsKey, string> = {
     number: 'number',
     jobPositions: 'array',
     items: 'array',
-    isError: 'boolean'
+    isError: 'boolean',
+    numberAds: 'number',
+    numberOrganic: 'number',
+    numberTotal: 'number',
+    organicPositions: 'array',
+    adPositions: 'array'
 };
 
 export const ErrorItemSchema: Record<ErrorItemKey, string> = {
@@ -72,7 +82,12 @@ export const defaultErrors: Errors = {
     number: 0,
     jobPositions: [],
     items: [],
-    isError: false
+    isError: false,
+    numberAds: 0,
+    numberOrganic: 0,
+    numberTotal: 0,
+    organicPositions: [],
+    adPositions: []
 };
 
 

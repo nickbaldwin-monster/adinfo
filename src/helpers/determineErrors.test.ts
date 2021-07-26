@@ -108,7 +108,10 @@ noErrors = {
     number: 0,
     jobPositions: [],
     items: [],
-    isError: false
+    isError: false,
+    numberAds: 0,
+    numberOrganic: 0,
+    numberTotal: 0
 };
 
 
@@ -124,31 +127,61 @@ beforeEach(() => {
 test('create Errors - 1 ad - no errors', () => {
     let jobs: DisplayJob[] = [{...job1}];
     let error = determineErrors(jobs);
-    expect(error).toEqual(noErrors);
+    expect(error).toEqual({...noErrors,
+        numberAds: 1,
+        numberOrganic: 0,
+        numberTotal: 1,
+        organicPositions: [],
+        adPositions: [1]
+    });
 });
 
 test('create Errors - 1 organic - no errors', () => {
     let jobs: DisplayJob[] = [{...job3}];
     let error = determineErrors(jobs);
-    expect(error).toEqual(noErrors);
+    expect(error).toEqual({...noErrors,
+        numberAds: 0,
+        numberOrganic: 1,
+        numberTotal: 1,
+        organicPositions: [1],
+        adPositions: []
+    });
 });
 
 test('create Errors - 2 ads - no errors', () => {
     let jobs: DisplayJob[] = [{...job1}, {...job2}];
     let error = determineErrors(jobs);
-    expect(error).toEqual(noErrors);
+    expect(error).toEqual({...noErrors,
+        numberAds: 2,
+        numberOrganic: 0,
+        numberTotal: 2,
+        organicPositions: [],
+        adPositions: [1,2]
+    });
 });
 
 test('create Errors - 1 ad & 1 organic - no errors', () => {
     let jobs: DisplayJob[] = [{...job1}, {...job3}];
     let error = determineErrors(jobs);
-    expect(error).toEqual(noErrors);
+    expect(error).toEqual({... noErrors,
+        numberAds: 1,
+        numberOrganic: 1,
+        numberTotal: 2,
+        organicPositions: [2],
+        adPositions: [1]
+    });
 });
 
 test('create Errors - 2 ads & 1 organic - no errors', () => {
     let jobs: DisplayJob[] = [{...job1}, {...job2}, {...job3}];
     let error = determineErrors(jobs);
-    expect(error).toEqual(noErrors);
+    expect(error).toEqual({... noErrors,
+        numberAds: 2,
+        numberOrganic: 1,
+        numberTotal: 3,
+        organicPositions: [3],
+        adPositions: [1,2]
+    });
 });
 
 test('create Errors - 2 ads & 1 organic & 1 ad - 1 error', () => {
@@ -163,7 +196,12 @@ test('create Errors - 2 ads & 1 organic & 1 ad - 1 error', () => {
             jobPosition: 3,
             detail: ''
         }],
-        isError: true
+        isError: true,
+        numberAds: 3,
+        numberOrganic: 1,
+        numberTotal: 4,
+        organicPositions: [3],
+        adPositions: [1,2,4]
     }
 
     expect(error).toEqual(exp);
@@ -182,7 +220,12 @@ test('create Errors - 1 organic & 2 ads - 1 error', () => {
             jobPosition: 1,
             detail: ''
         }],
-        isError: true
+        isError: true,
+        numberAds: 2,
+        numberOrganic: 1,
+        numberTotal: 3,
+        organicPositions: [1],
+        adPositions: [2,3]
     }
     expect(error).toEqual(exp);
 });
@@ -205,13 +248,18 @@ test('create Errors - 1 ad & 1 organic & 1 ad & 1 organic & 1 ad - 2 errors', ()
                 jobPosition: 4,
                 detail: ''
             }],
-        isError: true
+        isError: true,
+        numberAds: 3,
+        numberOrganic: 2,
+        numberTotal: 5,
+        organicPositions: [2,4],
+        adPositions: [1,3,5]
     }
     expect(error).toEqual(exp);
 });
 
 test('create Errors - 1 ad & 2 organic & 1 ad - 2 errors', () => {
-    let jobs: DisplayJob[] = [job1, job3, job5, job2, job4];
+    let jobs: DisplayJob[] = [job1, job3, job5, job2];
     let error = determineErrors(jobs);
     const exp = {
         message: '2 errors',
@@ -228,7 +276,12 @@ test('create Errors - 1 ad & 2 organic & 1 ad - 2 errors', () => {
                 jobPosition: 3,
                 detail: ''
             }],
-        isError: true
+        isError: true,
+        numberAds: 2,
+        numberOrganic: 2,
+        numberTotal: 4,
+        organicPositions: [2,3],
+        adPositions: [1,4]
     }
     expect(error).toEqual(exp);
 });
