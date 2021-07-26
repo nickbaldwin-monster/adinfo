@@ -41,8 +41,8 @@ const ReduxProvider = ({ children }) => {
     const [numberResults, setNumberResults] = useState(0);
     const [results, setResults] = useState(true);
     const [mobileResults, setMobileResults] = useState(true);
-    const [decorate, setDecorate] = useState(false);
-    const [display, setDisplay] = useState(false);
+    const [decorate, setDecorate] = useState(true);
+    const [display, setDisplay] = useState(true);
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [request, setRequest] = useState([]);

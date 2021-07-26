@@ -38,6 +38,7 @@ Deal with upcoming change in source of data!
 
 Fixes/next:
 - 2 fields not being displayed: id and provider code
+- loading display
 - display seo url in expanded details
 - deal with locations etc better
 - reorder items in table
@@ -50,7 +51,6 @@ Data in table:
 - other dates?
 
 Associate results with data:
-
 - add other info to hover
 - hover - highlight item in table?
 - select item in table - highlight job in list?  
