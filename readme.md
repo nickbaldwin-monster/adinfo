@@ -41,7 +41,7 @@ Fixes/next:
 - display seo url in expanded details
 - deal with locations etc better
 - reorder items in table
-- add setting to display info in results
+- identify issues (breaks b/w ads etc)
 
 Data in table:
 - copy info to clipboard  

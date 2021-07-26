@@ -26,10 +26,21 @@ interface Setting {
 export const SettingsPanel = () => {
 
     // @ts-ignore
-    const { loading, display, setDisplay, settings } = useReduxContext();
+    const { loading, display, setDisplay, settings, decorate } = useReduxContext();
 
-    const handleClick = (setting: string) => {
-        const message: MessageType = { type: "TOGGLE_SETTING",  source: 'SettingsPanel', payload: setting };
+    const handleToggleSetting = (setting: string) => {
+        const message: MessageType = {
+            type: "TOGGLE_SETTING",
+            source: 'SettingsPanel',
+            payload: setting
+        };
+        chrome.runtime.sendMessage(message);
+    };
+    const handleToggleDecorate = () => {
+        const message: MessageType = {
+            type: "TOGGLE_DECORATE",
+            source: 'SettingsPanel',
+        };
         chrome.runtime.sendMessage(message);
     };
 
@@ -56,14 +67,29 @@ export const SettingsPanel = () => {
                     <Switch
                         onChange={() => {
                             //console.log(setting.key);
-                            handleClick(setting.key);
+                            handleToggleSetting(setting.key);
                         }}
                         checked={setting.value}
                     />
                     <span className='settingSpacer' />
                     <Label>{setting.key}</Label>
                 </div>
+
+
             ))}
+
+            <br />
+
+            <div className='setting'>
+                <Switch
+                    onChange={() => {
+                        handleToggleDecorate();
+                    }}
+                    checked={decorate}
+                />
+                <span className='settingSpacer' />
+                <Label>Overlay info on search results</Label>
+            </div>
 
             <div className="buttonContainer">
                 <button className="toggleButton" >

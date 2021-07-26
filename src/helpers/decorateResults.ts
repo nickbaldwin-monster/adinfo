@@ -28,3 +28,16 @@ export const decorateResults = (jobs: DisplayJob[]) => {
         });
     }
 };
+
+
+export const removeDecorations = () => {
+    let resultLists = document.querySelectorAll('.resultDecoration');
+    if (resultLists) {
+        resultLists.forEach((el: Element) => {
+            let parent = el.parentElement;
+            if (parent) {
+                parent.removeChild(el);
+            }
+        });
+    }
+};
