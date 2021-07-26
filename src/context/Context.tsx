@@ -4,7 +4,8 @@ import { transformJobs } from "../helpers/transformJobs";
 import { transformRequest } from "../helpers/transformRequest";
 import { MessageType } from "../types";
 import { Settings, isSettings, isSetting, defaultSettings } from '../types/Settings';
-import {decorateResults, removeDecorations} from '../helpers/decorateResults';
+import { defaultErrors } from '../types/Errors';
+import { decorateResults, removeDecorations } from '../helpers/decorateResults';
 
 const moduleName = 'Context';
 let log = logger(moduleName);
@@ -38,6 +39,7 @@ function settingsReducer(state: object, action: object): object {
 const ReduxProvider = ({ children }) => {
 
     const [settings, setSettings] = useState(defaultSettings);
+    const [errors, setErrors] = useState(defaultErrors);
     const [numberResults, setNumberResults] = useState(0);
     const [results, setResults] = useState(true);
     const [mobileResults, setMobileResults] = useState(true);
@@ -290,7 +292,8 @@ const ReduxProvider = ({ children }) => {
             redux,
             loading,
             settings,
-            numberResults
+            numberResults,
+            errors
         }} >
             {children}
         </Provider>
