@@ -26,11 +26,14 @@ After the project is built, a directory named `dist` will be created.
  - added permission/match for .be/en/
 
 1.0.5
- - mon 27 july 2021
+ - tue 27 july 2021
  - added overlay of info into search results with setting
  - updated order of info and settings
  - display number of results and errors (with additional panel for details)
 
+1.0.6
+- tue 27 july 2021
+- added support for 4 missing locales (be/fr, lu/en, lu/de, ch/fr)
 
 ##  important
 - check schema! e.g. enrichments vs posting info, what is mandatory etc
