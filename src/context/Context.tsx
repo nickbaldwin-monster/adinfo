@@ -4,13 +4,14 @@ import { transformJobs } from "../helpers/transformJobs";
 import { transformRequest } from "../helpers/transformRequest";
 import { MessageType } from "../types";
 import { Settings, isSettings, isSetting, defaultSettings } from '../types/Settings';
-import {defaultErrors, Errors} from '../types/Errors';
+import { defaultErrors, Errors } from '../types/Errors';
 import { decorateResults, removeDecorations } from '../helpers/decorateResults';
 import { determineErrors } from "../helpers/determineErrors";
 
 const moduleName = 'Context';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
+
 
 
 const ReduxContext = createContext({});
@@ -51,10 +52,12 @@ const ReduxProvider = ({ children }) => {
     const [request, setRequest] = useState([]);
     const [redux, setRedux] = useState({});
 
+
     log({
         logType: 'INFO',
         message: 'ReduxProvider mounted'
     });
+
 
 
     const updateSettings = (settingName: string) => {
@@ -74,15 +77,24 @@ const ReduxProvider = ({ children }) => {
                 let prevSettingValue = settings[settingName];
                 let nextSetting = {[settingName]: !prevSettingValue};
 
-                log({logType: 'INFO', message: 'new state in reducer', payload: {...settings, ...nextSetting}});
+                log({
+                    logType: 'INFO',
+                    message: 'new state in reducer',
+                    payload: {...settings, ...nextSetting}
+                });
+
                 // @ts-ignore
                 let newSettings = {...settings, [settingName]: !settings[settingName]};
                 if (isSettings(newSettings)) {
                     return newSettings;
                 }
                 else {
-                    // @ts-ignore
-                    log({logType: 'ERROR', message: 'unable to update Settings', payload: {[settingName]: !settings[settingName]}});
+                    log({
+                        logType: 'ERROR',
+                        message: 'unable to update Settings',
+                        // @ts-ignore
+                        payload: {[settingName]: !settings[settingName]}
+                    });
                     return settings;
                 }
             });
@@ -100,7 +112,7 @@ const ReduxProvider = ({ children }) => {
             log({
                 logType: 'INFO',
                 message: 'new display state in reducer',
-                payload: { display: !display }
+                payload: {display: !display}
             });
             return !display;
         });
@@ -128,7 +140,7 @@ const ReduxProvider = ({ children }) => {
             log({
                 logType: 'INFO',
                 message: 'new errors state in reducer',
-                payload: { errors: errors }
+                payload: {errors: errors}
             });
             errorsRef.current = newErrors;
             return newErrors;
@@ -148,7 +160,7 @@ const ReduxProvider = ({ children }) => {
             log({
                 logType: 'INFO',
                 message: 'new decorate state in reducer',
-                payload: { decorate: !decorate }
+                payload: {decorate: !decorate}
             });
             decorateRef.current = !decorate;
             return !decorate;
@@ -199,7 +211,6 @@ const ReduxProvider = ({ children }) => {
             } = jobsList;
 
 
-
             let transformedJobs = transformJobs(jobsList);
             // @ts-ignore
             setJobs(transformedJobs);
@@ -222,18 +233,22 @@ const ReduxProvider = ({ children }) => {
 
             // todo?
             let e = determineErrors(transformedJobs);
-            console.log('$');
-            console.log(e);
-            console.log('$');
-            setErrors(e);
 
+            log({
+                logType: 'INFO',
+                message: 'errors',
+                payload: e
+            });
+
+            setErrors(e);
 
 
             log({
                 logType: 'INFO',
                 message: 'Context - useEffect: state is updated:  ReduxProvider updated',
-                payload: { jobs, loading, redux, request }
+                payload: {jobs, loading, redux, request}
             });
+
 
 
             // todo - hack? - can this be moved into useEffect now that there is a ref???
@@ -248,7 +263,11 @@ const ReduxProvider = ({ children }) => {
 
     const handleMessage = (message: MessageType) => {
 
-        log({ logType: 'MESSAGE_RECEIVED', functionName: 'handleMessage', payload: message });
+        log({
+            logType: 'MESSAGE_RECEIVED',
+            functionName: 'handleMessage',
+            payload: message
+        });
 
         if (message.type === "DISPLAY_STATUS") {
             // updateDisplay(message.display);
@@ -281,7 +300,11 @@ const ReduxProvider = ({ children }) => {
             // todo - cannot receive dom elements - so instead, just need to respond to x new elements
 
             // decorateResults(message.payload);
-            log({logType: 'INFO', message: message.type, payload: message})
+            log({
+                logType: 'INFO',
+                message: message.type,
+                payload: message
+            });
         }
 
     };

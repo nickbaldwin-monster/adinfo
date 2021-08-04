@@ -1,6 +1,9 @@
 const app = '%c adinfo';
 const style = 'background: #444; color: #fff; font-weight: bold; padding-top: 3px; padding-bottom: 3px;';
 
+
+const isLog = false;
+
 interface Log {
     moduleName?: string,
     message?: string,
@@ -35,7 +38,12 @@ export const logFactory = () => {
 }
 
 export const logger = (moduleName: string) => {
+
     return ({ logType, functionName, message, payload, error }: Log) => {
+
+        if (!isLog) {
+            return;
+        }
         log({ moduleName, functionName, logType, message, payload, error });
     };
 }

@@ -11,11 +11,14 @@ import "./popup.css";
 
 
 const handleMessage = (message: MessageType) => {
-    log({ logType: 'MESSAGE_RECEIVED', functionName: 'N/A', payload: message });
+    log({
+        logType: 'MESSAGE_RECEIVED',
+        functionName: 'N/A',
+        payload: message
+    });
     if (message.type === "SETTINGS_UPDATE") {
         // todo - apply settings?
     }
-
 };
 
 

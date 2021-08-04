@@ -17,11 +17,19 @@ log({ logType: 'LOADED' });
 
 export const JsonTree = () => {
 
-    log({logType: 'INFO', message: 'JsonTree mounted'});
+    log({
+        logType: 'INFO',
+        message: 'JsonTree mounted'
+    });
 
     // @ts-ignore
     const { loading, redux } = useReduxContext();
-    log({logType: 'INFO', message: 'JsonTree', payload: {redux}});
+
+    log({
+        logType: 'INFO',
+        message: 'JsonTree',
+        payload: {redux}
+    });
 
     return (
         <div className='panel'>

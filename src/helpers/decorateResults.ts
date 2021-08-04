@@ -1,12 +1,13 @@
 import { DisplayJob } from "../types/DisplayJob";
 import { resultDecoration } from './resultDecoration';
+import {logComponent} from "./reactHelper";
 
 
 
 export const decorateResults = (jobs: DisplayJob[]) => {
 
     // todo - this is now hacky - getting jobs from setJobs
-    console.log('jobs in decorate: ', jobs);
+    // console.log('jobs in decorate: ', jobs);
 
 
     // todo - may not need to redecorate prev elements
@@ -14,7 +15,6 @@ export const decorateResults = (jobs: DisplayJob[]) => {
     let resultLists = document.querySelectorAll('.results-list');
 
     if (resultLists) {
-
 
         const splitElements: Element[] = Array.from(resultLists[0].children);
         const mobileElements: Element[] = Array.from(resultLists[1].children);

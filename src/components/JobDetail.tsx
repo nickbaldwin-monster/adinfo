@@ -3,7 +3,8 @@ import ReactJson from "react-json-view-ts";
 
 import { DisplayJob } from "../types/DisplayJob";
 import { logger } from "../helpers/logger";
-import {JobLinks} from "./JobLinks";
+import { JobLinks } from "./JobLinks";
+
 
 const moduleName = 'JobDetail';
 let log = logger(moduleName);

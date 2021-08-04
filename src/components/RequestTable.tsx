@@ -9,7 +9,6 @@ import { useReduxContext } from "../context/Context";
 import {RequestLinks} from "./RequestLinks";
 
 
-
 const moduleName = 'RequestTable';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
@@ -17,12 +16,20 @@ log({ logType: 'LOADED' });
 
 
 export const RequestTable = () => {
+    log({
+        logType: 'INFO',
+        message: 'RequestTable mounted'
+    });
 
-    log({logType: 'INFO', message: 'RequestTable mounted'});
 
     // @ts-ignore
     const { loading, request } = useReduxContext();
-    log({logType: 'INFO', message: 'RequestTable', payload: {request}});
+
+    log({
+        logType: 'INFO',
+        message: 'RequestTable',
+        payload: {request}
+    });
 
     let searchId;
     let isLink = false;

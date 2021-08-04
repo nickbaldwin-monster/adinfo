@@ -10,7 +10,6 @@ import {RequestLinks} from "./RequestLinks";
 import ReactJson from "react-json-view-ts";
 
 
-
 const moduleName = 'ErrorsPanel';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
@@ -19,18 +18,22 @@ log({ logType: 'LOADED' });
 
 export const ErrorsPanel = () => {
 
+
     log({
         logType: 'INFO',
-        message: 'ErrorsPanel mounted'}
-    );
+        message: 'ErrorsPanel mounted'
+    });
+
 
     // @ts-ignore
     const { errors } = useReduxContext();
+
     log({
         logType: 'INFO',
         message: 'ErrorsPanel',
-        payload: { errors }}
-    );
+        payload: {errors}
+    });
+
 
     return (
         <div className='panel'>

@@ -18,7 +18,7 @@ const code = `
             const app = '%c adinfo';
             const style = 'background: #444; color: #fff; font-weight: bold; padding-top: 3px; padding-bottom: 3px;';
 
-        
+            
             const log = ({ moduleName, functionName, logType, message, payload, error }) => {
                
                 let msg = app + " ::: " + logType.toLowerCase() + " ";
@@ -43,14 +43,16 @@ const code = `
                 }
             };
             
+            
             log({ logType: 'LOADED', moduleName });
+                
             
             // send message when state changes
             window.addEventListener('storage', function(e) {
                 if (e.key === 'savedReduxState') {
                     let message= "job state changed: " + e.key;
-                    log({ logType: 'INFO', message });
-                    window.parent.postMessage({ type: 'JOB_STATE', payload: e.newValue }, "*");
+                     log({ logType: 'INFO', message });
+                    window.parent.postMessage({ type: 'JOB_STATE', payload: e.newValue }, "*"); 
                 }
             });
             
@@ -66,7 +68,11 @@ export const Iframe = (props: Props) => {
         let doc = frame.contentDocument;
 
         let msg = app + " ::: " + 'info' + " ";
-        console.log(msg, style, { logType: 'INFO', payload: {frame: frame, doc: doc} });
+
+        console.log(msg, style, {
+            logType: 'INFO',
+            payload: { frame: frame, doc: doc }
+        });
 
         doc.open();
         doc.write(code);

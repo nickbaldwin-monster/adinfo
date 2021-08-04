@@ -22,9 +22,11 @@ const SELECTED_FIELD = "selected";
 const idGetter = getter(DATA_ITEM_KEY);
 const initialSort = [ {field: "position", dir: "asc"} ];
 
+
 const moduleName = 'JobTable';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
+
 
 
 
@@ -76,7 +78,9 @@ export const JobTable = () => {
 
     const saveSelected = () => {
         let keys = Object.keys(selectedState);
-        console.log(keys);
+
+        // todo
+        //console.log(keys);
     }
 
 
@@ -102,7 +106,12 @@ export const JobTable = () => {
     };
 
         React.useEffect(() => {
-            log({ logType: 'INFO', functionName: 'useEffect', message: 'executed' });
+
+            log({
+                logType: 'INFO',
+                functionName: 'useEffect',
+                message: 'executed'
+            });
 
             /*
             chrome.runtime.onMessage.addListener((message: MessageType) => {

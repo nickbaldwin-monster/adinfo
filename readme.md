@@ -35,6 +35,11 @@ After the project is built, a directory named `dist` will be created.
 - tue 27 july 2021
 - added support for 4 missing locales (be/fr, lu/en, lu/de, ch/fr)
 
+1.0.7
+ - wed 4 aug 2021
+ - tidied logging
+ - spike for identifying react components (in injected script)
+
 ##  important
 - check schema! e.g. enrichments vs posting info, what is mandatory etc
 - use both post and enrichments
