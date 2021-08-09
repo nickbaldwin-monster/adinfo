@@ -1,4 +1,6 @@
 // Popup or content script requesting the current status
+import {Job} from "./types/Job";
+
 interface DisplayStateRequest {
     type: "REQ_DISPLAY_STATUS";
     source: string;
@@ -14,6 +16,11 @@ interface DisplayStateResponse {
 
 
 
+interface JobProps {
+    type: "JOB_PROPS";
+    payload: Job[];
+    source: string;
+}
 
 interface JobState {
     type: "JOB_STATE";
@@ -59,6 +66,7 @@ interface ToggleDecorate {
 interface JobResultsUpdated {
     type: 'RESULTS_UPDATED';
     payload: number;
+    source?: string;
 }
 
 export type MessageType =
@@ -67,4 +75,4 @@ export type MessageType =
     SettingsUpdate | JobResultsUpdated |
 
     // actually used
-    JobState | ToggleSetting | ToggleDecorate | ToggleDisplay  ;
+    JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay  ;

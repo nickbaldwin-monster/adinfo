@@ -14,7 +14,9 @@ export const decorateResults = (jobs: DisplayJob[]) => {
     // todo - may need to compare state v results - if timing issues
     let resultLists = document.querySelectorAll('.results-list');
 
-    if (resultLists) {
+
+
+    if (resultLists && resultLists.length) {
 
         const splitElements: Element[] = Array.from(resultLists[0].children);
         const mobileElements: Element[] = Array.from(resultLists[1].children);
@@ -27,6 +29,25 @@ export const decorateResults = (jobs: DisplayJob[]) => {
             }
         });
     }
+
+
+    else {
+        resultLists = document.querySelectorAll("[class^='job-cardstyle__JobCardComponent-']");
+        const elements: Element[] = Array.from(resultLists) || [];
+
+        elements.forEach((el: Element, i) => {
+            console.log(el);
+            console.log(el.children);
+            console.log(el.children);
+
+                let container = resultDecoration(jobs[i], i);
+                el.children[0].appendChild(container);
+
+        });
+
+    }
+
+
 };
 
 

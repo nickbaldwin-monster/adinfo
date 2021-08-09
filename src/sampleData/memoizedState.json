@@ -1,0 +1,47 @@
+{
+  "baseState": {
+    "client": {
+      "ipAddress": "159.196.170.40",
+      "fingerprintId": "1be62a6962252086a65073847017a1f6"
+    },
+    "software": {
+      "environment": "prod",
+      "country": "ie",
+      "language": "en",
+      "siteId": "monster.ie",
+      "tenant": "monster",
+      "pageSize": 9
+    },
+    "location": {
+      "currentLocation": "/jobs/search?q=software+engineer&where=Dublin,+Leinster&page=9",
+      "currentPageName": "results"
+    },
+    "user": {
+      "loginStatus": "logged out - unrecognized"
+    },
+    "context": {
+      "client": {
+        "ipAddress": "159.196.170.40",
+        "fingerprintId": "1be62a6962252086a65073847017a1f6"
+      },
+      "software": {
+        "environment": "prod",
+        "country": "ie",
+        "language": "en",
+        "siteId": "monster.ie",
+        "tenant": "monster",
+        "pageSize": 9
+      },
+      "location": {
+        "currentLocation": "/jobs/search?q=software+engineer&where=Dublin,+Leinster&page=9",
+        "currentPageName": "results"
+      },
+      "user": {
+        "loginStatus": "logged out - unrecognized"
+      }
+    },
+    "userEventData": {
+      "searchId": "8af72752-5d4d-49d5-a955-a518a446f5dc"
+    }
+  }
+}

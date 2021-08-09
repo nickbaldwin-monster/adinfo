@@ -2,7 +2,7 @@
   "name": "adinfo",
   "description": "adinfo",
   "manifest_version": 2,
-  "version": "1.0.7",
+  "version": "1.0.8",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
@@ -33,7 +33,22 @@
     "https://www.monster.it/",
     "https://www.monsterboard.nl/",
     "https://www.monster.be/",
-    "https://www.monster.ie/"
+    "https://www.monster.ie/",
+
+    "https://www.nxtpreprod.monster.at/",
+    "https://www.nxtpreprod.monster.be/",
+    "https://www.nxtpreprod.monster.ca/",
+    "https://www.nxtpreprod.monster.ch/",
+    "https://www.nxtpreprod.monster.com/",
+    "https://www.nxtpreprod.monster.co.uk/",
+    "https://www.nxtpreprod.monster.de/",
+    "https://www.nxtpreprod.monster.es/",
+    "https://www.nxtpreprod.monster.fr/",
+    "https://www.nxtpreprod.monster.ie/",
+    "https://www.nxtpreprod.monster.it/",
+    "https://www.nxtpreprod.monster.lu/",
+    "https://www.nxtpreprod.monsterboard.nl/",
+    "https://www.nxtpreprod.monster.se/"
   ],
   "background": {
     "scripts": [
@@ -61,10 +76,30 @@
         "*://*.monsterboard.nl/vacatures/*",
         "*://*.monster.es/trabajo/*",
         "*://*.monster.se/jobb/*",
-        "*://*.monster.ch.de/jobs/*",
+        "*://*.monster.ch/de/jobs/*",
         "*://*.monster.ch/fr/emploi/*",
         "*://*.monster.co.uk/jobs/*",
-        "*://*.monster.com/jobs/*"
+        "*://*.monster.com/jobs/*",
+        "*://*.nxtpreprod.monster.at/jobs/*",
+        "*://*.nxtpreprod.monster.be/en/jobs/*",
+        "*://*.nxtpreprod.monster.be/fr/emploi/*",
+        "*://*.nxtpreprod.monster.be/nl/vacatures/*",
+        "*://*.nxtpreprod.monster.ca/jobs/*",
+        "*://*.nxtpreprod.monster.ca/fr/emploi/*",
+        "*://*.nxtpreprod.monster.ch/de/jobs/*",
+        "*://*.nxtpreprod.monster.ch/fr/emploi/*",
+        "*://*.nxtpreprod.monster.com/jobs/*",
+        "*://*.nxtpreprod.monster.co.uk/jobs/*",
+        "*://*.nxtpreprod.monster.de/jobs/*",
+        "*://*.nxtpreprod.monster.es/trabajo/*",
+        "*://*.nxtpreprod.monster.fr/emploi/*",
+        "*://*.nxtpreprod.monster.ie/jobs/*",
+        "*://*.nxtpreprod.monster.it/lavoro/*",
+        "*://*.nxtpreprod.monster.lu/en/jobs/*",
+        "*://*.nxtpreprod.monster.lu/fr/emploi/*",
+        "*://*.nxtpreprod.monster.lu/de/jobs/*",
+        "*://*.nxtpreprod.monsterboard.nl/vacatures/*",
+        "*://*.nxtpreprod.monster.se/jobb/*"
       ],
 
       "js": [

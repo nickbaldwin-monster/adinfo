@@ -52,9 +52,20 @@ const code = `
                 if (e.key === 'savedReduxState') {
                     let message= "job state changed: " + e.key;
                      log({ logType: 'INFO', message });
-                    window.parent.postMessage({ type: 'JOB_STATE', payload: e.newValue }, "*"); 
+                    window.parent.postMessage({ type: 'JOB_STATE', payload: e.newValue, source: moduleName }, "*"); 
                 }
             });
+            
+           
+            function handleRequestFinished(request) {
+                console.log("Server IP: ", request.serverIPAddress);
+                request.getContent().then(([content, mimeType]) => {
+                    console.log("Content: ", content);
+                    console.log("MIME type: ", mimeType);
+                });
+            }  
+
+            // chrome.devtools.network.onRequestFinished.addListener(handleRequestFinished);
             
         </script>
         I am not visible!

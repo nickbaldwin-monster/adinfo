@@ -41,11 +41,11 @@ const DrawerWithContext = () => {
 
 
 const injectApp = () => {
-    let app = document.querySelector('#app');
+    let app = document.querySelector('body');
     if (app === null) {
         log({
             logType: 'ERROR',
-            message: '#app not found - cannot mount display'
+            error: '#app not found - cannot mount display'
         });
     }
     else {
@@ -57,7 +57,13 @@ const injectApp = () => {
         if (display === null) {
             log({
                 logType: 'ERROR',
-                message: 'display not mounted'
+                error: 'display not mounted'
+            });
+        }
+        else {
+            log({
+                logType: 'INFO',
+                error: 'display mounted'
             });
         }
     }
@@ -66,11 +72,12 @@ const injectApp = () => {
 
 
 const addIframe = () => {
-    const node = document.querySelector("#app");
+    // const node = document.querySelector("#app") || document.querySelector("body");
+    const node = document.querySelector("body");
     if (node === null) {
         log({
             logType: 'ERROR',
-            message: '#app not found - cannot mount iframe'
+            error: '#app not found - cannot mount iframe'
         });
     }
     else {
@@ -80,6 +87,10 @@ const addIframe = () => {
         const mount = document.getElementById("container");
         const t = (<Iframe content={''}/>);
         ReactDOM.render(t, mount);
+        log({
+            logType: 'INFO',
+            message: '#app iframe mounted'
+        });
     }
 }
 
@@ -93,13 +104,15 @@ const monitor = () => {
             // notify initial results
             window.postMessage({
                 type: 'RESULTS_UPDATED',
-                payload: list.children.length
+                payload: list.children.length,
+                source: moduleName
             }, "*");
             // monitor additional results to add decorations
             const observer = new MutationObserver((mutations: any) => {
                 window.postMessage({
                     type: 'RESULTS_UPDATED',
-                    payload: mutations.length
+                    payload: mutations.length,
+                    source: moduleName
                 }, "*");
             });
             // @ts-ignore
@@ -117,9 +130,7 @@ const monitor = () => {
 const init = () => {
     addIframe();
     injectApp();
-    monitor();
-
-
+    // monitor();
 }
 
 // todo - can this be removed and set in manifest?
@@ -133,16 +144,18 @@ if (document.readyState !== 'loading') {
 
         console.log('adinfo: injected script');
 
-
         const poller = setInterval(() => {
+
             const list = document.querySelector('.results-list');
+
             if (list !== null) {
                 clearInterval(poller);
-
+                console.log('list');
 
                 for (const key in list) {
                     if (key.startsWith('__reactInternalInstance$')) {
 
+                        console.log('list has key');
                         console.log('adinfo: injected script: react node found');
                         // @ts-ignore
                         const fiberNode = list[key];
@@ -152,104 +165,108 @@ if (document.readyState !== 'loading') {
                     }
                 }
             }
+
+            const cards = document.querySelector('.infinite-scroll-component__outerdiv');
+            if (cards !== null) {
+                clearInterval(poller);
+
+
+                const header = document.querySelector('.ds-header');
+                console.log('header');
+                console.log(header);
+                for (const key in header) {
+                    if (key.startsWith('__reactFiber$')) {
+                        console.log('header has key');
+
+                        // @ts-ignore
+                        let item = header[key];
+                        console.log(item);
+
+                        let numberIt = 0;
+                        // numberIt should be 16
+                        while (item.memoizedState?.baseState?.client === undefined && numberIt < 20) {
+                            item = item?.return;
+                            numberIt++;
+                        }
+
+                        if (item.memoizedState?.baseState) {
+                            console.log(numberIt++);
+                            console.log(item.memoizedState?.baseState);
+
+                            window.postMessage({
+                                type: 'REQUEST',
+                                payload: item.memoizedState?.baseState,
+                                source: 'content'
+                            }, "*");
+
+                        }
+
+
+                    }
+                }
+
+
+                console.log('cards');
+
+                const cardList = document.querySelector("[class^='job-search-resultsstyle__CardGrid']");
+                console.log(cardList);
+                const observer = new MutationObserver((mutations: any) => {
+
+                    console.log('results observed for card view');
+
+
+                    for (const key in cardList) {
+                        if (key.startsWith('__reactFiber$')) {
+
+                            console.log('cardList has key');
+
+                            // @ts-ignore
+                            let item = cardList[key];
+                            let numberIt = 0;
+
+                            while (item.memoizedProps.items === undefined && numberIt < 15) {
+                                item = item?.return;
+                                numberIt++;
+                            }
+
+                            if (item.memoizedProps.items) {
+
+                                console.log('cardlist should have items!');
+                                console.log(item.memoizedProps.items.length);
+                                console.log(item);
+                                console.log(item.memoizedProps.items);
+
+
+                                // todo
+                                let message = `job state changed: ${item.memoizedProps.items.length} jobs`;
+
+                                // log({ logType: 'INFO', message });
+                                window.postMessage({type: 'JOB_PROPS', payload: item.memoizedProps.items, source: 'content'}, "*");
+
+
+
+                                console.log('cardlist');
+                                console.log('cardlist');
+                                console.log('cardlist');
+                                console.log(item.memoizedProps.items.length)
+
+                            }
+                        }
+                    }
+
+
+                });
+                // @ts-ignore
+                observer.observe(cardList, {
+                    childList: true // report added/removed nodes
+                });
+
+
+
+            }
+
+
         }, 100);
-
-
-
-        // todo - remove this block!
-        // #########
-        // #########
-        // #########
-
-        // @ts-ignore
-        window.__testThisFunction = function () { console.log('it works');}
-        // @ts-ignore
-        window.__findReactComponent = function (el) {
-            for (const key in el) {
-                if (key.startsWith('__reactInternalInstance$')) {
-                    const fiberNode = el[key];
-                    console.log(fiberNode);
-                    console.log(fiberNode?.return);
-                    console.log(fiberNode.return?.stateNode);
-                    return fiberNode && fiberNode.return && fiberNode.return.stateNode;
-                }
-            }
-            return null;
-        }
-
-// @ts-ignore
-        window.__findReactComponentNode = function (el) {
-            for (const key in el) {
-                if (key.startsWith('__reactInternalInstance$')) {
-                    const fiberNode = el[key];
-                    console.log(fiberNode);
-                    console.log(fiberNode?.return);
-                    console.log(fiberNode.return?.stateNode);
-                    return fiberNode;
-                }
-            }
-            return null;
-        }
-
-
-
-
-
-        // @ts-ignore
-        window.__findReact = function (dom, traverseUp = 0) {
-
-            const key = Object.keys(dom).find(key=>key.startsWith("__reactInternalInstance$"));
-            console.log(key)
-            // @ts-ignore
-            const domFiber = dom[key];
-            if (domFiber == null) return null;
-
-            // react <16
-            if (domFiber._currentElement) {
-                let compFiber = domFiber._currentElement._owner;
-                for (let i = 0; i < traverseUp; i++) {
-                    compFiber = compFiber._currentElement._owner;
-                }
-                return compFiber._instance;
-            }
-
-            // react 16+
-            const GetCompFiber = (fiber: any) =>{
-                //return fiber._debugOwner; // this also works, but is __DEV__ only
-                let parentFiber = fiber.return;
-                while (typeof parentFiber.type == "string") {
-                    parentFiber = parentFiber.return;
-                }
-                return parentFiber;
-            };
-            let compFiber = GetCompFiber(domFiber);
-            for (let i = 0; i < traverseUp; i++) {
-                compFiber = GetCompFiber(compFiber);
-            }
-            return compFiber.stateNode;
-        }
-
-
-
-
-
-        // @ts-ignore
-        document.__findReactComponent = function (el) {
-            for (const key in el) {
-                if (key.startsWith('__reactInternalInstance$')) {
-                    const fiberNode = el[key];
-
-                    return fiberNode && fiberNode.return && fiberNode.return.stateNode;
-                }
-            }
-            return null;
-        }
-
-
-        // console.log(window);
-        // #########
-        // #########
-        // #########
 
 
 

@@ -2,7 +2,7 @@ const app = '%c adinfo';
 const style = 'background: #444; color: #fff; font-weight: bold; padding-top: 3px; padding-bottom: 3px;';
 
 
-const isLog = false;
+const isLog = true;
 
 interface Log {
     moduleName?: string,

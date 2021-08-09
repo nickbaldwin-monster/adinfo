@@ -7,6 +7,7 @@ import { Settings, isSettings, isSetting, defaultSettings } from '../types/Setti
 import { defaultErrors, Errors } from '../types/Errors';
 import { decorateResults, removeDecorations } from '../helpers/decorateResults';
 import { determineErrors } from "../helpers/determineErrors";
+import {Job} from "../types/Job";
 
 const moduleName = 'Context';
 let log = logger(moduleName);
@@ -91,7 +92,7 @@ const ReduxProvider = ({ children }) => {
                 else {
                     log({
                         logType: 'ERROR',
-                        message: 'unable to update Settings',
+                        error: 'unable to update Settings',
                         // @ts-ignore
                         payload: {[settingName]: !settings[settingName]}
                     });
@@ -112,7 +113,7 @@ const ReduxProvider = ({ children }) => {
             log({
                 logType: 'INFO',
                 message: 'new display state in reducer',
-                payload: {display: !display}
+                payload: { display: !display }
             });
             return !display;
         });
@@ -179,12 +180,11 @@ const ReduxProvider = ({ children }) => {
         let json;
         try {
             json = JSON.parse(jsonString);
-        }
-        catch (e) {
+        } catch (e) {
             log({
                 logType: 'ERROR',
-                message: 'Could not parse state from localStorage',
-                payload: { state: jsonString }
+                error: 'Could not parse state from localStorage',
+                payload: {state: jsonString}
             });
         }
 
@@ -250,19 +250,81 @@ const ReduxProvider = ({ children }) => {
             });
 
 
-
             // todo - hack? - can this be moved into useEffect now that there is a ref???
             if (decorateRef.current) {
                 decorateResults(transformedJobs);
-            }
-            else {
+            } else {
                 removeDecorations();
             }
         }
+
     }
+
+
+    const updateJobs = (jobs: Job[]) => {
+
+        /*
+            message: {
+                type: "JOB_PROPS"
+                payload: Job[]
+                source?: "content"
+            }
+        */
+
+
+        let transformedJobs = transformJobs({ jobResults: jobs });
+
+        console.log('%%%%%%');
+        console.log(jobs);
+        console.log(transformedJobs);
+        console.log('%%%%%%');
+
+        // @ts-ignore
+        setJobs(transformedJobs);
+        setNumberResults(transformedJobs.length);
+        setLoading(false);
+
+
+
+
+        let e = determineErrors(transformedJobs);
+
+        log({
+            logType: 'INFO',
+            message: 'errors',
+            payload: e
+        });
+
+        setErrors(e);
+
+
+        log({
+            logType: 'INFO',
+            message: 'Context - useEffect: state is updated:  ReduxProvider updated',
+            payload: {jobs, loading, errors }
+        });
+
+
+
+                // todo - hack? - can this be moved into useEffect now that there is a ref???
+                if (decorateRef.current) {
+                    decorateResults(transformedJobs);
+                }
+                else {
+                    removeDecorations();
+                }
+
+
+    }
+
+
+
+
 
     const handleMessage = (message: MessageType) => {
 
+        // @ts-ignore
+        if (message.type === "__REACT_CONTEXT_DEVTOOL_GLOBAL_HOOK_EVENT") return;
         log({
             logType: 'MESSAGE_RECEIVED',
             functionName: 'handleMessage',
@@ -289,10 +351,22 @@ const ReduxProvider = ({ children }) => {
         }
 
         if (message.type === 'JOB_STATE') {
+
+            console.log('###');
+            console.log('###');
+            console.log(message.payload);
+            console.log('###');
+            console.log('###');
+
             updateJobsAndRequest(message.payload);
 
             // todo - may need to ensure that results are handled too
 
+        }
+
+
+        if (message.type === 'JOB_PROPS') {
+            updateJobs(message.payload);
         }
 
         if (message.type === 'RESULTS_UPDATED') {
