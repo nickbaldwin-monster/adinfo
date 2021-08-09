@@ -10,7 +10,7 @@ log({ logType: 'LOADED' });
 
 
 // @ts-ignore
-export const JobLinks = ({ jobId, accountId, seoJobId, nowId }) => {
+export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url }) => {
 
     // todo - replace with prod urls
     const nextProdUrl = 'https://admin.mwwnextappprod-us.monster-next.com';
@@ -31,13 +31,33 @@ export const JobLinks = ({ jobId, accountId, seoJobId, nowId }) => {
     const searchId = `${domain}/jobs/search?id=${jobId}&page=1#/`;
     const orgJobs = `${domain}/jobs/search?cn=${orgName}#/`;
 
+
+
+
+    let regex = /(http(s)?)?:\/\/(www\.)monster(board)?\.[a-z]{2,3}(\.[a-z]{2,3})?(\/[a-z]{2})?\/[a-z]*\/[a-z]*\?q=/ig;
+
+    let colo = /\.([a-z]{2,3)}\/[a-z]{2}\/[a-z]*\/[a-z]*\?q=/ig;
+    let co = /\.([a-z]{2,3})\/[a-z]*\/[a-z]*\?q=/ig;
+
+    let href = window.location.href;
+    // let s = "https://www.monster.ie/jobs/search?q=Software+Engineer&where=#/"
+    let test = ".lu/de/jobs/suche?q=";
+
+    let id = '';
+    let searchUrl = '';
+    let search = href.match(regex);
+    if (search) {
+        searchUrl = search[0].replace(/q=$/, 'id=') + jobId + "#/";
+    }
+
+
     return (
         <section>
             {jobId && <p>
-                View <strong><a href={jobDetail} target='_blank'  style={{color: '#007bff'}}>Job detail</a></strong>
+                View <strong><a href={url} target='_blank'  style={{color: '#007bff'}}>Job detail</a></strong>
             </p>}
-            {jobId && <p>
-                Search using this <strong><a href={searchId} target='_blank'  style={{color: '#007bff'}}>job id</a></strong>
+            {search && <p>
+                Search using this <strong><a href={searchUrl} target='_blank'  style={{color: '#007bff'}}>job id</a></strong>
             </p>}
 
 

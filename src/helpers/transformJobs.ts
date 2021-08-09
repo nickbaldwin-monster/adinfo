@@ -109,6 +109,17 @@ const normalizePostCompany = (jobPosting: object): string => {
 
 }
 
+const normalizeUrl = (jobPosting: object): string => {
+    // @ts-ignore
+    if (!jobPosting || !jobPosting.url) {
+        return '';
+    }
+
+    // @ts-ignore
+    return jobPosting.url;
+
+}
+
 const normalizePostTitle = (jobPosting: object): string => {
     // @ts-ignore
     if (!jobPosting || !jobPosting.title) {
@@ -198,6 +209,7 @@ export const transformJob = (object: object, i: number) => {
         }
         if (k === 'jobPosting') {
             newObj.mesco = normalizeMesco(v);
+            newObj.url = normalizeUrl(v)
         }
         if (k === 'ingestionMethod') {
             newObj[k] = normalizeIngestionMethod(v);

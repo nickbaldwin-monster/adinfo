@@ -18,4 +18,5 @@ export interface DisplayJob  {
     seoJobId: string;
     nowId: string;
     template: string;
+    url: string;
 }

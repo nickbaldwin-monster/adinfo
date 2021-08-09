@@ -37,7 +37,7 @@ export const JobDetail = (props: DataProps) => {
                 <strong>SEO id:</strong> {dataItem.seoJobId || 'N/A'}
             </p>
 
-            <JobLinks jobId={dataItem.jobId} accountId={undefined} seoJobId={dataItem.seoJobId} nowId={dataItem.nowId} />
+            <JobLinks jobId={dataItem.jobId} accountId={undefined} seoJobId={dataItem.seoJobId} nowId={dataItem.nowId} url={dataItem.url} />
 
             <ReactJson src={dataItem.data} collapsed={1} collapseStringsAfterLength={120}/>
 

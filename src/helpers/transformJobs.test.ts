@@ -76,6 +76,7 @@ test('transformed job has expected properties', () => {
     expect(newJob).toHaveProperty('data');
     expect(newJob).toHaveProperty('nowId');
     expect(newJob).toHaveProperty('template');
+    expect(newJob).toHaveProperty('url');
 });
 
 test('transformed job has correct values for props', () => {
@@ -105,8 +106,8 @@ test('transformed job has correct values for props', () => {
         seoJobId: 'java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
         data: {},
         nowId: '274756999',
-        template: '1'
-
+        template: '1',
+        url: 'https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93'
 
     });
 });
@@ -149,8 +150,8 @@ test('jobList transformed into display jobs', () => {
                 selected: false,
                 data: {},
                 nowId: '274756999',
-                template: '1'
-
+                template: '1',
+                url: 'https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93'
             }
         ]
     );

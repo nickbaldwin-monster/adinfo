@@ -23,7 +23,8 @@ const job1: DisplayJob =  {
     data: {},
     seoJobId: '1',
     nowId: '101',
-    template: '102'
+    template: '102',
+    url: 'https://www.host.com/something'
 
 };
 const job2: DisplayJob =  {
@@ -45,7 +46,8 @@ const job2: DisplayJob =  {
     data: {},
     seoJobId: '1',
     nowId: '101',
-    template: '102'
+    template: '102',
+    url: 'https://www.host.com/something'
 }
 const job3: DisplayJob =  {
     position: 3,
@@ -66,7 +68,8 @@ const job3: DisplayJob =  {
     data: {},
     seoJobId: '1',
     nowId: '101',
-    template: '102'
+    template: '102',
+    url: 'https://www.host.com/something'
 }
 const job4: DisplayJob =  {
     position: 4,
@@ -87,7 +90,8 @@ const job4: DisplayJob =  {
     data: {},
     seoJobId: '1',
     nowId: '101',
-    template: '102'
+    template: '102',
+    url: 'https://www.host.com/something'
 }
 
 const job5: DisplayJob =  {
@@ -109,7 +113,8 @@ const job5: DisplayJob =  {
     data: {},
     seoJobId: '1',
     nowId: '101',
-    template: '102'
+    template: '102',
+    url: 'https://www.host.com/something'
 }
 
 
