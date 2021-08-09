@@ -18,7 +18,9 @@ export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url }) => {
     const nextJob = `${nextProdUrl}/jobs/search?page=1&query=${jobId}&type=jobId`;
     const nextAccount = `${nextPreprodUrl}/accounts/search?page=1&query=${accountId}&type=accountId`;
     const nowUrl = 'https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&searchtype=POSITIONADID&txtSearch=';
-    const nowJob = `${nowUrl}/${nowId}`;
+    //              https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&searchtype=POSITIONADID&txtSearch=229908419
+
+    const nowJob = `${nowUrl}${nowId}`;
     const nowAccount = `${nowUrl}/`;
 
     // todo - all domains
@@ -49,6 +51,7 @@ export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url }) => {
     if (search) {
         searchUrl = search[0].replace(/q=$/, 'id=') + jobId + "#/";
     }
+
 
 
     return (
