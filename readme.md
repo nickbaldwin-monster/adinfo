@@ -45,8 +45,10 @@ After the project is built, a directory named `dist` will be created.
  - ams preprod urls
 
 1.0.9
-- mon 9 aug 2021
+- tue 10 aug 2021
 - added nowId and template properties & assoc settings
+- webadmin link
+- search by id on all domains
 
 
 ##  important
