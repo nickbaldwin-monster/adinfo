@@ -64,6 +64,29 @@ const normalizePricingType = (now: object): string => {
     return "" + now.jobAdPricingTypeId;
 };
 
+
+const normalizeNowId = (now: object): string => {
+    // @ts-ignore
+    if (!now || !now.folderId) {
+        return '';
+    }
+    // @ts-ignore
+    return "" + now.folderId;
+};
+
+
+const normalizeTemplate = (now: object): string => {
+    // @ts-ignore
+    if (!now || !now.templateId) {
+        return '';
+    }
+    // @ts-ignore
+    return "" + now.templateId;
+};
+
+
+
+
 const normalizeMesco = (jobPosting: object): string => {
     // @ts-ignore
     if (!jobPosting || !jobPosting.occupationalCategory) {
@@ -184,6 +207,9 @@ export const transformJob = (object: object, i: number) => {
             newObj.pricingType = normalizePricingType(v);
 
             // todo - now.jobAdPricingTypeId
+
+            newObj.nowId = normalizeNowId(v);
+            newObj.template = normalizeTemplate(v);
         }
 
         if (k === 'formattedDate') {

@@ -10,15 +10,15 @@ log({ logType: 'LOADED' });
 
 
 // @ts-ignore
-export const JobLinks = ({ jobId, accountId, seoJobId }) => {
+export const JobLinks = ({ jobId, accountId, seoJobId, nowId }) => {
 
     // todo - replace with prod urls
     const nextProdUrl = 'https://admin.mwwnextappprod-us.monster-next.com';
     const nextPreprodUrl = 'https://admin.mwwnextapppreprod-us.monster-next.com';
-    const nextJob = `${nextPreprodUrl}/jobs/search?page=1&query=${jobId}&type=jobId`;
+    const nextJob = `${nextProdUrl}/jobs/search?page=1&query=${jobId}&type=jobId`;
     const nextAccount = `${nextPreprodUrl}/accounts/search?page=1&query=${accountId}&type=accountId`;
-    const nowUrl = 'https:/';
-    const nowJob = `${nowUrl}/`;
+    const nowUrl = 'https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&searchtype=POSITIONADID&txtSearch=';
+    const nowJob = `${nowUrl}/${nowId}`;
     const nowAccount = `${nowUrl}/`;
 
     // todo - all domains
@@ -39,25 +39,28 @@ export const JobLinks = ({ jobId, accountId, seoJobId }) => {
             {jobId && <p>
                 Search using this <strong><a href={searchId} target='_blank'  style={{color: '#007bff'}}>job id</a></strong>
             </p>}
-            {false && <p>
-                Search all <strong><a href={orgJobs} target='_blank'  style={{color: '#007bff'}}>Org jobs</a></strong>
-            </p>}
-
 
 
             {jobId && <p>
                 Open Job in <strong><a href={nextJob} target='_blank'  style={{color: '#007bff'}}>Next Admin</a></strong>
             </p>}
-            {false &&  <p>
-                Open employer account in <strong><a href={nextAccount} target='_blank' style={{color: '#007bff'}}>Next Admin</a></strong>
-            </p>}
 
-            // todo!
-            {false && <p>
+            {nowId && <p>
                 Open Job in <strong><a href={nowJob} target='_blank' style={{color: '#007bff'}}>NOW webadmin</a></strong>
             </p>}
+
+
+
+
+            {false && <p>
+                Search all <strong><a href={orgJobs} target='_blank'  style={{color: '#007bff'}}>Org jobs</a></strong>
+            </p>}
+
             {false && <p>
                 Open employer account in <strong><a href={nowAccount} target='_blank' style={{color: '#007bff'}}>NOW webadmin</a></strong>
+            </p>}
+            {false &&  <p>
+                Open employer account in <strong><a href={nextAccount} target='_blank' style={{color: '#007bff'}}>Next Admin</a></strong>
             </p>}
         </section>
     );

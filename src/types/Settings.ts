@@ -15,6 +15,8 @@ export interface Settings {
     providerCode: boolean;
     jobId: boolean;
     seoJobId: boolean;
+    nowId: boolean;
+    template: boolean;
 }
 
 export const SettingsSchema: Record<SettingsKey, string> = {
@@ -33,6 +35,8 @@ export const SettingsSchema: Record<SettingsKey, string> = {
     providerCode: 'boolean',
     jobId: 'boolean',
     seoJobId: 'boolean',
+    nowId: 'boolean',
+    template: 'boolean'
 };
 
 export const defaultSettings = {
@@ -50,7 +54,9 @@ export const defaultSettings = {
     provider: true,
     providerCode: false,
     jobId: false,
-    seoJobId: false
+    seoJobId: false,
+    nowId: true,
+    template: true
 };
 
 export type SettingsKey = keyof Settings;

@@ -168,7 +168,10 @@
         }
       ],
       "now": {
-        "jobAdPricingTypeId": 2
+        "jobAdPricingTypeId": 2,
+        "folderId": 274756999,
+        "boardId": 1,
+        "templateId": 1
       },
       "formattedDate": "2021-04-22T00:00:00",
       "dateRecency": "30+ days ago",

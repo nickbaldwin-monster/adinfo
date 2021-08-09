@@ -66,12 +66,15 @@ const injectApp = () => {
                 error: 'display mounted'
             });
         }
+
+
     }
 };
 
 
 
 const addIframe = () => {
+
     // const node = document.querySelector("#app") || document.querySelector("body");
     const node = document.querySelector("body");
     if (node === null) {
@@ -91,6 +94,22 @@ const addIframe = () => {
             logType: 'INFO',
             message: '#app iframe mounted'
         });
+
+
+
+
+
+/*
+        let jsd = document.createElement('script');
+        // jsd.type = 'text/javascript';
+        // jsd.async = true;
+        jsd.setAttribute("data-jsd-embedded", "");
+        jsd.setAttribute("data-key", "c016bf09-0da3-4e3d-9697-ad3e554c99cc");
+        jsd.setAttribute("data-base-url", "https://jsd-widget.atlassian.com");
+        jsd.src = 'https://jsd-widget.atlassian.com/assets/embed.js';
+        node.appendChild(jsd);
+ */
+
     }
 }
 

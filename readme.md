@@ -40,6 +40,15 @@ After the project is built, a directory named `dist` will be created.
  - tidied logging
  - spike for identifying react components (in injected script)
 
+1.0.8
+ - mon 9 aug 2021
+ - ams preprod urls
+
+1.0.9
+- mon 9 aug 2021
+- added nowId and template properties & assoc settings
+
+
 ##  important
 - check schema! e.g. enrichments vs posting info, what is mandatory etc
 - use both post and enrichments

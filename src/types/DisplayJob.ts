@@ -16,4 +16,6 @@ export interface DisplayJob  {
     xCode: string;
     data: object;
     seoJobId: string;
+    nowId: string;
+    template: string;
 }

@@ -74,6 +74,8 @@ test('transformed job has expected properties', () => {
     expect(newJob).toHaveProperty('location');
     expect(newJob).toHaveProperty('xCode');
     expect(newJob).toHaveProperty('data');
+    expect(newJob).toHaveProperty('nowId');
+    expect(newJob).toHaveProperty('template');
 });
 
 test('transformed job has correct values for props', () => {
@@ -101,7 +103,9 @@ test('transformed job has correct values for props', () => {
         xCode: 'n/a',
         selected: false,
         seoJobId: 'java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
-        data: {}
+        data: {},
+        nowId: '274756999',
+        template: '1'
 
 
     });
@@ -143,7 +147,9 @@ test('jobList transformed into display jobs', () => {
                 xCode: 'n/a',
                 seoJobId: 'java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
                 selected: false,
-                data: {}
+                data: {},
+                nowId: '274756999',
+                template: '1'
 
             }
         ]

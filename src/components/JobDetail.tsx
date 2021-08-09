@@ -30,11 +30,14 @@ export const JobDetail = (props: DataProps) => {
             <p>
                 <strong>NEXT jobId:</strong> {dataItem.jobId || 'N/A'}
             </p>
+            {dataItem.nowId && <p>
+                <strong>Now jobId:</strong> {dataItem.nowId || 'N/A'}
+            </p>}
             <p>
                 <strong>SEO id:</strong> {dataItem.seoJobId || 'N/A'}
             </p>
 
-            <JobLinks jobId={dataItem.jobId} accountId={undefined} seoJobId={dataItem.seoJobId}  />
+            <JobLinks jobId={dataItem.jobId} accountId={undefined} seoJobId={dataItem.seoJobId} nowId={dataItem.nowId} />
 
             <ReactJson src={dataItem.data} collapsed={1} collapseStringsAfterLength={120}/>
 

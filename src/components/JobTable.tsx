@@ -224,6 +224,8 @@ export const JobTable = () => {
                 {settings.providerCode && <GridColumn field="providerCode" title="providerCode" width="80px"/>}
                 {settings.jobId && <GridColumn field="jobId" title="jobId" width="80px"/>}
                 {settings.seoJobId && <GridColumn field="seoJobId" title="seoJobId" width="80px"/>}
+                {settings.nowId && <GridColumn field="nowId" title="nowId" width="80px"/>}
+                {settings.template && <GridColumn field="template" title="template" width="80px"/>}
             </Grid>
             </ExcelExport>
 
