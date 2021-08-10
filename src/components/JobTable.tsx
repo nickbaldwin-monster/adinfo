@@ -150,7 +150,7 @@ export const JobTable = () => {
                 }}
                 onSelectionChange={onSelectionChange}
                 onHeaderSelectionChange={onHeaderSelectionChange}
-
+                fixedScroll={true}
 
                 // style={{ height: '100%', overflow: 'auto', paddingBottom: '10px' }}
 
@@ -206,18 +206,19 @@ export const JobTable = () => {
                         // @ts-ignore
                         jobs.findIndex((item) => !selectedState[idGetter(item)]) === -1
                     }
+                    locked={true}
                 />
 
-                <GridColumn field="position" title="P" width="30px"/>
-                {settings.adProvider && <GridColumn field="adProvider" title="AdProvider" width="50px"/>}
+                <GridColumn field="position" title="Pos" width="50px" locked={true} />
+                {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} />}
+                {settings.adProvider && <GridColumn field="adProvider" title="AdProvider" width="100px" />}
                 {settings.ingestionMethod && <GridColumn field="ingestionMethod" title="ingestion" width="70px"/>}
-                {settings.pricingType && <GridColumn field="pricingType" title="T" width="20px"/>}
+                {settings.pricingType && <GridColumn field="pricingType" title="Type" width="50px"/>}
                 {settings.applyType && <GridColumn field="applyType" title="Apply" width="70px"/>}
                 {settings.location && <GridColumn field="location" title="Location" width="120px"/>}
                 {settings.dateRecency && <GridColumn field="dateRecency" title="Recency" width="80px"/>}
                 {settings.formattedDate && <GridColumn field="formattedDate" title="Date" width="70px"/>}
                 {settings.xCode && <GridColumn field="xCode" title="xCode" width="80px"/>}
-                {settings.company && <GridColumn field="company" title="Company" width="100px"/>}
                 {settings.title && <GridColumn field="title" title="Title" width="150px"/>}
                 {settings.mesco && <GridColumn field="mesco" title="Mesco" width="100px"/>}
                 {settings.provider && <GridColumn field="provider" title="Provider" width="70px"/>}

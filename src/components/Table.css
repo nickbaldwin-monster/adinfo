@@ -36945,7 +36945,9 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
 
 
 
-
+.k-grid-header-sticky {
+    font-weight: bold;
+}
 
 .pretty-json-container {
     font-size: 12px;

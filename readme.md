@@ -51,6 +51,13 @@ After the project is built, a directory named `dist` will be created.
 - search by id on all domains
 
 
+1.0.10 in progress
+ - tbd aug 2021
+ - frozen columns in job table
+ - resized columns so all text is displayed
+ - 
+
+
 ##  important
 - check schema! e.g. enrichments vs posting info, what is mandatory etc
 - use both post and enrichments
