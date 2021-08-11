@@ -52,7 +52,17 @@ const cell = (props: any) => {
     </td>;
 };
 
+const handleColumnReorder = (event: any) => {
 
+    // nativeEvent: PointerEvent = {
+    //     columns:[], nativeEvent: {}target: {}
+    // }
+
+
+    console.log('handleColumnReorder', event);
+
+
+}
 
 export const JobTable = () => {
     // @ts-ignore
@@ -119,6 +129,10 @@ export const JobTable = () => {
         });
 
 
+
+
+
+
         // todo
         // todo
         // todo
@@ -156,6 +170,9 @@ export const JobTable = () => {
         <>
             <ExcelExport data={jobs} ref={_export}>
                 <Grid
+
+                    reorderable={true}
+                    onColumnReorder={handleColumnReorder}
                    // data={orderBy(jobs, sort)}
                     data={orderBy(jobs.map((item: any) => ({
                         // @ts-ignore
@@ -231,24 +248,23 @@ export const JobTable = () => {
                         locked={true}
                     />
 
-                    <GridColumn field="position" title="Pos" width="50px" locked={true} />
-                    {settings.adProvider && <GridColumn field="adProvider" title="AdProvider" width="100px" locked={true} cell={cell} />}
-                    {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} className='gridBorder' headerClassName='gridBorder' />}
-                    {settings.title && <GridColumn field="title" title="Title" width="150px"/>}
-                    {settings.location && <GridColumn field="location" title="Location" width="120px"/>}
-                    {settings.dateRecency && <GridColumn field="dateRecency" title="Recency" width="80px"/>}
-                    {settings.xCode && <GridColumn field="xCode" title="xCode" width="80px"/>}
-                    {settings.template && <GridColumn field="template" title="templateId" width="80px"/>}
-                    {settings.pricingType && <GridColumn field="pricingType" title="$Type" width="20px"/>}
-                    {settings.adProvider && <GridColumn field="adProvider" title="AdProvider" width="100px"/>}
-                    {settings.formattedDate && <GridColumn field="formattedDate" title="Date" width="70px"/>}
-                    {settings.mesco && <GridColumn field="mesco" title="MescoId" width="100px"/>}
-                    {settings.jobId && <GridColumn field="jobId" title="jobId" width="80px"/>}
-                    {settings.provider && <GridColumn field="provider" title="Provider" width="70px"/>}
-                    {settings.providerCode && <GridColumn field="providerCode" title="Provider Code" width="80px"/>}
-                    {settings.ingestionMethod && <GridColumn field="ingestionMethod" title="Ingestion" width="70px"/>}
-                    {settings.applyType && <GridColumn field="applyType" title="Apply" width="70px"/>}
-                    {settings.nowId && <GridColumn field="nowId" title="nowId" width="80px"/>}
+                    <GridColumn field="position" title="Pos" width="50px" locked={true} reorderable={false} orderIndex={1} />
+                    {settings.adProvider && <GridColumn field="adProvider" title="AdProvider" width="100px" locked={true} cell={cell} reorderable={false} orderIndex={2} />}
+                    {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} className='gridBorder' headerClassName='gridBorder' reorderable={false} orderIndex={3} />}
+                    {settings.title && <GridColumn field="title" title="Title" width="150px" reorderable={true} />}
+                    {settings.location && <GridColumn field="location" title="Location" width="120px" reorderable={true} />}
+                    {settings.dateRecency && <GridColumn field="dateRecency" title="Recency" width="80px" reorderable={true} />}
+                    {settings.xCode && <GridColumn field="xCode" title="xCode" width="80px" />}
+                    {settings.template && <GridColumn field="template" title="templateId" width="80px" />}
+                    {settings.pricingType && <GridColumn field="pricingType" title="$Type" width="20px" />}
+                    {settings.formattedDate && <GridColumn field="formattedDate" title="Date" width="70px" />}
+                    {settings.mesco && <GridColumn field="mesco" title="MescoId" width="100px" />}
+                    {settings.jobId && <GridColumn field="jobId" title="jobId" width="80px" />}
+                    {settings.provider && <GridColumn field="provider" title="Provider" width="70px" />}
+                    {settings.providerCode && <GridColumn field="providerCode" title="Provider Code" width="80px" />}
+                    {settings.ingestionMethod && <GridColumn field="ingestionMethod" title="Ingestion" width="70px" />}
+                    {settings.applyType && <GridColumn field="applyType" title="Apply" width="70px" />}
+                    {settings.nowId && <GridColumn field="nowId" title="nowId" width="80px" />}
                 </Grid>
             </ExcelExport>
         </>
