@@ -36925,7 +36925,18 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* overrides */
+
+
+
+
+
+
+/*
+    #########
+    overrides
+    #########
+*/
+
 .k-drawer-content {
     position: absolute;
     right: 45px;
@@ -36944,10 +36955,19 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
 }
 
 
-
 .k-grid-header-sticky {
     font-weight: bold;
 }
+
+
+
+
+
+/*
+    ##########
+    new styles
+    ##########
+*/
 
 .pretty-json-container {
     font-size: 12px;
@@ -36955,4 +36975,10 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
 
 .panel {
     padding: 5px;
+}
+
+.gridBorder {
+    border-right-width: medium !important;
+    border-right-style: solid !important;
+    box-shadow: 3px 0 3px #fff;
 }

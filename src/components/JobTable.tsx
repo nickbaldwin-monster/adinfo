@@ -29,6 +29,30 @@ log({ logType: 'LOADED' });
 
 
 
+/*
+const cellWithTitle = props => {
+    const examplePrice = props.dataItem.UnitPrice < 15;
+    const icon = examplePrice ? <span className="k-icon k-i-sort-desc-sm" /> : <span className="k-icon k-i-sort-asc-sm" />;
+    const style = {
+        backgroundColor: examplePrice ? "rgb(243, 23, 0, 0.32)" : "rgb(55, 180, 0,0.32)"
+    };
+    const field = props.field || '';
+    return <td style={style} title={props.dataItem.UnitPrice}>
+        {props.dataItem[field]} {icon}
+    </td>;
+};
+
+ */
+
+
+const cell = (props: any) => {
+    console.log('props', props);
+    return <td title={props.dataItem.adProvider} className={props.className} style={props.style}>
+        {props.dataItem.adProvider}
+    </td>;
+};
+
+
 
 export const JobTable = () => {
     // @ts-ignore
@@ -131,105 +155,102 @@ export const JobTable = () => {
     return (
         <>
             <ExcelExport data={jobs} ref={_export}>
-            <Grid
-               // data={orderBy(jobs, sort)}
-                data={orderBy(jobs.map((item: any) => ({
-                    // @ts-ignore
-                    ...item,
-                    // @ts-ignore
-                    [SELECTED_FIELD]: selectedState[idGetter(item)],
-                    // @ts-ignore
-                })), sort)}
-                dataItemKey={DATA_ITEM_KEY}
-                selectedField={SELECTED_FIELD}
-                selectable={{
-                    enabled: true,
-                    drag: false,
-                    cell: false,
-                    mode: "multiple",
-                }}
-                onSelectionChange={onSelectionChange}
-                onHeaderSelectionChange={onHeaderSelectionChange}
-                fixedScroll={true}
-
-                // style={{ height: '100%', overflow: 'auto', paddingBottom: '10px' }}
-
-                sortable={true}
-                // @ts-ignore
-                sort={sort}
-                onSortChange={(e) => {
-                    // @ts-ignore
-                    setSort(e.sort);
-                }}
-                detail={JobDetail}
-
-                expandField="expanded"
-                onExpandChange={expandChange}
-            >
-
-
-                <GridToolbar>
-                    <button
-                        title="Export Excel"
-                        className="k-button k-primary"
-                        onClick={excelExport}
-                    >
-                        Export to Excel
-                    </button>
-
-                    <button
-                        title="Export JSON"
-                        className="k-button k-primary"
-                        onClick={saveJson}
-                    >
-                        Export to JSON
-                    </button>
-
-                    <button
-                        title="test selected"
-                        className="k-button k-primary"
-                        onClick={saveSelected}
-                    >
-                        test selected
-                    </button>
-
-                    {numberResults} results | {errors.message}
-
-                </GridToolbar>
-
-
-
-                <GridColumn
-                    field={SELECTED_FIELD}
-                    width="30px"
-                    headerSelectionValue={
+                <Grid
+                   // data={orderBy(jobs, sort)}
+                    data={orderBy(jobs.map((item: any) => ({
                         // @ts-ignore
-                        jobs.findIndex((item) => !selectedState[idGetter(item)]) === -1
-                    }
-                    locked={true}
-                />
+                        ...item,
+                        // @ts-ignore
+                        [SELECTED_FIELD]: selectedState[idGetter(item)],
+                        // @ts-ignore
+                    })), sort)}
+                    dataItemKey={DATA_ITEM_KEY}
+                    selectedField={SELECTED_FIELD}
+                    selectable={{
+                        enabled: true,
+                        drag: false,
+                        cell: false,
+                        mode: "multiple",
+                    }}
+                    onSelectionChange={onSelectionChange}
+                    onHeaderSelectionChange={onHeaderSelectionChange}
+                    fixedScroll={true}
 
-                <GridColumn field="position" title="Pos" width="50px" locked={true} />
-                {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} />}
-                {settings.adProvider && <GridColumn field="adProvider" title="AdProvider" width="100px" />}
-                {settings.ingestionMethod && <GridColumn field="ingestionMethod" title="ingestion" width="70px"/>}
-                {settings.pricingType && <GridColumn field="pricingType" title="Type" width="50px"/>}
-                {settings.applyType && <GridColumn field="applyType" title="Apply" width="70px"/>}
-                {settings.location && <GridColumn field="location" title="Location" width="120px"/>}
-                {settings.dateRecency && <GridColumn field="dateRecency" title="Recency" width="80px"/>}
-                {settings.formattedDate && <GridColumn field="formattedDate" title="Date" width="70px"/>}
-                {settings.xCode && <GridColumn field="xCode" title="xCode" width="80px"/>}
-                {settings.title && <GridColumn field="title" title="Title" width="150px"/>}
-                {settings.mesco && <GridColumn field="mesco" title="Mesco" width="100px"/>}
-                {settings.provider && <GridColumn field="provider" title="Provider" width="70px"/>}
-                {settings.providerCode && <GridColumn field="providerCode" title="providerCode" width="80px"/>}
-                {settings.jobId && <GridColumn field="jobId" title="jobId" width="80px"/>}
-                {settings.seoJobId && <GridColumn field="seoJobId" title="seoJobId" width="80px"/>}
-                {settings.nowId && <GridColumn field="nowId" title="nowId" width="80px"/>}
-                {settings.template && <GridColumn field="template" title="template" width="80px"/>}
-            </Grid>
+                    // style={{ height: '100%', overflow: 'auto', paddingBottom: '10px' }}
+
+                    sortable={true}
+                    // @ts-ignore
+                    sort={sort}
+                    onSortChange={(e) => {
+                        // @ts-ignore
+                        setSort(e.sort);
+                    }}
+                    detail={JobDetail}
+
+                    expandField="expanded"
+                    onExpandChange={expandChange}
+                >
+
+
+                    <GridToolbar>
+                        <button
+                            title="Export Excel"
+                            className="k-button k-primary"
+                            onClick={excelExport}
+                        >
+                            Export to Excel
+                        </button>
+
+                        <button
+                            title="Export JSON"
+                            className="k-button k-primary"
+                            onClick={saveJson}
+                        >
+                            Export to JSON
+                        </button>
+
+                        <button
+                            title="test selected"
+                            className="k-button k-primary"
+                            onClick={saveSelected}
+                        >
+                            test selected
+                        </button>
+
+                        {numberResults} results | {errors.message}
+
+                    </GridToolbar>
+
+                    <GridColumn
+                        field={SELECTED_FIELD}
+                        width="30px"
+                        headerSelectionValue={
+                            // @ts-ignore
+                            jobs.findIndex((item) => !selectedState[idGetter(item)]) === -1
+                        }
+                        locked={true}
+                    />
+
+                    <GridColumn field="position" title="Pos" width="50px" locked={true} />
+                    {settings.adProvider && <GridColumn field="adProvider" title="AdProvider" width="100px" locked={true} cell={cell} />}
+                    {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} className='gridBorder' headerClassName='gridBorder' />}
+                    {settings.title && <GridColumn field="title" title="Title" width="150px"/>}
+                    {settings.location && <GridColumn field="location" title="Location" width="120px"/>}
+                    {settings.dateRecency && <GridColumn field="dateRecency" title="Recency" width="80px"/>}
+                    {settings.xCode && <GridColumn field="xCode" title="xCode" width="80px"/>}
+                    {settings.template && <GridColumn field="template" title="templateId" width="80px"/>}
+                    {settings.pricingType && <GridColumn field="pricingType" title="$Type" width="20px"/>}
+                    {settings.adProvider && <GridColumn field="adProvider" title="AdProvider" width="100px"/>}
+                    {settings.formattedDate && <GridColumn field="formattedDate" title="Date" width="70px"/>}
+                    {settings.mesco && <GridColumn field="mesco" title="MescoId" width="100px"/>}
+                    {settings.jobId && <GridColumn field="jobId" title="jobId" width="80px"/>}
+                    {settings.provider && <GridColumn field="provider" title="Provider" width="70px"/>}
+                    {settings.providerCode && <GridColumn field="providerCode" title="Provider Code" width="80px"/>}
+                    {settings.ingestionMethod && <GridColumn field="ingestionMethod" title="Ingestion" width="70px"/>}
+                    {settings.applyType && <GridColumn field="applyType" title="Apply" width="70px"/>}
+                    {settings.nowId && <GridColumn field="nowId" title="nowId" width="80px"/>}
+                </Grid>
             </ExcelExport>
-
         </>
     );
 };
