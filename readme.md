@@ -56,24 +56,25 @@ After the project is built, a directory named `dist` will be created.
  - resized columns so all text should be displayed
  - frozen primary columns in job table
  - other columns can be reordered (reorder yet to be persisted)
- - show text on hover on adProvider field in table (remaining fields yet do be done)
+ - tooltips on hover for columns
+ - tooltip on hover on adProvider field in table (remaining fields yet TBD)
  - link for company field in table (desired links yet to be added)
  - removed seoJobID from display
 
 tbd 
  - update default settings
- - resize width 
+ - resize width?
  - persist settings
  - integrate JSD widget
  - if any location field undefined, remove it
- - Alt text for column name
- - Alt text for other cell values
+
+ - tooltip for other cell values?
  - Horizontal scrollbar
  - add link to job detail
  - add link to search using job id
  - add link to webadmin using now id
  - remove 'test' functions - toolbar button, settings button, + button
- - remove checbox on items in table?
+ - remove checkbox on items in table?
  - default settings:
    - xCode
    - templateID

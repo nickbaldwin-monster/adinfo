@@ -48,6 +48,7 @@
     "@progress/kendo-react-intl": "^4.7.0",
     "@progress/kendo-react-layout": "^4.7.0",
     "@progress/kendo-react-progressbars": "^4.7.0",
+    "@progress/kendo-react-tooltip": "^4.8.0",
     "@progress/kendo-react-treeview": "^4.7.0",
     "@progress/kendo-theme-default": "^4.39.0",
     "@types/react-router-dom": "^5.1.8",
