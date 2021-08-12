@@ -51,11 +51,43 @@ After the project is built, a directory named `dist` will be created.
 - search by id on all domains
 
 
-1.0.10 in progress
- - tbd aug 2021
- - frozen columns in job table
- - resized columns so all text is displayed
- - 
+1.0.10 - in progress - aug 2021
+ - reordered fields in table
+ - resized columns so all text should be displayed
+ - frozen primary columns in job table
+ - other columns can be reordered (reorder yet to be persisted)
+ - show text on hover on adProvider field in table (remaining fields yet do be done)
+ - link for company field in table (desired links yet to be added)
+ - removed seoJobID from display
+
+tbd 
+ - update default settings
+ - resize width 
+ - persist settings
+ - integrate JSD widget
+ - if any location field undefined, remove it
+ - Alt text for column name
+ - Alt text for other cell values
+ - Horizontal scrollbar
+ - add link to job detail
+ - add link to search using job id
+ - add link to webadmin using now id
+ - remove 'test' functions - toolbar button, settings button, + button
+ - remove checbox on items in table?
+ - default settings:
+   - xCode
+   - templateID
+   - jobId
+   - $Price
+   - adProvider
+   - Title
+   - company
+   - location
+   - Date
+   - Recency
+   - nowID
+
+
 
 
 ##  important
