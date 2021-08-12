@@ -44,9 +44,32 @@ const cellWithTitle = props => {
 
  */
 
+const linkedCell = (props: any) => {
+    return <td title={props.dataItem.adProvider} className={props.className} >
+        <a href={`https://google.com/search?q=${props.dataItem.company}`} target='_blank' style={{fontSize: '12px', textDecorationLine: 'underline'}}>
+            {props.dataItem.company}
+        </a>
+    </td>;
+};
 
 const cell = (props: any) => {
-    console.log('props', props);
+
+    /*
+    props = {
+        "dataItem": {},
+        "field": "adProvider",
+        "className": "k-grid-content-sticky",
+        "columnIndex": 3,
+        "columnsCount": 17,
+        "rowType": "data",
+        "level": 0,
+        "dataIndex": 5,
+        "style": {},
+        "ariaColumnIndex": 4,
+        "isSelected": false
+    }
+     */
+
     return <td title={props.dataItem.adProvider} className={props.className} style={props.style}>
         {props.dataItem.adProvider}
     </td>;
@@ -58,7 +81,9 @@ const handleColumnReorder = (event: any) => {
     //     columns:[], nativeEvent: {}target: {}
     // }
 
+    if (event) {
 
+    }
     console.log('handleColumnReorder', event);
 
 
@@ -184,7 +209,7 @@ export const JobTable = () => {
                     dataItemKey={DATA_ITEM_KEY}
                     selectedField={SELECTED_FIELD}
                     selectable={{
-                        enabled: true,
+                        enabled: false,
                         drag: false,
                         cell: false,
                         mode: "multiple",
@@ -248,23 +273,24 @@ export const JobTable = () => {
                         locked={true}
                     />
 
-                    <GridColumn field="position" title="Pos" width="50px" locked={true} reorderable={false} orderIndex={1} />
-                    {settings.adProvider && <GridColumn field="adProvider" title="AdProvider" width="100px" locked={true} cell={cell} reorderable={false} orderIndex={2} />}
-                    {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} className='gridBorder' headerClassName='gridBorder' reorderable={false} orderIndex={3} />}
+                    <GridColumn field="position" title="Pos" width="50px" locked={true} reorderable={false}  orderIndex={0 }/>
+                    {settings.adProvider && <GridColumn field="adProvider" title="AdProvider" width="100px" locked={true} cell={cell} reorderable={false}  orderIndex={0 } />}
+                    {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} className='gridBorder' headerClassName='gridBorder' reorderable={false}  orderIndex={0 }/>}
                     {settings.title && <GridColumn field="title" title="Title" width="150px" reorderable={true} />}
                     {settings.location && <GridColumn field="location" title="Location" width="120px" reorderable={true} />}
                     {settings.dateRecency && <GridColumn field="dateRecency" title="Recency" width="80px" reorderable={true} />}
-                    {settings.xCode && <GridColumn field="xCode" title="xCode" width="80px" />}
-                    {settings.template && <GridColumn field="template" title="templateId" width="80px" />}
-                    {settings.pricingType && <GridColumn field="pricingType" title="$Type" width="20px" />}
-                    {settings.formattedDate && <GridColumn field="formattedDate" title="Date" width="70px" />}
-                    {settings.mesco && <GridColumn field="mesco" title="MescoId" width="100px" />}
-                    {settings.jobId && <GridColumn field="jobId" title="jobId" width="80px" />}
-                    {settings.provider && <GridColumn field="provider" title="Provider" width="70px" />}
-                    {settings.providerCode && <GridColumn field="providerCode" title="Provider Code" width="80px" />}
-                    {settings.ingestionMethod && <GridColumn field="ingestionMethod" title="Ingestion" width="70px" />}
-                    {settings.applyType && <GridColumn field="applyType" title="Apply" width="70px" />}
-                    {settings.nowId && <GridColumn field="nowId" title="nowId" width="80px" />}
+                    {settings.xCode && <GridColumn field="xCode" title="xCode" width="80px"  />}
+                    {settings.template && <GridColumn field="template" title="templateId" width="80px"/>}
+                    {settings.pricingType && <GridColumn field="pricingType" title="$Type" width="20px"  />}
+                    {settings.formattedDate && <GridColumn field="formattedDate" title="Date" width="70px"  />}
+                    {settings.mesco && <GridColumn field="mesco" title="MescoId" width="100px"  />}
+                    {settings.jobId && <GridColumn field="jobId" title="jobId" width="80px"  />}
+                    {settings.provider && <GridColumn field="provider" title="Provider" width="70px"  />}
+                    {settings.providerCode && <GridColumn field="providerCode" title="Provider Code" width="80px"  />}
+                    {settings.ingestionMethod && <GridColumn field="ingestionMethod" title="Ingestion" width="70px"  />}
+                    {settings.applyType && <GridColumn field="applyType" title="Apply" width="70px"  />}
+                    {settings.nowId && <GridColumn field="nowId" title="nowId" width="80px"  />}
+                    {settings.nowId && <GridColumn field="company" title="google" width="80px" cell={linkedCell}  />}
                 </Grid>
             </ExcelExport>
         </>
