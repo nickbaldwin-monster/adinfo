@@ -90,12 +90,6 @@ export const SettingsPanel = () => {
                 <Label>Overlay info on search results</Label>
             </div>
 
-            <div className="buttonContainer">
-                <button className="toggleButton" >
-                    click me
-                </button>
-            </div>
-
         </div>
     );
 };

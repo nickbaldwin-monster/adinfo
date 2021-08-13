@@ -14,3 +14,8 @@
 .miniToggleContainer {
     height: 24px;
 }
+
+.panel {
+    height: calc(100vh - 145px);
+    overflow-y: auto;
+}
