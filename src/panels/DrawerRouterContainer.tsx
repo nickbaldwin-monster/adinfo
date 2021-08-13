@@ -2,8 +2,7 @@ import * as React from "react";
 import { withRouter } from "react-router-dom";
 import { Drawer, DrawerContent } from "@progress/kendo-react-layout";
 import { useReduxContext } from "../context/Context";
-import {MiniToggleDisplay} from "../elements/MiniToggleDisplay";
-import {logger} from "../helpers/logger";
+import { logger } from "../helpers/logger";
 
 
 
@@ -126,7 +125,7 @@ const DrawerRouterContainer = (props: any) => {
                 }))}
                 onSelect={onSelect}
             >
-                <MiniToggleDisplay handleClick={show}/>
+
                 {display &&
                     <DrawerContent>{props.children}</DrawerContent>
                 }

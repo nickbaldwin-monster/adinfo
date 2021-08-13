@@ -275,13 +275,6 @@ export const JobTable = () => {
                             Export to JSON
                         </button>
 
-                        <button
-                            title="test selected"
-                            className="k-button k-primary"
-                            onClick={saveSelected}
-                        >
-                            test selected
-                        </button>
 
                         {numberResults} results | {errors.message}
 

@@ -60,6 +60,7 @@ After the project is built, a directory named `dist` will be created.
  - tooltip on hover on adProvider field in table (remaining fields yet TBD)
  - link for company field in table (desired links yet to be added)
  - removed seoJobID from display
+ - removed 'test' functions (toolbar button, settings button, + button)
 
 tbd 
  - update default settings
@@ -67,13 +68,11 @@ tbd
  - persist settings
  - integrate JSD widget
  - if any location field undefined, remove it
-
  - tooltip for other cell values?
  - Horizontal scrollbar
  - add link to job detail
  - add link to search using job id
  - add link to webadmin using now id
- - remove 'test' functions - toolbar button, settings button, + button
  - remove checkbox on items in table?
  - default settings:
    - xCode
