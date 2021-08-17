@@ -37019,10 +37019,9 @@ a.k-plus:active {
 
 }
 
+/*noinspection ALL*/
 .gridBorder {
-    border-right-width: medium !important;
-    border-right-style: solid !important;
-    box-shadow: 3px 0 3px #fff;
+    box-shadow: 10px 15px 15px rgba(0, 0, 0, 0.25);
 }
 
 
