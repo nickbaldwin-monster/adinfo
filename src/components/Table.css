@@ -36961,6 +36961,13 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
 
 }
 
+
+.k-drawer-end {
+    border: solid 3px lightgrey !important;
+    border-radius: 5px;
+    height: calc(100vh - 145px);
+}
+
 .k-grid {
     font-size: 12px;
 }
