@@ -63,30 +63,34 @@ After the project is built, a directory named `dist` will be created.
  - removed 'test' functions (toolbar button, settings button, + button)
  - added scrollbars to panels
  - fixed now id and webadmin link
+ - updated default settings to:
+     - xCode
+     - TemplateID
+     - JobId
+     - Price type
+     - adProvider
+     - Title
+     - Company
+     - Location
+     - Date
+     - Recency
+     - nowID
+
 
 tbd
+- add expires field
+- persist settings
+- integrate JSD widget
+- if any location field undefined, remove it
+- revise titles and order of settings
 - apply xcode 'aggregated' for jobs pt 3 in eu
 - add link to job detail
 - add link to search using job id
 - add link to webadmin using now id
-- update default settings:
-    - xCode
-    - templateID
-    - jobId
-    - $Price
-    - adProvider
-    - Title
-    - company
-    - location
-    - Date
-    - Recency
-    - nowID
-- persist settings
-- integrate JSD widget
-- if any location field undefined, remove it
 - tooltip for other cell values?
 - remove checkbox on items in table?
 - resize width?
+- copy cell/row values
 
 
 
