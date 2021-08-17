@@ -62,9 +62,9 @@ After the project is built, a directory named `dist` will be created.
  - removed seoJobID from display
  - removed 'test' functions (toolbar button, settings button, + button)
  - added scrollbars to panels
+ - fixed now id and webadmin link
 
-tbd 
-- fix now id and webadmin link
+tbd
 - apply xcode 'aggregated' for jobs pt 3 in eu
 - add link to job detail
 - add link to search using job id

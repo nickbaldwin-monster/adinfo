@@ -9,6 +9,10 @@
         {
           "identifierName": "NOW_POSTING_ID",
           "identifierValue": "6ca5a144-bc5b-4eba-9fc9-70cb172b6f1a"
+        },
+        {
+          "identifierName": "POSITION_AD_ID",
+          "identifierValue": "230572257"
         }
       ],
       "status": "ACTIVE",

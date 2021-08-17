@@ -105,7 +105,7 @@ test('transformed job has correct values for props', () => {
         selected: false,
         seoJobId: 'java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
         data: {},
-        nowId: '274756999',
+        nowId: '230572257',
         template: '1',
         url: 'https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93'
 
@@ -149,7 +149,7 @@ test('jobList transformed into display jobs', () => {
                 seoJobId: 'java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
                 selected: false,
                 data: {},
-                nowId: '274756999',
+                nowId: '230572257',
                 template: '1',
                 url: 'https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93'
             }

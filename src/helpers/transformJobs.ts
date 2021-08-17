@@ -72,6 +72,10 @@ const normalizeNowId = (now: object): string => {
     }
     // @ts-ignore
     return "" + now.folderId;
+
+
+
+
 };
 
 
@@ -220,7 +224,7 @@ export const transformJob = (object: object, i: number) => {
 
             // todo - now.jobAdPricingTypeId
 
-            newObj.nowId = normalizeNowId(v);
+            // newObj.nowId = normalizeNowId(v);
             newObj.template = normalizeTemplate(v);
         }
 
@@ -270,13 +274,17 @@ export const transformJob = (object: object, i: number) => {
                 }
             }
             */
-
-
         }
 
-
-
-
+        if (k === 'externalIdentifiers') {
+            v.forEach( (identity: object) => {
+                // @ts-ignore
+                if (identity.identifierName === 'POSITION_AD_ID') {
+                    // @ts-ignore
+                    newObj.nowId = identity.identifierValue;
+                }
+            });
+        }
 
     }
 
