@@ -19,4 +19,5 @@ export interface DisplayJob  {
     nowId: string;
     template: string;
     url: string;
+    refCode: string;
 }

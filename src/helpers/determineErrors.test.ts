@@ -24,6 +24,7 @@ const job1: DisplayJob =  {
     seoJobId: '1',
     nowId: '101',
     template: '102',
+    refCode: '1',
     url: 'https://www.host.com/something'
 
 };
@@ -47,6 +48,7 @@ const job2: DisplayJob =  {
     seoJobId: '1',
     nowId: '101',
     template: '102',
+    refCode: '1',
     url: 'https://www.host.com/something'
 }
 const job3: DisplayJob =  {
@@ -69,6 +71,7 @@ const job3: DisplayJob =  {
     seoJobId: '1',
     nowId: '101',
     template: '102',
+    refCode: '1',
     url: 'https://www.host.com/something'
 }
 const job4: DisplayJob =  {
@@ -91,6 +94,7 @@ const job4: DisplayJob =  {
     seoJobId: '1',
     nowId: '101',
     template: '102',
+    refCode: '1',
     url: 'https://www.host.com/something'
 }
 
@@ -114,6 +118,7 @@ const job5: DisplayJob =  {
     seoJobId: '1',
     nowId: '101',
     template: '102',
+    refCode: '1',
     url: 'https://www.host.com/something'
 }
 

@@ -256,6 +256,7 @@ export const transformJob = (object: object, i: number) => {
             newObj.title = normalizePostTitle(v);
             newObj.company = normalizePostCompany(v);
             newObj.location = normalizePostLocation(v);
+            newObj.refCode = v.identifier?.value || '';
         }
 
         if (k === 'enrichments') {

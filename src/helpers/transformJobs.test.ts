@@ -77,6 +77,7 @@ test('transformed job has expected properties', () => {
     expect(newJob).toHaveProperty('nowId');
     expect(newJob).toHaveProperty('template');
     expect(newJob).toHaveProperty('url');
+    expect(newJob).toHaveProperty('refCode');
 });
 
 test('transformed job has correct values for props', () => {
@@ -107,6 +108,7 @@ test('transformed job has correct values for props', () => {
         data: {},
         nowId: '230572257',
         template: '1',
+        refCode: 'CREQ62192',
         url: 'https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93'
 
     });
@@ -151,6 +153,7 @@ test('jobList transformed into display jobs', () => {
                 data: {},
                 nowId: '230572257',
                 template: '1',
+                refCode: 'CREQ62192',
                 url: 'https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93'
             }
         ]
