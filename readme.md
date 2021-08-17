@@ -63,18 +63,48 @@ After the project is built, a directory named `dist` will be created.
  - removed 'test' functions (toolbar button, settings button, + button)
  - added scrollbars to panels
  - fixed now id and webadmin link
- - updated default settings to:
-     - xCode
-     - TemplateID
-     - JobId
-     - Price type
-     - adProvider
-     - Title
-     - Company
-     - Location
-     - Date
-     - Recency
-     - nowID
+ - updated default settings
+ - reordered fields
+
+order of fields (* = default setting):
+Position *
+Company *
+Ad Provider *
+Title *
+Location *
+Now ID *
+Job ID *
+Template *
+xcode *
+Apply Type
+Date *
+Mesco
+Provider
+Provider Code
+Date Recency *
+Ingestion
+Pricing Type *
+SEO Job ID
+(Ref code)
+
+
+Valid through date
+modified date
+occupation type / remote
+
+links
+
+
+Webadmin - for 230302770
+https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&txtSearchJobs=230302770&EmailAddress=&ebill=&ebilltype=&button=&txtSearch=230302770&Submit=Go!&searchtype=POSITIONADID&source=&UserSearchType=
+
+hover over ads in sync with the table
+add Expired date in Next set of changes
+add legend to tabular columns
+determine what Adzerk means (is it GCTS_AdQuery ? ) and which date value is displayed
+Change the order of columns as mentioned below
+Remote job
+
 
 
 tbd

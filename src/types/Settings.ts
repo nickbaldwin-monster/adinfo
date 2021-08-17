@@ -1,65 +1,65 @@
 
 export interface Settings {
+    company: boolean;
     adProvider: boolean;
+    title: boolean;
+    location: boolean;
+    nowId: boolean;
+    jobId: boolean;
+    template: boolean;
+    xCode: boolean;
+    applyType: boolean; // false
+    formattedDate: boolean;
+    mesco: boolean;  // false
+    provider: boolean;  // false
+    providerCode: boolean;  // false
+    dateRecency: boolean;
     ingestionMethod: boolean;
     pricingType: boolean;
-    applyType: boolean;
-    location: boolean;
-    dateRecency: boolean;
-    formattedDate: boolean;
-    xCode: boolean;
-    company: boolean;
-    title: boolean;
-    mesco: boolean;
-    provider: boolean;
-    providerCode: boolean;
-    jobId: boolean;
     seoJobId: boolean;
-    nowId: boolean;
-    template: boolean;
     refCode: boolean;
 }
 
 export const SettingsSchema: Record<SettingsKey, string> = {
+    company: 'boolean',
     adProvider: 'boolean',
+    title: 'boolean',
+    location: 'boolean',
+    nowId: 'boolean',
+    jobId: 'boolean',
+    template: 'boolean',
+    xCode: 'boolean',
+    applyType: 'boolean',  // false
+    formattedDate: 'boolean',
+    mesco: 'boolean', // false
+    provider: 'boolean', // false
+    providerCode: 'boolean', // false
+    dateRecency: 'boolean',
     ingestionMethod: 'boolean',
     pricingType: 'boolean',
-    applyType: 'boolean',
-    location: 'boolean',
-    dateRecency: 'boolean',
-    formattedDate: 'boolean',
-    xCode: 'boolean',
-    company: 'boolean',
-    title: 'boolean',
-    mesco: 'boolean',
-    provider: 'boolean',
-    providerCode: 'boolean',
-    jobId: 'boolean',
     seoJobId: 'boolean',
-    nowId: 'boolean',
-    template: 'boolean',
     refCode: 'boolean'
 };
 
 export const defaultSettings = {
-    adProvider: true,
-    ingestionMethod: false,
-    pricingType: true,
-    applyType: false,
-    location: true,
-    dateRecency: true,
-    formattedDate: true,
-    xCode: true,
     company: true,
+    adProvider: true,
     title: true,
+    location: true,
+    nowId: true,
+    jobId: true,
+    template: true,
+    xCode: true,
+    applyType: false,
+    formattedDate: true,
     mesco: false,
     provider: false,
     providerCode: false,
-    jobId: true,
+    dateRecency: true,
+    ingestionMethod: false,
+    pricingType: true,
     seoJobId: false,
-    nowId: true,
-    template: true,
-    refCode: true
+    refCode: false
 };
 
 export type SettingsKey = keyof Settings;
