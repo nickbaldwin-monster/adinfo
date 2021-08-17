@@ -36955,13 +36955,17 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
     border: solid 3px lightgrey;
     border-radius: 5px;
 
-    /*
+
     height: calc(100vh - 145px);
-    overflow: scroll;
-    */
+    overflow: auto;
+
 }
 
 .k-grid {
+    font-size: 12px;
+}
+
+.k-grid.gridJobs {
     height: calc(100vh - 150px);
     font-size: 12px;
 }
@@ -37002,7 +37006,10 @@ a.k-plus:active {
 }
 
 .panel {
+
     padding: 5px;
+
+
 }
 
 .gridBorder {
@@ -37011,3 +37018,56 @@ a.k-plus:active {
     box-shadow: 3px 0 3px #fff;
 }
 
+
+/*
+body div.k-grid ::-webkit-scrollbar  {
+    width: 10px;
+    height: 10px;
+    overflow: auto;
+    background-color: #F5F5F5;
+}
+
+body div.k-grid ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #444;
+}
+
+body div.k-grid ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #7f6f7f;
+}
+
+ */
+
+.k-grid-content {
+    overflow: auto;
+}
+
+
+
+
+body div.k-drawer-content ::-webkit-scrollbar  {
+    width: 10px;
+    height: 10px;
+    overflow: auto;
+    background-color: #F5F5F5;
+}
+
+body div.k-drawer-content ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #aaaaba;
+}
+
+body div.k-drawer-content ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #dddded;
+}
+
+.panel {
+    height: 100%;
+    overflow: auto;
+}

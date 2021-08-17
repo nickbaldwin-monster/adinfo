@@ -214,12 +214,12 @@ export const JobTable = () => {
 
     // @ts-ignore
     return (
-        <>
+        <div className='jobTable'>
 
             <ExcelExport data={jobs} ref={_export}>
                 <Tooltip openDelay={50} position="top" anchorElement="element">
                 <Grid
-
+className='gridJobs'
                     reorderable={true}
                     onColumnReorder={handleColumnReorder}
                    // data={orderBy(jobs, sort)}
@@ -243,6 +243,7 @@ export const JobTable = () => {
                     fixedScroll={true}
 
                     // style={{ height: '100%', overflow: 'auto', paddingBottom: '10px' }}
+                    // style={{ height: '100vh - 145px'}}
 
                     sortable={true}
                     // @ts-ignore
@@ -312,7 +313,7 @@ export const JobTable = () => {
                 </Tooltip>
             </ExcelExport>
 
-        </>
+        </div>
     );
 };
 

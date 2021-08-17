@@ -61,32 +61,32 @@ After the project is built, a directory named `dist` will be created.
  - link for company field in table (desired links yet to be added)
  - removed seoJobID from display
  - removed 'test' functions (toolbar button, settings button, + button)
+ - added scrollbars to panels
 
 tbd 
- - update default settings
- - resize width?
- - persist settings
- - integrate JSD widget
- - if any location field undefined, remove it
- - tooltip for other cell values?
- - Horizontal scrollbar
- - add link to job detail
- - add link to search using job id
- - add link to webadmin using now id
- - remove checkbox on items in table?
- - default settings:
-   - xCode
-   - templateID
-   - jobId
-   - $Price
-   - adProvider
-   - Title
-   - company
-   - location
-   - Date
-   - Recency
-   - nowID
-
+- fix now id and webadmin link
+- apply xcode 'aggregated' for jobs pt 3 in eu
+- add link to job detail
+- add link to search using job id
+- add link to webadmin using now id
+- update default settings:
+    - xCode
+    - templateID
+    - jobId
+    - $Price
+    - adProvider
+    - Title
+    - company
+    - location
+    - Date
+    - Recency
+    - nowID
+- persist settings
+- integrate JSD widget
+- if any location field undefined, remove it
+- tooltip for other cell values?
+- remove checkbox on items in table?
+- resize width?
 
 
 
