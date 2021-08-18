@@ -53,13 +53,13 @@ After the project is built, a directory named `dist` will be created.
 
 1.0.10 - wed 18 aug 2021
  - 
- - resized columns so all text should be displayed
+ - resized columns so text should be displayed better
  - frozen primary columns in job table
  - other columns can be reordered (reorder yet to be persisted)
  - tooltips on hover for columns
  - tooltip on hover on adProvider field in table (remaining fields yet TBD)
  - link for company field in table (desired links yet to be added)
- - removed seoJobID from detail view
+ - revised detail view - meco and seoJobId fields & collaped json tree
  - removed 'test' functions (toolbar button, settings button, + button)
  - added scrollbars to panels
  - fixed now id and webadmin link
@@ -105,6 +105,7 @@ tbd
 - which date value is displayed? - followup
 - modified date?
 - add legend to tabular columns
+- table of all values in detail view (as per request)?
 - determine what Adzerk means (is it GCTS_AdQuery ? )
 - if any location field undefined, remove it
 - apply xcode 'aggregated' for jobs pt 3 in eu

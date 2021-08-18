@@ -292,8 +292,8 @@ className='gridJobs'
                     />
 
                     <GridColumn field="position" title="Position" width="50px" locked={true} reorderable={false} headerCell={headerCell} orderIndex={0 }/>
-                    {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} headerCell={headerCell} className='gridBorder' reorderable={false}  orderIndex={0 }/>}
-                    {settings.adProvider && <GridColumn field="adProvider" title="Ad Provider" width="100px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 } headerClassName='gridBorder'  />}
+                    {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} headerCell={headerCell} reorderable={false}  orderIndex={0 }/>}
+                    {settings.adProvider && <GridColumn field="adProvider" title="Ad Provider" width="100px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 } headerClassName='gridBorder' className='gridBorder'  />}
                     {settings.title && <GridColumn field="title" title="Title" width="150px" reorderable={true} headerCell={headerCell} />}
                     {settings.location && <GridColumn field="location" title="Location" width="120px" reorderable={true} headerCell={headerCell} />}
                     {settings.nowId && <GridColumn field="nowId" title="Now ID" width="80px" headerCell={headerCell} />}

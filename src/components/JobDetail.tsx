@@ -21,25 +21,18 @@ export const JobDetail = (props: DataProps) => {
 
     return (
         <section>
-            <p>
-                <strong>Mesco:</strong> {dataItem.mesco || 'N/A'}
-            </p>
-            <p>
-                <strong>providerCode:</strong> {dataItem.providerCode || 'N/A'}
-            </p>
+
+            <JobLinks jobId={dataItem.jobId} accountId={undefined} seoJobId={dataItem.seoJobId} nowId={dataItem.nowId} url={dataItem.url} />
+
             <p>
                 <strong>NEXT jobId:</strong> {dataItem.jobId || 'N/A'}
             </p>
             {dataItem.nowId && <p>
                 <strong>Now jobId:</strong> {dataItem.nowId || 'N/A'}
             </p>}
-            <p>
-                <strong>SEO id:</strong> {dataItem.seoJobId || 'N/A'}
-            </p>
 
-            <JobLinks jobId={dataItem.jobId} accountId={undefined} seoJobId={dataItem.seoJobId} nowId={dataItem.nowId} url={dataItem.url} />
 
-            <ReactJson src={dataItem.data} collapsed={1} collapseStringsAfterLength={120}/>
+            <ReactJson src={dataItem.data} collapsed={0} collapseStringsAfterLength={120}/>
 
         </section>
     );
