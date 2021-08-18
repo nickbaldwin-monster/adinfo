@@ -52,7 +52,6 @@ After the project is built, a directory named `dist` will be created.
 
 
 1.0.10 - wed 18 aug 2021
- - 
  - resized columns so text should be displayed better
  - frozen primary columns in job table
  - other columns can be reordered (reorder yet to be persisted)
@@ -66,6 +65,40 @@ After the project is built, a directory named `dist` will be created.
  - updated default settings
  - reordered fields in table and revised column titles
  - order of settings matches table
+ - added valid through dates
+
+
+tbd
+
+- legend with explanations for ad provider values
+- integrate JSD widget / MS feedback *
+- get searchId from new views *
+- hover over ads in sync with the table *
+- persist settings *
+- revise tabs, add info tab
+- only link next admin for jpw jobs - followup - ingestionType === 'JPW'?
+- remove google link
+- figure out remote - followup
+- occupation type / remote - followup
+- which date value is displayed? - followup
+- modified date? - followup
+- add legend to tabular columns
+- table of all values in detail view (as per request)?
+- determine what Adzerk means (is it GCTS_AdQuery ? )
+- if any location field undefined, remove it
+- apply xcode 'aggregated' for jobs pt 3 in eu - followup
+- add link to job detail
+- add link to search using job id
+- add link to webadmin using now id
+- tooltip for other cell values?
+- match settings to titles
+- remove checkbox on items in table?
+- resize width?
+- copy cell/row values
+- link to accounts in next admin?
+- link to accounts in webadmin?
+- get request info from new views 
+
 
 order of fields (* = default setting):
 - Position *
@@ -89,38 +122,7 @@ order of fields (* = default setting):
 - Ref Code (added)
 - Valid Through (added)
 - Valid Through Google (added)
-
-
-
-tbd
-
-- get request info from new views *
-- persist settings *
-- integrate JSD widget *
-- hover over ads in sync with the table *
-- only link next admin for jpw jobs - followup
-- remove google link
-- figure out remote - followup
-- occupation type / remote - followup
-- which date value is displayed? - followup
-- modified date?
-- add legend to tabular columns
-- table of all values in detail view (as per request)?
-- determine what Adzerk means (is it GCTS_AdQuery ? )
-- if any location field undefined, remove it
-- apply xcode 'aggregated' for jobs pt 3 in eu
-- add link to job detail
-- add link to search using job id
-- add link to webadmin using now id
-- tooltip for other cell values?
-- match settings to titles
-- remove checkbox on items in table?
-- resize width?
-- copy cell/row values
-- link to accounts in next admin?
-- link to accounts in webadmin?
-
-
+- 
 
 ##  important
 - check schema! e.g. enrichments vs posting info, what is mandatory etc
