@@ -20,4 +20,7 @@ export interface DisplayJob  {
     template: string;
     url: string;
     refCode: string;
+    validThrough: string;
+    validThroughGoogle: string;
+    remote: string;
 }

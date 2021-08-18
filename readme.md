@@ -51,66 +51,73 @@ After the project is built, a directory named `dist` will be created.
 - search by id on all domains
 
 
-1.0.10 - in progress - aug 2021
- - reordered fields in table
+1.0.10 - wed 18 aug 2021
+ - 
  - resized columns so all text should be displayed
  - frozen primary columns in job table
  - other columns can be reordered (reorder yet to be persisted)
  - tooltips on hover for columns
  - tooltip on hover on adProvider field in table (remaining fields yet TBD)
  - link for company field in table (desired links yet to be added)
- - removed seoJobID from display
+ - removed seoJobID from detail view
  - removed 'test' functions (toolbar button, settings button, + button)
  - added scrollbars to panels
  - fixed now id and webadmin link
  - updated default settings
- - revised column titles and order of settings
+ - reordered fields in table and revised column titles
+ - order of settings matches table
 
 order of fields (* = default setting):
-Position *
-Company *
-Ad Provider *
-Title *
-Location *
-Now ID *
-Job ID *
-Template *
-xcode *
-Apply Type
-Date *
-Mesco
-Provider
-Provider Code
-Date Recency *
-Ingestion
-Pricing Type *
-SEO Job ID
-(Ref code)
-
-
-
+- Position *
+- Company *
+- Ad Provider *
+- Title *
+- Location *
+- Now ID *
+- Job ID *
+- Template *
+- xcode *
+- Apply Type
+- Date *
+- Mesco
+- Provider
+- Provider Code
+- Date Recency *
+- Ingestion
+- Pricing Type *
+- SEO Job ID
+- Ref Code (added)
+- Valid Through (added)
+- Valid Through Google (added)
 
 
 
 tbd
-- Valid through (expiry) date
-- modified date
-- occupation type / remote
-- hover over ads in sync with the table
+
+- get request info from new views *
+- persist settings *
+- integrate JSD widget *
+- hover over ads in sync with the table *
+- only link next admin for jpw jobs - followup
+- remove google link
+- figure out remote - followup
+- occupation type / remote - followup
+- which date value is displayed? - followup
+- modified date?
 - add legend to tabular columns
-- determine what Adzerk means (is it GCTS_AdQuery ? ) 
-- which date value is displayed?
-- persist settings
-- integrate JSD widget
+- determine what Adzerk means (is it GCTS_AdQuery ? )
 - if any location field undefined, remove it
 - apply xcode 'aggregated' for jobs pt 3 in eu
 - add link to job detail
 - add link to search using job id
 - add link to webadmin using now id
 - tooltip for other cell values?
+- match settings to titles
 - remove checkbox on items in table?
 - resize width?
 - copy cell/row values
+- link to accounts in next admin?
+- link to accounts in webadmin?
 
 
 

@@ -18,6 +18,9 @@ export interface Settings {
     pricingType: boolean;
     seoJobId: boolean;
     refCode: boolean;
+    validThrough: boolean;
+    validThroughGoogle: boolean;
+    remote: boolean
 }
 
 export const SettingsSchema: Record<SettingsKey, string> = {
@@ -38,7 +41,10 @@ export const SettingsSchema: Record<SettingsKey, string> = {
     ingestionMethod: 'boolean',
     pricingType: 'boolean',
     seoJobId: 'boolean',
-    refCode: 'boolean'
+    refCode: 'boolean',
+    validThrough: 'boolean',
+    validThroughGoogle: 'boolean',
+    remote: 'boolean'
 };
 
 export const defaultSettings = {
@@ -59,7 +65,10 @@ export const defaultSettings = {
     ingestionMethod: false,
     pricingType: true,
     seoJobId: false,
-    refCode: false
+    refCode: false,
+    validThrough: false, // ?
+    validThroughGoogle: false, // ?
+    remote: false // ?
 };
 
 export type SettingsKey = keyof Settings;

@@ -25,8 +25,10 @@ const job1: DisplayJob =  {
     nowId: '101',
     template: '102',
     refCode: '1',
-    url: 'https://www.host.com/something'
-
+    url: 'https://www.host.com/something',
+    validThrough: '1 Jan 2000',
+    validThroughGoogle: '2 Feb 2000',
+    remote: ''
 };
 const job2: DisplayJob =  {
     position: 2,
@@ -49,7 +51,10 @@ const job2: DisplayJob =  {
     nowId: '101',
     template: '102',
     refCode: '1',
-    url: 'https://www.host.com/something'
+    url: 'https://www.host.com/something',
+    validThrough: '1 Jan 2000',
+    validThroughGoogle: '2 Feb 2000',
+    remote: ''
 }
 const job3: DisplayJob =  {
     position: 3,
@@ -72,7 +77,10 @@ const job3: DisplayJob =  {
     nowId: '101',
     template: '102',
     refCode: '1',
-    url: 'https://www.host.com/something'
+    url: 'https://www.host.com/something',
+    validThrough: '1 Jan 2000',
+    validThroughGoogle: '2 Feb 2000',
+    remote: ''
 }
 const job4: DisplayJob =  {
     position: 4,
@@ -95,7 +103,10 @@ const job4: DisplayJob =  {
     nowId: '101',
     template: '102',
     refCode: '1',
-    url: 'https://www.host.com/something'
+    url: 'https://www.host.com/something',
+    validThrough: '1 Jan 2000',
+    validThroughGoogle: '2 Feb 2000',
+    remote: ''
 }
 
 const job5: DisplayJob =  {
@@ -119,7 +130,10 @@ const job5: DisplayJob =  {
     nowId: '101',
     template: '102',
     refCode: '1',
-    url: 'https://www.host.com/something'
+    url: 'https://www.host.com/something',
+    validThrough: '1 Jan 2000',
+    validThroughGoogle: '2 Feb 2000',
+    remote: ''
 }
 
 

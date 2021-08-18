@@ -160,6 +160,9 @@ const normalizePostLocation = (jobPosting: object): string => {
 
 // todo
 const formatDate = (date: string): string => {
+    if (!date || date === '') {
+        return '';
+    }
     let d = dayjs(date).format('D MMM YY');
     return d || date;
 };
@@ -257,6 +260,9 @@ export const transformJob = (object: object, i: number) => {
             newObj.company = normalizePostCompany(v);
             newObj.location = normalizePostLocation(v);
             newObj.refCode = v.identifier?.value || '';
+
+            newObj.validThrough = formatDate(v.validThrough);
+
         }
 
         if (k === 'enrichments') {
@@ -266,7 +272,9 @@ export const transformJob = (object: object, i: number) => {
             // normalizeEnrichedLocation(v, newObj.location);
 
             // @ts-ignore
-            newObj.xCode = object[k].companyKb?.code ?? 'n/a';
+            newObj.xCode = v.companyKb?.code ?? 'n/a';
+            newObj.validThroughGoogle = formatDate(v.googleSyntheticValidThrough);
+
 
             /*
             if (newObj.pricingType && newObj.pricingType === '3') {
@@ -290,6 +298,10 @@ export const transformJob = (object: object, i: number) => {
     }
 
     // decorating job with additional properties needed for display in the table
+
+    // todo
+    newObj.remote = ''; //
+
     // @ts-ignore
     newObj.selected = false;
     newObj.data = object;

@@ -291,9 +291,9 @@ className='gridJobs'
                         locked={true}
                     />
 
-                    <GridColumn field="position" title="Position" width="50px" locked={true} reorderable={false}  orderIndex={0 }/>
-                    {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} headerCell={headerCell} className='gridBorder' headerClassName='gridBorder' reorderable={false}  orderIndex={0 }/>}
-                    {settings.adProvider && <GridColumn field="adProvider" title="Ad Provider" width="100px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 } />}
+                    <GridColumn field="position" title="Position" width="50px" locked={true} reorderable={false} headerCell={headerCell} orderIndex={0 }/>
+                    {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} headerCell={headerCell} className='gridBorder' reorderable={false}  orderIndex={0 }/>}
+                    {settings.adProvider && <GridColumn field="adProvider" title="Ad Provider" width="100px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 } headerClassName='gridBorder'  />}
                     {settings.title && <GridColumn field="title" title="Title" width="150px" reorderable={true} headerCell={headerCell} />}
                     {settings.location && <GridColumn field="location" title="Location" width="120px" reorderable={true} headerCell={headerCell} />}
                     {settings.nowId && <GridColumn field="nowId" title="Now ID" width="80px" headerCell={headerCell} />}
@@ -307,10 +307,12 @@ className='gridJobs'
                     {settings.providerCode && <GridColumn field="providerCode" title="Provider Code" width="80px" headerCell={headerCell} />}
                     {settings.dateRecency && <GridColumn field="dateRecency" title="Recency" width="80px" reorderable={true} headerCell={headerCell} />}
                     {settings.ingestionMethod && <GridColumn field="ingestionMethod" title="Ingestion" width="70px" headerCell={headerCell} />}
-                    {settings.pricingType && <GridColumn field="pricingType" title="Pricing Type" width="20px" headerCell={headerCell} />}
-                    {settings.seoJobId && <GridColumn field="seoJobId" title="SEO Job ID" width="20px" headerCell={headerCell} />}
-                    {settings.refCode && <GridColumn field="refCode" title="Ref Code" width="20px" headerCell={headerCell} />}
-
+                    {settings.pricingType && <GridColumn field="pricingType" title="Pricing Type" width="40px" headerCell={headerCell} />}
+                    {settings.seoJobId && <GridColumn field="seoJobId" title="SEO Job ID" width="60px" headerCell={headerCell} />}
+                    {settings.refCode && <GridColumn field="refCode" title="Ref Code" width="60px" headerCell={headerCell} />}
+                    {settings.validThrough && <GridColumn field="validThrough" title="Valid Through" width="80px" headerCell={headerCell} />}
+                    {settings.validThroughGoogle && <GridColumn field="validThroughGoogle" title="Valid Google" width="80px" headerCell={headerCell} />}
+                    {false && <GridColumn field="remote" title="Remote?" width="50px" headerCell={headerCell} />}
                     {settings.nowId && <GridColumn field="company" title="google" width="80px" cell={linkedCell}  />}
                 </Grid>
                 </Tooltip>

@@ -78,6 +78,9 @@ test('transformed job has expected properties', () => {
     expect(newJob).toHaveProperty('template');
     expect(newJob).toHaveProperty('url');
     expect(newJob).toHaveProperty('refCode');
+    expect(newJob).toHaveProperty('validThrough');
+    expect(newJob).toHaveProperty('validThroughGoogle');
+    expect(newJob).toHaveProperty('remote');
 });
 
 test('transformed job has correct values for props', () => {
@@ -109,8 +112,10 @@ test('transformed job has correct values for props', () => {
         nowId: '230572257',
         template: '1',
         refCode: 'CREQ62192',
-        url: 'https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93'
-
+        url: 'https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
+        validThrough: "5 Sep 21",
+        validThroughGoogle: "16 Jun 22",
+        remote: ''
     });
 });
 
@@ -154,7 +159,10 @@ test('jobList transformed into display jobs', () => {
                 nowId: '230572257',
                 template: '1',
                 refCode: 'CREQ62192',
-                url: 'https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93'
+                url: 'https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
+                validThrough: "5 Sep 21",
+                validThroughGoogle: "16 Jun 22",
+                remote: ''
             }
         ]
     );

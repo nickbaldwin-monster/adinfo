@@ -64,7 +64,9 @@
           }
         ],
         "occupationalCategory": "1500127001001",
-        "title": "Java Developer"
+        "title": "Java Developer",
+
+        "validThrough": "2021-09-05T06:00:10.723Z"
       },
       "createdDate": "2021-04-21T07:55:26.68Z",
       "provider": {
