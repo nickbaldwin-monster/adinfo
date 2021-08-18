@@ -16,12 +16,14 @@ export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url }) => {
     const nextProdUrl = 'https://admin.mwwnextappprod-us.monster-next.com';
     const nextPreprodUrl = 'https://admin.mwwnextapppreprod-us.monster-next.com';
     const nextJob = `${nextProdUrl}/jobs/search?page=1&query=${jobId}&type=jobId`;
-    const nextAccount = `${nextPreprodUrl}/accounts/search?page=1&query=${accountId}&type=accountId`;
-    const nowUrl = 'https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&searchtype=POSITIONADID&txtSearch=';
-    //              https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&searchtype=POSITIONADID&txtSearch=229908419
+    const nextAccount = `${nextProdUrl}/accounts/search?page=1&query=${accountId}&type=accountId`;
+    const webAdmin = `https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&txtSearchJobs=${nowId}&EmailAddress=&ebill=&ebilltype=&button=&txtSearch=${nowId}&Submit=Go!&searchtype=POSITIONADID&source=&UserSearchType=`;
+    //                https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&txtSearchJobs=230302770&EmailAddress=&ebill=&ebilltype=&button=&txtSearch=230302770&Submit=Go!&searchtype=POSITIONADID&source=&UserSearchType=
 
-    const nowJob = `${nowUrl}${nowId}`;
-    const nowAccount = `${nowUrl}/`;
+
+
+    // const nowJob = `${nowUrl}${nowId}`;
+    // const nowAccount = `${nowUrl}/`;
 
     // todo - all domains
     const domain = 'https://www.monster.com';
@@ -68,8 +70,9 @@ export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url }) => {
                 Open Job in <strong><a href={nextJob} target='_blank'  style={{color: '#007bff'}}>Next Admin</a></strong>
             </p>}
 
+
             {nowId && <p>
-                Open Job in <strong><a href={nowJob} target='_blank' style={{color: '#007bff'}}>NOW webadmin</a></strong>
+                Open Job in <strong><a href={webAdmin} target='_blank' style={{color: '#007bff'}}>NOW webadmin</a></strong>
             </p>}
 
 
@@ -79,9 +82,7 @@ export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url }) => {
                 Search all <strong><a href={orgJobs} target='_blank'  style={{color: '#007bff'}}>Org jobs</a></strong>
             </p>}
 
-            {false && <p>
-                Open employer account in <strong><a href={nowAccount} target='_blank' style={{color: '#007bff'}}>NOW webadmin</a></strong>
-            </p>}
+
             {false &&  <p>
                 Open employer account in <strong><a href={nextAccount} target='_blank' style={{color: '#007bff'}}>Next Admin</a></strong>
             </p>}

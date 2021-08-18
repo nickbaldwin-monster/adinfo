@@ -64,7 +64,7 @@ After the project is built, a directory named `dist` will be created.
  - added scrollbars to panels
  - fixed now id and webadmin link
  - updated default settings
- - reordered fields
+ - revised column titles and order of settings
 
 order of fields (* = default setting):
 Position *
@@ -88,31 +88,23 @@ SEO Job ID
 (Ref code)
 
 
-Valid through date
-modified date
-occupation type / remote
 
-links
-
-
-Webadmin - for 230302770
-https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&txtSearchJobs=230302770&EmailAddress=&ebill=&ebilltype=&button=&txtSearch=230302770&Submit=Go!&searchtype=POSITIONADID&source=&UserSearchType=
-
-hover over ads in sync with the table
-add Expired date in Next set of changes
-add legend to tabular columns
-determine what Adzerk means (is it GCTS_AdQuery ? ) and which date value is displayed
-Change the order of columns as mentioned below
-Remote job
 
 
 
 tbd
-- add expires field
+- Valid through date
+- modified date
+- occupation type / remote
+- hover over ads in sync with the table
+- add Expired date in Next set of changes
+- add legend to tabular columns
+- determine what Adzerk means (is it GCTS_AdQuery ? ) and which date value is displayed
+- Change the order of columns as mentioned below
+- Remote job
 - persist settings
 - integrate JSD widget
 - if any location field undefined, remove it
-- revise titles and order of settings
 - apply xcode 'aggregated' for jobs pt 3 in eu
 - add link to job detail
 - add link to search using job id
