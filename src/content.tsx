@@ -99,17 +99,6 @@ const addIframe = () => {
 
 
 
-/*
-        let jsd = document.createElement('script');
-        // jsd.type = 'text/javascript';
-        // jsd.async = true;
-        jsd.setAttribute("data-jsd-embedded", "");
-        jsd.setAttribute("data-key", "c016bf09-0da3-4e3d-9697-ad3e554c99cc");
-        jsd.setAttribute("data-base-url", "https://jsd-widget.atlassian.com");
-        jsd.src = 'https://jsd-widget.atlassian.com/assets/embed.js';
-        node.appendChild(jsd);
- */
-
     }
 }
 
@@ -156,13 +145,9 @@ const init = () => {
 if (document.readyState !== 'loading') {
     init();
 
-
-
-
     const actualCode = '(' + function() {
 
         console.log('adinfo: injected script');
-
         const poller = setInterval(() => {
 
             const list = document.querySelector('.results-list');
@@ -288,13 +273,36 @@ if (document.readyState !== 'loading') {
         }, 100);
 
 
-
     } + ')();';
     const script = document.createElement('script');
     script.textContent = actualCode;
     (document.head||document.documentElement).appendChild(script);
     script.remove();
 
+    /*
+       let node = document.querySelector('body');
+       let jsd = document.createElement('script');
+       jsd.type = 'text/javascript';
+       jsd.async = true;
+       jsd.src = 'embed.js';
+       jsd.setAttribute("data-jsd-embedded", "");
+       jsd.setAttribute("data-key", "c016bf09-0da3-4e3d-9697-ad3e554c99cc");
+       jsd.setAttribute("data-base-url", "https://jsd-widget.atlassian.com");
+       node?.appendChild(jsd);
+
+        const code = '(' + test + ')();';
+        const jsd = document.createElement('script');
+        jsd.type = 'text/javascript';
+        jsd.setAttribute("data-jsd-embedded", "");
+        jsd.setAttribute("id", "adinfoScript");
+        jsd.id = 'adinfoScript';
+        jsd.setAttribute("data-key", "c016bf09-0da3-4e3d-9697-ad3e554c99cc");
+        jsd.setAttribute("data-base-url", "https://jsd-widget.atlassian.com");
+        // @ts-ignore
+        jsd.textContent = '(function(){' + text + '})()';
+        (document.head||document.documentElement).appendChild(jsd);
+
+     */
 
 }
 else {

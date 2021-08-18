@@ -93,6 +93,7 @@ export const Iframe = (props: Props) => {
     return (
         // @ts-ignore
         <iframe
+            id="adinfo"
             src="about:blank"
             scrolling="no"
             frameBorder="0"
