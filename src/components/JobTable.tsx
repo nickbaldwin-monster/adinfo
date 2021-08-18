@@ -291,23 +291,26 @@ className='gridJobs'
                         locked={true}
                     />
 
-                    <GridColumn field="position" title="Pos" width="50px" locked={true} reorderable={false}  orderIndex={0 }/>
-                    {settings.adProvider && <GridColumn field="adProvider" title="AdProvider" width="100px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 } />}
+                    <GridColumn field="position" title="Position" width="50px" locked={true} reorderable={false}  orderIndex={0 }/>
                     {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} headerCell={headerCell} className='gridBorder' headerClassName='gridBorder' reorderable={false}  orderIndex={0 }/>}
+                    {settings.adProvider && <GridColumn field="adProvider" title="Ad Provider" width="100px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 } />}
                     {settings.title && <GridColumn field="title" title="Title" width="150px" reorderable={true} headerCell={headerCell} />}
                     {settings.location && <GridColumn field="location" title="Location" width="120px" reorderable={true} headerCell={headerCell} />}
-                    {settings.dateRecency && <GridColumn field="dateRecency" title="Recency" width="80px" reorderable={true} headerCell={headerCell} />}
-                    {settings.xCode && <GridColumn field="xCode" title="xCode" width="80px" headerCell={headerCell} />}
-                    {settings.template && <GridColumn field="template" title="templateId" width="80px" headerCell={headerCell}/>}
-                    {settings.pricingType && <GridColumn field="pricingType" title="$Type" width="20px" headerCell={headerCell} />}
+                    {settings.nowId && <GridColumn field="nowId" title="Now ID" width="80px" headerCell={headerCell} />}
+                    {settings.jobId && <GridColumn field="jobId" title="Job ID" width="80px" headerCell={headerCell} />}
+                    {settings.template && <GridColumn field="template" title="Template" width="80px" headerCell={headerCell}/>}
+                    {settings.xCode && <GridColumn field="xCode" title="xcode" width="80px" headerCell={headerCell} />}
+                    {settings.applyType && <GridColumn field="applyType" title="Apply Type" width="70px" headerCell={headerCell} />}
                     {settings.formattedDate && <GridColumn field="formattedDate" title="Date" width="70px" headerCell={headerCell} />}
-                    {settings.mesco && <GridColumn field="mesco" title="MescoId" width="100px" headerCell={headerCell} />}
-                    {settings.jobId && <GridColumn field="jobId" title="jobId" width="80px" headerCell={headerCell} />}
+                    {settings.mesco && <GridColumn field="mesco" title="Mesco" width="100px" headerCell={headerCell} />}
                     {settings.provider && <GridColumn field="provider" title="Provider" width="70px" headerCell={headerCell} />}
                     {settings.providerCode && <GridColumn field="providerCode" title="Provider Code" width="80px" headerCell={headerCell} />}
+                    {settings.dateRecency && <GridColumn field="dateRecency" title="Recency" width="80px" reorderable={true} headerCell={headerCell} />}
                     {settings.ingestionMethod && <GridColumn field="ingestionMethod" title="Ingestion" width="70px" headerCell={headerCell} />}
-                    {settings.applyType && <GridColumn field="applyType" title="Apply" width="70px" headerCell={headerCell} />}
-                    {settings.nowId && <GridColumn field="nowId" title="nowId" width="80px" headerCell={headerCell} />}
+                    {settings.pricingType && <GridColumn field="pricingType" title="Pricing Type" width="20px" headerCell={headerCell} />}
+                    {settings.seoJobId && <GridColumn field="seoJobId" title="SEO Job ID" width="20px" headerCell={headerCell} />}
+                    {settings.refCode && <GridColumn field="refCode" title="Ref Code" width="20px" headerCell={headerCell} />}
+
                     {settings.nowId && <GridColumn field="company" title="google" width="80px" cell={linkedCell}  />}
                 </Grid>
                 </Tooltip>

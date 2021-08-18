@@ -93,15 +93,13 @@ SEO Job ID
 
 
 tbd
-- Valid through date
+- Valid through (expiry) date
 - modified date
 - occupation type / remote
 - hover over ads in sync with the table
-- add Expired date in Next set of changes
 - add legend to tabular columns
-- determine what Adzerk means (is it GCTS_AdQuery ? ) and which date value is displayed
-- Change the order of columns as mentioned below
-- Remote job
+- determine what Adzerk means (is it GCTS_AdQuery ? ) 
+- which date value is displayed?
 - persist settings
 - integrate JSD widget
 - if any location field undefined, remove it
