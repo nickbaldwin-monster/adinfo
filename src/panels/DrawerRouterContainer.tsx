@@ -40,6 +40,14 @@ const items = [
         separator: true,
     },
     {
+        text: "Info",
+        icon: "k-i-css",
+        route: "/info",
+    },
+    {
+        separator: true,
+    },
+    {
         text: "Feedback",
         icon: "k-i-css",
         route: "/feedback",

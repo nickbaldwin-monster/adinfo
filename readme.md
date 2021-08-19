@@ -68,29 +68,35 @@ After the project is built, a directory named `dist` will be created.
  - added valid through dates
 
 
+1.0.11 - tbd aug 2021
+- merged request data and response (json) panels (for Sydney team)
+- added panel with feature request form
+
+todo
+- add panel for info
+- legend with explanations for ad provider values
+- confirm source of fields matches current plugin
+- remove google link
+
 tbd
 
-- legend with explanations for ad provider values
-- integrate JSD widget / MS feedback *
+- icons for panels
 - get searchId from new views *
-- hover over ads in sync with the table *
 - persist settings *
-- revise tabs, add info tab
+- hover over ads in sync with the table *
+- style panels
 - only link next admin for jpw jobs - followup - ingestionType === 'JPW'?
-- remove google link
 - figure out remote - followup
 - occupation type / remote - followup
 - which date value is displayed? - followup
 - modified date? - followup
-- add legend to tabular columns
 - table of all values in detail view (as per request)?
-- determine what Adzerk means (is it GCTS_AdQuery ? )
 - if any location field undefined, remove it
 - apply xcode 'aggregated' for jobs pt 3 in eu - followup
 - add link to job detail
 - add link to search using job id
 - add link to webadmin using now id
-- tooltip for other cell values?
+- title for other cell values? (not tooltip)
 - match settings to titles
 - remove checkbox on items in table?
 - resize width?
