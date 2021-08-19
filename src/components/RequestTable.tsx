@@ -1,13 +1,13 @@
 import React, { useReducer, useContext } from 'react';
 import { Grid, GridColumn, GridToolbar } from '@progress/kendo-react-grid';
 
-// todo - cut down css
-import './Table.css';
-
 import { logger } from "../helpers/logger";
 import { useReduxContext } from "../context/Context";
-import {RequestLinks} from "./RequestLinks";
+import { RequestLinks } from "./RequestLinks";
 
+// todo - cut down css
+import './Table.css';
+import ReactJson from "react-json-view-ts";
 
 const moduleName = 'RequestTable';
 let log = logger(moduleName);
@@ -23,7 +23,7 @@ export const RequestTable = () => {
 
 
     // @ts-ignore
-    const { loading, request } = useReduxContext();
+    const { loading, request, redux } = useReduxContext();
 
     log({
         logType: 'INFO',
@@ -44,12 +44,19 @@ export const RequestTable = () => {
 
     return (
         <div className='panel'>
+            <p>Datadog</p>
+            {isLink && <RequestLinks searchId={searchId} toTs={toTs} fromTs={fromTs} />}
+
             <p>Request info</p>
             <Grid data={request} >
                 <GridColumn field="key" title="key" />
                 <GridColumn field="value" title="value" />
             </Grid>
-            {isLink && <RequestLinks searchId={searchId} toTs={toTs} fromTs={fromTs} />}
+
+            <br />
+            <p>Request/response data</p>
+            <ReactJson src={redux} collapsed={0} collapseStringsAfterLength={120}/>
+
         </div>
     );
 };

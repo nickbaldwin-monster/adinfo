@@ -19,21 +19,14 @@ const items = [
         selected: true,
         route: "/",
     },
+
     {
         separator: true,
     },
     {
-        text: "Request",
-        icon: "k-i-list-unordered",
-        route: "/request",
-    },
-    {
-        separator: true,
-    },
-    {
-        text: "JSON",
-        icon: "k-i-css",
-        route: "/json",
+        text: "Errors",
+        icon: "k-i-error",
+        route: "/errors",
     },
     {
         separator: true,
@@ -47,9 +40,17 @@ const items = [
         separator: true,
     },
     {
-        text: "Errors",
-        icon: "k-i-error",
-        route: "/errors",
+        text: "Feedback",
+        icon: "k-i-css",
+        route: "/feedback",
+    },
+    {
+        separator: true,
+    },
+    {
+        text: "Request",
+        icon: "k-i-list-unordered",
+        route: "/request",
     },
     {
         separator: true,
@@ -58,7 +59,10 @@ const items = [
         text: "Display",
         icon: "k-i-preview",
         route: "/display",
-    }
+    },
+    {
+        separator: true,
+    },
 ];
 
 const DrawerRouterContainer = (props: any) => {
