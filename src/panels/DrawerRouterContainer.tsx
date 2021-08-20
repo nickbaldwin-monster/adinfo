@@ -25,7 +25,7 @@ const items = [
     },
     {
         text: "Errors",
-        icon: "k-i-error",
+        icon: "k-i-exception",
         route: "/errors",
     },
     {
@@ -41,15 +41,15 @@ const items = [
     },
     {
         text: "Feedback",
-        icon: "k-i-css",
+        icon: "k-i-track-changes-enable",
         route: "/feedback",
     },
     {
         separator: true,
     },
     {
-        text: "Request",
-        icon: "k-i-list-unordered",
+        text: "Info",
+        icon: "k-i-info",
         route: "/info",
     },
     {
@@ -63,6 +63,62 @@ const items = [
     {
         separator: true,
     },
+
+    /*
+    {
+        separator: true,
+    },
+    {
+        separator: true,
+    },
+    {
+        separator: true,
+    },
+    {
+        separator: true,
+    },
+    {
+        separator: true,
+    },
+    {
+        text: "Display",
+        icon: "k-i-list-unordered",
+        route: "/display",
+    },
+    {
+        separator: true,
+    },
+    {
+        separator: true,
+    },
+    {
+        text: "Display",
+        icon: "k-i-question",
+        route: "/display",
+    },
+    {
+        separator: true,
+    },
+    {
+        text: "Display",
+        icon: "k-i-checkbox-checked",
+        route: "/display",
+    },
+    {
+        separator: true,
+    },
+    {
+        text: "Display",
+        icon: "k-i-plus-circle",
+        route: "/display",
+    },
+    {
+        separator: true,
+    },
+
+
+     */
+
 ];
 
 const DrawerRouterContainer = (props: any) => {
