@@ -61,7 +61,7 @@ export const SettingsPanel = () => {
 
     return (
         <div className='settingsPanel panel'>
-            <p>Settings</p>
+            <h4>Settings</h4>
             {settingsArray.map(setting => (
                 <div className='setting'>
                     <Switch
