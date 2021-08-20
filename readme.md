@@ -71,16 +71,14 @@ After the project is built, a directory named `dist` will be created.
 2.0 - FOR fri 20 aug 2021
 - merged request data and response (json) panels into info panel
 - added panel with feature request form
+- icons for panels
 
 todo
 - legend with explanations for ad provider values
 - confirm source of fields matches current plugin
-- remove google link
 - link to release notes in info panel
 
 tbd
-
-- icons for panels
 - get searchId from new views *
 - persist settings *
 - hover over ads in sync with the table *

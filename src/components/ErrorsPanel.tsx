@@ -44,7 +44,7 @@ export const ErrorsPanel = () => {
             </Grid>
             <br />
             <div>
-                <ReactJson src={errors} collapsed={1} collapseStringsAfterLength={120}/>
+                <ReactJson src={errors} collapsed={0} collapseStringsAfterLength={120}/>
             </div>
         </div>
     );
