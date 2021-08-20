@@ -74,6 +74,7 @@ After the project is built, a directory named `dist` will be created.
 - updated icons for panels
 - reordered panels
 - added link to release notes and list of domains in info panel
+- only link to next admin for jpw jobs
 
 
 todo
@@ -89,7 +90,6 @@ tbd
 - improve style of form
 - style panels
 - "jobViewPreferences":"hiringOrganizationConfidential"}
-- only link next admin for jpw jobs - followup - ingestionType === 'JPW'?
 - figure out remote - followup
 - occupation type / remote - followup
 - which date value is displayed? - followup

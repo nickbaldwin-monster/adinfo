@@ -19,10 +19,11 @@ interface DataProps {
 export const JobDetail = (props: DataProps) => {
     const dataItem = props.dataItem;
 
+    let isNext = props.dataItem.ingestionMethod === 'JPW';
     return (
         <section>
 
-            <JobLinks jobId={dataItem.jobId} accountId={undefined} seoJobId={dataItem.seoJobId} nowId={dataItem.nowId} url={dataItem.url} />
+            <JobLinks jobId={dataItem.jobId} accountId={undefined} seoJobId={dataItem.seoJobId} nowId={dataItem.nowId} url={dataItem.url} isNext={isNext} />
 
             <p>
                 <strong>NEXT jobId:</strong> {dataItem.jobId || 'N/A'}

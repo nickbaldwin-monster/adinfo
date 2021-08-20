@@ -10,7 +10,7 @@ log({ logType: 'LOADED' });
 
 
 // @ts-ignore
-export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url }) => {
+export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url, isNext }) => {
 
     // todo - replace with prod urls
     const nextProdUrl = 'https://admin.mwwnextappprod-us.monster-next.com';
@@ -66,7 +66,7 @@ export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url }) => {
             </p>}
 
 
-            {jobId && <p>
+            {jobId && isNext && <p>
                 Open Job in <strong><a href={nextJob} target='_blank'  style={{color: '#007bff'}}>Next Admin</a></strong>
             </p>}
 
