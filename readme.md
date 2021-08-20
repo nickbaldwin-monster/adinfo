@@ -68,15 +68,15 @@ After the project is built, a directory named `dist` will be created.
  - added valid through dates
 
 
-1.0.11 - tbd aug 2021
-- merged request data and response (json) panels (for Sydney team)
+2.0 - FOR fri 20 aug 2021
+- merged request data and response (json) panels into info panel
 - added panel with feature request form
 
 todo
-- add panel for info
 - legend with explanations for ad provider values
 - confirm source of fields matches current plugin
 - remove google link
+- link to release notes in info panel
 
 tbd
 
@@ -84,7 +84,11 @@ tbd
 - get searchId from new views *
 - persist settings *
 - hover over ads in sync with the table *
+- readiness for new views
+- loading indicator
+- improve style of form
 - style panels
+- "jobViewPreferences":"hiringOrganizationConfidential"}
 - only link next admin for jpw jobs - followup - ingestionType === 'JPW'?
 - figure out remote - followup
 - occupation type / remote - followup
@@ -104,6 +108,19 @@ tbd
 - link to accounts in next admin?
 - link to accounts in webadmin?
 - get request info from new views 
+
+
+Sonali todo:
+- review order of panels
+- text and link to release notes
+- other info to include - copy current plugin? ask team what is useful?
+- review icons for panels
+
+open q's
+- dates
+- occupation type / remote 
+
+
 
 
 order of fields (* = default setting):

@@ -8,7 +8,7 @@ import { RequestTable } from "../components/RequestTable";
 import { Feedback } from "../components/Feedback";
 import { logger } from "../helpers/logger";
 import { ErrorsPanel } from "../components/ErrorsPanel";
-import {Info} from "../components/Info";
+
 
 
 
@@ -27,9 +27,8 @@ export const Drawer = () => {
                     <Route exact={true} path="/" component={JobTable} />
                     <Route exact={true} path="/settings" component={SettingsPanel} />
                     <Route exact={true} path="/errors" component={ErrorsPanel} />
-                    <Route exact={true} path="/info" component={Info} />
                     <Route exact={true} path="/feedback" component={Feedback} />
-                    <Route exact={true} path="/request" component={RequestTable} />
+                    <Route exact={true} path="/info" component={RequestTable} />
                 </Switch>
             </DrawerRouterContainer>
         </HashRouter>

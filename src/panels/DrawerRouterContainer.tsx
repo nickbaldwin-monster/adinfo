@@ -40,14 +40,6 @@ const items = [
         separator: true,
     },
     {
-        text: "Info",
-        icon: "k-i-css",
-        route: "/info",
-    },
-    {
-        separator: true,
-    },
-    {
         text: "Feedback",
         icon: "k-i-css",
         route: "/feedback",
@@ -58,7 +50,7 @@ const items = [
     {
         text: "Request",
         icon: "k-i-list-unordered",
-        route: "/request",
+        route: "/info",
     },
     {
         separator: true,

@@ -44,7 +44,9 @@ export const RequestTable = () => {
 
     return (
         <div className='panel'>
-            <p>Datadog</p>
+            <p>Info</p>
+
+            <br />
             {isLink && <RequestLinks searchId={searchId} toTs={toTs} fromTs={fromTs} />}
 
             <p>Request info</p>
