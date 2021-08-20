@@ -68,7 +68,7 @@ After the project is built, a directory named `dist` will be created.
  - added valid through dates
 
 
-2.0 - FOR fri 20 aug 2021
+2.0 - fri 20 aug 2021
 - merged request data and response (json) panels into info panel
 - added panel with feature request form
 - updated icons for panels

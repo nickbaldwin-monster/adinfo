@@ -27,8 +27,6 @@ const Popup = () => {
     return (
         <>
             {name}!
-            <Button />
-
         </>
     );
 };
