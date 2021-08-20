@@ -75,10 +75,10 @@ After the project is built, a directory named `dist` will be created.
 - reordered panels
 - added link to release notes and list of domains in info panel
 - only link to next admin for jpw jobs
+- legend with explanations for ad provider values
 
 
 todo
-- legend with explanations for ad provider values
 - confirm source of fields matches current plugin
 
 tbd

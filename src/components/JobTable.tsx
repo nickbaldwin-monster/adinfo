@@ -15,6 +15,7 @@ import { JobDetail } from './JobDetail';
 // original css - '@progress/kendo-theme-default/dist/all.css';
 // todo - cut down css
 import './Table.css';
+import {Popup} from "@progress/kendo-react-popup";
 
 
 
@@ -31,15 +32,7 @@ log({ logType: 'LOADED' });
 
 
 
-const headerCell = (props: any) => {
-    return (
-        <a className="k-link" onClick={props.onClick}>
-            <span title={props.title}>{props.title}
-                {props.children}
-            </span>
-        </a>
-    );
-};
+
 
 /*
 <th aria-sort="ascending" aria-colindex="3" aria-selected="false" colSpan="1" rowSpan="1"
@@ -112,6 +105,70 @@ const handleColumnReorder = (event: any) => {
 }
 
 export const JobTable = () => {
+
+
+
+    const headerCell = (props: any) => {
+
+        const anchor = React.useRef();
+        const [show, setShow] = React.useState(false);
+        const onClick = () => {
+            setShow(!show);
+        };
+
+        if (props.title === 'Ad Provider') {
+
+
+            // @ts-ignore
+            return (
+                <div>
+                <a className="k-link" onClick={props.onClick}>
+            <span title={props.title}>
+                {props.title}
+
+                {props.children}
+            </span>
+
+                </a>
+
+                    {/* @ts-ignore */}
+                    <span onClick={onClick} ref={anchor} className="k-icon k-i-information" style={{margin: '0 0 0 15px'}}></span>
+
+
+
+
+                    <Popup
+                        anchor={anchor.current}
+                        show={show}
+                        className={"wrapper"}
+                        popupClass={"inner-wrapper"}
+                        style={{width: "200px", padding: "5px"}}
+                    >
+                        <p>A value in this field indicats the result is an ad</p>
+                        <p>There are 3 possible values here: 'GCTS_ADQUERY' and 'ADZERK' describe how the ad was selected by the AdTech platform. An empty value means that the job is displayed as an organic result.</p>
+                    </Popup>
+
+                </div>
+            );
+        }
+        return (
+            <a className="k-link" onClick={props.onClick}>
+            <span title={props.title}>{props.title}
+                {props.children}
+            </span>
+            </a>
+        );
+    };
+
+
+
+
+
+
+
+
+
+
     // @ts-ignore
     const { loading, jobs, setJobs, settings, numberResults, errors } = useReduxContext();
     const _export = React.useRef(null);
@@ -189,6 +246,16 @@ export const JobTable = () => {
         // todo - CHECK!!!!!!!!!
         setJobs(newData);
     };
+
+
+
+
+
+
+
+
+
+
 
         React.useEffect(() => {
 
@@ -293,7 +360,7 @@ className='gridJobs'
 
                     <GridColumn field="position" title="Position" width="50px" locked={true} reorderable={false} headerCell={headerCell} orderIndex={0 }/>
                     {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} headerCell={headerCell} reorderable={false}  orderIndex={0 }/>}
-                    {settings.adProvider && <GridColumn field="adProvider" title="Ad Provider" width="100px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 } headerClassName='gridBorder' className='gridBorder'  />}
+                    {settings.adProvider && <GridColumn field="adProvider" title="Ad Provider" width="120px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 } headerClassName='gridBorder' className='gridBorder'  />}
                     {settings.title && <GridColumn field="title" title="Title" width="150px" reorderable={true} headerCell={headerCell} />}
                     {settings.location && <GridColumn field="location" title="Location" width="120px" reorderable={true} headerCell={headerCell} />}
                     {settings.nowId && <GridColumn field="nowId" title="Now ID" width="80px" headerCell={headerCell} />}
