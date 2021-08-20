@@ -313,7 +313,9 @@ className='gridJobs'
                     {settings.validThrough && <GridColumn field="validThrough" title="Valid Through" width="80px" headerCell={headerCell} />}
                     {settings.validThroughGoogle && <GridColumn field="validThroughGoogle" title="Valid Google" width="80px" headerCell={headerCell} />}
                     {false && <GridColumn field="remote" title="Remote?" width="50px" headerCell={headerCell} />}
-                    {settings.nowId && <GridColumn field="company" title="google" width="80px" cell={linkedCell}  />}
+
+
+
                 </Grid>
                 </Tooltip>
             </ExcelExport>
@@ -322,4 +324,6 @@ className='gridJobs'
     );
 };
 
+// todo - links in table
+// {settings.nowId && <GridColumn field="company" title="google" width="80px" cell={linkedCell}  />}
 
