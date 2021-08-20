@@ -142,9 +142,9 @@ export const JobTable = () => {
                         show={show}
                         className={"wrapper"}
                         popupClass={"inner-wrapper"}
-                        style={{width: "200px", padding: "5px"}}
+                        style={{width: "200px"}}
                     >
-                        <p>A value in this field indicats the result is an ad</p>
+                        <p>A value in this field indicates the result is an ad.</p>
                         <p>There are 3 possible values here: 'GCTS_ADQUERY' and 'ADZERK' describe how the ad was selected by the AdTech platform. An empty value means that the job is displayed as an organic result.</p>
                     </Popup>
 

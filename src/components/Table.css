@@ -37049,6 +37049,7 @@ body div.k-grid ::-webkit-scrollbar-track {
 
 .k-grid-content {
     overflow: auto;
+
 }
 
 
@@ -37076,4 +37077,16 @@ body div.k-drawer-content ::-webkit-scrollbar-track {
 .panel {
     height: 100%;
     overflow: auto;
+}
+
+
+
+.inner-wrapper p {
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+.wrapper > .inner-wrapper {
+    background-color: #ddd;
 }
