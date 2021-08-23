@@ -167,10 +167,10 @@ if (document.readyState !== 'loading') {
                 // "[class=^'job-search-resultsstyle__CardGrid']"
 
                 const cardList = document.querySelector("[class^='job-search-resultsstyle__CardGrid']");
-                console.log(cardList);
+                console.log('cardList: ', cardList);
 
                 const cardListSplit = document.querySelector("[class^='splitviewstyle__CardGridSplitView']");
-                console.log(cardListSplit);
+                console.log('cardListSplit: ', cardListSplit);
 
 
                 const observer = new MutationObserver((mutations: any) => {
@@ -178,13 +178,13 @@ if (document.readyState !== 'loading') {
                     console.log('results observed for card view');
 
 
-                    for (const key in cardList) {
+                    for (const key in cardListSplit) {
                         if (key.startsWith('__reactFiber$')) {
 
-                            console.log('cardList has key');
+                            console.log('cardListSplit has key');
 
                             // @ts-ignore
-                            let item = cardList[key];
+                            let item = cardListSplit[key];
                             let numberIt = 0;
 
                             while (item.memoizedProps.items === undefined && numberIt < 15) {
@@ -192,9 +192,12 @@ if (document.readyState !== 'loading') {
                                 numberIt++;
                             }
 
+                            console.log('iterations: ', numberIt);
+                            console.log('item: ', item);
+
                             if (item.memoizedProps.items) {
 
-                                console.log('cardlist should have items!');
+                                console.log('cardListSplit should have items!');
                                 console.log(item.memoizedProps.items.length);
                                 console.log(item);
                                 console.log(item.memoizedProps.items);
@@ -207,18 +210,13 @@ if (document.readyState !== 'loading') {
                                 window.postMessage({type: 'JOB_PROPS', payload: item.memoizedProps.items, source: 'content'}, "*");
 
 
-
-                                console.log('cardlist');
-                                console.log('cardlist');
-                                console.log('cardlist');
-                                console.log(item.memoizedProps.items.length)
-
                             }
                         }
                     }
 
 
                 });
+
                 // @ts-ignore
                 observer.observe(cardListSplit, {
                     childList: true // report added/removed nodes
