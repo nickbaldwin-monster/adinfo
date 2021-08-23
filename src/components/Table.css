@@ -37090,3 +37090,32 @@ body div.k-drawer-content ::-webkit-scrollbar-track {
 .wrapper > .inner-wrapper {
     background-color: #ddd;
 }
+
+
+.copyText {
+    cursor: pointer;
+}
+
+.copyText:not(:active) {
+    /* now keep red background for 1s */
+    transition: background-color 400ms ease-in-out;
+}
+
+.copyText:active {
+    background: #ac9fcc;
+}
+
+.copyText:hover {
+    text-decoration: underline;
+}
+
+
+
+@-webkit-keyframes cssAnimation {
+    from {
+        -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(100px);
+    }
+    to {
+        -webkit-transform: rotate(0deg) scale(2) skew(0deg) translate(100px);
+    }
+}

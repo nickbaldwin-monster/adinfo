@@ -92,7 +92,7 @@ export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url, isNext }) => 
 
             {nowId && <p>
                 {/* Open Job in <strong><a href={webAdmin} target='_blank' style={{color: '#007bff'}}>NOW webadmin</a></strong> */}
-                CLick to copy <span onClick={copyWebAdminUrl}><strong>WebAdmin URL</strong></span>
+                CLick to copy <span className='copyText' onClick={copyWebAdminUrl}><strong>WebAdmin URL</strong></span>
             </p>}
 
 
