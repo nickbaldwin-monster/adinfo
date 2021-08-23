@@ -78,6 +78,12 @@ After the project is built, a directory named `dist` will be created.
 - legend with explanations for ad provider values
 
 
+2.0.1 - mon 23 aug 2021
+- replaced link to webadmin with copy url (due to GA id being added to link)
+- 
+
+
+
 todo
 - confirm source of fields matches current plugin
 

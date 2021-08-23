@@ -19,7 +19,7 @@ export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url, isNext }) => 
     const nextAccount = `${nextProdUrl}/accounts/search?page=1&query=${accountId}&type=accountId`;
     const webAdmin = `https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&txtSearchJobs=${nowId}&EmailAddress=&ebill=&ebilltype=&button=&txtSearch=${nowId}&Submit=Go!&searchtype=POSITIONADID&source=&UserSearchType=`;
     //                https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&txtSearchJobs=230302770&EmailAddress=&ebill=&ebilltype=&button=&txtSearch=230302770&Submit=Go!&searchtype=POSITIONADID&source=&UserSearchType=
-
+    // const oldWebAdmin = "https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&searchtype=POSITIONADID&txtSearch=" + nowId;
 
 
     // const nowJob = `${nowUrl}${nowId}`;
@@ -55,6 +55,25 @@ export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url, isNext }) => 
     }
 
 
+    const copyWebAdminUrl = async () => {
+        try {
+            await navigator.clipboard.writeText(webAdmin);
+            console.log('copied');
+        }
+        catch (err) {
+            console.error('copy failed: ', err);
+        }
+    }
+      const copySomething = async (text: string) => {
+        try {
+            await navigator.clipboard.writeText(text);
+            console.log('copied');
+        }
+        catch (err) {
+            console.error('copy failed: ', err);
+        }
+    }
+
 
     return (
         <section>
@@ -72,7 +91,8 @@ export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url, isNext }) => 
 
 
             {nowId && <p>
-                Open Job in <strong><a href={webAdmin} target='_blank' style={{color: '#007bff'}}>NOW webadmin</a></strong>
+                {/* Open Job in <strong><a href={webAdmin} target='_blank' style={{color: '#007bff'}}>NOW webadmin</a></strong> */}
+                CLick to copy <span onClick={copyWebAdminUrl}><strong>WebAdmin URL</strong></span>
             </p>}
 
 
