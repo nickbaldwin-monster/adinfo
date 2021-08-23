@@ -36944,7 +36944,7 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
 }
 
 .k-drawer-content {
-    position: absolute;
+    position: fixed;
     right: 50px;
     top: 140px;
     z-index: 99;

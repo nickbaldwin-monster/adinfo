@@ -81,6 +81,7 @@ After the project is built, a directory named `dist` will be created.
 2.0.1 - mon 23 aug 2021
 - replaced link to webadmin with copy url (due to GA id being added to link)
 - job info works for new split view
+- display is now fixed position
 
 
 todo
