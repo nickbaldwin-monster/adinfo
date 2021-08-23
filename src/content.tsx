@@ -150,70 +150,29 @@ if (document.readyState !== 'loading') {
         console.log('adinfo: injected script');
         const poller = setInterval(() => {
 
-            const list = document.querySelector('.results-list');
 
-            if (list !== null) {
-                clearInterval(poller);
-                console.log('list');
 
-                for (const key in list) {
-                    if (key.startsWith('__reactInternalInstance$')) {
 
-                        console.log('list has key');
-                        console.log('adinfo: injected script: react node found');
-                        // @ts-ignore
-                        const fiberNode = list[key];
-                        console.log(fiberNode);
-                        console.log(fiberNode?.return);
-                        console.log(fiberNode.return?.stateNode);
-                    }
-                }
-            }
-
-            const cards = document.querySelector('.infinite-scroll-component__outerdiv');
+            // both card view and split view have this when list is rendered
+            const cards = document.querySelector('.infinite-scroll-component');
             if (cards !== null) {
                 clearInterval(poller);
 
+                // todo - deal with both being present, and switching layout
 
-                const header = document.querySelector('.ds-header');
-                console.log('header');
-                console.log(header);
-                for (const key in header) {
-                    if (key.startsWith('__reactFiber$')) {
-                        console.log('header has key');
+                // split view - container of cards
+                // "[class^='splitviewstyle__CardGridSplitView']"
 
-                        // @ts-ignore
-                        let item = header[key];
-                        console.log(item);
-
-                        let numberIt = 0;
-                        // numberIt should be 16
-                        while (item.memoizedState?.baseState?.client === undefined && numberIt < 20) {
-                            item = item?.return;
-                            numberIt++;
-                        }
-
-                        if (item.memoizedState?.baseState) {
-                            console.log(numberIt++);
-                            console.log(item.memoizedState?.baseState);
-
-                            window.postMessage({
-                                type: 'REQUEST',
-                                payload: item.memoizedState?.baseState,
-                                source: 'content'
-                            }, "*");
-
-                        }
-
-
-                    }
-                }
-
-
-                console.log('cards');
+                // card view - container of cards
+                // "[class=^'job-search-resultsstyle__CardGrid']"
 
                 const cardList = document.querySelector("[class^='job-search-resultsstyle__CardGrid']");
                 console.log(cardList);
+
+                const cardListSplit = document.querySelector("[class^='splitviewstyle__CardGridSplitView']");
+                console.log(cardListSplit);
+
+
                 const observer = new MutationObserver((mutations: any) => {
 
                     console.log('results observed for card view');
@@ -261,7 +220,7 @@ if (document.readyState !== 'loading') {
 
                 });
                 // @ts-ignore
-                observer.observe(cardList, {
+                observer.observe(cardListSplit, {
                     childList: true // report added/removed nodes
                 });
 
@@ -286,3 +245,47 @@ else {
     });
 }
 
+
+
+
+
+
+
+
+
+
+/*
+ const header = document.querySelector('.ds-header');
+ console.log('header');
+ console.log(header);
+ for (const key in header) {
+     if (key.startsWith('__reactFiber$')) {
+         console.log('header has key');
+
+         // @ts-ignore
+         let item = header[key];
+         console.log(item);
+
+         let numberIt = 0;
+         // numberIt should be 16
+         while (item.memoizedState?.baseState?.client === undefined && numberIt < 20) {
+             item = item?.return;
+             numberIt++;
+         }
+
+         if (item.memoizedState?.baseState) {
+             console.log(numberIt++);
+             console.log(item.memoizedState?.baseState);
+
+             window.postMessage({
+                 type: 'REQUEST',
+                 payload: item.memoizedState?.baseState,
+                 source: 'content'
+             }, "*");
+
+         }
+
+
+     }
+ }
+*/
