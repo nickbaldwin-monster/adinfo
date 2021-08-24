@@ -1,0 +1,1453 @@
+{
+  "$id" : "https://monster.io/schemas/job/v2",
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "additionalProperties" : true,
+  "definitions" : {
+    "AdministrativeArea" : {
+      "additionalProperties" : true,
+      "description" : "https://schema.org/AdministrativeArea",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "AdministrativeArea",
+          "type" : "string"
+        },
+        "address" : {
+          "$ref" : "#/definitions/PostalAddress"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "geo" : {
+          "$ref" : "#/definitions/GeoCoordinates"
+        },
+        "logo" : {
+          "format" : "uri",
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "sameAs" : {
+          "type" : "string"
+        },
+        "url" : {
+          "format" : "uri",
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "AdministrativeArea",
+      "type" : "object"
+    },
+    "AggregateRating" : {
+      "additionalProperties" : true,
+      "description" : "https://schema.org/AggregateRating",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "AggregateRating",
+          "type" : "string"
+        },
+        "ratingValue" : {
+          "type" : "number"
+        },
+        "reviewCount" : {
+          "type" : "number"
+        }
+      },
+      "required" : [ ],
+      "title" : "AggregateRating",
+      "type" : "object"
+    },
+    "Apply" : {
+      "additionalProperties" : true,
+      "description" : "Information related to applying to the job",
+      "properties" : {
+        "applicationNotificationEmail" : {
+          "description" : "An email address to be notified when an onsite apply occurs. Must be a valid email.",
+          "examples" : [ "someemail@yahoo.com" ],
+          "type" : "string"
+        },
+        "applyPath" : {
+          "description" : "Path portion of the applyUrl for this job. This is system generated and used to display the apply correctly based on country and language.  Not an input. Anything supplied is ignored.",
+          "examples" : [ "/v2/job/apply?jobid=8720732d-5487-4081-92bc-084ce8fecc72" ],
+          "type" : "string"
+        },
+        "applyType" : {
+          "description" : "A means to apply.  One of the following: {OFFSITE(51), ONSITE(52), INTEGRATED(53), NONE(54)}.",
+          "examples" : [ "\"OFFSITE\": On apply click the candidate is directed to a website off Monster (usually an applicant tracking system) to complete the apply.", "\"ONSITE\":  On apply click the candidate is prompted to sign up or sign in and complete the apply using their Monster account.  The apply is stored in the employer’s account on Monster.", "\"INTEGRATED\": The receiver of the apply has integrated with Monster so on apply the candidate is prompted to sign up or sign in and complete the apply using their Monster account.  The apply is delivered via the integration so the candidate does not leave Monster to apply.", "\"NONE\": Neither of the above 3 are the apply method on the job.  This will be an edge case as we are moving to rejecting jobs that do not have the above 3 apply methods. There are still cases of jobs coming in with phone, fax or email only and those would be flagged with None." ],
+          "type" : "string"
+        },
+        "applyUrl" : {
+          "description" : "URL candidate is resolved to to apply for the job. #validation - Must be a valid url. Must not be a competitor's url. Required for applyType OFFSITE",
+          "examples" : [ "https://job-openings.monster.com/v2/job/apply?jobid=8720732d-5487-4081-92bc-084ce8fecc72", "https://jobs.50skills.com/lockwood/en/192" ],
+          "format" : "uri",
+          "maxLength" : 256,
+          "minLength" : 8,
+          "type" : "string"
+        },
+        "onsiteApplyEmail" : {
+          "description" : "The email address employers want the resume to be emailed to when the apply method is onsite apply. Must be a valid email and is required for applyType ONSITE.",
+          "examples" : [ "someemail@yahoo.com" ],
+          "type" : "string"
+        },
+        "resolvedRedirectUrl" : {
+          "description" : "In the case that the provided applyUrl redirects to another site, this contains the final, resolved url for the applyUrl. This is system generated.  Not an input. Anything supplied is ignored.",
+          "examples" : [ "This redirect https://ars2.equest.com/?response_id=862fdd4b4013a6ecfada0ed5a530e834 resolves to https://recruiting2.ultipro.com/TIM1007TIMBP/JobBoard/f5cefb47-0722-46b8-90a9-f0b4df0bcd3c/OpportunityDetail?opportunityId=4ad39f27-8f42-4083-8440-f224e7091cf4&postingId=dcc06285-dc41-450a-b3e7-bcc26c213a3f" ],
+          "format" : "uri",
+          "type" : "string"
+        }
+      },
+      "required" : [ "applyType" ],
+      "title" : "Apply",
+      "type" : "object"
+    },
+    "Ats" : {
+      "additionalProperties" : true,
+      "description" : "When a job is sourced from a known Applicant Tracking System, the job is enriched with the following information. This is system generated. Not an input. Anything supplied is ignored.",
+      "properties" : {
+        "atsCompanyId" : {
+          "description" : "The element of the ATS URL that represents the company the job is for.",
+          "examples" : [ "https://amphenol-apc.acquiretm.com/job_details_clean.aspx?ID=1260  For this ATS the company identifier is set at the subdomain so would be amphenol-apc." ],
+          "type" : "string"
+        },
+        "atsId" : {
+          "description" : "Monster's internal identifier for the applicant tracking system",
+          "examples" : [ "ATS/247" ],
+          "type" : "string"
+        },
+        "atsJobId" : {
+          "description" : "Applicant tracking system's identifier for the job. Typically this is a requisition id",
+          "examples" : [ "P_AAAAAACAAJmEhIpANDqXyp" ],
+          "type" : "string"
+        },
+        "atsName" : {
+          "description" : "Name of the applicant tracking system",
+          "examples" : [ "GoogleHire" ],
+          "type" : "string"
+        },
+        "errorMessage" : {
+          "description" : "Any error found during the tagging of the application tracking system information on the job",
+          "examples" : [ "Ats match not found" ],
+          "type" : "string"
+        },
+        "isDefaultSourceTagged" : {
+          "description" : "If ATS has a default source tag defined and the URL does not have one, the default is appended, and this value is set to true.  Otherwise, false.",
+          "examples" : [ "true", "false" ],
+          "type" : "boolean"
+        },
+        "isSourceTagged" : {
+          "description" : "Set to true when the applyUrl contains a value that matches what we have defined as the source tag for the ATS. Otherwise false.",
+          "examples" : [ "true", "false" ],
+          "type" : "boolean"
+        },
+        "source" : {
+          "description" : "The exact source tag found on the job.",
+          "examples" : [ "JB-11" ],
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "Ats",
+      "type" : "object"
+    },
+    "AttributeValuePair" : {
+      "additionalProperties" : true,
+      "description" : "An object that provides a flexible way of describing a piece of data and its name",
+      "properties" : {
+        "name" : {
+          "description" : "Name of the field",
+          "examples" : [ "companyReputation" ],
+          "type" : "string"
+        },
+        "value" : {
+          "description" : "Data for the field",
+          "examples" : [ "Great" ],
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "AttributeValuePair",
+      "type" : "object"
+    },
+    "CategoryCode" : {
+      "additionalProperties" : true,
+      "description" : "https://schema.org/CategoryCode",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "CategoryCode",
+          "type" : "string"
+        },
+        "codeValue" : {
+          "type" : "string"
+        },
+        "inCodeSet" : {
+          "$ref" : "#/definitions/CategoryCodeSet"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "url" : {
+          "format" : "uri",
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "CategoryCode",
+      "type" : "object"
+    },
+    "CategoryCodeSet" : {
+      "additionalProperties" : true,
+      "description" : "https://schema.org/CategoryCodeSet",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "CategoryCodeSet",
+          "type" : "string"
+        },
+        "dateModified" : {
+          "format" : "date-time",
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "url" : {
+          "format" : "uri",
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "CategoryCodeSet",
+      "type" : "object"
+    },
+    "CompanyKb" : {
+      "additionalProperties" : true,
+      "description" : "The company's ID as issued by the legacy Monster Company Knowledge Base.  This field is system generated. Not an input. Anything supplied is ignored.",
+      "properties" : {
+        "code" : {
+          "description" : "Legacy identifier of company - xcode",
+          "examples" : [ "xwag2321849x" ],
+          "type" : "string"
+        },
+        "normalizedCompanyGuid" : {
+          "description" : "A unique identifier for the company from the companyKb. Used by the branding api",
+          "examples" : [ "n7ca3epbhjctxj3ihxj2rjnlmd" ],
+          "type" : "string"
+        },
+        "normalizedCompanyName" : {
+          "description" : "Company name normalized to a standard form from a number of variations. Amazon would be translated to Amazon.com, Inc. Value assigned by Knowledge Engineers",
+          "examples" : [ "Amazon.com, Inc." ],
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "CompanyKb",
+      "type" : "object"
+    },
+    "ContactPoint" : {
+      "additionalProperties" : true,
+      "description" : "https://schema.org/ContactPoint",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "ContactPoint",
+          "type" : "string"
+        },
+        "areaServed" : {
+          "$ref" : "#/definitions/Place"
+        },
+        "availableLanguage" : {
+          "type" : "string"
+        },
+        "contactType" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "faxNumber" : {
+          "type" : "string"
+        },
+        "telephone" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "ContactPoint",
+      "type" : "object"
+    },
+    "Eeo" : {
+      "additionalProperties" : true,
+      "description" : "Equal Employment Opportunity settings enabled for jobs in the US",
+      "properties" : {
+        "disability" : {
+          "description" : "Whether disability status information should be collected by the candidate on apply click",
+          "examples" : [ "true", "false" ],
+          "type" : "boolean"
+        },
+        "ethnicity" : {
+          "description" : "Whether ethnicity information should be collected by the candidate on apply click",
+          "examples" : [ "true", "false" ],
+          "type" : "boolean"
+        },
+        "gender" : {
+          "description" : "Whether gender information should be collected by the candidate on apply click",
+          "examples" : [ "true", "false" ],
+          "type" : "boolean"
+        },
+        "veteran" : {
+          "description" : "Whether veteran status information should be collected by the candidate on apply click",
+          "examples" : [ "true", "false" ],
+          "type" : "boolean"
+        }
+      },
+      "required" : [ ],
+      "title" : "Eeo",
+      "type" : "object"
+    },
+    "Enrichments" : {
+      "additionalProperties" : true,
+      "description" : "Information added to the job based on inference or calculation, that can be used to support user experiences or analytics. Not an input. Anything supplied is ignored.",
+      "properties" : {
+        "applyType" : {
+          "$ref" : "#/definitions/LookupValue"
+        },
+        "applyUrlRedirectResolution" : {
+          "$ref" : "#/definitions/UrlRedirectResolution"
+        },
+        "ats" : {
+          "$ref" : "#/definitions/Ats"
+        },
+        "companyKb" : {
+          "$ref" : "#/definitions/CompanyKb"
+        },
+        "employmentTypeModifiers" : {
+          "description" : "Type of the job. One of {FULL_TIME(121, full-time), PART_TIME(122, part-time), PER_DIEM(123, per-diem), OTHER(124, other)}.  Not an input. Anything supplied is ignored.",
+          "examples" : [ "FULL_TIME", "PART_TIME", "PER_DIEM", "OTHER" ],
+          "items" : {
+            "$ref" : "#/definitions/LookupValue"
+          },
+          "type" : "array"
+        },
+        "employmentTypes" : {
+          "description" : "Numeric equivalents for defined value of employmentTypes. One or more of the following: {FULL_TIME(20),PERMANENT(25001),PART_TIME(21),CONTRACTOR(22), TEMPORARY(23),INTERN(24),VOLUNTEER(25),PER_DIEM(26),OTHER(27),GIG(28),UNKNOWN(29). Not an input. Anything supplied is ignored.",
+          "examples" : [ "FULL_TIME", "PART_TIME", "CONTRACTOR", "TEMPORARY", "INTERN", "VOLUNTEER", "PER_DIEM", "OTHER", "GIG", "UNKNOWN" ],
+          "items" : {
+            "$ref" : "#/definitions/LookupValue"
+          },
+          "type" : "array"
+        },
+        "googleSyntheticValidThrough" : {
+          "description" : "This is the date that is automatically added to jobs if there is no jobPosting.validThrough date defined.  This date will be 365 days from the jobPosting.datePosted",
+          "type" : "string"
+        },
+        "ingestionMethod" : {
+          "$ref" : "#/definitions/LookupValue"
+        },
+        "isPublicJob" : {
+          "description" : "This setting governs whether the job should be included in Monster domain indices",
+          "examples" : [ "true", "false" ],
+          "type" : "boolean"
+        },
+        "jobLocationType" : {
+          "$ref" : "#/definitions/LookupValue"
+        },
+        "jobPositionLevel" : {
+          "$ref" : "#/definitions/LookupValue"
+        },
+        "language" : {
+          "$ref" : "#/definitions/Language"
+        },
+        "localizedMonsterUrls" : {
+          "description" : "Maps location Id's to URL pairs",
+          "format" : "uri",
+          "items" : {
+            "$ref" : "#/definitions/LocationUrlPair"
+          },
+          "type" : "array"
+        },
+        "mescos" : {
+          "description" : "Code assigned based on the occupation of the job. https://app.powerbi.com/groups/8c0db93a-3740-49c8-a95b-e38872c341fa/reports/ad2a63cd-3cb9-449a-8c77-cbd2e08d99aa/ReportSection. Not an input. Anything supplied is ignored",
+          "examples" : [ "1100062001001" ],
+          "items" : {
+            "$ref" : "#/definitions/TaxonomyValue"
+          },
+          "type" : "array"
+        },
+        "normalizedJobLocations" : {
+          "description" : "The normalized location information returned by the GEOs tagging service leveraging taxonomy locations v2. Not an input. Anything supplied is ignored.",
+          "items" : {
+            "$ref" : "#/definitions/NormalizedJobLocation"
+          },
+          "type" : "array"
+        },
+        "normalizedJobLocationsV2" : {
+          "description" : "The normalized location information returned by the GEOs tagging service leveraging taxonomy locations v3. Both this field and normalizedJobLocations will be maintained until all consumers are ready to work with taxonomy locations v3 data. Not an input. Anything supplied is ignored.",
+          "items" : {
+            "$ref" : "#/definitions/NormalizedJobLocation"
+          },
+          "type" : "array"
+        },
+        "normalizedSalary" : {
+          "$ref" : "#/definitions/NormalizedSalary"
+        },
+        "normalizedTitles" : {
+          "description" : "This is a standardized version of the job title. Can be useful for analytics. The  Not an input. Anything supplied is ignored",
+          "items" : {
+            "$ref" : "#/definitions/NormalizedTitle"
+          },
+          "type" : "array"
+        },
+        "processedDescriptions" : {
+          "$ref" : "#/definitions/ProcessedDescriptions"
+        },
+        "qualifiedForG4J" : {
+          "description" : "Flag indicating that the job is qualified to be provided to google",
+          "type" : "boolean"
+        },
+        "qualifiedNormalizedSkills" : {
+          "description" : "The extracted skills inferred from the text fields in the job",
+          "examples" : [ "{\"id\": 123457, \"name\":\"Cloud Applications\", \"score\":26.43 }" ],
+          "items" : {
+            "$ref" : "#/definitions/NormalizedSkill"
+          },
+          "type" : "array"
+        },
+        "qualityScores" : {
+          "$ref" : "#/definitions/QualityScores"
+        },
+        "rejectionInfo" : {
+          "$ref" : "#/definitions/RejectionInfo"
+        },
+        "status" : {
+          "$ref" : "#/definitions/LookupValue"
+        }
+      },
+      "required" : [ ],
+      "title" : "Enrichments",
+      "type" : "object"
+    },
+    "ExternalIdentifier" : {
+      "additionalProperties" : true,
+      "description" : "Means to link a job to the same job in an external system, including Monster's legacy system.",
+      "properties" : {
+        "identifierName" : {
+          "description" : "User defined name of an identifier in an external system to locate the job. The following identifiers are mapped from the Monster's legacy solution: {NOW_POSTING_ID, POSITION_AD_ID}",
+          "examples" : [ "NOW_POSTING_ID", "POSITION_AD_ID", "MY_CUSTOM_EXTERNAL_ID" ],
+          "type" : "string"
+        },
+        "identifierValue" : {
+          "description" : "The actual value used to locate the job in the external system",
+          "examples" : [ "ee2fae8d-8827-4867-86f0-b8524e7af74e", "BH-5555-1222" ],
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "ExternalIdentifier",
+      "type" : "object"
+    },
+    "FailureReason" : {
+      "additionalProperties" : true,
+      "properties" : {
+        "failureCode" : {
+          "description" : "One of the resolution failure codes ",
+          "examples" : [ "INVALID_URL_INPUT", "RESOLVED_URL_SAME", "IO_EXCEPTION" ],
+          "type" : "string"
+        },
+        "failureDescription" : {
+          "description" : "The details associated with the resolution failure",
+          "examples" : [ "urlToResolve=http://www.monster.com/jobs/job/firstgrade teacher is invalid, error=Illegal character in path at index 42: http://www.monster.com/jobs/job/firstgrade teacher", "Input did not contain a redirect", "Failed to resolve url, error=No subject alternative DNS name matching beknown.com found." ],
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "FailureReason",
+      "type" : "object"
+    },
+    "GeoCoordinates" : {
+      "additionalProperties" : true,
+      "description" : "https://schema.org/GeoCoordinates",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "GeoCoordinates",
+          "type" : "string"
+        },
+        "latitude" : {
+          "type" : "string"
+        },
+        "longitude" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "GeoCoordinates",
+      "type" : "object"
+    },
+    "JobPosting" : {
+      "additionalProperties" : true,
+      "description" : "JobPosting is a core part of Monster's job format and provides support for the standard jobPosting as defined in schema.org (https://schema.org/JobPosting) as well as google's extensions (https://developers.google.com/search/docs/data-types/job-posting) to the schema.org JobPosting standard. Any Monster specific minor exceptions and clarifications are noted.",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "JobPosting",
+          "type" : "string"
+        },
+        "applicantLocationRequirements" : {
+          "description" : "Extended to an array to align with Google's jobPosting.",
+          "items" : {
+            "$ref" : "#/definitions/AdministrativeArea"
+          },
+          "type" : "array"
+        },
+        "applicationContact" : {
+          "$ref" : "#/definitions/ContactPoint"
+        },
+        "baseSalary" : {
+          "$ref" : "#/definitions/MonetaryAmount"
+        },
+        "datePosted" : {
+          "description" : "Per https://schema.org/JobPosting, Publication date of an online listing. If not provided, will be set to the current time. #validation - Must be a valid date format. Not valid if older than 2 years",
+          "format" : "date-time",
+          "type" : "string"
+        },
+        "description" : {
+          "description" : "#validation - Must be at least 100 characters",
+          "minLength" : 100,
+          "type" : "string"
+        },
+        "educationRequirements" : {
+          "description" : "Per https://schema.org/JobPosting, String or EducationalOccupationalCredential supported",
+          "type" : "string"
+        },
+        "employerOverview" : {
+          "type" : "string"
+        },
+        "employmentType" : {
+          "description" : "Type of employment. One or more of {FULL_TIME(20), PART_TIME(21), CONTRACTOR(22), TEMPORARY(23), INTERN(24), VOLUNTEER(25), PER_DIEM(26), OTHER(27), GIG(28), UNKNOWN(29)}. Extended to an array to align with Google's jobPosting.",
+          "examples" : [ "FULL_TIME", "PART_TIME", "CONTRACTOR", "TEMPORARY", "INTERN", "VOLUNTEER", "PER_DIEM", "OTHER", "GIG" ],
+          "items" : {
+            "type" : "string"
+          },
+          "type" : "array"
+        },
+        "employmentUnit" : {
+          "$ref" : "#/definitions/Organization"
+        },
+        "estimatedSalary" : {
+          "$ref" : "#/definitions/MonetaryAmount"
+        },
+        "experienceRequirements" : {
+          "type" : "string"
+        },
+        "hiringOrganization" : {
+          "$ref" : "#/definitions/Organization"
+        },
+        "identifier" : {
+          "$ref" : "#/definitions/PropertyValue"
+        },
+        "incentiveCompensation" : {
+          "type" : "string"
+        },
+        "industry" : {
+          "type" : "string"
+        },
+        "jobBenefits" : {
+          "description" : "Extended to an array to align with Google's jobPosting.",
+          "items" : {
+            "type" : "string"
+          },
+          "type" : "array"
+        },
+        "jobLocation" : {
+          "description" : "Extended to an array to align with Google's jobPosting.",
+          "items" : {
+            "$ref" : "#/definitions/Place"
+          },
+          "type" : "array"
+        },
+        "jobLocationType" : {
+          "description" : "Description of the job location. One of ONSITE(101), ONSITE_AND_REMOTE(102), REMOTE(103), ON_THE_ROAD (104), OTHER(108), UNKNOWN(109)}",
+          "examples" : [ "ONSITE", "ONSITE_AND_REMOTE", "REMOTE", "ON_THE_ROAD", "OTHER", "UNKNOWN" ],
+          "type" : "string"
+        },
+        "jobStartDate" : {
+          "format" : "date-time",
+          "type" : "string"
+        },
+        "occupationalCategory" : {
+          "type" : "string"
+        },
+        "physicalRequirement" : {
+          "type" : "string"
+        },
+        "qualifications" : {
+          "description" : "Per https://schema.org/JobPosting, String or EducationalOccupationalCredential supported",
+          "items" : {
+            "type" : "string"
+          },
+          "type" : "array"
+        },
+        "relevantOccupation" : {
+          "$ref" : "#/definitions/Occupation"
+        },
+        "responsibilities" : {
+          "type" : "string"
+        },
+        "salaryCurrency" : {
+          "type" : "string"
+        },
+        "sameAs" : {
+          "type" : "string"
+        },
+        "securityClearanceRequirement" : {
+          "type" : "string"
+        },
+        "sensoryRequirement" : {
+          "type" : "string"
+        },
+        "skills" : {
+          "description" : "Extended to an array to align with Google's jobPosting.",
+          "items" : {
+            "type" : "string"
+          },
+          "type" : "array"
+        },
+        "specialCommitments" : {
+          "type" : "string"
+        },
+        "title" : {
+          "description" : "#validation - must be one or more characters.",
+          "maxLength" : 500,
+          "minLength" : 1,
+          "type" : "string"
+        },
+        "url" : {
+          "format" : "uri",
+          "type" : "string"
+        },
+        "validThrough" : {
+          "format" : "date-time",
+          "type" : "string"
+        },
+        "workHours" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "description", "title", "hiringOrganization", "jobLocation" ],
+      "title" : "JobPosting",
+      "type" : "object"
+    },
+    "JobViewPreferences" : {
+      "additionalProperties" : true,
+      "description" : "Settings related to viewing the job",
+      "properties" : {
+        "hiringOrganizationConfidential" : {
+          "description" : "A boolean field indicating whether the hiringOrganization information should or should not be shown on job view. If set to true, the information is not displayed. If set to false or not provided, the information is displayed",
+          "examples" : [ "true", "false" ],
+          "type" : "boolean"
+        }
+      },
+      "required" : [ ],
+      "title" : "JobViewPreferences",
+      "type" : "object"
+    },
+    "Language" : {
+      "additionalProperties" : true,
+      "description" : "The language detected based on the description in the job. Not an input. Anything supplied is ignored.",
+      "properties" : {
+        "languageCode" : {
+          "description" : "One of the two-letter language codes per ISO-639 (https://en.wikipedia.org/wiki/ISO_639-1)",
+          "examples" : [ "de", "en", "es", "fr" ],
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "Language",
+      "type" : "object"
+    },
+    "LocationUrlPair" : {
+      "additionalProperties" : true,
+      "properties" : {
+        "locationId" : {
+          "type" : "string"
+        },
+        "url" : {
+          "format" : "uri",
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "LocationUrlPair",
+      "type" : "object"
+    },
+    "LookupValue" : {
+      "additionalProperties" : true,
+      "description" : "An internal object used to enrich a job with numeric identifiers that correspond to the string values. Not an input. Anything supplied is ignored.",
+      "properties" : {
+        "id" : {
+          "format" : "int32",
+          "type" : "integer"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "originalValue" : {
+          "type" : "string"
+        },
+        "path" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "LookupValue",
+      "type" : "object"
+    },
+    "MonetaryAmount" : {
+      "additionalProperties" : true,
+      "description" : "https://schema.org/MonetaryAmount",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "MonetaryAmount",
+          "type" : "string"
+        },
+        "currency" : {
+          "description" : "Currency per https://en.wikipedia.org/wiki/ISO_4217. One of the following: {COP(900), ZAR(901), CZK(902), DKK(903), SGD(904), CNY(905), NOK(906), GBP(907), VEB(908), FJD(909), MXN(910), EUR(911), BOB(912), HUF(913), MYR(914), PLN(915), CAD(916), SEK(917), ARS(918), INR(919), USD(920), NZD(921), UYU(922), TWD(923), EGP(923), CHF(924), AED(925), AUD(926), UNKNOWN(927)}",
+          "examples" : [ "COP", "ZAR", "CZK", "DKK", "SGD", "CNY", "NOK", "GBP", "VEB", "FJD", "MXN", "EUR", "BOB", "HUF", "MYR", "PLN", "CAD", "SEK", "ARS", "INR", "USD", "NZD", "UYU", "TWD", "EGP", "CHF", "AED", "AUD", "UNKNOWN" ],
+          "type" : "string"
+        },
+        "value" : {
+          "$ref" : "#/definitions/QuantitativeValue"
+        }
+      },
+      "required" : [ ],
+      "title" : "MonetaryAmount",
+      "type" : "object"
+    },
+    "NormalizedJobLocation" : {
+      "additionalProperties" : true,
+      "description" : "Normalized values for the jobLocation. added by the job ingestion pipeline. Not an input. Anything supplied is ignored.",
+      "properties" : {
+        "countryCode" : {
+          "description" : "One of the two letter country codes defined in https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 that corresponds to the ",
+          "examples" : [ "CA", "DE", "FR", "GB", "US" ],
+          "type" : "string"
+        },
+        "locationId" : {
+          "description" : "A unique identifier for the jobLocation per the standard data at https://www.geonames.org/. The locationId describes the most specific of addressCountry, addressRegion or addressLocality when the jobLocation is evaluated.",
+          "type" : "string"
+        },
+        "postalAddress" : {
+          "$ref" : "#/definitions/Place"
+        }
+      },
+      "required" : [ ],
+      "title" : "NormalizedJobLocation",
+      "type" : "object"
+    },
+    "NormalizedSalary" : {
+      "additionalProperties" : true,
+      "description" : "Normalized and enumerated values for the baseSalary",
+      "properties" : {
+        "currencyCode" : {
+          "$ref" : "#/definitions/LookupValue"
+        },
+        "salaryBaseType" : {
+          "$ref" : "#/definitions/LookupValue"
+        }
+      },
+      "required" : [ ],
+      "title" : "NormalizedSalary",
+      "type" : "object"
+    },
+    "NormalizedSkill" : {
+      "additionalProperties" : true,
+      "properties" : {
+        "id" : {
+          "format" : "int32",
+          "type" : "integer"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "score" : {
+          "format" : "double",
+          "type" : "number"
+        }
+      },
+      "required" : [ ],
+      "title" : "NormalizedSkill",
+      "type" : "object"
+    },
+    "NormalizedTitle" : {
+      "additionalProperties" : true,
+      "description" : "Normalized and enumerated values for the title",
+      "properties" : {
+        "alias" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "normalizedTokens" : {
+          "items" : {
+            "type" : "string"
+          },
+          "type" : "array"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "usen" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "NormalizedTitle",
+      "type" : "object"
+    },
+    "Now" : {
+      "additionalProperties" : true,
+      "description" : "Elements carried over from Monster's existing job that are needed for job processing but are planned to be represented in a different manner to the new job structure",
+      "properties" : {
+        "boardId" : {
+          "description" : "A grouping of jobs that can be public or private carried over from Monster core",
+          "examples" : [ "1" ],
+          "format" : "int64",
+          "type" : "integer"
+        },
+        "cpc" : {
+          "description" : "The calculated cost per click for .Now paid jobs. For .Now Duration jobs (JAPT1), this value is added during the enrichment process and is calculated by a .Now service.\nFor .Now PPC jobs(JAPT2), this value is passed on the .Now job and holds the value on the campaign in .Now.",
+          "examples" : [ "0.10" ],
+          "type" : "number"
+        },
+        "diversity" : {
+          "description" : "Mandated by France, the flag on a job will indicate to SVX to display an icon on jobview",
+          "examples" : [ "true", "false" ],
+          "type" : "boolean"
+        },
+        "durationPricePaid" : {
+          "description" : "The price paid for a .Now Duration (JAPT1) job only. Represented as USD.  For .Now Duration jobs (JAPT1), this value is added during the enrichment process and is calculated by a .Now service.",
+          "examples" : [ "1.23" ],
+          "type" : "number"
+        },
+        "eeo" : {
+          "$ref" : "#/definitions/Eeo"
+        },
+        "folderId" : {
+          "description" : "A container for a job and it's related information carried over from Monster core",
+          "examples" : [ "2088" ],
+          "format" : "int64",
+          "type" : "integer"
+        },
+        "handicapped" : {
+          "description" : "Mandated by France, the flag on a job will indicate to SVX to display an icon on jobview",
+          "examples" : [ "true", "false" ],
+          "type" : "boolean"
+        },
+        "jobAdPricingTypeId" : {
+          "description" : "A numeric id representing the now pricing model for the job - One of {1, 2, 3}.  1 = duration, 2 = ppc, 3 = aggregate",
+          "examples" : [ "1" ],
+          "format" : "int32",
+          "type" : "integer"
+        },
+        "templateId" : {
+          "description" : ".NOW branding identifier that is used by SVX to call for company content to display on job view",
+          "examples" : [ "" ],
+          "format" : "int32",
+          "type" : "integer"
+        },
+        "trackingUrl" : {
+          "description" : "URL used by ppc clients to track the apply",
+          "examples" : [ "https://click.appcast.io/jview-te8/a31.png?ent=114&e=8451&jid=8451_1876088&org=false&src=1990&bid=TEz0xVerpiuhxLt0LS4mUA==&exch=42" ],
+          "format" : "uri",
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "Now",
+      "type" : "object"
+    },
+    "Occupation" : {
+      "additionalProperties" : true,
+      "description" : "https://schema.org/Occupation",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "Occupation",
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "occupationalCategory" : {
+          "$ref" : "#/definitions/CategoryCode"
+        }
+      },
+      "required" : [ ],
+      "title" : "Occupation",
+      "type" : "object"
+    },
+    "Organization" : {
+      "additionalProperties" : true,
+      "description" : "https://schema.org/Organization",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "Organization",
+          "type" : "string"
+        },
+        "address" : {
+          "$ref" : "#/definitions/PostalAddress"
+        },
+        "aggregateRating" : {
+          "$ref" : "#/definitions/AggregateRating"
+        },
+        "alternateName" : {
+          "type" : "string"
+        },
+        "award" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "duns" : {
+          "type" : "string"
+        },
+        "foundingDate" : {
+          "format" : "date-time",
+          "type" : "string"
+        },
+        "logo" : {
+          "format" : "uri",
+          "type" : "string"
+        },
+        "naics" : {
+          "type" : "string"
+        },
+        "name" : {
+          "description" : "#validation - required when JobViewPreferences.hiringOrganizationConfidential is false",
+          "type" : "string"
+        },
+        "numberOfEmployees" : {
+          "$ref" : "#/definitions/QuantitativeValue"
+        },
+        "sameAs" : {
+          "type" : "string"
+        },
+        "url" : {
+          "format" : "uri",
+          "type" : "string"
+        }
+      },
+      "required" : [ "name" ],
+      "title" : "Organization",
+      "type" : "object"
+    },
+    "OrganizationExt" : {
+      "additionalProperties" : true,
+      "description" : "Additional Monster specific fields added to the schema.org Organization",
+      "properties" : {
+        "companyVideos" : {
+          "items" : {
+            "$ref" : "#/definitions/VideoObject"
+          },
+          "type" : "array"
+        }
+      },
+      "required" : [ ],
+      "title" : "OrganizationExt",
+      "type" : "object"
+    },
+    "Place" : {
+      "additionalProperties" : true,
+      "description" : "https://schema.org/Place",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "Place",
+          "type" : "string"
+        },
+        "address" : {
+          "$ref" : "#/definitions/PostalAddress"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "geo" : {
+          "$ref" : "#/definitions/GeoCoordinates"
+        },
+        "logo" : {
+          "type" : "string"
+        },
+        "sameAs" : {
+          "type" : "string"
+        },
+        "url" : {
+          "format" : "uri",
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "Place",
+      "type" : "object"
+    },
+    "PostalAddress" : {
+      "additionalProperties" : true,
+      "description" : "https://schema.org/PostalAddress",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "PostalAddress",
+          "type" : "string"
+        },
+        "addressCountry" : {
+          "type" : "string"
+        },
+        "addressLocality" : {
+          "type" : "string"
+        },
+        "addressRegion" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "postalCode" : {
+          "type" : "string"
+        },
+        "sameAs" : {
+          "type" : "string"
+        },
+        "streetAddress" : {
+          "type" : "string"
+        },
+        "url" : {
+          "format" : "uri",
+          "type" : "string"
+        }
+      },
+      "required" : [ "addressCountry" ],
+      "title" : "PostalAddress",
+      "type" : "object"
+    },
+    "ProcessedDescriptions" : {
+      "additionalProperties" : true,
+      "properties" : {
+        "sanitizedDescription" : {
+          "description" : "A sanitized description that can be used by svx",
+          "type" : "string"
+        },
+        "shortDescription" : {
+          "description" : "Truncated description for use when display of full description is not possible.",
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "ProcessedDescriptions",
+      "type" : "object"
+    },
+    "PropertyValue" : {
+      "additionalProperties" : true,
+      "description" : "https://schema.org/PropertyValue",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "PropertyValue",
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "sameAs" : {
+          "type" : "string"
+        },
+        "url" : {
+          "format" : "uri",
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "PropertyValue",
+      "type" : "object"
+    },
+    "Provider" : {
+      "additionalProperties" : true,
+      "properties" : {
+        "code" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "source" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "Provider",
+      "type" : "object"
+    },
+    "QualityScores" : {
+      "additionalProperties" : true,
+      "description" : "Quality scores determined by the data science team and will be used to impact ranking within search results whether a job is in marketing etc. This information is system generated. Not an input. Anything supplied is ignored.",
+      "properties" : {
+        "overallQualityScore" : {
+          "description" : "Score generated when all facets of quality are considered.",
+          "examples" : [ "9.9" ],
+          "format" : "double",
+          "type" : "number"
+        }
+      },
+      "required" : [ ],
+      "title" : "QualityScores",
+      "type" : "object"
+    },
+    "QuantitativeValue" : {
+      "additionalProperties" : true,
+      "description" : "https://schema.org/QuantitativeValue",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "QuantitativeValue",
+          "type" : "string"
+        },
+        "maxValue" : {
+          "type" : "number"
+        },
+        "minValue" : {
+          "type" : "number"
+        },
+        "unitText" : {
+          "description" : "The time unit for the salary: {HOUR(231), DAY(232), WEEK(233), MONTH(234), YEAR(235), OTHER(238), UNKNOWN(239)}",
+          "examples" : [ "HOUR", "DAY", "WEEK", "MONTH", "YEAR", "OTHER", "UNKNOWN" ],
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "number"
+        }
+      },
+      "required" : [ ],
+      "title" : "QuantitativeValue",
+      "type" : "object"
+    },
+    "RejectionInfo" : {
+      "additionalProperties" : true,
+      "description" : "When the ingestion pipeline sets the job's status to REJECTED, the relevant information and the reason for the rejection is captured here. This information is system generated. Not an input. Anything supplied is ignored.",
+      "properties" : {
+        "monsterRejections" : {
+          "description" : "Rejection information that the Monster ingestion pipeline has identified.",
+          "items" : {
+            "$ref" : "#/definitions/RejectionReason"
+          },
+          "type" : "array",
+          "uniqueItems" : true
+        },
+        "otherRejections" : {
+          "description" : "TBD",
+          "items" : {
+            "$ref" : "#/definitions/RejectionReason"
+          },
+          "type" : "array",
+          "uniqueItems" : true
+        }
+      },
+      "required" : [ ],
+      "title" : "RejectionInfo",
+      "type" : "object"
+    },
+    "RejectionReason" : {
+      "additionalProperties" : true,
+      "description" : "Information to describe the rejection reason. Not an input. Anything supplied is ignored.",
+      "properties" : {
+        "fieldName" : {
+          "description" : "The field in the job that has an issue",
+          "examples" : [ "title", "description" ],
+          "type" : "string"
+        },
+        "validationFailureCode" : {
+          "description" : "A failure codes that classify the rejection.",
+          "examples" : [ "EMPTY_JOB_TITLE", "EMPTY_APPLYTYPE", "NULL_DATE_POSTED" ],
+          "type" : "string"
+        },
+        "validationFailureDescription" : {
+          "description" : "Additional information to assist in understanding the rejection",
+          "examples" : [ "Empty Job title", "Invalid Posted Date" ],
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "RejectionReason",
+      "type" : "object"
+    },
+    "Skill" : {
+      "additionalProperties" : true,
+      "description" : "skill input in the JPW",
+      "properties" : {
+        "name" : {
+          "description" : "Particular ability developed through training and experience and that is useful in a job",
+          "examples" : [ "java", "project management", "risk management", "predictive modeling", "search engine optimization" ],
+          "type" : "string"
+        },
+        "skillLevel" : {
+          "description" : "Measure of proficiency in a given skill",
+          "examples" : [ "none", "basic", "intermediate", "expert", "other", "unknown" ],
+          "type" : "string"
+        },
+        "skillLevelId" : {
+          "description" : "Unique identifier for a skill level",
+          "examples" : [ "851", "852", "853", "854", "858", "859" ],
+          "type" : "string"
+        },
+        "skillRefId" : {
+          "description" : "Unique identifier for a skill",
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "Skill",
+      "type" : "object"
+    },
+    "TaxonomyValue" : {
+      "additionalProperties" : true,
+      "properties" : {
+        "alias" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "normalizedTokens" : {
+          "items" : {
+            "type" : "string"
+          },
+          "type" : "array"
+        },
+        "usen" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "TaxonomyValue",
+      "type" : "object"
+    },
+    "UrlRedirectResolution" : {
+      "additionalProperties" : true,
+      "properties" : {
+        "resolutionFailureReasons" : {
+          "description" : "The list of reasons a url was not resolved",
+          "items" : {
+            "$ref" : "#/definitions/FailureReason"
+          },
+          "type" : "array"
+        },
+        "resolutionNotAttempted" : {
+          "description" : "Indicates whether the service attempted to resolve the url",
+          "examples" : [ "true", "false" ],
+          "type" : "boolean"
+        },
+        "resolved" : {
+          "description" : "Indicates whether the service did resolve the url",
+          "examples" : [ "true", "false" ],
+          "type" : "boolean"
+        },
+        "totalRedirectTimeMs" : {
+          "description" : "The total amount of time (in msec) it took to resolve the url",
+          "format" : "int64",
+          "type" : "integer"
+        },
+        "totalRedirects" : {
+          "description" : "The total number of redirects to resolve the url",
+          "format" : "int32",
+          "type" : "integer"
+        },
+        "url" : {
+          "description" : "the resolved url",
+          "examples" : [ "https://rydercareers-ryder.icims.com/jobs/intro?in_iframe=1&hashed=-435769460&in_iframe=1" ],
+          "format" : "uri",
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "UrlRedirectResolution",
+      "type" : "object"
+    },
+    "VideoObject" : {
+      "additionalProperties" : true,
+      "description" : "https://schema.org/VideoObject",
+      "properties" : {
+        "@context" : {
+          "default" : "http://schema.org",
+          "type" : "string"
+        },
+        "@type" : {
+          "default" : "VideoObject",
+          "type" : "string"
+        },
+        "contentUrl" : {
+          "format" : "uri",
+          "type" : "string"
+        }
+      },
+      "required" : [ ],
+      "title" : "VideoObject",
+      "type" : "object"
+    }
+  },
+  "description" : "Monster's main format describing a job. This format not only adheres to the jobPosting standard set by schema.org (https://schema.org/JobPosting) and extended by google's job posting (https://developers.google.com/search/docs/data-types/job-posting) but expands these standards with Monster specific enrichments and value added information.",
+  "properties" : {
+    "accountId" : {
+      "description" : "Id issued on account create by the hiring site",
+      "examples" : [ "TBD by JPW. RESTART HERE" ],
+      "maxLength" : 64,
+      "minLength" : 16,
+      "type" : "string"
+    },
+    "apply" : {
+      "$ref" : "#/definitions/Apply"
+    },
+    "attributeValuePairs" : {
+      "description" : "A flexible means of storing additional information on the job",
+      "items" : {
+        "$ref" : "#/definitions/AttributeValuePair"
+      },
+      "type" : "array"
+    },
+    "createdDate" : {
+      "description" : "System generated timestamp indicating when the job was stored. Not an input. Anything supplied is ignored.",
+      "type" : "integer"
+    },
+    "expiredDate" : {
+      "description" : "The date the job moved into an expired status on Monster and/or other tenants",
+      "type" : "integer"
+    },
+    "externalIdentifiers" : {
+      "description" : "Provides a means to connect a job to the same job in an external system",
+      "items" : {
+        "$ref" : "#/definitions/ExternalIdentifier"
+      },
+      "type" : "array"
+    },
+    "hiringOrganizationExt" : {
+      "$ref" : "#/definitions/OrganizationExt"
+    },
+    "ingestionMethod" : {
+      "description" : "Indicates how the job was submitted. One of the following: {CRAWL_WRAP(700), FEED(701), POSTING_API(702), JPW(703), ADAPTED_NOW(704), OTHER(708), UNKNOWN(709)}",
+      "examples" : [ "CRAWL_WRAP", "FEED", "POSTING_API", "JPW", "ADAPTED_NOW", "OTHER", "UNKNOWN" ],
+      "type" : "string"
+    },
+    "jobId" : {
+      "description" : "The internal identifier for the job. Is a valid guid and is system generated. Not an input. Anything supplied is ignored.",
+      "maxLength" : 64,
+      "minLength" : 16,
+      "type" : "string"
+    },
+    "jobInactivationReason" : {
+      "$ref" : "#/definitions/LookupValue"
+    },
+    "jobPositionLevel" : {
+      "description" : "Classification of the job to help infer the role and responsibilities. Mapped to one of {HIGH_SCHOOL_STUDENT(81), COLLEGE_STUDENT(82), ENTRY_LEVEL(83), EXPERIENCED_NON_MANAGER(84), MANAGER(85), EXECUTIVE(86), SENIOR_EXECUTIVE(87), OTHER(88), UNKNOWN(89)}",
+      "examples" : [ "HIGH_SCHOOL_STUDENT", "COLLEGE_STUDENT", "ENTRY_LEVEL", "EXPERIENCED_NON_MANAGER", "MANAGER", "EXECUTIVE", "SENIOR_EXECUTIVE", "OTHER", "UNKNOWN" ],
+      "type" : "string"
+    },
+    "jobPosting" : {
+      "$ref" : "#/definitions/JobPosting"
+    },
+    "jobViewPreferences" : {
+      "$ref" : "#/definitions/JobViewPreferences"
+    },
+    "modifiedDate" : {
+      "description" : "System generated timestamp indicating the time of the last action taken on the job.  Not an input. Anything supplied is ignored.",
+      "type" : "integer"
+    },
+    "now" : {
+      "$ref" : "#/definitions/Now"
+    },
+    "provider" : {
+      "$ref" : "#/definitions/Provider"
+    },
+    "qualifiedSkills" : {
+      "description" : "Indicates which skills are needed for the job. Displayed on jobview.",
+      "items" : {
+        "$ref" : "#/definitions/Skill"
+      },
+      "type" : "array"
+    },
+    "schemaVersion" : {
+      "description" : "System defined string indicating the version of the job used in the job ingestion pipeline. Not an input. Anything supplied is ignored.",
+      "examples" : [ "2.0.5" ],
+      "type" : "string"
+    },
+    "status" : {
+      "description" : "Current state of the job. One of the following: {PENDING(51), ACTIVE(52), EXPIRED(53), DRAFT(54), REJECTED(55), SUSPENDED(56)}",
+      "examples" : [ "\"PENDING\" -  the job has not yet been processed and is awaiting processing", "\"ACTIVE\" – the job is currently live on the site", "\"EXPIRED\" – the job is no longer live on the site – either a forced or natural expiration.  Natural expiration means that the job came down after a defined set of days has elapsed", "\"DRAFT\" – does no exist in jobs domain.  Means incomplete job and will be stored locally by JPW", "\"REJECTED\" – the job is rejected during the validation processing in inbound job processing.  Jobs can be rejected for a number of reasons including fraud or failing to mean minimum basic content requirements", "\"SUSPENDED\" – job was suspended by an internal person or process.  This status has not been implemented in .NEXT yet.  Not relevant for JPW – JPW should not allow for suspending a job nor surface suspended jobs in JPW." ],
+      "type" : "string"
+    },
+    "videoObjects" : {
+      "description" : "List of videoObjects as defined at https://schema.org/VideoObject",
+      "items" : {
+        "$ref" : "#/definitions/VideoObject"
+      },
+      "type" : "array"
+    }
+  },
+  "required" : [ "jobPosting" ],
+  "title" : "Job",
+  "type" : "object"
+}
