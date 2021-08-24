@@ -48,16 +48,17 @@ export const RequestTable = () => {
 
             <p>This plugin aids the interpretation of the job search results.</p>
 
-            <p>Guide to various data fields/functions that are available in this extension:
-                <a target="_blank" href="https://monster-next.atlassian.net/wiki/spaces/STCT/pages/2138538091/JSP+Version+guide"> click here</a>
+            <p>Guide to various data fields/functions that are available in this extension:&nbsp;
+                <a target="_blank" href="https://monster-next.atlassian.net/wiki/spaces/STCT/pages/2138538091/JSP+Version+guide">click here</a>
             </p>
 
             <p>Works on all Monster domains:</p>
 
-            <ul  className="sc-XhUPp gDmiQW">
-                <li  className="sc-ikPAkQ IWUkZ">
-                    <a href="https://www.monster.at/"  >
-                        <div className="sc-tYoTV rdqsN">
+            <ul className="">
+
+                <li className="">
+                    <a href="https://www.monster.at/" className="domain" >
+                        <div className="monsterDomain">
                             <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
                                  className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="at" role="img">
                                 <title>at</title>
@@ -66,253 +67,322 @@ export const RequestTable = () => {
                                     <path fill="#ed2939" d="M640 480H0V320h640zm0-319.9H0V.1h640z"></path>
                                 </g>
                             </svg>
+                            <span className='spacer' />
+                            <span>Austria (German)</span>
                         </div>
-                        Austria (German)
                     </a>
                 </li>
-                <li  className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.be/nl/"  >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="be" role="img">
-                            <title>be</title>
-                            <g fill-rule="evenodd" stroke-width="1pt">
-                                <path d="M0 0h213.3v480H0z"></path>
-                                <path fill="#ffd90c" d="M213.3 0h213.4v480H213.3z"></path>
-                                <path fill="#f31830" d="M426.7 0H640v480H426.7z"></path>
-                            </g>
-                        </svg>
-                    </div>
-                    Belgium (Dutch)</a></li>
-                <li  className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.be/en/"  >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="be" role="img">
-                            <title>be</title>
-                            <g fill-rule="evenodd" stroke-width="1pt">
-                                <path d="M0 0h213.3v480H0z"></path>
-                                <path fill="#ffd90c" d="M213.3 0h213.4v480H213.3z"></path>
-                                <path fill="#f31830" d="M426.7 0H640v480H426.7z"></path>
-                            </g>
-                        </svg>
-                    </div>
-                    Belgium (English)</a></li>
-                <li  className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.be/fr/" >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="be" role="img">
-                            <title>be</title>
-                            <g fill-rule="evenodd" stroke-width="1pt">
-                                <path d="M0 0h213.3v480H0z"></path>
-                                <path fill="#ffd90c" d="M213.3 0h213.4v480H213.3z"></path>
-                                <path fill="#f31830" d="M426.7 0H640v480H426.7z"></path>
-                            </g>
-                        </svg>
-                    </div>
-                    Belgium (French)</a></li>
-                <li className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.ca/"  >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="ca" role="img">
-                            <title>ca</title>
-                            <path fill="#fff" d="M81.1 0h362.3v512H81.1z"
-                                  transform="translate(74.1) scale(.9375)"></path>
-                            <path fill="#d52b1e"
-                                  d="M-100 0H81.1v512H-100zm543.4 0h181.1v512h-181zm-308 247.4l-14.2 4.8 65.5 57.5c5 14.7-1.7 19-6 26.8l71-9L250 399l14.8-.4-3.3-71 71.2 8.5c-4.4-9.3-8.3-14.2-4.3-29l65.4-54.5-11.4-4.2c-9.4-7.2 4-34.7 6-52.1 0 0-38.1 13.1-40.6 6.2l-9.8-18.7-34.7 38.2c-3.8.9-5.4-.6-6.3-3.8l16-79.8-25.4 14.3c-2.1 1-4.2.2-5.6-2.3l-24.5-49-25.2 50.9c-1.9 1.8-3.8 2-5.4.8l-24.2-13.6 14.6 79.1c-1.2 3.2-4 4-7.2 2.3l-33.3-37.7c-4.3 7-7.2 18.3-13 20.9-5.7 2.4-25-4.8-37.9-7.6 4.4 15.9 18.2 42.3 9.5 51z"
-                                  transform="translate(74.1) scale(.9375)"></path>
-                        </svg>
-                    </div>
-                    Canada (English)</a></li>
-                <li  className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.ca/fr/"  >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="ca" role="img">
-                            <title>ca</title>
-                            <path fill="#fff" d="M81.1 0h362.3v512H81.1z"
-                                  transform="translate(74.1) scale(.9375)"></path>
-                            <path fill="#d52b1e"
-                                  d="M-100 0H81.1v512H-100zm543.4 0h181.1v512h-181zm-308 247.4l-14.2 4.8 65.5 57.5c5 14.7-1.7 19-6 26.8l71-9L250 399l14.8-.4-3.3-71 71.2 8.5c-4.4-9.3-8.3-14.2-4.3-29l65.4-54.5-11.4-4.2c-9.4-7.2 4-34.7 6-52.1 0 0-38.1 13.1-40.6 6.2l-9.8-18.7-34.7 38.2c-3.8.9-5.4-.6-6.3-3.8l16-79.8-25.4 14.3c-2.1 1-4.2.2-5.6-2.3l-24.5-49-25.2 50.9c-1.9 1.8-3.8 2-5.4.8l-24.2-13.6 14.6 79.1c-1.2 3.2-4 4-7.2 2.3l-33.3-37.7c-4.3 7-7.2 18.3-13 20.9-5.7 2.4-25-4.8-37.9-7.6 4.4 15.9 18.2 42.3 9.5 51z"
-                                  transform="translate(74.1) scale(.9375)"></path>
-                        </svg>
-                    </div>
-                    Canada (French)</a></li>
-                <li className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.fr/" >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="fr" role="img">
-                            <title>fr</title>
-                            <g fill-rule="evenodd" stroke-width="1pt">
-                                <path fill="#fff" d="M0 0h640v480H0z"></path>
-                                <path fill="#00267f" d="M0 0h213.3v480H0z"></path>
-                                <path fill="#f31830" d="M426.7 0H640v480H426.7z"></path>
-                            </g>
-                        </svg>
-                    </div>
-                    France (French)</a></li>
-                <li  className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.de/" >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="de" role="img">
-                            <title>de</title>
-                            <path fill="#ffce00" d="M0 320h640v160H0z"></path>
-                            <path d="M0 0h640v160H0z"></path>
-                            <path fill="#d00" d="M0 160h640v160H0z"></path>
-                        </svg>
-                    </div>
-                    Germany (German)</a></li>
-                <li  className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.ie/"  >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="ie" role="img">
-                            <title>ie</title>
-                            <g fill-rule="evenodd" stroke-width="1pt">
-                                <path fill="#fff" d="M0 0h640v480H0z"></path>
-                                <path fill="#009A49" d="M0 0h213.3v480H0z"></path>
-                                <path fill="#FF7900" d="M426.7 0H640v480H426.7z"></path>
-                            </g>
-                        </svg>
-                    </div>
-                    Ireland (English)</a></li>
-                <li  className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.it/"  >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="it" role="img">
-                            <title>it</title>
-                            <g fill-rule="evenodd" stroke-width="1pt">
-                                <path fill="#fff" d="M0 0h640v480H0z"></path>
-                                <path fill="#009246" d="M0 0h213.3v480H0z"></path>
-                                <path fill="#ce2b37" d="M426.7 0H640v480H426.7z"></path>
-                            </g>
-                        </svg>
-                    </div>
-                    Italy (Italian)</a></li>
-                <li className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.lu/en/" >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="lu" role="img">
-                            <title>lu</title>
-                            <path fill="#00a1de" d="M0 240h640v240H0z"></path>
-                            <path fill="#ed2939" d="M0 0h640v240H0z"></path>
-                            <path fill="#fff" d="M0 160h640v160H0z"></path>
-                        </svg>
-                    </div>
-                    Luxembourg (English)</a></li>
-                <li  className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.lu/fr/"  >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="lu" role="img">
-                            <title>lu</title>
-                            <path fill="#00a1de" d="M0 240h640v240H0z"></path>
-                            <path fill="#ed2939" d="M0 0h640v240H0z"></path>
-                            <path fill="#fff" d="M0 160h640v160H0z"></path>
-                        </svg>
-                    </div>
-                    Luxembourg (French)</a></li>
-                <li  className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.lu/de/" >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="lu" role="img">
-                            <title>lu</title>
-                            <path fill="#00a1de" d="M0 240h640v240H0z"></path>
-                            <path fill="#ed2939" d="M0 0h640v240H0z"></path>
-                            <path fill="#fff" d="M0 160h640v160H0z"></path>
-                        </svg>
-                    </div>
-                    Luxembourg (German)</a></li>
-                <li  className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monsterboard.nl/"  >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="nl" role="img">
-                            <title>nl</title>
-                            <path fill="#21468b" d="M0 0h640v480H0z"></path>
-                            <path fill="#fff" d="M0 0h640v320H0z"></path>
-                            <path fill="#ae1c28" d="M0 0h640v160H0z"></path>
-                        </svg>
-                    </div>
-                    Netherlands (Dutch)</a></li>
-                <li  className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.es/"  >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="es" role="img">
-                            <title>es</title>
-                            <path fill="#c60b1e" d="M0 0h640v480H0z"></path>
-                            <path fill="#ffc400" d="M0 120h640v240H0z"></path>
-                        </svg>
-                    </div>
-                    Spain (Spanish)</a></li>
-                <li  className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.se/" >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="se" role="img">
-                            <title>se</title>
-                            <defs>
-                                <clipPath id="sweden">
-                                    <path fill-opacity=".7" d="M-53.4 0h682.6v512H-53.4z"></path>
-                                </clipPath>
-                            </defs>
-                            <g clip-path="url(#sweden)" transform="translate(50) scale(.9375)">
+
+                <li className="">
+                    <a href="https://www.monster.be/nl/" className="domain" >
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="be" role="img">
+                                <title>be</title>
                                 <g fill-rule="evenodd" stroke-width="1pt">
-                                    <path fill="#006aa7" d="M-121.1.3h256v204.8h-256zm0 306.9h256V512h-256z"></path>
-                                    <path fill="#fecc00" d="M-121.1 205h256v102.4h-256z"></path>
-                                    <path fill="#fecc00" d="M133.8 0h102.4v512H133.8z"></path>
-                                    <path fill="#fecc00" d="M233 205h460.8v102.4H233z"></path>
-                                    <path fill="#006aa7"
-                                          d="M236.2 307.2H697V512H236.2zm0-306.9H697v204.8H236.2z"></path>
+                                    <path d="M0 0h213.3v480H0z"></path>
+                                    <path fill="#ffd90c" d="M213.3 0h213.4v480H213.3z"></path>
+                                    <path fill="#f31830" d="M426.7 0H640v480H426.7z"></path>
                                 </g>
-                            </g>
-                        </svg>
-                    </div>
-                    Sweden (Swedish)</a></li>
-                <li  className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.ch/fr/" >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="ch" role="img">
-                            <title>ch</title>
-                            <g fill-rule="evenodd" stroke-width="1pt">
-                                <path fill="#d52b1e" d="M0 0h640v480H0z"></path>
-                                <g fill="#fff">
-                                    <path d="M170 195h300v90H170z"></path>
-                                    <path d="M275 90h90v300h-90z"></path>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                    Switzerland (French)</a></li>
-                <li  className="sc-ikPAkQ IWUkZ"><a
-                    href="https://www.monster.ch/de/" >
-                    <div className="sc-tYoTV rdqsN">
-                        <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
-                             className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="ch" role="img">
-                            <title>ch</title>
-                            <g fill-rule="evenodd" stroke-width="1pt">
-                                <path fill="#d52b1e" d="M0 0h640v480H0z"></path>
-                                <g fill="#fff">
-                                    <path d="M170 195h300v90H170z"></path>
-                                    <path d="M275 90h90v300h-90z"></path>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                    Switzerland (German)</a>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Belgium (Dutch)</span>
+                        </div>
+                    </a>
                 </li>
-                <li className="sc-ikPAkQ IWUkZ">
-                    <a href="https://www.monster.co.uk/" >
-                        <div className="sc-tYoTV rdqsN">
+
+                <li className="">
+                    <a href="https://www.monster.be/en/" className="domain">
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="be" role="img">
+                                <title>be</title>
+                                <g fill-rule="evenodd" stroke-width="1pt">
+                                    <path d="M0 0h213.3v480H0z"></path>
+                                    <path fill="#ffd90c" d="M213.3 0h213.4v480H213.3z"></path>
+                                    <path fill="#f31830" d="M426.7 0H640v480H426.7z"></path>
+                                </g>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Belgium (English)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li className="">
+                    <a href="https://www.monster.be/fr/" className="domain">
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="be" role="img">
+                                <title>be</title>
+                                <g fill-rule="evenodd" stroke-width="1pt">
+                                    <path d="M0 0h213.3v480H0z"></path>
+                                    <path fill="#ffd90c" d="M213.3 0h213.4v480H213.3z"></path>
+                                    <path fill="#f31830" d="M426.7 0H640v480H426.7z"></path>
+                                </g>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Belgium (French)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li className="">
+                    <a href="https://www.monster.ca/"  className="domain">
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="ca" role="img">
+                                <title>ca</title>
+                                <path fill="#fff" d="M81.1 0h362.3v512H81.1z"
+                                      transform="translate(74.1) scale(.9375)"></path>
+                                <path fill="#d52b1e"
+                                      d="M-100 0H81.1v512H-100zm543.4 0h181.1v512h-181zm-308 247.4l-14.2 4.8 65.5 57.5c5 14.7-1.7 19-6 26.8l71-9L250 399l14.8-.4-3.3-71 71.2 8.5c-4.4-9.3-8.3-14.2-4.3-29l65.4-54.5-11.4-4.2c-9.4-7.2 4-34.7 6-52.1 0 0-38.1 13.1-40.6 6.2l-9.8-18.7-34.7 38.2c-3.8.9-5.4-.6-6.3-3.8l16-79.8-25.4 14.3c-2.1 1-4.2.2-5.6-2.3l-24.5-49-25.2 50.9c-1.9 1.8-3.8 2-5.4.8l-24.2-13.6 14.6 79.1c-1.2 3.2-4 4-7.2 2.3l-33.3-37.7c-4.3 7-7.2 18.3-13 20.9-5.7 2.4-25-4.8-37.9-7.6 4.4 15.9 18.2 42.3 9.5 51z"
+                                      transform="translate(74.1) scale(.9375)"></path>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Canada (English)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li className="">
+                    <a href="https://www.monster.ca/fr/" className="domain">
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="ca" role="img">
+                                <title>ca</title>
+                                <path fill="#fff" d="M81.1 0h362.3v512H81.1z"
+                                      transform="translate(74.1) scale(.9375)"></path>
+                                <path fill="#d52b1e"
+                                      d="M-100 0H81.1v512H-100zm543.4 0h181.1v512h-181zm-308 247.4l-14.2 4.8 65.5 57.5c5 14.7-1.7 19-6 26.8l71-9L250 399l14.8-.4-3.3-71 71.2 8.5c-4.4-9.3-8.3-14.2-4.3-29l65.4-54.5-11.4-4.2c-9.4-7.2 4-34.7 6-52.1 0 0-38.1 13.1-40.6 6.2l-9.8-18.7-34.7 38.2c-3.8.9-5.4-.6-6.3-3.8l16-79.8-25.4 14.3c-2.1 1-4.2.2-5.6-2.3l-24.5-49-25.2 50.9c-1.9 1.8-3.8 2-5.4.8l-24.2-13.6 14.6 79.1c-1.2 3.2-4 4-7.2 2.3l-33.3-37.7c-4.3 7-7.2 18.3-13 20.9-5.7 2.4-25-4.8-37.9-7.6 4.4 15.9 18.2 42.3 9.5 51z"
+                                      transform="translate(74.1) scale(.9375)"></path>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Canada (French)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li className="">
+                    <a href="https://www.monster.fr/" className="domain">
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="fr" role="img">
+                                <title>fr</title>
+                                <g fill-rule="evenodd" stroke-width="1pt">
+                                    <path fill="#fff" d="M0 0h640v480H0z"></path>
+                                    <path fill="#00267f" d="M0 0h213.3v480H0z"></path>
+                                    <path fill="#f31830" d="M426.7 0H640v480H426.7z"></path>
+                                </g>
+                            </svg>
+                            <span className='spacer' />
+                            <span>France (French)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li  className="">
+                    <a href="https://www.monster.de/" className="domain">
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="de" role="img">
+                                <title>de</title>
+                                <path fill="#ffce00" d="M0 320h640v160H0z"></path>
+                                <path d="M0 0h640v160H0z"></path>
+                                <path fill="#d00" d="M0 160h640v160H0z"></path>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Germany (German)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li  className="">
+                    <a href="https://www.monster.ie/" className="domain"  >
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="ie" role="img">
+                                <title>ie</title>
+                                <g fill-rule="evenodd" stroke-width="1pt">
+                                    <path fill="#fff" d="M0 0h640v480H0z"></path>
+                                    <path fill="#009A49" d="M0 0h213.3v480H0z"></path>
+                                    <path fill="#FF7900" d="M426.7 0H640v480H426.7z"></path>
+                                </g>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Ireland (English)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li  className="">
+                    <a href="https://www.monster.it/" className="domain"  >
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="it" role="img">
+                                <title>it</title>
+                                <g fill-rule="evenodd" stroke-width="1pt">
+                                    <path fill="#fff" d="M0 0h640v480H0z"></path>
+                                    <path fill="#009246" d="M0 0h213.3v480H0z"></path>
+                                    <path fill="#ce2b37" d="M426.7 0H640v480H426.7z"></path>
+                                </g>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Italy (Italian)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li className="">
+                    <a href="https://www.monster.lu/en/" className="domain">
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="lu" role="img">
+                                <title>lu</title>
+                                <path fill="#00a1de" d="M0 240h640v240H0z"></path>
+                                <path fill="#ed2939" d="M0 0h640v240H0z"></path>
+                                <path fill="#fff" d="M0 160h640v160H0z"></path>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Luxembourg (English)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li  className="">
+                    <a href="https://www.monster.lu/fr/"  className="domain">
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="lu" role="img">
+                                <title>lu</title>
+                                <path fill="#00a1de" d="M0 240h640v240H0z"></path>
+                                <path fill="#ed2939" d="M0 0h640v240H0z"></path>
+                                <path fill="#fff" d="M0 160h640v160H0z"></path>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Luxembourg (French)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li  className="">
+                    <a href="https://www.monster.lu/de/" className="domain">
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="lu" role="img">
+                                <title>lu</title>
+                                <path fill="#00a1de" d="M0 240h640v240H0z"></path>
+                                <path fill="#ed2939" d="M0 0h640v240H0z"></path>
+                                <path fill="#fff" d="M0 160h640v160H0z"></path>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Luxembourg (German)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li  className="">
+                    <a href="https://www.monsterboard.nl/"  className="domain">
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="nl" role="img">
+                                <title>nl</title>
+                                <path fill="#21468b" d="M0 0h640v480H0z"></path>
+                                <path fill="#fff" d="M0 0h640v320H0z"></path>
+                                <path fill="#ae1c28" d="M0 0h640v160H0z"></path>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Netherlands (Dutch)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li className="">
+                    <a href="https://www.monster.es/" className="domain"  >
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="es" role="img">
+                                <title>es</title>
+                                <path fill="#c60b1e" d="M0 0h640v480H0z"></path>
+                                <path fill="#ffc400" d="M0 120h640v240H0z"></path>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Spain (Spanish)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li className="">
+                    <a href="https://www.monster.se/" className="domain">
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="se" role="img">
+                                <title>se</title>
+                                <defs>
+                                    <clipPath id="sweden">
+                                        <path fill-opacity=".7" d="M-53.4 0h682.6v512H-53.4z"></path>
+                                    </clipPath>
+                                </defs>
+                                <g clip-path="url(#sweden)" transform="translate(50) scale(.9375)">
+                                    <g fill-rule="evenodd" stroke-width="1pt">
+                                        <path fill="#006aa7" d="M-121.1.3h256v204.8h-256zm0 306.9h256V512h-256z"></path>
+                                        <path fill="#fecc00" d="M-121.1 205h256v102.4h-256z"></path>
+                                        <path fill="#fecc00" d="M133.8 0h102.4v512H133.8z"></path>
+                                        <path fill="#fecc00" d="M233 205h460.8v102.4H233z"></path>
+                                        <path fill="#006aa7"
+                                              d="M236.2 307.2H697V512H236.2zm0-306.9H697v204.8H236.2z"></path>
+                                    </g>
+                                </g>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Sweden (Swedish)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li className="">
+                    <a href="https://www.monster.ch/fr/" className="domain">
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="ch" role="img">
+                                <title>ch</title>
+                                <g fill-rule="evenodd" stroke-width="1pt">
+                                    <path fill="#d52b1e" d="M0 0h640v480H0z"></path>
+                                    <g fill="#fff">
+                                        <path d="M170 195h300v90H170z"></path>
+                                        <path d="M275 90h90v300h-90z"></path>
+                                    </g>
+                                </g>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Switzerland (French)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li className="">
+                    <a href="https://www.monster.ch/de/" className="domain">
+                        <div className="monsterDomain">
+                            <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
+                                 className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="ch" role="img">
+                                <title>ch</title>
+                                <g fill-rule="evenodd" stroke-width="1pt">
+                                    <path fill="#d52b1e" d="M0 0h640v480H0z"></path>
+                                    <g fill="#fff">
+                                        <path d="M170 195h300v90H170z"></path>
+                                        <path d="M275 90h90v300h-90z"></path>
+                                    </g>
+                                </g>
+                            </svg>
+                            <span className='spacer' />
+                            <span>Switzerland (German)</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li className="">
+                    <a href="https://www.monster.co.uk/" className="domain">
+                        <div className="monsterDomain">
                             <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
                                  className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="uk" role="img">
                                 <title>uk</title>
@@ -324,14 +394,15 @@ export const RequestTable = () => {
                                 <path fill="#FFF" d="M241 0v480h160V0H241zM0 160v160h640V160H0z"></path>
                                 <path fill="#C8102E" d="M0 193v96h640v-96H0zM273 0v480h96V0h-96z"></path>
                             </svg>
+                            <span className='spacer' />
+                            <span>United Kingdom (English)</span>
                         </div>
-                        United Kingdom (English)
                     </a>
                 </li>
 
-                <li className="sc-ikPAkQ IWUkZ">
-                    <a href="https://www.monster.com/" >
-                        <div className="sc-tYoTV rdqsN">
+                <li className="">
+                    <a href="https://www.monster.com/" className="domain">
+                        <div className="monsterDomain">
                             <svg width="20" height="100%" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg"
                                  className="" xmlnsXlink="http://www.w3.org/1999/xlink" aria-label="us" role="img">
                                 <title>us</title>
@@ -350,13 +421,12 @@ export const RequestTable = () => {
                                           transform="scale(.9375)"></path>
                                 </g>
                             </svg>
+                            <span className='spacer' />
+                            <span>United States (English)</span>
                         </div>
-                        United States (English)
                     </a>
                 </li>
 
-
-                <li className="sc-ikPAkQ gyabaX"></li>
             </ul>
 
 

@@ -37119,3 +37119,31 @@ body div.k-drawer-content ::-webkit-scrollbar-track {
         -webkit-transform: rotate(0deg) scale(2) skew(0deg) translate(100px);
     }
 }
+
+a.domain {
+    text-decoration: none;
+}
+
+.monsterDomain {
+    padding: 5px 10px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(33, 33, 33);
+    text-decoration: none;
+}
+
+.monsterDomain:hover {
+    color: rgb(0, 120, 140);
+    background-color: rgb(249, 249, 249);
+    text-decoration: underline;
+}
+
+.spacer {
+    width: 10px;
+    height: 1px;
+}
+
+span.k-i-information:hover {
+    color: #6610f2;
+}

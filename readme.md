@@ -84,6 +84,11 @@ After the project is built, a directory named `dist` will be created.
 - display is now fixed position
 
 
+2.0.2 - tbd aug 2021
+- fixed display of list of countries in info panel
+- 
+
+
 todo
 - confirm source of fields matches current plugin
 
