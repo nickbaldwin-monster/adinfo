@@ -150,9 +150,6 @@ if (document.readyState !== 'loading') {
         console.log('adinfo: injected script');
         const poller = setInterval(() => {
 
-
-
-
             // both card view and split view have this when list is rendered
             const cards = document.querySelector('.infinite-scroll-component');
             if (cards !== null) {
@@ -167,61 +164,66 @@ if (document.readyState !== 'loading') {
                 // "[class=^'job-search-resultsstyle__CardGrid']"
 
                 const cardList = document.querySelector("[class^='job-search-resultsstyle__CardGrid']");
-                console.log('cardList: ', cardList);
+                // console.log('cardList: ', cardList);
 
                 const cardListSplit = document.querySelector("[class^='splitviewstyle__CardGridSplitView']");
-                console.log('cardListSplit: ', cardListSplit);
+                // console.log('cardListSplit: ', cardListSplit);
+
+                let results: Element | null;
+                if (cardList) {
+                    results = cardList;
+                }
+                // bias to cardListSplit
+                if (cardListSplit) {
+                    results = cardListSplit;
+                }
+
+                if (cardList || cardListSplit) {
+
+                    const observer = new MutationObserver((mutations: any) => {
+
+                        for (const key in results) {
+                            if (key.startsWith('__reactFiber$')) {
+
+                                // @ts-ignore
+                                let item = results[key];
+                                let numberIt = 0;
+
+                                while (item.memoizedProps.items === undefined && numberIt < 15) {
+                                    item = item?.return;
+                                    numberIt++;
+                                }
+
+                                // console.log('iterations: ', numberIt);
+                                // console.log('item: ', item);
+                                if (item.memoizedProps.items) {
+
+                                    // console.log(item.memoizedProps.items);
 
 
-                const observer = new MutationObserver((mutations: any) => {
+                                    // todo
+                                    let message = `job state changed: ${item.memoizedProps.items.length} jobs`;
 
-                    console.log('results observed for card view');
-
-
-                    for (const key in cardListSplit) {
-                        if (key.startsWith('__reactFiber$')) {
-
-                            console.log('cardListSplit has key');
-
-                            // @ts-ignore
-                            let item = cardListSplit[key];
-                            let numberIt = 0;
-
-                            while (item.memoizedProps.items === undefined && numberIt < 15) {
-                                item = item?.return;
-                                numberIt++;
-                            }
-
-                            console.log('iterations: ', numberIt);
-                            console.log('item: ', item);
-
-                            if (item.memoizedProps.items) {
-
-                                console.log('cardListSplit should have items!');
-                                console.log(item.memoizedProps.items.length);
-                                console.log(item);
-                                console.log(item.memoizedProps.items);
+                                    // log({ logType: 'INFO', message });
+                                    window.postMessage({
+                                        type: 'JOB_PROPS',
+                                        payload: item.memoizedProps.items,
+                                        source: 'content'
+                                    }, "*");
 
 
-                                // todo
-                                let message = `job state changed: ${item.memoizedProps.items.length} jobs`;
-
-                                // log({ logType: 'INFO', message });
-                                window.postMessage({type: 'JOB_PROPS', payload: item.memoizedProps.items, source: 'content'}, "*");
-
-
+                                }
                             }
                         }
-                    }
 
+                    });
 
-                });
+                    // @ts-ignore
+                    observer.observe(results, {
+                        childList: true // report added/removed nodes
+                    });
 
-                // @ts-ignore
-                observer.observe(cardListSplit, {
-                    childList: true // report added/removed nodes
-                });
-
+                }
 
 
             }

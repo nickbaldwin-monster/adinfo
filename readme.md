@@ -86,7 +86,7 @@ After the project is built, a directory named `dist` will be created.
 
 2.0.2 - tbd aug 2021
 - fixed display of list of countries in info panel
-- 
+- job info works for both new card view and split view (without resizing)
 
 
 todo
@@ -96,6 +96,8 @@ tbd
 - get searchId from new views *
 - persist settings *
 - hover over ads in sync with the table *
+- deal with resizing?
+- number results (sometimes does not work until second page)
 - loading indicator
 - improve style of form
 - style panels
