@@ -147,7 +147,13 @@ const normalizePostLocation = (jobPosting: object): string => {
         let add = a?.address;
         if (add) {
             // @ts-ignore
-            loc += add.addressLocality + ", " + add.addressRegion + ", " + add.postalCode + ", " + add.addressCountry + ". ";
+            // loc += add.addressLocality + ", " + add.addressRegion + ", " + add.postalCode + ", " + add.addressCountry + ". ";
+
+            let thisLoc = [add.addressLocality, add.addressRegion, add.postalCode,add.addressCountry].filter(Boolean).join(", ");
+            if (thisLoc) {
+                thisLoc.concat('.');
+                loc += thisLoc + '. ';
+            }
         }
 
     });

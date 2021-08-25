@@ -87,17 +87,15 @@ After the project is built, a directory named `dist` will be created.
 2.0.2 - tbd aug 2021
 - fixed display of list of countries in info panel
 - job info works for both new card view and split view (without resizing)
-
-
-todo
-- confirm source of fields matches current plugin
+- fixed location handling
 
 tbd
+- deal with decorating results? (does not work until load second page of results)
+- fix excel export
 - get searchId from new views *
 - persist settings *
 - hover over ads in sync with the table *
 - deal with resizing?
-- number results (sometimes does not work until second page)
 - loading indicator
 - improve style of form
 - style panels
@@ -123,10 +121,9 @@ tbd
 
 
 Sonali todo:
-- review order of panels
-- text and link to release notes
 - other info to include - copy current plugin? ask team what is useful?
-- review icons for panels
+- confirm source of fields matches current plugin
+
 
 open q's
 - dates
