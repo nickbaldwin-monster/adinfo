@@ -8,25 +8,14 @@ import {logComponent} from "./reactHelper";
 export const decorateResults = (jobs: DisplayJob[]) => {
 
 
-
-    const dec = () => {
-        const resultLists = document.querySelectorAll("[class^='job-cardstyle__JobCardComponent-']");
-        const elements = Array.from(resultLists);
-
-        elements.forEach((el: Element, i) => {
-            let container = resultDecoration(jobs[i], i);
-            el.children[0].appendChild(container);
-        });
-    }
-
-
     // todo - this is now hacky - getting jobs from setJobs
-    // todo - may not need to redecorate prev elements
-    // todo - may need to compare state v results - if timing issues
+
+
+
     let resultLists = document.querySelectorAll('.results-list');
 
+    // for old views
     if (resultLists && resultLists.length) {
-
         const splitElements: Element[] = Array.from(resultLists[0].children);
         const mobileElements: Element[] = Array.from(resultLists[1].children);
         const elements = [...splitElements, ...mobileElements];
@@ -37,21 +26,23 @@ export const decorateResults = (jobs: DisplayJob[]) => {
                 el.children[0].appendChild(container);
             }
         });
+
+        // for new views
+    } else {
+        const poller = setInterval(() => {
+            resultLists = document.querySelectorAll("[class^='job-cardstyle__JobCardComponent-']");
+            if (resultLists.length !== 0) {
+                clearInterval(poller);
+
+                const elements = Array.from(resultLists);
+                elements.forEach((el: Element, i) => {
+                    let container = resultDecoration(jobs[i], i);
+                    el.children[0].appendChild(container);
+                });
+            }
+        }, 300);
     }
 
-
-    else {
-        resultLists = document.querySelectorAll("[class^='job-cardstyle__JobCardComponent-']");
-
-        // todo - replace with poller?
-        if (!resultLists || resultLists.length === 0) {
-            setTimeout(() => {
-                dec();
-            }, 500);
-        } else {
-            dec();
-        }
-    }
 
 };
 
