@@ -77,17 +77,17 @@ After the project is built, a directory named `dist` will be created.
 - only link to next admin for jpw jobs
 - legend with explanations for ad provider values
 
-
 2.0.1 - mon 23 aug 2021
 - replaced link to webadmin with copy url (due to GA id being added to link)
 - job info works for new split view
 - display is now fixed position
 
-
 2.0.2 - tbd aug 2021
 - fixed display of list of countries in info panel
 - job info works for both new card view and split view (without resizing)
 - fixed location handling
+- set (sensible) min-width for panel
+- restyled form so it uses full width of panel
 
 tbd
 - deal with decorating results? (does not work until load second page of results)
@@ -97,15 +97,11 @@ tbd
 - hover over ads in sync with the table *
 - deal with resizing?
 - loading indicator
-- improve style of form
 - style panels
 - "jobViewPreferences":"hiringOrganizationConfidential"}
 - figure out remote - followup
 - occupation type / remote - followup
-- which date value is displayed? - followup
-- modified date? - followup
 - table of all values in detail view (as per request)?
-- if any location field undefined, remove it
 - apply xcode 'aggregated' for jobs pt 3 in eu - followup
 - add link to job detail
 - add link to search using job id
@@ -126,7 +122,7 @@ Sonali todo:
 
 
 open q's
-- dates
+- modified date and other properties removed?
 - occupation type / remote 
 
 
