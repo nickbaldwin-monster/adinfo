@@ -4,17 +4,26 @@ import {logComponent} from "./reactHelper";
 
 
 
+
 export const decorateResults = (jobs: DisplayJob[]) => {
 
+
+
+    const dec = () => {
+        const resultLists = document.querySelectorAll("[class^='job-cardstyle__JobCardComponent-']");
+        const elements = Array.from(resultLists);
+
+        elements.forEach((el: Element, i) => {
+            let container = resultDecoration(jobs[i], i);
+            el.children[0].appendChild(container);
+        });
+    }
+
+
     // todo - this is now hacky - getting jobs from setJobs
-    // console.log('jobs in decorate: ', jobs);
-
-
     // todo - may not need to redecorate prev elements
     // todo - may need to compare state v results - if timing issues
     let resultLists = document.querySelectorAll('.results-list');
-
-
 
     if (resultLists && resultLists.length) {
 
@@ -33,20 +42,16 @@ export const decorateResults = (jobs: DisplayJob[]) => {
 
     else {
         resultLists = document.querySelectorAll("[class^='job-cardstyle__JobCardComponent-']");
-        const elements: Element[] = Array.from(resultLists) || [];
 
-        elements.forEach((el: Element, i) => {
-            console.log(el);
-            console.log(el.children);
-            console.log(el.children);
-
-                let container = resultDecoration(jobs[i], i);
-                el.children[0].appendChild(container);
-
-        });
-
+        // todo - replace with poller?
+        if (!resultLists || resultLists.length === 0) {
+            setTimeout(() => {
+                dec();
+            }, 500);
+        } else {
+            dec();
+        }
     }
-
 
 };
 

@@ -72,6 +72,8 @@ const injectApp = () => {
 };
 
 
+// iframe is used for old views - detects when local storage is updated and sends message
+// can be removed once new views are used in all domains
 
 const addIframe = () => {
 
@@ -141,11 +143,48 @@ const init = () => {
     // monitor();
 }
 
+
+
+
+
 // todo - can this be removed and set in manifest?
 if (document.readyState !== 'loading') {
     init();
 
     const actualCode = '(' + function() {
+
+        const sendResults = (results: Element) => {
+            for (const key in results) {
+                if (key.startsWith('__reactFiber$')) {
+
+                    // @ts-ignore
+                    let item = results[key];
+                    let numberIt = 0;
+
+                    while (item.memoizedProps.items === undefined && numberIt < 15) {
+                        item = item?.return;
+                        numberIt++;
+                    }
+
+                    // console.log('iterations: ', numberIt);
+                    // console.log('item: ', item);
+                    if (item.memoizedProps.items) {
+
+                        // todo
+                        let message = `job state changed: ${item.memoizedProps.items.length} jobs`;
+
+                        // log({ logType: 'INFO', message });
+                        window.postMessage({
+                            type: 'JOB_PROPS',
+                            payload: item.memoizedProps.items,
+                            source: 'content'
+                        }, "*");
+
+
+                    }
+                }
+            }
+        }
 
         console.log('adinfo: injected script');
         const poller = setInterval(() => {
@@ -169,7 +208,7 @@ if (document.readyState !== 'loading') {
                 const cardListSplit = document.querySelector("[class^='splitviewstyle__CardGridSplitView']");
                 // console.log('cardListSplit: ', cardListSplit);
 
-                let results: Element | null;
+                let results: Element | null = null;
                 if (cardList) {
                     results = cardList;
                 }
@@ -178,58 +217,40 @@ if (document.readyState !== 'loading') {
                     results = cardListSplit;
                 }
 
-                if (cardList || cardListSplit) {
+
+
+                // monitor updates to card list
+                if (results) {
+
+                    console.log('LIST')
+                    // results && sendResults(results);
 
                     const observer = new MutationObserver((mutations: any) => {
-
-                        for (const key in results) {
-                            if (key.startsWith('__reactFiber$')) {
-
-                                // @ts-ignore
-                                let item = results[key];
-                                let numberIt = 0;
-
-                                while (item.memoizedProps.items === undefined && numberIt < 15) {
-                                    item = item?.return;
-                                    numberIt++;
-                                }
-
-                                // console.log('iterations: ', numberIt);
-                                // console.log('item: ', item);
-                                if (item.memoizedProps.items) {
-
-                                    // console.log(item.memoizedProps.items);
-
-
-                                    // todo
-                                    let message = `job state changed: ${item.memoizedProps.items.length} jobs`;
-
-                                    // log({ logType: 'INFO', message });
-                                    window.postMessage({
-                                        type: 'JOB_PROPS',
-                                        payload: item.memoizedProps.items,
-                                        source: 'content'
-                                    }, "*");
-
-
-                                }
-                            }
-                        }
-
+                        console.log('UPDATES')
+                        results && sendResults(results);
                     });
 
                     // @ts-ignore
                     observer.observe(results, {
                         childList: true // report added/removed nodes
                     });
-
                 }
-
 
             }
 
 
         }, 100);
+
+
+
+
+        /*
+            <div className="job-search-resultsstyle__LoadMoreContainer-sc-1wpt60k-1 htsqfC">
+                <button aria-pressed="false" className="sc-dkPtyc jRkyeO  ds-button" disabled="" role="button" type="button"
+                        shape="rectangle">No More Results
+                </button>
+            </div>
+         */
 
 
     } + ')();';

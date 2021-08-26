@@ -88,9 +88,9 @@ After the project is built, a directory named `dist` will be created.
 - fixed location handling
 - set (sensible) min-width for panel
 - restyled form so it uses full width of panel
+- results now decorated with position on initial load
 
 tbd
-- deal with decorating results? (does not work until load second page of results)
 - fix excel export
 - get searchId from new views *
 - persist settings *
