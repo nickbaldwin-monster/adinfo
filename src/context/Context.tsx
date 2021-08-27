@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useReducer } from "react";
+
 import { logger } from "../helpers/logger";
 import { transformJobs } from "../helpers/transformJobs";
 import { transformRequest } from "../helpers/transformRequest";
@@ -7,7 +8,7 @@ import { Settings, isSettings, isSetting, defaultSettings } from '../types/Setti
 import { defaultErrors, Errors } from '../types/Errors';
 import { decorateResults, removeDecorations } from '../helpers/decorateResults';
 import { determineErrors } from "../helpers/determineErrors";
-import {Job} from "../types/Job";
+import { Job } from "../types/Job";
 
 const moduleName = 'Context';
 let log = logger(moduleName);
@@ -21,9 +22,6 @@ const { Provider, Consumer } = ReduxContext;
 
 // todo: may want to use a reducer for certain state  e.g. adding nodes to list -
 //  may also remove need to deal with re-renders if add elements to state rather than recreating...
-
-
-
 
 
 
@@ -85,7 +83,7 @@ const ReduxProvider = ({ children }) => {
                 });
 
                 // @ts-ignore
-                let newSettings = {...settings, [settingName]: !settings[settingName]};
+                let newSettings = { ...settings, [settingName]: !settings[settingName] };
                 if (isSettings(newSettings)) {
                     return newSettings;
                 }
@@ -94,7 +92,7 @@ const ReduxProvider = ({ children }) => {
                         logType: 'ERROR',
                         error: 'unable to update Settings',
                         // @ts-ignore
-                        payload: {[settingName]: !settings[settingName]}
+                        payload: { [settingName]: !settings[settingName] }
                     });
                     return settings;
                 }
@@ -274,17 +272,13 @@ const ReduxProvider = ({ children }) => {
 
         let transformedJobs = transformJobs({ jobResults: jobs });
 
-        console.log('%%%%%%');
-        console.log(jobs);
-        console.log(transformedJobs);
-        console.log('%%%%%%');
+        // console.log(jobs);
+        // console.log(transformedJobs);
 
         // @ts-ignore
         setJobs(transformedJobs);
         setNumberResults(transformedJobs.length);
         setLoading(false);
-
-
 
 
         let e = determineErrors(transformedJobs);
@@ -297,22 +291,20 @@ const ReduxProvider = ({ children }) => {
 
         setErrors(e);
 
-
         log({
             logType: 'INFO',
             message: 'Context - useEffect: state is updated:  ReduxProvider updated',
-            payload: {jobs, loading, errors }
+            payload: { jobs, loading, errors }
         });
 
 
-
-                // todo - hack? - can this be moved into useEffect now that there is a ref???
-                if (decorateRef.current) {
-                    decorateResults(transformedJobs);
-                }
-                else {
-                    removeDecorations();
-                }
+        // todo - hack? - can this be moved into useEffect now that there is a ref???
+        if (decorateRef.current) {
+            decorateResults(transformedJobs);
+        }
+        else {
+            removeDecorations();
+        }
 
 
     }
@@ -350,21 +342,13 @@ const ReduxProvider = ({ children }) => {
             updateSettings(message.payload);
         }
 
+        // for old views
         if (message.type === 'JOB_STATE') {
-
-            console.log('###');
-            console.log('###');
-            console.log(message.payload);
-            console.log('###');
-            console.log('###');
-
+            // console.log('JOB_STATE', message.payload);
             updateJobsAndRequest(message.payload);
-
-            // todo - may need to ensure that results are handled too
-
         }
 
-
+        // for new views
         if (message.type === 'JOB_PROPS') {
             updateJobs(message.payload);
         }
@@ -398,7 +382,7 @@ const ReduxProvider = ({ children }) => {
         // todo - augmenting message with jobs
         window.addEventListener("message", function (e) {
             if (e.data?.type) {
-                let message = {...e.data, jobs };
+                let message = { ...e.data, jobs };
                 handleMessage(message);
             }
         });
@@ -431,7 +415,11 @@ const useReduxContext = () => {
         throw new Error("adInfo: useReduxContext must be called within ReduxProvider");
     }
 
-    log({logType: 'INFO', message: 'Context used', payload: state });
+    log({
+        logType: 'INFO',
+        message: 'Context used',
+        payload: state
+    });
 
     return {
         ...state
