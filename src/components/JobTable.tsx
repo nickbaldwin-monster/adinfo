@@ -11,6 +11,7 @@ import { getter } from "@progress/kendo-react-common";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
 import { JobDetail } from './JobDetail';
+import { Resizable} from "re-resizable";
 
 // original css - '@progress/kendo-theme-default/dist/all.css';
 // todo - cut down css
@@ -281,6 +282,7 @@ export const JobTable = () => {
 
     // @ts-ignore
     return (
+        <Resizable defaultSize={{ width: '600px', height: '100%' }}>
         <div className='jobTable'>
 
             <ExcelExport data={jobs} ref={_export}>
@@ -388,6 +390,7 @@ className='gridJobs'
             </ExcelExport>
 
         </div>
+        </Resizable>
     );
 };
 

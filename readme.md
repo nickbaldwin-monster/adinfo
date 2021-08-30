@@ -89,6 +89,7 @@ After the project is built, a directory named `dist` will be created.
 - set (sensible) min-width for panel
 - restyled form so it uses full width of panel
 - results now decorated with position on initial load
+- can resize width of panels
 
 tbd
 - fix excel export

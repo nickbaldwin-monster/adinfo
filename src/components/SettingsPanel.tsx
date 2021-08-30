@@ -6,6 +6,7 @@ import { logger } from "../helpers/logger";
 
 import { Switch } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
+import { Resizable } from "re-resizable";
 
 import "./SettingsPanel.css";
 import "../elements/Button.css";
@@ -60,6 +61,7 @@ export const SettingsPanel = () => {
     }
 
     return (
+        <Resizable defaultSize={{ width: '320px', height: '100%' }}>
         <div className='settingsPanel panel'>
             <h4>Settings</h4>
             {settingsArray.map(setting => (
@@ -91,5 +93,6 @@ export const SettingsPanel = () => {
             </div>
 
         </div>
+        </Resizable>
     );
 };

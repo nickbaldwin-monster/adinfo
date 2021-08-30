@@ -36950,13 +36950,14 @@ div.k-scrollview.k-scrollview-light .k-scrollview-nav-wrap {
     z-index: 99;
     max-width: 80%;
     background-color: #fff;
-    width: 55%;
     padding-bottom: 0;
     border: solid 3px lightgrey;
     border-radius: 5px;
     min-width: 320px;
     height: calc(100vh - 145px);
     overflow: auto;
+
+    /* width: 55%; */
 }
 
 

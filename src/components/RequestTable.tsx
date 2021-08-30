@@ -4,6 +4,7 @@ import { Grid, GridColumn, GridToolbar } from '@progress/kendo-react-grid';
 import { logger } from "../helpers/logger";
 import { useReduxContext } from "../context/Context";
 import { RequestLinks } from "./RequestLinks";
+import { Resizable } from "re-resizable";
 
 // todo - cut down css
 import './Table.css';
@@ -43,6 +44,7 @@ export const RequestTable = () => {
     let fromTs = toTs - 900000;
 
     return (
+        <Resizable defaultSize={{ width: '320px', height: '100%' }}>
         <div className='panel'>
             <h4>Info</h4>
 
@@ -444,5 +446,6 @@ export const RequestTable = () => {
             <ReactJson src={redux} collapsed={0} collapseStringsAfterLength={120}/>
 
         </div>
+        </Resizable>
     );
 };

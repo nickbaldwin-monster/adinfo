@@ -8,6 +8,7 @@ import { logger } from "../helpers/logger";
 import { useReduxContext } from "../context/Context";
 import {RequestLinks} from "./RequestLinks";
 import ReactJson from "react-json-view-ts";
+import { Resizable} from "re-resizable";
 
 
 const moduleName = 'ErrorsPanel';
@@ -36,6 +37,7 @@ export const ErrorsPanel = () => {
 
 
     return (
+        <Resizable defaultSize={{ width: '320px', height: '100%' }}>
         <div className='panel'>
             <h4>Error info</h4>
             <p>As a rule, all ads should be displayed before organic results. Currently there can be up to 50 ads displayed within the combined results.</p>
@@ -50,5 +52,6 @@ export const ErrorsPanel = () => {
                 <ReactJson src={errors} collapsed={0} collapseStringsAfterLength={120}/>
             </div>
         </div>
+        </Resizable>
     );
 };

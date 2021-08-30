@@ -6,7 +6,7 @@ import './Table.css';
 
 import { logger } from "../helpers/logger";
 import { useReduxContext } from "../context/Context";
-
+import { Resizable} from "re-resizable";
 
 
 const moduleName = 'Feedback';
@@ -32,6 +32,7 @@ export const Feedback = () => {
 
     // @ts-ignore
     return (
+        <Resizable defaultSize={{ width: '320px', height: '100%' }}>
         <div className='panel'>
             <iframe
                 width="640px"
@@ -48,5 +49,7 @@ export const Feedback = () => {
             >
             </iframe>
         </div>
+        </Resizable>
+
     );
 };
