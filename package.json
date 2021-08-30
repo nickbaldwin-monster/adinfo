@@ -54,6 +54,7 @@
     "@types/react-router-dom": "^5.1.8",
     "dayjs": "^1.10.6",
     "iframe-script-container": "^1.0.5",
+    "re-resizable": "^6.9.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-hot-loader": "^4.13.0",
