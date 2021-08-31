@@ -280,9 +280,18 @@ export const JobTable = () => {
         }, []);
 
 
-    // @ts-ignore
+    // todo
+    // default component for drag handle is:
+    // <div style={{ position: "absolute", userSelect: "none", width: "10px", height: "100%", top: "0px", left: "-5px", cursor: "col-resize" }} />
+
+
     return (
-        <Resizable defaultSize={{ width: '600px', height: '100%' }}>
+        <Resizable
+            defaultSize={{ width: '600px', height: '100%' }}
+            enable={{ top:false, right:false, bottom:false, left:true,
+                topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
+            minWidth='310px'
+        >
         <div className='jobTable'>
 
             <ExcelExport data={jobs} ref={_export}>

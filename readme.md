@@ -99,6 +99,7 @@ tbd
 - deal with resizing?
 - loading indicator
 - style panels
+- persist (job) panel width
 - "jobViewPreferences":"hiringOrganizationConfidential"}
 - figure out remote - followup
 - occupation type / remote - followup
@@ -312,6 +313,7 @@ displaying popup and monitoring which result is hovered over:
 
 - https://www.telerik.com/kendo-react-ui/components/grid/
 - https://www.npmjs.com/package/react-json-view-ts
+- https://github.com/bokuweb/re-resizable
 
 
 structure and context used from:

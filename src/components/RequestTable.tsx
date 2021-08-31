@@ -44,8 +44,13 @@ export const RequestTable = () => {
     let fromTs = toTs - 900000;
 
     return (
-        <Resizable defaultSize={{ width: '320px', height: '100%' }}>
-        <div className='panel'>
+        <Resizable
+            defaultSize={{ width: '320px', height: '100%' }}
+            enable={{ top:false, right:false, bottom:false, left:true,
+                topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
+            minWidth='310px'
+        >
+            <div className='panel'>
             <h4>Info</h4>
 
             <p>This plugin aids the interpretation of the job search results.</p>
