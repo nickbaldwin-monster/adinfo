@@ -9,6 +9,7 @@ import { Resizable } from "re-resizable";
 // todo - cut down css
 import './Table.css';
 import ReactJson from "react-json-view-ts";
+import { DragHandle } from "../elements/DragHandle";
 
 const moduleName = 'RequestTable';
 let log = logger(moduleName);
@@ -49,6 +50,7 @@ export const RequestTable = () => {
             enable={{ top:false, right:false, bottom:false, left:true,
                 topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
             minWidth='310px'
+            handleComponent={{left: DragHandle}}
         >
             <div className='panel'>
             <h4>Info</h4>

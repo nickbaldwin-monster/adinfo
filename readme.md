@@ -82,7 +82,7 @@ After the project is built, a directory named `dist` will be created.
 - job info works for new split view
 - display is now fixed position
 
-2.0.2 - tbd aug 2021
+2.0.2 - tbd 2021
 - fixed display of list of countries in info panel
 - job info works for both new card view and split view (without resizing)
 - fixed location handling

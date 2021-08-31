@@ -13,6 +13,8 @@ import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
 import { JobDetail } from './JobDetail';
 import { HandleComponent, Resizable } from "re-resizable";
 
+import { DragHandle } from "../elements/DragHandle";
+
 // original css - '@progress/kendo-theme-default/dist/all.css';
 // todo - cut down css
 import './Table.css';
@@ -280,23 +282,13 @@ export const JobTable = () => {
         }, []);
 
 
-    // todo
-    // default component for drag handle is:
-    // <div style={{ position: "absolute", userSelect: "none", width: "10px", height: "100%", top: "0px", left: "-5px", cursor: "col-resize" }} />
-
-    const Handle = (
-        <div style={{position: "absolute", top: "45%", left: "-2px", width: "12px", height: "60px", backgroundColor: "#ff6358"}}>
-            &nbsp;
-        </div>
-    );
-
     return (
         <Resizable
             defaultSize={{ width: '600px', height: '100%' }}
             enable={{ top:false, right:false, bottom:false, left:true,
                 topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
             minWidth='500px'
-            handleComponent={{left: Handle}}
+            handleComponent={{left: DragHandle}}
 
         >
         <div className='jobTable'>

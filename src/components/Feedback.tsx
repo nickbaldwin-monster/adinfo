@@ -7,6 +7,7 @@ import './Table.css';
 import { logger } from "../helpers/logger";
 import { useReduxContext } from "../context/Context";
 import { Resizable} from "re-resizable";
+import { DragHandle } from "../elements/DragHandle";
 
 
 const moduleName = 'Feedback';
@@ -37,6 +38,7 @@ export const Feedback = () => {
             enable={{ top:false, right:false, bottom:false, left:true,
                 topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
             minWidth='310px'
+            handleComponent={{left: DragHandle}}
         >
         <div className='panel'>
             <iframe

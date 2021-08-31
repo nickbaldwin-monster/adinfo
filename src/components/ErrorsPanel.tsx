@@ -9,6 +9,7 @@ import { useReduxContext } from "../context/Context";
 import {RequestLinks} from "./RequestLinks";
 import ReactJson from "react-json-view-ts";
 import { Resizable} from "re-resizable";
+import { DragHandle } from "../elements/DragHandle";
 
 
 const moduleName = 'ErrorsPanel';
@@ -39,10 +40,12 @@ export const ErrorsPanel = () => {
     return (
         <Resizable
             defaultSize={{ width: '320px', height: '100%' }}
-            enable={{ top:false, right:false, bottom:false, left:false,
+            enable={{ top:false, right:false, bottom:false, left:true,
                 topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
-           // minWidth='310px'
+            minWidth='310px'
+            handleComponent={{left: DragHandle}}
             // maxWidth='90%'
+
         >
             <div className='panel'>
                 <h4>Error info</h4>

@@ -10,6 +10,7 @@ import { Resizable } from "re-resizable";
 
 import "./SettingsPanel.css";
 import "../elements/Button.css";
+import { DragHandle } from "../elements/DragHandle";
 
 const moduleName = 'SettingsPanel';
 let log = logger(moduleName);
@@ -66,6 +67,7 @@ export const SettingsPanel = () => {
             enable={{ top:false, right:false, bottom:false, left:true,
                 topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
             minWidth='310px'
+            handleComponent={{left: DragHandle}}
         >
         <div className='settingsPanel panel'>
             <h4>Settings</h4>
