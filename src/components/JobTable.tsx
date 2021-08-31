@@ -11,7 +11,7 @@ import { getter } from "@progress/kendo-react-common";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
 import { JobDetail } from './JobDetail';
-import { Resizable} from "re-resizable";
+import { HandleComponent, Resizable } from "re-resizable";
 
 // original css - '@progress/kendo-theme-default/dist/all.css';
 // todo - cut down css
@@ -284,13 +284,20 @@ export const JobTable = () => {
     // default component for drag handle is:
     // <div style={{ position: "absolute", userSelect: "none", width: "10px", height: "100%", top: "0px", left: "-5px", cursor: "col-resize" }} />
 
+    const Handle = (
+        <div style={{position: "absolute", top: "45%", left: "-2px", width: "12px", height: "60px", backgroundColor: "#ff6358"}}>
+            &nbsp;
+        </div>
+    );
 
     return (
         <Resizable
             defaultSize={{ width: '600px', height: '100%' }}
             enable={{ top:false, right:false, bottom:false, left:true,
                 topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
-            minWidth='310px'
+            minWidth='500px'
+            handleComponent={{left: Handle}}
+
         >
         <div className='jobTable'>
 
