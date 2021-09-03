@@ -50,6 +50,7 @@ const ReduxProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [request, setRequest] = useState([]);
     const [redux, setRedux] = useState({});
+    const [hoverResult, setHoverResult] = useState(-1);
 
 
     log({
@@ -355,6 +356,7 @@ const ReduxProvider = ({ children }) => {
 
         if (message.type === 'HOVER_RESULTS') {
             console.log('HOVER_RESULTS', message.payload);
+            setHoverResult(message.payload);
         }
 
         // todo - needed????
@@ -399,6 +401,7 @@ const ReduxProvider = ({ children }) => {
 
     return (
         <Provider value={{
+            hoverResult,
             display, setDisplay,
             decorate,
             jobs, setJobs,

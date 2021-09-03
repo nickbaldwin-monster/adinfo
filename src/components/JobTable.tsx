@@ -173,7 +173,7 @@ export const JobTable = () => {
 
 
     // @ts-ignore
-    const { loading, jobs, setJobs, settings, numberResults, errors } = useReduxContext();
+    const { loading, jobs, setJobs, settings, numberResults, errors, hoverResults } = useReduxContext();
     const _export = React.useRef(null);
 
     const excelExport = () => {
@@ -267,6 +267,9 @@ export const JobTable = () => {
                 functionName: 'useEffect',
                 message: 'executed'
             });
+
+            console.log('Grid useEffect');
+            console.log(hoverResults);
 
             /*
             chrome.runtime.onMessage.addListener((message: MessageType) => {
