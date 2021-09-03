@@ -173,7 +173,7 @@ export const JobTable = () => {
 
 
     // @ts-ignore
-    const { loading, jobs, setJobs, settings, numberResults, errors, hoverResults } = useReduxContext();
+    const { loading, jobs, setJobs, settings, numberResults, errors, hoverResult } = useReduxContext();
     const _export = React.useRef(null);
 
     const excelExport = () => {
@@ -237,13 +237,6 @@ export const JobTable = () => {
 
 
 
-
-
-
-        // todo
-        // todo
-        // todo
-        // todo
         // todo
         // todo
         // todo - CHECK!!!!!!!!!
@@ -268,8 +261,21 @@ export const JobTable = () => {
                 message: 'executed'
             });
 
-            console.log('Grid useEffect');
-            console.log(hoverResults);
+            // console.log('Grid useEffect');
+            // console.log('hoverResult', hoverResult);
+            // console.log('selectedState', selectedState);
+
+
+            if (hoverResult !== -1) {
+                // console.log(jobs);
+                let job = jobs[hoverResult - 1];
+                // console.log(job.position);
+                let jobId = job.jobId;
+                setSelectedState({[jobId]: true});
+                // console.log(selectedState);
+            }
+
+
 
             /*
             chrome.runtime.onMessage.addListener((message: MessageType) => {
@@ -282,7 +288,9 @@ export const JobTable = () => {
             });
 
              */
-        }, []);
+        }, [hoverResult]);
+
+
 
 
     return (
@@ -316,7 +324,7 @@ className='gridJobs'
                         enabled: false,
                         drag: false,
                         cell: false,
-                        mode: "multiple",
+                        mode: "single",
                     }}
                     onSelectionChange={onSelectionChange}
                     onHeaderSelectionChange={onHeaderSelectionChange}
