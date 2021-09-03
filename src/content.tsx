@@ -208,6 +208,11 @@ if (document.readyState !== 'loading') {
                 const cardListSplit = document.querySelector("[class^='splitviewstyle__CardGridSplitView']");
                 // console.log('cardListSplit: ', cardListSplit);
 
+
+
+
+
+
                 let results: Element | null = null;
                 if (cardList) {
                     results = cardList;
@@ -217,10 +222,64 @@ if (document.readyState !== 'loading') {
                     results = cardListSplit;
                 }
 
+                let timeout: NodeJS.Timeout;
+                const handleMove = (event: Event ) => {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => {
+                        // console.log("mousemove!", event);
+                        // @ts-ignore
+                        let path = event.path;
+                        try {
+                            for (let i = 0; i <  path.length; i++) {
+                                if (path[i].nodeName === 'ARTICLE') {
+                                    // console.log(path[i]);
+                                    let id = path[i].getAttribute('data-test-id');
+                                    let match = id.match(/-component-(\d*)$/);
 
+                                    let pos;
+                                    if (match) {
+                                        pos = parseInt(match[1]) + 1;
+
+
+                                        window.postMessage({
+                                            type: 'HOVER_RESULTS',
+                                            payload: pos,
+                                            source: 'content'
+                                        }, "*");
+
+
+                                    }
+
+                                    // todo - want to do any checks???!!!
+                                    // console.log(pos);
+                                    let child = path[i].children[0];
+                                    let link = child?.href;
+                                    let decoration = child.children[child.children.length - 1];
+                                    if (decoration && decoration.nodeName === 'DIV') {
+                                        let position = parseInt(decoration.children[0]?.children[2]?.innerText);
+                                        if (position !== pos) {
+                                            console.log('ERROR with position')
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                        catch (e) {
+                            console.log(e);
+                        }
+                    }, 200);
+                }
 
                 // monitor updates to card list
                 if (results) {
+
+                    if (window.PointerEvent) {
+                        results.addEventListener("pointermove", handleMove);
+                    } else {
+                        // results.addEventListener("mousemove", handleMove);
+                        console.log('no pointer?!')
+                    }
 
                     console.log('LIST')
                     // results && sendResults(results);

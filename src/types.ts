@@ -22,6 +22,14 @@ interface JobProps {
     source: string;
 }
 
+interface HoverResults {
+    type: "HOVER_RESULTS";
+    payload: number;
+    source?: string;
+}
+
+
+
 interface JobState {
     type: "JOB_STATE";
     payload: string;
@@ -75,4 +83,4 @@ export type MessageType =
     SettingsUpdate | JobResultsUpdated |
 
     // actually used
-    JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay  ;
+    JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay | HoverResults ;

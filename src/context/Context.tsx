@@ -353,6 +353,11 @@ const ReduxProvider = ({ children }) => {
             updateJobs(message.payload);
         }
 
+        if (message.type === 'HOVER_RESULTS') {
+            console.log('HOVER_RESULTS', message.payload);
+        }
+
+        // todo - needed????
         if (message.type === 'RESULTS_UPDATED') {
 
             // todo - cannot receive dom elements - so instead, just need to respond to x new elements
