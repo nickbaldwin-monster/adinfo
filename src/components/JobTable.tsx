@@ -173,7 +173,7 @@ export const JobTable = () => {
 
 
     // @ts-ignore
-    const { loading, jobs, setJobs, settings, numberResults, errors, hoverResult } = useReduxContext();
+    const { loading, jobs, setJobs, settings, numberResults, errors, hoverResult, setHoverResult } = useReduxContext();
     const _export = React.useRef(null);
 
     const excelExport = () => {
@@ -188,15 +188,20 @@ export const JobTable = () => {
 
     const onSelectionChange = React.useCallback(
         (event) => {
+
             const newSelectedState = getSelectedState({
                 event,
                 selectedState: selectedState,
                 dataItemKey: DATA_ITEM_KEY,
             });
             setSelectedState(newSelectedState);
+            setHoverResult(-1);
+
         },
         [selectedState]
     );
+
+
 
     const onHeaderSelectionChange = React.useCallback((event) => {
         const checkboxElement = event.syntheticEvent.target;
@@ -273,6 +278,35 @@ export const JobTable = () => {
                 let jobId = job.jobId;
                 setSelectedState({[jobId]: true});
                 // console.log(selectedState);
+
+                let parent = document.querySelector('.k-grid-content.k-virtual-content');
+                let row = document.querySelector(`[data-grid-row-index="${hoverResult - 1}"]`);
+
+                // @ts-ignore
+                let parentRectangle = parent.getBoundingClientRect();
+                let parentViewableArea = {
+                    // @ts-ignore
+                    height: parent.clientHeight,
+                    // @ts-ignore
+                    width: parent.clientWidth
+                };
+
+                // @ts-ignore
+                let childRectangle = row.getBoundingClientRect();
+                let isViewable = (childRectangle.top >= parentRectangle.top)
+                    && (childRectangle.bottom <= parentRectangle.top + parentViewableArea.height);
+                if (!isViewable) {
+                    const scrollTop = childRectangle.top - parentRectangle.top;
+                    const scrollBottom = childRectangle.bottom - parentRectangle.bottom;
+                    if (Math.abs(scrollTop) < Math.abs(scrollBottom)) {
+                        // @ts-ignore
+                        parent.scrollTop += scrollTop;
+                    }
+                    else {
+                        // @ts-ignore
+                        parent.scrollTop += scrollBottom;
+                    }
+                }
             }
 
 

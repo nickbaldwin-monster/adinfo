@@ -401,7 +401,7 @@ const ReduxProvider = ({ children }) => {
 
     return (
         <Provider value={{
-            hoverResult,
+            hoverResult, setHoverResult,
             display, setDisplay,
             decorate,
             jobs, setJobs,

@@ -228,7 +228,7 @@ if (document.readyState !== 'loading') {
                     timeout = setTimeout(() => {
                         // console.log("mousemove!", event);
                         // @ts-ignore
-                        let path = event.path;
+                        let path = event.path || evwnt.composedPath();
                         try {
                             for (let i = 0; i <  path.length; i++) {
                                 if (path[i].nodeName === 'ARTICLE') {
@@ -277,11 +277,11 @@ if (document.readyState !== 'loading') {
                     if (window.PointerEvent) {
                         results.addEventListener("pointermove", handleMove);
                     } else {
-                        // results.addEventListener("mousemove", handleMove);
+                        results.addEventListener("mousemove", handleMove);
                         console.log('no pointer?!')
                     }
 
-                    console.log('LIST')
+                    // todo - need to send initial results, or observer does that now?
                     // results && sendResults(results);
 
                     const observer = new MutationObserver((mutations: any) => {

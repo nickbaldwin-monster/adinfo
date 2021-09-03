@@ -90,16 +90,16 @@ After the project is built, a directory named `dist` will be created.
 - restyled form so it uses full width of panel
 - results now decorated with position on initial load
 - can resize width of panels
+- hover over result will select (and scroll to) job with the table
 
 tbd
-- fix excel export
+
 - get searchId from new views *
 - persist settings *
-- hover over ads in sync with the table *
-- deal with resizing?
+- persist panel widths
+- fix excel export
 - loading indicator
 - style panels
-- persist (job) panel width
 - "jobViewPreferences":"hiringOrganizationConfidential"}
 - figure out remote - followup
 - occupation type / remote - followup
