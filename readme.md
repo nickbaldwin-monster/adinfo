@@ -90,14 +90,22 @@ After the project is built, a directory named `dist` will be created.
 - restyled form so it uses full width of panel
 - results now decorated with position on initial load
 - can resize width of panels
-- hover over result will select (and scroll to) job with the table
+- hover over result will select (and scroll to) job within the table (for new views)
+- hover over job within the table will scroll to result (for split view)
 
 tbd
 
+- hide remote setting / explain *
+- authorization! *
 - get searchId from new views *
 - persist settings *
+- fix excel export *
+- mesco name?
+- highlight on hover 
+- scroll to result for card view
 - persist panel widths
-- fix excel export
+- show more than 2x (per category) jobs for company as error
+- show duplicates as error
 - loading indicator
 - style panels
 - "jobViewPreferences":"hiringOrganizationConfidential"}
@@ -152,7 +160,26 @@ order of fields (* = default setting):
 - Ref Code (added)
 - Valid Through (added)
 - Valid Through Google (added)
-- 
+
+
+
+MESCO
+https://taxonomies-categorization-service.mwwnextapppreprod-us.monster-next.com/
+https://taxonomies-categorization-service.mwwnextapppreprod-us.monster-next.com/swagger-ui/index.html?configUrl=/v3/docs/swagger-config#/Taxonomies%20Categorization%20Service/getMesco
+let request = {
+  "title": "Software Developer",
+  "body": "Software Developer",
+  "countryCode": "US"
+}
+
+let response = {
+  "mescoCodes": [
+    {
+      "id": "1500127001001",
+      "name": "Software Developers, Applications"
+    }
+  ]
+}
 
 ##  important
 - check schema! e.g. enrichments vs posting info, what is mandatory etc

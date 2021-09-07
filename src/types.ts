@@ -77,10 +77,16 @@ interface JobResultsUpdated {
     source?: string;
 }
 
+interface JobSelected {
+    type: 'JOB_SELECTED';
+    payload: number;
+    source?: string;
+}
+
 export type MessageType =
     DisplayStateRequest | DisplayStateResponse  |
     SettingsStateRequest | SettingsStateResponse |
     SettingsUpdate | JobResultsUpdated |
 
     // actually used
-    JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay | HoverResults ;
+    JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay | HoverResults | JobSelected ;

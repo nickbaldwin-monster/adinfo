@@ -19,6 +19,7 @@ import { DragHandle } from "../elements/DragHandle";
 // todo - cut down css
 import './Table.css';
 import {Popup} from "@progress/kendo-react-popup";
+import {MessageType} from "../types";
 
 
 
@@ -173,7 +174,8 @@ export const JobTable = () => {
 
 
     // @ts-ignore
-    const { loading, jobs, setJobs, settings, numberResults, errors, hoverResult, setHoverResult } = useReduxContext();
+    const { loading, jobs, setJobs, settings, numberResults, errors, hoverResult, setHoverResult }
+        = useReduxContext();
     const _export = React.useRef(null);
 
     const excelExport = () => {
@@ -195,8 +197,42 @@ export const JobTable = () => {
                 dataItemKey: DATA_ITEM_KEY,
             });
             setSelectedState(newSelectedState);
+
             setHoverResult(-1);
 
+
+            // todo - in progress
+            // note: this does not get called upon selection changed by hover
+            // console.log('selection has changed to: ', newSelectedState);
+
+            // todo - deal with errors, unselections etc
+            let id = Object.keys(newSelectedState)[0];
+            let isSelect = newSelectedState[id];
+            // console.log('item selected: ', isSelect);
+
+
+            if (id && isSelect) {
+
+                let position = -1;
+                for (let i = 0; i < jobs.length; i++) {
+                    if (jobs[i].jobId === id) {
+                        position = jobs[i].position;
+                        break;
+                    }
+                }
+
+                if (position !== -1) {
+                    console.log("position", position);
+
+                    // todo - need to actually save this?!
+                    // todo - handle message in content!
+                    window.postMessage({
+                        type: 'JOB_SELECTED',
+                        payload: position - 1,
+                        source: 'JobTable'
+                    }, "*");
+                }
+            }
         },
         [selectedState]
     );

@@ -51,6 +51,7 @@ const ReduxProvider = ({ children }) => {
     const [request, setRequest] = useState([]);
     const [redux, setRedux] = useState({});
     const [hoverResult, setHoverResult] = useState(-1);
+    const [selected, setSelected] = useState(-1);
 
 
     log({
@@ -119,6 +120,52 @@ const ReduxProvider = ({ children }) => {
     }
 
 
+    const updateSelected = (position: number) => {
+        console.log('Need to highlight and scroll to item in results');
+
+        // todo!!!!
+        // for split view
+        let parent = document.querySelector('#card-scroll-container');
+
+
+
+        let row = document.querySelector(`[data-test-id="svx-job-card-component-${position}"]`);
+
+        let offset = position * 278;
+        parent?.scrollTo(0, offset);
+        /*
+        // @ts-ignore
+        let parentRectangle = parent.getBoundingClientRect();
+        console.log('parentRectangle', parentRectangle);
+        let parentViewableArea = {
+            // @ts-ignore
+            height: parent.clientHeight,
+            // @ts-ignore
+            width: parent.clientWidth
+        };
+
+        // @ts-ignore
+        let childRectangle = row.getBoundingClientRect();
+        console.log('childRectangle', childRectangle);
+        let isViewable = (childRectangle.top >= parentRectangle.top)
+            && (childRectangle.bottom <= parentRectangle.top + parentViewableArea.height);
+        if (!isViewable) {
+            const scrollTop = childRectangle.top - parentRectangle.top;
+            const scrollBottom = childRectangle.bottom - parentRectangle.bottom;
+            if (Math.abs(scrollTop) < Math.abs(scrollBottom)) {
+                // @ts-ignore
+                parent.scrollTop += scrollTop;
+            }
+            else {
+                // @ts-ignore
+                parent.scrollTop += scrollBottom;
+            }
+        }
+
+         */
+
+
+    }
 
 
     /* useref pattern
@@ -337,6 +384,11 @@ const ReduxProvider = ({ children }) => {
             updateDecorate();
         }
 
+        if (message.type === "JOB_SELECTED") {
+            console.log('selection message recieved');
+            updateSelected(message.payload);
+        }
+
         // @ts-ignore    // checking property name is valid
         // todo - move this into handler
         if (message.type === "TOGGLE_SETTING" && defaultSettings[message.payload] !== 'undefined') {
@@ -372,6 +424,8 @@ const ReduxProvider = ({ children }) => {
             });
         }
 
+
+
     };
 
 
@@ -402,6 +456,7 @@ const ReduxProvider = ({ children }) => {
     return (
         <Provider value={{
             hoverResult, setHoverResult,
+            selected, setSelected,
             display, setDisplay,
             decorate,
             jobs, setJobs,
