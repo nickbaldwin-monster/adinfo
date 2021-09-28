@@ -82,7 +82,7 @@ After the project is built, a directory named `dist` will be created.
 - job info works for new split view
 - display is now fixed position
 
-2.0.2 - tbd 2021
+2.0.2 - tue 28 sep 2021
 - fixed display of list of countries in info panel
 - job info works for both new card view and split view (without resizing)
 - fixed location handling
@@ -92,12 +92,12 @@ After the project is built, a directory named `dist` will be created.
 - can resize width of panels
 - hover over result will select (and scroll to) job within the table (for new views)
 - hover over job within the table will scroll to result (for split view)
+- display request info, searchId and datadog link
 
 tbd
 
 - hide remote setting / explain *
 - authorization! *
-- get searchId from new views *
 - persist settings *
 - fix excel export *
 - mesco name?
