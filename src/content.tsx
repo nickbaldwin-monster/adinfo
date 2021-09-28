@@ -190,16 +190,18 @@ if (document.readyState !== 'loading') {
 
         const sendRequest = (nodeWithRequestInfo: Element) => {
             if (nodeWithRequestInfo) {
-
-                // @ts-ignore
-                console.log(nodeWithRequestInfo.memoizedState?.baseState);
-
-                window.postMessage({
-                    type: 'SEARCH_CONTEXT_UPDATED',
+                const poll = setInterval(() => {
                     // @ts-ignore
-                    payload: nodeWithRequestInfo.memoizedState?.baseState,
-                    source: 'content'
-                }, "*");
+                    if (nodeWithRequestInfo.memoizedState?.baseState.location?.searchId) {
+                        clearInterval(poll);
+                        window.postMessage({
+                            type: 'SEARCH_CONTEXT_UPDATED',
+                            // @ts-ignore
+                            payload: nodeWithRequestInfo.memoizedState?.baseState,
+                            source: 'content'
+                        }, "*");
+                    }
+                }, 200);
             }
         }
 
@@ -210,11 +212,11 @@ if (document.readyState !== 'loading') {
 
             for (const key in header) {
                 if (key.startsWith('__reactFiber$')) {
-                    console.log('header has key');
+                    // console.log('header has key');
 
                     // @ts-ignore
                     let item = header[key];
-                    console.log(item);
+                    // console.log(item);
 
                     let numberIt = 0;
                     // numberIt should be 16
@@ -325,7 +327,7 @@ if (document.readyState !== 'loading') {
                     let nodeWithRequestInfo = findRequest();
 
                     const resultsObserver = new MutationObserver((mutations: any) => {
-                        console.log('UPDATES')
+                        // console.log('UPDATES')
                         results && sendResults(results);
                         sendRequest(nodeWithRequestInfo);
                     });

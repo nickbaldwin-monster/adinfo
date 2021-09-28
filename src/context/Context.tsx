@@ -238,7 +238,7 @@ const ReduxProvider = ({ children }) => {
 
         /*
             message: {
-                type: "SEARCH_CONTEXT",
+                type: "SEARCH_CONTEXT_UPDATED",
                 payload: {
                     client: {},
                     location: {},
@@ -255,10 +255,7 @@ const ReduxProvider = ({ children }) => {
         if (Array.isArray(flattened )) {
             // @ts-ignore
             setSearchContext( flattened);
-            console.log(flattened);
         }
-
-
     }
 
 
