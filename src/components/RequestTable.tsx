@@ -25,7 +25,7 @@ export const RequestTable = () => {
 
 
     // @ts-ignore
-    const { loading, request, redux } = useReduxContext();
+    const { loading, request, redux, searchContext, searchId } = useReduxContext();
 
     log({
         logType: 'INFO',
@@ -33,13 +33,8 @@ export const RequestTable = () => {
         payload: {request}
     });
 
-    let searchId;
-    let isLink = false;
-    if (request && request.length) {
-        // @ts-ignore
-        searchId = request.find((el: object) => el.key === 'searchId').value;
-        isLink = true
-    }
+
+
     // let toTs = Date.now() + 90000;
     let toTs = Date.now();
     let fromTs = toTs - 900000;
@@ -440,10 +435,10 @@ export const RequestTable = () => {
 
 
             <br />
-            {isLink && <RequestLinks searchId={searchId} toTs={toTs} fromTs={fromTs} />}
+            {searchId && <RequestLinks searchId={searchId} toTs={toTs} fromTs={fromTs} />}
 
             <p>Request info</p>
-            <Grid data={request} >
+            <Grid data={searchContext} >
                 <GridColumn field="key" title="key" />
                 <GridColumn field="value" title="value" />
             </Grid>

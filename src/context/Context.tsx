@@ -521,6 +521,10 @@ const ReduxProvider = ({ children }) => {
             display, setDisplay,
             decorate,
             jobs, setJobs,
+
+            searchContext,
+            searchId,
+
             request,
             redux,
             loading,
