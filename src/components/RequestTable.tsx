@@ -51,12 +51,14 @@ export const RequestTable = () => {
             <h4>Info</h4>
 
             <p>This plugin aids the interpretation of the job search results.</p>
+            <br />
 
-            <p>Guide to various data fields/functions that are available in this extension:&nbsp;
-                <a target="_blank" href="https://monster-next.atlassian.net/wiki/spaces/STCT/pages/2138538091/JSP+Version+guide">click here</a>
+            <p>Read the guide to the various data fields/functions available in this extension:&nbsp;
+                <a target="_blank" href="https://monster-next.atlassian.net/wiki/spaces/STCT/pages/2138538091/JSP+Version+guide">here</a>
             </p>
+            <br />
 
-            <p>Works on all Monster domains:</p>
+            <p>It works on all Monster domains:</p>
 
             <ul className="">
 
@@ -432,18 +434,18 @@ export const RequestTable = () => {
                 </li>
 
             </ul>
-
-
             <br />
+
             {searchId && <RequestLinks searchId={searchId} toTs={toTs} fromTs={fromTs} />}
+            <br />
 
             <p>Request info</p>
             <Grid data={searchContext} >
                 <GridColumn field="key" title="key" />
                 <GridColumn field="value" title="value" />
             </Grid>
-
             <br />
+
             <p>Request/response data</p>
             <ReactJson src={redux} collapsed={0} collapseStringsAfterLength={120}/>
 
