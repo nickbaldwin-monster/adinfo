@@ -186,6 +186,54 @@ if (document.readyState !== 'loading') {
             }
         }
 
+
+
+        const sendRequest = (nodeWithRequestInfo: Element) => {
+            if (nodeWithRequestInfo) {
+
+                // @ts-ignore
+                console.log(nodeWithRequestInfo.memoizedState?.baseState);
+
+                window.postMessage({
+                    type: 'SEARCH_CONTEXT_UPDATED',
+                    // @ts-ignore
+                    payload: nodeWithRequestInfo.memoizedState?.baseState,
+                    source: 'content'
+                }, "*");
+            }
+        }
+
+
+        const header = document.querySelector('.ds-header');
+
+        const findRequest = () => {
+
+            for (const key in header) {
+                if (key.startsWith('__reactFiber$')) {
+                    console.log('header has key');
+
+                    // @ts-ignore
+                    let item = header[key];
+                    console.log(item);
+
+                    let numberIt = 0;
+                    // numberIt should be 16
+                    while (item.memoizedState?.baseState?.client === undefined && numberIt < 20) {
+                        item = item?.return;
+                        numberIt++;
+                    }
+
+                    if (item.memoizedState?.baseState) {
+                        return item;
+                    }
+                    else return null;
+                }
+            }
+
+
+        }
+
+
         console.log('adinfo: injected script');
         const poller = setInterval(() => {
 
@@ -194,24 +242,13 @@ if (document.readyState !== 'loading') {
             if (cards !== null) {
                 clearInterval(poller);
 
-                // todo - deal with both being present, and switching layout
-
-                // split view - container of cards
-                // "[class^='splitviewstyle__CardGridSplitView']"
-
-                // card view - container of cards
-                // "[class=^'job-search-resultsstyle__CardGrid']"
+                // todo ? - deal with both being present, and switching layout
 
                 const cardList = document.querySelector("[class^='job-search-resultsstyle__CardGrid']");
                 // console.log('cardList: ', cardList);
 
                 const cardListSplit = document.querySelector("[class^='splitviewstyle__CardGridSplitView']");
                 // console.log('cardListSplit: ', cardListSplit);
-
-
-
-
-
 
                 let results: Element | null = null;
                 if (cardList) {
@@ -284,19 +321,20 @@ if (document.readyState !== 'loading') {
                     // todo - need to send initial results, or observer does that now?
                     // results && sendResults(results);
 
-                    const observer = new MutationObserver((mutations: any) => {
+                    // if we have results, then there will be a request
+                    let nodeWithRequestInfo = findRequest();
+
+                    const resultsObserver = new MutationObserver((mutations: any) => {
                         console.log('UPDATES')
                         results && sendResults(results);
+                        sendRequest(nodeWithRequestInfo);
                     });
-
                     // @ts-ignore
-                    observer.observe(results, {
+                    resultsObserver.observe(results, {
                         childList: true // report added/removed nodes
                     });
                 }
-
             }
-
 
         }, 100);
 

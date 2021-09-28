@@ -181,6 +181,18 @@ let response = {
   ]
 }
 
+
+
+hover job table
+- make selected stateful
+
+onSelection 
+- remove jobSelected class name from previous selection
+- add jobSelected class name
+
+on result hover 
+- remove jobSelected class name from any previous selection
+
 ##  important
 - check schema! e.g. enrichments vs posting info, what is mandatory etc
 - use both post and enrichments

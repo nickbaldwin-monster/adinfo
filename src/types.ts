@@ -1,5 +1,6 @@
 // Popup or content script requesting the current status
 import {Job} from "./types/Job";
+import {SearchContext} from "./types/SearchContext";
 
 interface DisplayStateRequest {
     type: "REQ_DISPLAY_STATUS";
@@ -77,6 +78,12 @@ interface JobResultsUpdated {
     source?: string;
 }
 
+interface SearchContextUpdated {
+    type: 'SEARCH_CONTEXT_UPDATED';
+    payload: SearchContext;
+    source: string;
+}
+
 interface JobSelected {
     type: 'JOB_SELECTED';
     payload: number;
@@ -89,4 +96,4 @@ export type MessageType =
     SettingsUpdate | JobResultsUpdated |
 
     // actually used
-    JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay | HoverResults | JobSelected ;
+    JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay | HoverResults | JobSelected | SearchContextUpdated;

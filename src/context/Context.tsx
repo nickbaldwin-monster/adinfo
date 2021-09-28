@@ -9,6 +9,8 @@ import { defaultErrors, Errors } from '../types/Errors';
 import { decorateResults, removeDecorations } from '../helpers/decorateResults';
 import { determineErrors } from "../helpers/determineErrors";
 import { Job } from "../types/Job";
+import { SearchContext } from "../types/SearchContext";
+import {transformSearchContext} from "../helpers/transformSearchContext";
 
 const moduleName = 'Context';
 let log = logger(moduleName);
@@ -24,6 +26,9 @@ const { Provider, Consumer } = ReduxContext;
 //  may also remove need to deal with re-renders if add elements to state rather than recreating...
 
 
+interface ContextItem {
+    [key: string]: [value: string];
+}
 
 interface DisplayJobProperty {
     [key: string]: boolean;
@@ -52,6 +57,13 @@ const ReduxProvider = ({ children }) => {
     const [redux, setRedux] = useState({});
     const [hoverResult, setHoverResult] = useState(-1);
     const [selected, setSelected] = useState(-1);
+
+
+    let defaultState: ContextItem[] = [];
+    const [searchContext, setSearchContext] = useState(defaultState);
+    const [searchId, setSearchId] = useState('');
+
+
 
 
     log({
@@ -118,6 +130,8 @@ const ReduxProvider = ({ children }) => {
             return !display;
         });
     }
+
+
 
 
     const updateSelected = (position: number) => {
@@ -213,6 +227,46 @@ const ReduxProvider = ({ children }) => {
             return !decorate;
         });
     }
+
+
+
+
+
+
+
+    const updateSearchContextAndId = (context: SearchContext) => {
+
+        /*
+            message: {
+                type: "SEARCH_CONTEXT",
+                payload: {
+                    client: {},
+                    location: {},
+                    user: {},
+                    software: {}
+                },
+                source?: "content"
+            }
+        */
+
+        let searchId = context?.location?.searchId;
+        setSearchId(searchId);
+        let flattened = transformSearchContext(context);
+        if (Array.isArray(flattened )) {
+            // @ts-ignore
+            setSearchContext( flattened);
+            console.log(flattened);
+        }
+
+
+    }
+
+
+
+
+
+
+
 
     const updateJobsAndRequest = (jsonString: string) => {
 
@@ -401,10 +455,17 @@ const ReduxProvider = ({ children }) => {
             updateJobsAndRequest(message.payload);
         }
 
+
+
         // for new views
         if (message.type === 'JOB_PROPS') {
             updateJobs(message.payload);
         }
+        if (message.type === 'SEARCH_CONTEXT_UPDATED') {
+            updateSearchContextAndId(message.payload);
+        }
+
+
 
         if (message.type === 'HOVER_RESULTS') {
             console.log('HOVER_RESULTS', message.payload);

@@ -37156,3 +37156,10 @@ span.k-i-information:hover {
     min-width: 320px;
 }
 
+
+
+/* todo - is this used yet */
+.jobSelected,  .jobSelected:hover, .jobSelected:focus {
+    border: 2px solid rgb(242, 177, 39);
+    box-shadow: rgb(33 33 33 / 25%) 0px 6px 10px;
+}

@@ -1,0 +1,36 @@
+{
+    "client": {
+        "ipAddress": "159.196.170.33",
+        "fingerprintId": "1a1ea79f-affa-4c0f-b580-773b31848e89"
+    },
+    "software": {
+        "environment": "prod",
+        "releaseVersion": "0.0.427",
+        "country": "us",
+        "language": "en",
+        "siteId": "monster.com",
+        "tenant": "monster",
+        "pageSize": 9,
+        "host": "www.monster.com",
+        "originHost": "www.monster.com"
+    },
+    "location": {
+        "currentLocation": "/jobs/search?q=Software+Engineer&where=Boston,+MA&page=8&geo=",
+        "currentPageName": "results",
+        "searchId": "8ad553cd-48f1-4f9f-9506-17d5de20c588",
+        "urlParams": {
+            "q": "Software Engineer",
+            "where": "Boston, MA",
+            "page": "8",
+            "geo": "",
+            "distributor": [
+                "jobs",
+                "search"
+            ]
+        }
+    },
+    "user": {
+        "loginStatus": "logged out - recognized",
+        "userId": "3f7c02f4-d1e3-4de1-95f5-532b15b39eb9"
+    }
+}

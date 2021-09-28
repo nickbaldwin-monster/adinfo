@@ -38,3 +38,5 @@ export interface JobQueryLocation {
         value: string;
     }
 }
+
+
