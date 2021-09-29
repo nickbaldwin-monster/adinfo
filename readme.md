@@ -96,7 +96,7 @@ After the project is built, a directory named `dist` will be created.
 
 2.0.3 - tue 28 sep 2021
 - persist settings (for single tab)
-
+- fixed excel export
 
 tbd
 

@@ -375,9 +375,9 @@ export const JobTable = () => {
         <div className='jobTable'>
 
             <ExcelExport data={jobs} ref={_export}>
-                <Tooltip openDelay={50} position="top" anchorElement="element">
+
                 <Grid
-className='gridJobs'
+                    className='gridJobs'
                     reorderable={true}
                     onColumnReorder={handleColumnReorder}
                    // data={orderBy(jobs, sort)}
@@ -475,7 +475,7 @@ className='gridJobs'
 
 
                 </Grid>
-                </Tooltip>
+
             </ExcelExport>
 
         </div>
