@@ -307,7 +307,8 @@ export const JobTable = () => {
             // console.log('selectedState', selectedState);
 
 
-            if (hoverResult !== -1) {
+            if (hoverResult !== -1 && jobs && jobs.length > 0) {
+
                 // console.log(jobs);
                 let job = jobs[hoverResult - 1];
                 // console.log(job.position);
