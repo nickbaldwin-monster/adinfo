@@ -1,4 +1,4 @@
-# Chrome Extension boilerplate created with React Typescript
+# Chrome browser extension for inspecting Monster job search results
 
 ## Getting started for dev
 
@@ -93,6 +93,10 @@ After the project is built, a directory named `dist` will be created.
 - hover over result will select (and scroll to) job within the table (for new views)
 - hover over job within the table will scroll to result (for split view)
 - display request info, searchId and datadog link
+
+2.0.3 - tue 28 sep 2021
+- persist settings (for single tab)
+
 
 tbd
 

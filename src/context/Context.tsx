@@ -44,7 +44,38 @@ function settingsReducer(state: object, action: object): object {
 // @ts-ignore
 const ReduxProvider = ({ children }) => {
 
-    const [settings, setSettings] = useState(defaultSettings);
+    const getSavedSettings = () => {
+        let savedSettings;
+        chrome.storage.local.get(['adinfoSettings'], function(result) {
+            savedSettings = result.key;
+            console.log('savedSettings are: ', savedSettings);
+        });
+
+        let local = window.localStorage.getItem('adinfo');
+        let localSettings;
+        if (local) {
+            localSettings = JSON.parse(local)
+        }
+        console.log('local Settings are: ', localSettings);
+        return localSettings || defaultSettings;
+    }
+
+    const saveSettings = (settings: object) => {
+        chrome.storage.local.set({adinfoSettings: settings}, function() {
+            // console.log('saved these settings', settings);
+            // console.log('checking...');
+            // chrome.storage.local.get(['adinfoSettings'], function(result) {
+            //    console.log('savedSettings are: ', result.adinfoSettings);
+            // });
+        });
+        let string = JSON.stringify(settings);
+        window.localStorage.setItem('adinfo', string);
+        let local = window.localStorage.getItem('adinfo');
+        // console.log('local Settings are: ', local);
+    }
+
+
+    const [settings, setSettings] = useState(getSavedSettings);
     const [errors, setErrors] = useState(defaultErrors);
     const [numberResults, setNumberResults] = useState(0);
     const [results, setResults] = useState(true);
@@ -99,6 +130,7 @@ const ReduxProvider = ({ children }) => {
                 // @ts-ignore
                 let newSettings = { ...settings, [settingName]: !settings[settingName] };
                 if (isSettings(newSettings)) {
+                    saveSettings(newSettings);
                     return newSettings;
                 }
                 else {
