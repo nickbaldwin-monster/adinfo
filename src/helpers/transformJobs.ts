@@ -1,9 +1,10 @@
 import { Job } from '../types/Job';
-import { Provider }  from '../types/Provider';
-import { Apply }  from '../types/Apply';
+import { Provider }  from '../types/Job';
+import { Apply }  from '../types/Job';
 import { DisplayJob }  from '../types/DisplayJob';
 import jobsList from "../sampleData/jobsList.json";
 import dayjs from 'dayjs';
+import {getDataFromUrl} from "./decodeImpUrl";
 
 type AdProvider = 'Unknown' | "AdTech" | 'GCTS' | 'GCTS AdQuery' | '';
 type IngestionMethod = 'Adapted NOW' | 'JPW';
@@ -215,10 +216,11 @@ export const transformJob = (object: object, i: number) => {
             newObj[k] = v;
         }
         if (k === 'jobAd') {
-
            // newObj.adProvider = normalizeAdProvider(v);
             newObj.adProvider = returnAdProvider(v);
-
+            // @ts-ignore
+            let kevel = getDataFromUrl(v.tracking?.impressionUrl || '');
+            newObj = {...newObj, ...kevel}
         }
         if (k === 'jobPosting') {
             newObj.mesco = normalizeMesco(v);

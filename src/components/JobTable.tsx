@@ -473,7 +473,10 @@ export const JobTable = () => {
                     {settings.validThroughGoogle && <GridColumn field="validThroughGoogle" title="Valid Google" width="80px" headerCell={headerCell} />}
                     {false && <GridColumn field="remote" title="Remote?" width="50px" headerCell={headerCell} />}
 
-
+                    {settings.dj && <GridColumn field="dj" title="Decision index" width="60px" headerCell={headerCell} />}
+                    {settings.ec && <GridColumn field="ec" title="EC" width="80px" headerCell={headerCell} />}
+                    {settings.pc && <GridColumn field="pc" title="PC" width="80px" headerCell={headerCell} />}
+                    {settings.di && <GridColumn field="di" title="Decision id" width="240px" headerCell={headerCell} />}
 
                 </Grid>
 

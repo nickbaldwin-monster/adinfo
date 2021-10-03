@@ -20,9 +20,14 @@ export interface Settings {
     refCode: boolean;
     validThrough: boolean;
     validThroughGoogle: boolean;
-    remote: boolean
+    remote: boolean;
+    di: string;
+    dj: string;
+    ec: string;
+    pc: string;
 }
 
+export type SettingsKey = keyof Settings;
 export const SettingsSchema: Record<SettingsKey, string> = {
     company: 'boolean',
     adProvider: 'boolean',
@@ -44,7 +49,11 @@ export const SettingsSchema: Record<SettingsKey, string> = {
     refCode: 'boolean',
     validThrough: 'boolean',
     validThroughGoogle: 'boolean',
-    remote: 'boolean'
+    remote: 'boolean',
+    di: 'string',
+    dj: 'string',
+    ec: 'string',
+    pc: 'string'
 };
 
 export const defaultSettings = {
@@ -68,10 +77,13 @@ export const defaultSettings = {
     refCode: false,
     validThrough: false, // ?
     validThroughGoogle: false, // ?
-    remote: false // ?
+    remote: false, // ?,
+    di: false,
+    dj: false,
+    ec: false,
+    pc: false
 };
 
-export type SettingsKey = keyof Settings;
 
 
 interface SettingProperty {

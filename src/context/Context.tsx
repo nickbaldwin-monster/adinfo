@@ -17,6 +17,8 @@ let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
 
+const version = "2.0.4";
+
 
 const ReduxContext = createContext({});
 const { Provider, Consumer } = ReduxContext;
@@ -54,21 +56,29 @@ const ReduxProvider = ({ children }) => {
         let local = window.localStorage.getItem('adinfo');
         let localSettings;
         if (local) {
-            localSettings = JSON.parse(local)
+            localSettings = JSON.parse(local);
         }
         console.log('local Settings are: ', localSettings);
+
+        if (!localSettings?.version || localSettings.version !== '2.0.4') {
+            return defaultSettings;
+        }
+        delete localSettings?.version;
         return localSettings || defaultSettings;
     }
 
     const saveSettings = (settings: object) => {
-        chrome.storage.local.set({adinfoSettings: settings}, function() {
+        chrome.storage.local.set({ adinfoSettings: settings }, function() {
             // console.log('saved these settings', settings);
             // console.log('checking...');
             // chrome.storage.local.get(['adinfoSettings'], function(result) {
             //    console.log('savedSettings are: ', result.adinfoSettings);
             // });
         });
-        let string = JSON.stringify(settings);
+
+        // @ts-ignore
+        let s = { ...settings, version };
+        let string = JSON.stringify(s);
         window.localStorage.setItem('adinfo', string);
         let local = window.localStorage.getItem('adinfo');
         // console.log('local Settings are: ', local);

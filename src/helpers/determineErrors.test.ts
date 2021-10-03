@@ -28,7 +28,11 @@ const job1: DisplayJob =  {
     url: 'https://www.host.com/something',
     validThrough: '1 Jan 2000',
     validThroughGoogle: '2 Feb 2000',
-    remote: ''
+    remote: '',
+    di: 'wfwewef',
+    dj: '5',
+    ec: '3.12',
+    pc: '21.22'
 };
 const job2: DisplayJob =  {
     position: 2,
@@ -54,7 +58,11 @@ const job2: DisplayJob =  {
     url: 'https://www.host.com/something',
     validThrough: '1 Jan 2000',
     validThroughGoogle: '2 Feb 2000',
-    remote: ''
+    remote: '',
+    di: 'wfwewef',
+    dj: '5',
+    ec: '3.12',
+    pc: '21.22'
 }
 const job3: DisplayJob =  {
     position: 3,
@@ -80,7 +88,11 @@ const job3: DisplayJob =  {
     url: 'https://www.host.com/something',
     validThrough: '1 Jan 2000',
     validThroughGoogle: '2 Feb 2000',
-    remote: ''
+    remote: '',
+    di: 'wfwewef',
+    dj: '5',
+    ec: '3.12',
+    pc: '21.22'
 }
 const job4: DisplayJob =  {
     position: 4,
@@ -106,7 +118,11 @@ const job4: DisplayJob =  {
     url: 'https://www.host.com/something',
     validThrough: '1 Jan 2000',
     validThroughGoogle: '2 Feb 2000',
-    remote: ''
+    remote: '',
+    di: 'wfwewef',
+    dj: '5',
+    ec: '3.12',
+    pc: '21.22'
 }
 
 const job5: DisplayJob =  {
@@ -133,7 +149,11 @@ const job5: DisplayJob =  {
     url: 'https://www.host.com/something',
     validThrough: '1 Jan 2000',
     validThroughGoogle: '2 Feb 2000',
-    remote: ''
+    remote: '',
+    di: 'wfwewef',
+    dj: '5',
+    ec: '3.12',
+    pc: '21.22'
 }
 
 

@@ -1,6 +1,13 @@
 
-import { Provider }  from './Provider';
+export interface Apply {
+    applyType: string;
+    applyUrl: string;
+}
 
+export interface Provider {
+    name?: string;
+    code?: string;
+}
 
 export interface Job {
     schemaVersion: string,

@@ -23,4 +23,8 @@ export interface DisplayJob  {
     validThrough: string;
     validThroughGoogle: string;
     remote: string;
+    di: string;
+    dj: string;
+    ec: string;
+    pc: string;
 }

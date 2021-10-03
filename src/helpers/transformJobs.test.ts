@@ -1,7 +1,7 @@
 import {transformJobs, transformJob, isJob, isDisplayJob} from './transformJobs';
 
 import jobsList from '../sampleData/jobsList.json';
-import {Provider} from "../types/Provider";
+import {Provider} from "../types/Job";
 
 
 // ######
@@ -80,7 +80,10 @@ test('transformed job has expected properties', () => {
     expect(newJob).toHaveProperty('refCode');
     expect(newJob).toHaveProperty('validThrough');
     expect(newJob).toHaveProperty('validThroughGoogle');
-    expect(newJob).toHaveProperty('remote');
+    expect(newJob).toHaveProperty('di');
+    expect(newJob).toHaveProperty('dj');
+    expect(newJob).toHaveProperty('ec');
+    expect(newJob).toHaveProperty('pc');
 });
 
 test('transformed job has correct values for props', () => {
@@ -115,7 +118,11 @@ test('transformed job has correct values for props', () => {
         url: 'https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
         validThrough: "5 Sep 21",
         validThroughGoogle: "16 Jun 22",
-        remote: ''
+        remote: '',
+        di: '247cf20fbc6644bca6680c3579983c9e',
+        dj: '0',
+        ec: '30.5976',
+        pc: '1.1'
     });
 });
 
@@ -162,7 +169,11 @@ test('jobList transformed into display jobs', () => {
                 url: 'https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
                 validThrough: "5 Sep 21",
                 validThroughGoogle: "16 Jun 22",
-                remote: ''
+                remote: '',
+                di: '247cf20fbc6644bca6680c3579983c9e',
+                dj: '0',
+                ec: '30.5976',
+                pc: '1.1'
             }
         ]
     );

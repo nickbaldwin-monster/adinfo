@@ -99,6 +99,10 @@ After the project is built, a directory named `dist` will be created.
 - fixed excel export
 - fixed bug that crashed plugin on 'canned' searches
 
+2.0.4 - sun 3 oct 2021
+- added debug info
+
+
 tbd
 
 - hide remote setting / explain *
