@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, useEffect, useReducer } fro
 import { logger } from "../helpers/logger";
 import { transformJobs } from "../helpers/transformJobs";
 import { transformRequest } from "../helpers/transformRequest";
-import { MessageType } from "../types";
+import { MessageType } from "../types/types";
 import { Settings, isSettings, isSetting, defaultSettings } from '../types/Settings';
 import { defaultErrors, Errors } from '../types/Errors';
 import { decorateResults, removeDecorations } from '../helpers/decorateResults';
@@ -12,12 +12,24 @@ import { Job } from "../types/Job";
 import { SearchContext } from "../types/SearchContext";
 import {transformSearchContext} from "../helpers/transformSearchContext";
 
+
+import { getSavedSettings } from "../helpers/store";
+
+import { currentVersion, getDefaultUserSettings } from "../model/job";
+const version = currentVersion.version;
+
+console.log('currentVersion is: ', version);
+console.log('defaultSettings are: ', getDefaultUserSettings());
+
+console.log('savedSettings are: ', getSavedSettings());
+
+
 const moduleName = 'Context';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
 
-const version = "2.0.4";
+
 
 
 const ReduxContext = createContext({});

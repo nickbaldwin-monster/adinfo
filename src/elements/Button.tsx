@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { MessageType } from "../types";
+import { MessageType } from "../types/types";
 import "./Button.css";
 
 export const Button = () => {

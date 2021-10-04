@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { useReduxContext } from "../context/Context";
-import { MessageType } from "../types";
+import { MessageType } from "../types/types";
 import { logger } from "../helpers/logger";
 
 import { Switch } from "@progress/kendo-react-inputs";

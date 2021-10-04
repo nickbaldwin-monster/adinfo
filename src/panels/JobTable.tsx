@@ -10,7 +10,7 @@ import { orderBy } from "@progress/kendo-data-query";
 import { getter } from "@progress/kendo-react-common";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
-import { JobDetail } from './JobDetail';
+import { JobDetail } from '../components/JobDetail';
 import { HandleComponent, Resizable } from "re-resizable";
 
 import { DragHandle } from "../elements/DragHandle";
@@ -19,7 +19,7 @@ import { DragHandle } from "../elements/DragHandle";
 // todo - cut down css
 import './Table.css';
 import {Popup} from "@progress/kendo-react-popup";
-import {MessageType} from "../types";
+import {MessageType} from "../types/types";
 
 
 
@@ -120,26 +120,46 @@ export const JobTable = () => {
             setShow(!show);
         };
 
+        let message;
         if (props.title === 'Ad Provider') {
+            message = (
+                <>
+                    <p>A value in this field indicates the result is an ad.</p>
+                    <p>There are 3 possible values here: 'GCTS_ADQUERY' and 'ADZERK' describe how the ad was selected by the AdTech platform. An empty value means that the job is displayed as an organic result.</p>
+                </>
+            );
+        }
+        if (props.title === 'Decision Index') {
+            message = (
+                <>
+                    <p>This should be the same as position</p>
+                    <p>But...</p>
+                </>
+            );
+        }
 
+        if (!message) {
+            return (
+                <a className="k-link" onClick={props.onClick}>
+                    <span title={props.title}>{props.title}
+                        {props.children}
+                    </span>
+                </a>
+            );
+        }
 
             // @ts-ignore
             return (
                 <div>
-                <a className="k-link" onClick={props.onClick}>
-            <span title={props.title}>
-                {props.title}
-
-                {props.children}
-            </span>
-
-                </a>
+                    <a className="k-link" onClick={props.onClick}>
+                        <span title={props.title}>
+                            {props.title}
+                            {props.children}
+                        </span>
+                    </a>
 
                     {/* @ts-ignore */}
                     <span onClick={onClick} ref={anchor} className="k-icon k-i-information" style={{margin: '0 0 0 15px'}}></span>
-
-
-
 
                     <Popup
                         anchor={anchor.current}
@@ -148,20 +168,12 @@ export const JobTable = () => {
                         popupClass={"inner-wrapper"}
                         style={{width: "200px"}}
                     >
-                        <p>A value in this field indicates the result is an ad.</p>
-                        <p>There are 3 possible values here: 'GCTS_ADQUERY' and 'ADZERK' describe how the ad was selected by the AdTech platform. An empty value means that the job is displayed as an organic result.</p>
+                        {message}
                     </Popup>
 
                 </div>
             );
-        }
-        return (
-            <a className="k-link" onClick={props.onClick}>
-            <span title={props.title}>{props.title}
-                {props.children}
-            </span>
-            </a>
-        );
+
     };
 
 
@@ -380,6 +392,7 @@ export const JobTable = () => {
                 <Grid
                     className='gridJobs'
                     reorderable={true}
+                    resizable={true}
                     onColumnReorder={handleColumnReorder}
                    // data={orderBy(jobs, sort)}
                     data={orderBy(jobs.map((item: any) => ({
@@ -451,11 +464,11 @@ export const JobTable = () => {
                     />
 
                     <GridColumn field="position" title="Position" width="50px" locked={true} reorderable={false} headerCell={headerCell} orderIndex={0 }/>
-                    {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} headerCell={headerCell} reorderable={false}  orderIndex={0 }/>}
+                    {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 }/>}
                     {settings.adProvider && <GridColumn field="adProvider" title="Ad Provider" width="120px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 } headerClassName='gridBorder' className='gridBorder'  />}
                     {settings.title && <GridColumn field="title" title="Title" width="150px" reorderable={true} headerCell={headerCell} />}
                     {settings.location && <GridColumn field="location" title="Location" width="120px" reorderable={true} headerCell={headerCell} />}
-                    {settings.nowId && <GridColumn field="nowId" title="Now ID" width="80px" headerCell={headerCell} />}
+                    {settings.nowId && <GridColumn field="nowId" title="Now ID" width="80px" headerCell={headerCell} orderIndex={1 }/>}
                     {settings.jobId && <GridColumn field="jobId" title="Job ID" width="80px" headerCell={headerCell} />}
                     {settings.template && <GridColumn field="template" title="Template" width="80px" headerCell={headerCell}/>}
                     {settings.xCode && <GridColumn field="xCode" title="xcode" width="80px" headerCell={headerCell} />}

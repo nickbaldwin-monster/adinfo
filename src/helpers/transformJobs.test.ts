@@ -80,10 +80,10 @@ test('transformed job has expected properties', () => {
     expect(newJob).toHaveProperty('refCode');
     expect(newJob).toHaveProperty('validThrough');
     expect(newJob).toHaveProperty('validThroughGoogle');
-    expect(newJob).toHaveProperty('di');
-    expect(newJob).toHaveProperty('dj');
-    expect(newJob).toHaveProperty('ec');
-    expect(newJob).toHaveProperty('pc');
+    expect(newJob).toHaveProperty('decisionId');
+    expect(newJob).toHaveProperty('decisionIndex');
+    expect(newJob).toHaveProperty('ecpm');
+    expect(newJob).toHaveProperty('price');
 });
 
 test('transformed job has correct values for props', () => {
@@ -119,10 +119,10 @@ test('transformed job has correct values for props', () => {
         validThrough: "5 Sep 21",
         validThroughGoogle: "16 Jun 22",
         remote: '',
-        di: '247cf20fbc6644bca6680c3579983c9e',
-        dj: '0',
-        ec: '30.5976',
-        pc: '1.1'
+        decisionId: '247cf20fbc6644bca6680c3579983c9e',
+        decisionIndex: '0',
+        ecpm: '30.5976',
+        price: '1.1'
     });
 });
 
@@ -170,10 +170,10 @@ test('jobList transformed into display jobs', () => {
                 validThrough: "5 Sep 21",
                 validThroughGoogle: "16 Jun 22",
                 remote: '',
-                di: '247cf20fbc6644bca6680c3579983c9e',
-                dj: '0',
-                ec: '30.5976',
-                pc: '1.1'
+                decisionId: '247cf20fbc6644bca6680c3579983c9e',
+                decisionIndex: '0',
+                ecpm: '30.5976',
+                price: '1.1'
             }
         ]
     );

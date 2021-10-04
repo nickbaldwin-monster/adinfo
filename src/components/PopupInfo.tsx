@@ -1,9 +1,8 @@
 import * as React from "react";
 
-import { Button } from "../elements/Button";
-import "./Settings.css";
-import { loadSettings, saveSettings } from "../helpers/state";
-import {logger} from "../helpers/logger";
+import "./PopupInfo.css";
+
+import { logger } from "../helpers/logger";
 
 
 const moduleName = 'Popup Settings';
@@ -23,7 +22,7 @@ else {
 }
 
 
-const Popup = () => {
+const PopupInfo = () => {
     return (
         <>
             {name}!
@@ -31,4 +30,4 @@ const Popup = () => {
     );
 };
 
-export default Popup;
+export default PopupInfo;

@@ -3,7 +3,7 @@ import { Grid, GridColumn, GridToolbar } from '@progress/kendo-react-grid';
 
 import { logger } from "../helpers/logger";
 import { useReduxContext } from "../context/Context";
-import { RequestLinks } from "./RequestLinks";
+import { DatadogLink } from "../components/DatadogLink";
 import { Resizable } from "re-resizable";
 
 // todo - cut down css
@@ -436,7 +436,7 @@ export const RequestTable = () => {
             </ul>
             <br />
 
-            {searchId && <RequestLinks searchId={searchId} toTs={toTs} fromTs={fromTs} />}
+            {searchId && <DatadogLink searchId={searchId} toTs={toTs} fromTs={fromTs} />}
             <br />
 
             <p>Request info</p>

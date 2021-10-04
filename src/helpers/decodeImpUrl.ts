@@ -1,11 +1,4 @@
 
-let data = {
-    di: "bad9ccdb89544d00b4011f083bdd66fa",
-    dj: 2,
-    pc: 1.18,
-    ec: 41.71536
-}
-
 
 // base64 character set, plus padding character (=)
 const b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
@@ -37,7 +30,7 @@ const atobPollyfill = function(string: string) {
 };
 
 
-export const getDataFromUrl = (url: string) => {
+export const getDataFromUrl = (url: string, id: string) => {
         if (!url) {
             return null;
         }
@@ -50,15 +43,15 @@ export const getDataFromUrl = (url: string) => {
                 let { di, dj, pc, ec } = JSON.parse(d);
 
                 return {
-                    di: "" + di,
-                    dj: "" + dj,
-                    pc: "" + pc,
-                    ec: "" + ec
+                    decisionId: "" + di,
+                    decisionIndex: "" + dj,
+                    price: "" + pc,
+                    ecpm: "" + ec
                 };
 
             } catch {
                 //
-                console.log('yikes');
+                console.log('problem with impression url for job id: ', id);
                 return null;
             }
         }

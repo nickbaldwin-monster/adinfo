@@ -4,7 +4,7 @@
 // run as a separate instance in browser
 // used to manage a browser wide state via messages
 
-import { MessageType } from "./types";
+import { MessageType } from "./types/types";
 import { logger } from "./helpers/logger";
 
 const moduleName = 'background';

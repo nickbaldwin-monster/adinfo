@@ -4,7 +4,7 @@ import { Apply }  from '../types/Job';
 import { DisplayJob }  from '../types/DisplayJob';
 import jobsList from "../sampleData/jobsList.json";
 import dayjs from 'dayjs';
-import {getDataFromUrl} from "./decodeImpUrl";
+import { getDataFromUrl } from "./decodeImpUrl";
 
 type AdProvider = 'Unknown' | "AdTech" | 'GCTS' | 'GCTS AdQuery' | '';
 type IngestionMethod = 'Adapted NOW' | 'JPW';
@@ -219,7 +219,7 @@ export const transformJob = (object: object, i: number) => {
            // newObj.adProvider = normalizeAdProvider(v);
             newObj.adProvider = returnAdProvider(v);
             // @ts-ignore
-            let kevel = getDataFromUrl(v.tracking?.impressionUrl || '');
+            let kevel = getDataFromUrl(v.tracking?.impressionUrl || '', object.jobId);
             newObj = {...newObj, ...kevel}
         }
         if (k === 'jobPosting') {

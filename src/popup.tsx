@@ -3,9 +3,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { MessageType } from "./types";
+import { MessageType } from "./types/types";
 import { logger } from "./helpers/logger";
-import Settings from "./panels/Settings";
+import Settings from "./components/PopupInfo";
 import "./popup.css";
 
 

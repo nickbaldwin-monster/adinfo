@@ -1,6 +1,6 @@
 // Popup or content script requesting the current status
-import {Job} from "./types/Job";
-import {SearchContext} from "./types/SearchContext";
+import {Job} from "./Job";
+import {SearchContext} from "./SearchContext";
 
 interface DisplayStateRequest {
     type: "REQ_DISPLAY_STATUS";

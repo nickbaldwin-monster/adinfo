@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { HashRouter, Switch, Route, withRouter } from "react-router-dom";
-import { SettingsPanel } from "../components/SettingsPanel";
+import { SettingsPanel } from "./SettingsPanel";
 import DrawerRouterContainer from "./DrawerRouterContainer";
-import { JobTable } from "../components/JobTable";
-import { RequestTable } from "../components/RequestTable";
-import { Feedback } from "../components/Feedback";
+import { JobTable } from "./JobTable";
+import { RequestTable } from "./RequestTable";
+import { Feedback } from "./Feedback";
 import { logger } from "../helpers/logger";
-import { ErrorsPanel } from "../components/ErrorsPanel";
+import { ErrorsPanel } from "./ErrorsPanel";
 
 
 

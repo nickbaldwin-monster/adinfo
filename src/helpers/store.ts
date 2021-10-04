@@ -1,7 +1,9 @@
+import { defaultSettings } from "../types/Settings";
 
+import { migrateFlatObject } from "../model/job";
 
 const settingsKey = 'savedReduxState';
-const storeKey = 'adinfo_settings';
+const storeKey = 'adinfo';
 
 
 
@@ -10,6 +12,35 @@ const storeKey = 'adinfo_settings';
 // todo in context
 // window.localStorage.setItem("snowing", "true");
 // chrome.storage.local.set({ display: display });
+
+
+/*
+    let savedSettings;
+    chrome.storage.local.get(['adinfoSettings'], function(result) {
+        savedSettings = result.key;
+        console.log('savedSettings are: ', savedSettings);
+    });
+ */
+
+
+export const getSavedSettings = () => {
+    let store = loadStore();
+    // v2.0.4 +
+    if (store?.version && store.settings) {
+        return store;
+    }
+    if (store?.version === '2.0.3' || store?.version === '2.0.4') {
+        return migrateFlatObject(store);
+    }
+    return null;
+}
+
+
+
+
+
+
+
 
 
 
@@ -38,13 +69,9 @@ const loadState = (key: string, storage: any) => {
     }
 };
 
-export const loadStore = () => {
-    return loadState(storeKey, 'LOCAL');
-}
 
-export const loadSettings = () => {
-    return loadState(settingsKey, 'SESSION');
-}
+
+
 
 // todo: interface for state
 const saveState = (key: string, state: any, storage: string) => {
@@ -66,49 +93,19 @@ const saveState = (key: string, state: any, storage: string) => {
     }
 };
 
-export const saveSettings = (state: any) => {
-    saveState(settingsKey, state, 'SESSION');
-};
 
-
-// console.log(window.sessionStorage.getItem("savedReduxState"));
-
-
-
-
-// todo - duplicate????
-const getReduxStore = () => {
-    if (window.sessionStorage.getItem("savedReduxState")) {
-        const json = window.sessionStorage.getItem("savedReduxState");
-
-        if (json) {
-            let redux = JSON.parse(json);
-            //
-        }
-    }
+export const loadStore = () => {
+    return loadState(storeKey, 'LOCAL');
 }
 
-
-
-
-
-
-
-
-// todo - load state from local storage
-const getSavedSettings = () => {
-    let display = false;
-    if (chrome.storage.local) {
-        chrome.storage.local.get("display", (res) => {
-            if (res["display"]) {
-                display = true;
-            } else {
-                display = false;
-            }
-        });
-    }
-    return display;
+export const saveStore = (state: any) => {
+    saveState(storeKey, state, 'LOCAL');
 };
+
+
+
+
+
 
 
 

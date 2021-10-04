@@ -6,7 +6,7 @@ import './Table.css';
 
 import { logger } from "../helpers/logger";
 import { useReduxContext } from "../context/Context";
-import {RequestLinks} from "./RequestLinks";
+import {DatadogLink} from "../components/DatadogLink";
 import ReactJson from "react-json-view-ts";
 import { Resizable} from "re-resizable";
 import { DragHandle } from "../elements/DragHandle";
