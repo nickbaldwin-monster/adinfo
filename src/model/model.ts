@@ -1,8 +1,27 @@
 import {log} from "../helpers/logger";
+import {Job} from "../types/Job";
 
 export const currentVersion = {
     version: '2.0.5'
 };
+
+
+// todo - this will provide augmented values
+export const transformJobData = (job: Job) => {
+    //?
+    let location = job.jobPosting.jobLocation;
+    let url = job?.jobAd?.tracking?.impressionUrl;
+    // todo - transfrom url
+
+    const transformedLocation = location;
+    const kevelData = url;
+
+    return {
+        location: transformedLocation,
+        kevelData
+    };
+};
+
 
 
 export interface Property {
@@ -16,6 +35,8 @@ export interface Property {
     jobProperty: boolean,
     setting: boolean,
     disabled: boolean,
+    sourceProperty: string | { (sourceProperty: string) : string } | null // position etc
+    augmentedProperty: string | null 
     className?: string,
     headerClassName?: string
 }
@@ -39,7 +60,9 @@ export const model: Record<string, Property> = {
         visible: true,
         jobProperty: false,
         setting: true,
-        disabled: true
+        disabled: true,
+        sourceProperty: null,
+        augmentedProperty: null
     },
     decisionIndex: {
         field: "decisionIndex",
@@ -51,7 +74,9 @@ export const model: Record<string, Property> = {
         visible: false,
         jobProperty: true,
         setting: true,
-        disabled: false
+        disabled: false,
+        sourceProperty: null,
+        augmentedProperty: 'kevelData?.dj'
     },
     remainder: {
         field: "remainder",
@@ -63,19 +88,9 @@ export const model: Record<string, Property> = {
         visible: false,
         jobProperty: true,
         setting: true,
-        disabled: false
-    },
-    company: {
-        field: "company",
-        title: "Company",
-        width: "100px",
-        locked: true,
-        reorderable: false,
-        orderIndex: 0,
-        visible: true,
-        jobProperty: true,
-        setting: true,
-        disabled: false
+        disabled: false,
+        sourceProperty:  null,
+        augmentedProperty: 'kevelData?.remainder'
     },
     adProvider: {
         field: "adProvider",
@@ -88,8 +103,24 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: true,
+        sourceProperty: 'adProvider?.provider',
+        augmentedProperty: null
+    },
+    company: {
+        field: "company",
+        title: "Company",
+        width: "100px",
+        locked: true,
+        reorderable: false,
+        orderIndex: 0,
+        visible: true,
+        jobProperty: true,
+        setting: true,
+        disabled: false,
+        sourceProperty: 'jobPosting?.hiringOrganization?.name',
         className:'gridBorder',
-        headerClassName: 'gridBorder'
+        headerClassName: 'gridBorder',
+        augmentedProperty: null
     },
     title: {
         field: "title",
@@ -102,6 +133,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     location: {
         field: "location",
@@ -114,6 +147,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: null,
+        augmentedProperty: 'location'
     },
     nowId: {
         field: "nowId",
@@ -126,6 +161,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     jobId: {
         field: "jobId",
@@ -138,6 +175,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
 
     template: {
@@ -151,6 +190,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     xCode: {
         field: "xCode",
@@ -163,6 +204,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     applyType: {
         field: "applyType",
@@ -175,6 +218,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     formattedDate: {
         field: "formattedDate",
@@ -187,6 +232,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     mesco: {
         field: "mesco",
@@ -199,6 +246,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     provider: {
         field: "provider",
@@ -211,6 +260,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     providerCode: {
         field: "providerCode",
@@ -223,6 +274,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     dateRecency: {
         field: "dateRecency",
@@ -235,6 +288,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     ingestionMethod: {
         field: "ingestionMethod",
@@ -247,6 +302,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     pricingType: {
         field: "pricingType",
@@ -259,6 +316,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: 'now?.jobAdPricingTypeId',
+        augmentedProperty: null
     },
 
     // todo
@@ -273,6 +332,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     refCode: {
         field: "refCode",
@@ -285,6 +346,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     validThrough: {
         field: "validThrough",
@@ -297,6 +360,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     validThroughGoogle: {
         field: "validThroughGoogle",
@@ -309,6 +374,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     remote: {
         field: "remote",
@@ -321,6 +388,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: '',
+        augmentedProperty: null
     },
     ecpm: {
         field: "ecpm",
@@ -333,6 +402,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: null,
+        augmentedProperty: 'kevelData?.ec'
     },
     price: {
         field: "price",
@@ -345,6 +416,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: null,
+        augmentedProperty: 'kevelData?.pc'
     },
     decisionId: {
         field: "decisionId",
@@ -357,6 +430,8 @@ export const model: Record<string, Property> = {
         jobProperty: true,
         setting: true,
         disabled: false,
+        sourceProperty: null,
+        augmentedProperty: 'kevelData?.di'
     }
 };
 
