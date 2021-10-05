@@ -1,11 +1,11 @@
 import {
     currentVersion,
-    job,
+    model,
     JobProperties,
     getJobProperties,
-    getAllProperties, getSettings, needToMigrate,
-    getDefaultUserSettings, migrateFlatObject
-} from './Job';
+    getAllProperties, getAllSettingNames, needToMigrate,
+    getDefaultUserSettings, migrateFlatObject, isValidUserSettings, isValidUserSetting
+} from './model';
 
 
 
@@ -32,7 +32,7 @@ describe('settings', () => {
     test('getAllProperties matches number of properties for current version', () => {
         let fields = getAllProperties();
         // @ts-ignore
-        expect(fields.length).toEqual(Object.keys(job).length);
+        expect(fields.length).toEqual(Object.keys(model).length);
     });
 
     test('getAllProperties matches all properties for current version', () => {
@@ -44,7 +44,7 @@ describe('settings', () => {
 
 
     test('getSettings matches all properties for current version', () => {
-        let fields = getSettings();
+        let fields = getAllSettingNames();
         // @ts-ignore
         expect(fields).toEqual(['position', ...JobProperties[currentVersion.version]]);
     });
@@ -86,7 +86,7 @@ describe('migration needed', () => {
 describe('default settings', () => {
 
     test('default settings have property for all items in schema', () => {
-        expect(getDefaultUserSettings().order.length).toEqual(Object.keys(job).length);
+        expect(getDefaultUserSettings().order.length).toEqual(Object.keys(model).length);
     });
 
     test('default settings have property for all items in schema - 27', () => {
@@ -178,7 +178,7 @@ describe('migration', () => {
         expect(newStore.settings).toEqual((expect.objectContaining({
             ecpm: { "visible": true, "width": "80px" }
         })));
-        expect(newStore.version).toEqual(currentVersion);
+        expect(newStore.version).toEqual(currentVersion.version);
     });
 
 
@@ -206,6 +206,136 @@ describe('need to migrate', () => {
 
 
 });
+
+describe('isValidUserSettings', () => {
+
+    test('', () => {
+        let test = isValidUserSettings({})
+        expect(test).toEqual(false);
+    });
+
+    test('', () => {
+        let test = isValidUserSettings({
+            position: false
+        });
+        expect(test).toEqual(false);
+    });
+    test('', () => {
+        let test = isValidUserSettings({
+            position: false,
+            version: '2.0.3'
+        });
+        expect(test).toEqual(false);
+    });
+    test('', () => {
+        let test = isValidUserSettings({
+            version: '2.0.3',
+            order: [],
+            settings: {}
+        });
+        expect(test).toEqual(false);
+    });
+
+
+    test('default settings - valid', () => {
+        let test = isValidUserSettings(getDefaultUserSettings());
+        expect(test).toEqual(true);
+    });
+
+    test('default settings with arbitrary version - valid', () => {
+        let test = isValidUserSettings({
+            version: '3',
+            order: getAllSettingNames(),
+            settings: getDefaultUserSettings().settings
+        });
+        expect(test).toEqual(true);
+    });
+
+
+    test('default settings with different order - valid', () => {
+        let test = isValidUserSettings({
+            version: '3',
+            order: getAllSettingNames().reverse(),
+            settings: getDefaultUserSettings().settings
+        });
+        expect(test).toEqual(true);
+    });
+
+
+    test('valid settings - valid', () => {
+        let test = isValidUserSettings({
+            version: '???',
+            order: getAllSettingNames(),
+            settings: {
+                ...getDefaultUserSettings().settings,
+                position: { width: '10000px', visible: false }
+            },
+        });
+        expect(test).toEqual(true);
+    });
+
+
+    test('invalid settings - invalid', () => {
+        let test = isValidUserSettings({
+            version: '???',
+            order: getAllSettingNames(),
+            settings: {
+                ...getDefaultUserSettings().settings,
+                position: { width: '10000px', visibility: false }
+            },
+        });
+        expect(test).toEqual(false);
+    });
+
+
+
+});
+
+describe('isValidUserSetting', () => {
+
+    test('', () => {
+        let test = isValidUserSetting({ });
+        expect(test).toEqual(false);
+    });
+
+    test('', () => {
+        let test = isValidUserSetting('eee');
+        expect(test).toEqual(false);
+    });
+
+    test('', () => {
+        let test = isValidUserSetting(null);
+        expect(test).toEqual(false);
+    });
+
+    test('flat object, valid name - should fail', () => {
+        let test = isValidUserSetting({ position: false });
+        expect(test).toEqual(false);
+    });
+
+    test('invalid name - should fail', () => {
+        let test = isValidUserSetting({ pos: { visible: false, width: '50px'} });
+        expect(test).toEqual(false);
+    });
+
+    test('valid - should pass', () => {
+        let test = isValidUserSetting({ position: { visible: false, width: '50px'} });
+        expect(test).toEqual(true);
+    });
+
+    test('missing req prop - fails', () => {
+        let test = isValidUserSetting({ position: {  visi: false, width: '50px'} });
+        expect(test).toEqual(false);
+    });
+
+    test('note - it ignores extra props', () => {
+        let test = isValidUserSetting({ position: { blah: '', visible: false, width: '50px'} });
+        expect(test).toEqual(true);
+    });
+});
+
+
+
 
 
 describe.skip('', () => {

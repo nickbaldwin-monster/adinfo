@@ -15,7 +15,7 @@ import {transformSearchContext} from "../helpers/transformSearchContext";
 
 import { getSavedSettings } from "../helpers/store";
 
-import { currentVersion, getDefaultUserSettings } from "../model/job";
+import { currentVersion, getDefaultUserSettings } from "../model/model";
 const version = currentVersion.version;
 
 console.log('currentVersion is: ', version);
@@ -58,42 +58,15 @@ function settingsReducer(state: object, action: object): object {
 // @ts-ignore
 const ReduxProvider = ({ children }) => {
 
+    // todo - replace
     const getSavedSettings = () => {
-        let savedSettings;
-        chrome.storage.local.get(['adinfoSettings'], function(result) {
-            savedSettings = result.key;
-            console.log('savedSettings are: ', savedSettings);
-        });
-
-        let local = window.localStorage.getItem('adinfo');
-        let localSettings;
-        if (local) {
-            localSettings = JSON.parse(local);
-        }
-        console.log('local Settings are: ', localSettings);
-
-        if (!localSettings?.version || localSettings.version !== '2.0.4') {
-            return defaultSettings;
-        }
-        delete localSettings?.version;
-        return localSettings || defaultSettings;
+        console.log('faking loading store...');
+        return defaultSettings;
     }
 
+    // todo - replace
     const saveSettings = (settings: object) => {
-        chrome.storage.local.set({ adinfoSettings: settings }, function() {
-            // console.log('saved these settings', settings);
-            // console.log('checking...');
-            // chrome.storage.local.get(['adinfoSettings'], function(result) {
-            //    console.log('savedSettings are: ', result.adinfoSettings);
-            // });
-        });
-
-        // @ts-ignore
-        let s = { ...settings, version };
-        let string = JSON.stringify(s);
-        window.localStorage.setItem('adinfo', string);
-        let local = window.localStorage.getItem('adinfo');
-        // console.log('local Settings are: ', local);
+        console.log('faking saving store...');
     }
 
 
@@ -135,7 +108,9 @@ const ReduxProvider = ({ children }) => {
             }
         */
 
-        if (settings && isSetting(settingName)) {
+        // todo - add check back in
+        // if (settings && isSetting(settingName)) {
+        if (settings && settingName) {
 
             setSettings((settings: Settings) => {
 

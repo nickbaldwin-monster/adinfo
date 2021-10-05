@@ -1,17 +1,10 @@
 
-
-// todo
-
-import {GridColumn} from "@progress/kendo-react-grid";
-import React from "react";
-import {SettingsKey} from "../types/Settings";
-
 export const currentVersion = {
-    version: '2.0.4'
+    version: '2.0.5'
 };
 
 
-export interface JobField {
+export interface Property {
     field: string
     title: string,
     width: string,
@@ -34,7 +27,7 @@ export interface JobField {
 
 
 
-export const job: Record<string, JobField> = {
+export const model: Record<string, Property> = {
     position: {
         field: "position",
         title: "Pos",
@@ -367,31 +360,50 @@ export const job: Record<string, JobField> = {
 };
 
 export const getJobProperties = () => {
-    return Object.values(job)
-        .filter((field: JobField) => field.jobProperty)
-        .map((field: JobField) => field.field);
+    return Object.values(model)
+        .filter((field: Property) => field.jobProperty)
+        .map((field: Property) => field.field);
 };
 
 export const getAllProperties = () => {
-    return Object.keys(job); //.map((field: JobField) => field.field);
+    return Object.keys(model); //.map((field: JobField) => field.field);
 };
 
 // should be same now as getAllProperties, but could change in future?
-export const getSettings = () => {
-    return Object.values(job)
-        .filter((field: JobField) => field.setting)
-        .map((field: JobField) => field.field);
+export const getAllSettingNames = () => {
+    return Object.values(model)
+        .filter((field: Property) => field.setting)
+        .map((field: Property) => field.field);
 };
 
+export const getMapOfAllSettingNames = () => {
+    let o = {};
+    for (let key in model) {
+        // @ts-ignore
+        o[key] = true
+    }
+    return o;
+};
 
+const settingNamesMap = getMapOfAllSettingNames();
+const settingNamesList = getAllSettingNames();
+
+interface UserSetting {
+    [key: string]: { visible: boolean, width: string };
+}
+interface UserSettings {
+    version?: string;
+    settings: UserSetting | {};
+    order: string[] | [];
+}
 
 export const getDefaultUserSettings = () => {
-    let newSettings = {
-        version: currentVersion,
+    let newSettings: UserSettings = {
+        version: currentVersion.version,
         settings: {},
         order: []
     }
-    Object.values(job).forEach((job: JobField) => {
+    Object.values(model).forEach((job: Property) => {
          // @ts-ignore
         newSettings.settings[job.field] = { visible: job.visible, width: job.width };
         // @ts-ignore
@@ -458,13 +470,6 @@ export const JobProperties = {
     ]
 }
 
-const migrations = {
-    '2.0.3': {
-        update: [['di', ''], ['dj', ''], ['ec', ''], ['pc', '']],
-        remove: []
-    }
-}
-
 
 
 const migrationNeeded: Record<string, boolean> = {
@@ -497,4 +502,37 @@ export const migrateFlatObject = (store: object | null | undefined) => {
     });
 
     return newStore;
+}
+
+export const isValidUserSetting = (userSetting: UserSetting | any) : boolean => {
+    if (!userSetting || typeof userSetting !== 'object' || userSetting === {}) {
+        return false
+    }
+    let key = Object.keys(userSetting)[0];
+    return !(!userSetting[key] || typeof userSetting[key] !== 'object' ||
+        !(key in settingNamesMap) ||
+        userSetting[key].visible === undefined || typeof userSetting[key].visible !== 'boolean' ||
+        !userSetting[key].width || typeof userSetting[key].width !== 'string');
+}
+
+export const isValidUserSettings = (store: UserSettings | any | null | undefined) : boolean => {
+
+    if (!store || !store.settings || typeof store.settings !== 'object' ||
+        !store.order || typeof store.order !== 'object' ||
+        !store.version || typeof store.version !== 'string') {
+        return false;
+    }
+    let storeSettingNames = (Object.keys(store.settings));
+    if (storeSettingNames.length !== settingNamesList.length ||
+        store.order.length !== settingNamesList.length) {
+        return false;
+    }
+    for (let i = 0; i < storeSettingNames.length; i++) {
+        if (!isValidUserSetting({
+            [storeSettingNames[i]]: store.settings[storeSettingNames[i]]
+        })) {
+            return false;
+        }
+    }
+    return true;
 }
