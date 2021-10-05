@@ -463,33 +463,33 @@ export const JobTable = () => {
                         locked={true}
                     />
 
-                    <GridColumn field="position" title="Position" width="50px" locked={true} reorderable={false} headerCell={headerCell} orderIndex={0 }/>
-                    {settings.company && <GridColumn field="company" title="Company" width="100px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 }/>}
-                    {settings.adProvider && <GridColumn field="adProvider" title="Ad Provider" width="120px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 } headerClassName='gridBorder' className='gridBorder'  />}
-                    {settings.title && <GridColumn field="title" title="Title" width="150px" reorderable={true} headerCell={headerCell} />}
-                    {settings.location && <GridColumn field="location" title="Location" width="120px" reorderable={true} headerCell={headerCell} />}
-                    {settings.nowId && <GridColumn field="nowId" title="Now ID" width="80px" headerCell={headerCell} orderIndex={1 }/>}
-                    {settings.jobId && <GridColumn field="jobId" title="Job ID" width="80px" headerCell={headerCell} />}
-                    {settings.template && <GridColumn field="template" title="Template" width="80px" headerCell={headerCell}/>}
-                    {settings.xCode && <GridColumn field="xCode" title="xcode" width="80px" headerCell={headerCell} />}
-                    {settings.applyType && <GridColumn field="applyType" title="Apply Type" width="70px" headerCell={headerCell} />}
-                    {settings.formattedDate && <GridColumn field="formattedDate" title="Date" width="70px" headerCell={headerCell} />}
-                    {settings.mesco && <GridColumn field="mesco" title="Mesco" width="100px" headerCell={headerCell} />}
-                    {settings.provider && <GridColumn field="provider" title="Provider" width="70px" headerCell={headerCell} />}
-                    {settings.providerCode && <GridColumn field="providerCode" title="Provider Code" width="80px" headerCell={headerCell} />}
-                    {settings.dateRecency && <GridColumn field="dateRecency" title="Recency" width="80px" reorderable={true} headerCell={headerCell} />}
-                    {settings.ingestionMethod && <GridColumn field="ingestionMethod" title="Ingestion" width="70px" headerCell={headerCell} />}
-                    {settings.pricingType && <GridColumn field="pricingType" title="Pricing Type" width="40px" headerCell={headerCell} />}
-                    {settings.seoJobId && <GridColumn field="seoJobId" title="SEO Job ID" width="60px" headerCell={headerCell} />}
-                    {settings.refCode && <GridColumn field="refCode" title="Ref Code" width="60px" headerCell={headerCell} />}
-                    {settings.validThrough && <GridColumn field="validThrough" title="Valid Through" width="80px" headerCell={headerCell} />}
-                    {settings.validThroughGoogle && <GridColumn field="validThroughGoogle" title="Valid Google" width="80px" headerCell={headerCell} />}
+                    {settings.settings.position.visible &&<GridColumn field="position" title="Position" width="50px" locked={true} reorderable={false} headerCell={headerCell} orderIndex={0 }/>}
+                    {settings.settings.company.visible && <GridColumn field="company" title="Company" width="100px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 }/>}
+                    {settings.settings.adProvider.visible && <GridColumn field="adProvider" title="Ad Provider" width="120px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 } headerClassName='gridBorder' className='gridBorder'  />}
+                    {settings.settings.title.visible && <GridColumn field="title" title="Title" width="150px" reorderable={true} headerCell={headerCell} />}
+                    {settings.settings.location.visible && <GridColumn field="location" title="Location" width="120px" reorderable={true} headerCell={headerCell} />}
+                    {settings.settings.nowId.visible && <GridColumn field="nowId" title="Now ID" width="80px" headerCell={headerCell} orderIndex={1 }/>}
+                    {settings.settings.jobId.visible && <GridColumn field="jobId" title="Job ID" width="80px" headerCell={headerCell} />}
+                    {settings.settings.template.visible && <GridColumn field="template" title="Template" width="80px" headerCell={headerCell}/>}
+                    {settings.settings.xCode.visible && <GridColumn field="xCode" title="xcode" width="80px" headerCell={headerCell} />}
+                    {settings.settings.applyType.visible && <GridColumn field="applyType" title="Apply Type" width="70px" headerCell={headerCell} />}
+                    {settings.settings.formattedDate.visible && <GridColumn field="formattedDate" title="Date" width="70px" headerCell={headerCell} />}
+                    {settings.settings.mesco.visible && <GridColumn field="mesco" title="Mesco" width="100px" headerCell={headerCell} />}
+                    {settings.settings.provider.visible && <GridColumn field="provider" title="Provider" width="70px" headerCell={headerCell} />}
+                    {settings.settings.providerCode.visible && <GridColumn field="providerCode" title="Provider Code" width="80px" headerCell={headerCell} />}
+                    {settings.settings.dateRecency.visible && <GridColumn field="dateRecency" title="Recency" width="80px" reorderable={true} headerCell={headerCell} />}
+                    {settings.settings.ingestionMethod.visible && <GridColumn field="ingestionMethod" title="Ingestion" width="70px" headerCell={headerCell} />}
+                    {settings.settings.pricingType.visible && <GridColumn field="pricingType" title="Pricing Type" width="40px" headerCell={headerCell} />}
+                    {settings.settings.seoJobId.visible && <GridColumn field="seoJobId" title="SEO Job ID" width="60px" headerCell={headerCell} />}
+                    {settings.settings.refCode.visible && <GridColumn field="refCode" title="Ref Code" width="60px" headerCell={headerCell} />}
+                    {settings.settings.validThrough.visible && <GridColumn field="validThrough" title="Valid Through" width="80px" headerCell={headerCell} />}
+                    {settings.settings.validThroughGoogle.visible && <GridColumn field="validThroughGoogle" title="Valid Google" width="80px" headerCell={headerCell} />}
                     {false && <GridColumn field="remote" title="Remote?" width="50px" headerCell={headerCell} />}
 
-                    {settings.dj && <GridColumn field="dj" title="Decision index" width="60px" headerCell={headerCell} />}
-                    {settings.ec && <GridColumn field="ec" title="EC" width="80px" headerCell={headerCell} />}
-                    {settings.pc && <GridColumn field="pc" title="PC" width="80px" headerCell={headerCell} />}
-                    {settings.di && <GridColumn field="di" title="Decision id" width="240px" headerCell={headerCell} />}
+                    {settings.settings.decisionIndex.visible && <GridColumn field="decisionIndex" title="Dec index" width="60px" headerCell={headerCell} />}
+                    {settings.settings.ecpm.visible && <GridColumn field="ecpm" title="ecpm" width="80px" headerCell={headerCell} />}
+                    {settings.settings.price.visible && <GridColumn field="price" title="price" width="80px" headerCell={headerCell} />}
+                    {settings.settings.decisionId.visible && <GridColumn field="decisionId" title="Decision id" width="240px" headerCell={headerCell} />}
 
                 </Grid>
 

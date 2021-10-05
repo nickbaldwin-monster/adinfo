@@ -1,12 +1,10 @@
-import { defaultSettings } from "../types/Settings";
-
 import { currentVersion, getDefaultUserSettings, isValidUserSettings, migrateFlatObject }
     from "../model/model";
 
 const settingsKey = 'savedReduxState';
 const storeKey = 'adinfo';
 
-
+const defaultSettings = getDefaultUserSettings();
 
 
 // todo use local storage
@@ -24,29 +22,6 @@ const storeKey = 'adinfo';
  */
 
 
-export const getSavedSettings = () => {
-    let store = loadStore();
-    // v2.0.4 +
-
-    if (!store || !store.version || store?.version === '2.0.3' || store?.version === '2.0.4') {
-        let migratedStore = migrateFlatObject(store);
-        if (isValidUserSettings(migratedStore)) {
-            console.log('migrated saved settings to v' + currentVersion.version);
-            return migratedStore;
-        }
-        else {
-            console.log('could not migrate store. updated store to defaults for v' + currentVersion.version);
-            return getDefaultUserSettings();
-        }
-    }
-    if (store?.version && store.settings) {
-        return store;
-    }
-
-    return null;
-}
-
-
 
 
 
@@ -57,7 +32,7 @@ export const getSavedSettings = () => {
 
 
 // todo interface of settings and store
-const loadState = (key: string, storage: any) => {
+const loadState = (key: string, storage: any = 'LOCAL') => {
     try {
         let serializedState;
         if (storage === 'SESSION') {
@@ -68,6 +43,7 @@ const loadState = (key: string, storage: any) => {
         }
         else {
             // log
+            console.log('error serializing store')
             return undefined;
         }
         if (serializedState === null) {
@@ -76,6 +52,7 @@ const loadState = (key: string, storage: any) => {
         return JSON.parse(serializedState);
     } catch (err) {
         // todo log
+        console.log('error loading store')
         return undefined;
     }
 };
@@ -85,22 +62,21 @@ const loadState = (key: string, storage: any) => {
 
 
 // todo: interface for state
-const saveState = (key: string, state: any, storage: string) => {
+const saveState = (key: string, state: any, storage: string = 'LOCAL') => {
     try {
         const serializedState = JSON.stringify(state);
         if (storage === 'LOCAL') {
             localStorage.setItem(key, serializedState);
-            // todo log
         }
-        if (storage === 'SESSION') {
+        else if (storage === 'SESSION') {
             sessionStorage.setItem(key, serializedState);
-            // todo log
         }
         else {
-            // todo log
+            console.log('else what?!');
         }
     } catch {
-        // todo log
+        // todo
+        console.log('error serializing or saving')
     }
 };
 
@@ -162,3 +138,38 @@ const saveSettingsOld = (settings: object) => {
 }
 
 
+
+
+
+export const getSavedSettings = () => {
+
+    console.log('current plugin version is: ', currentVersion.version);
+    let store = loadStore();
+
+    if (!store || !store.version || store?.version === '2.0.3' || store?.version === '2.0.4') {
+        console.log('your saved settings are for version ' +  store?.version || 'unknown');
+
+        let migratedStore = migrateFlatObject(store);
+        if (isValidUserSettings(migratedStore)) {
+            console.log('your saved settings have been migrated to version ' + currentVersion.version);
+            store = migratedStore;
+        }
+        else {
+            console.log('your saved settings could not be migrated. updated settings to defaults for version ' + currentVersion.version);
+            store = getDefaultUserSettings();
+        }
+    }
+
+    if (store?.version && store.settings) {
+        saveStore(store);
+        return store;
+    }
+
+    return null;
+}
+
+
+
+export const saveSettings = (store: object) => {
+    saveStore(store);
+}

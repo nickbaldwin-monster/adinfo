@@ -46,13 +46,26 @@ export const SettingsPanel = () => {
         chrome.runtime.sendMessage(message);
     };
 
-    let settingsArray: Setting[] = [];
-    if (settings) {
-        for (const [k, v] of Object.entries(settings)) {
-            if (typeof v === 'boolean') {
-                settingsArray.push({key: k, value: v});
-            }
-        }
+    let settingsDisplay = (
+        <div>no settings to see :-(</div>
+    );
+
+    let list: [] = settings.order;
+    if (!settings || !settings.order || !settings.settings) {
+        return (
+            <Resizable
+                defaultSize={{ width: '320px', height: '100%' }}
+                enable={{ top:false, right:false, bottom:false, left:true,
+                    topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
+                minWidth='310px'
+                handleComponent={{left: DragHandle}}
+            >
+                <div className='settingsPanel panel'>
+                    <h4>Settings</h4>
+                    <p> nothing!</p>
+                </div>
+            </Resizable>
+        );
     }
 
     let isLoading = 'loading';
@@ -71,18 +84,17 @@ export const SettingsPanel = () => {
         >
         <div className='settingsPanel panel'>
             <h4>Settings</h4>
-            {settingsArray.map(setting => (
+            {list.map(setting => (
                 <div className='setting'>
                     <Switch
                         onChange={() => {
-                            handleToggleSetting(setting.key);
+                            handleToggleSetting(setting);
                         }}
-                        checked={setting.value}
+                        checked={settings.settings[setting].visible}
                     />
                     <span className='settingSpacer' />
-                    <Label>{setting.key}</Label>
+                    <Label>{setting}</Label>
                 </div>
-
 
             ))}
 

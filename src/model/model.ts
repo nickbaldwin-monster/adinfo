@@ -1,3 +1,4 @@
+import {log} from "../helpers/logger";
 
 export const currentVersion = {
     version: '2.0.5'
@@ -391,7 +392,7 @@ const settingNamesList = getAllSettingNames();
 interface UserSetting {
     [key: string]: { visible: boolean, width: string };
 }
-interface UserSettings {
+export interface UserSettings {
     version?: string;
     settings: UserSetting | {};
     order: string[] | [];
@@ -535,4 +536,54 @@ export const isValidUserSettings = (store: UserSettings | any | null | undefined
         }
     }
     return true;
+}
+
+
+export const userSettingsReducer = (settings: UserSettings, settingName: string) => {
+
+    if (settings && settingName) {
+        // @ts-ignore
+        let prevSettingValue = settings.settings[settingName].visible;
+        let nextSetting = {
+            [settingName]: {
+                // @ts-ignore
+                ...settings.settings[settingName],
+                visible: !prevSettingValue
+            }
+        };
+        if (!isValidUserSetting(nextSetting)) {
+            log({
+                logType: 'ERROR',
+                error: 'unable to update Settings',
+                payload: { nextSetting }
+            });
+            console.log('invalid setting');
+            return settings;
+        }
+        else {
+            let nextSettings = {
+                ...settings,
+                settings: {
+                    ...settings.settings,
+                    ...nextSetting
+                }
+            }
+            log({
+                logType: 'INFO',
+                message: 'new state in reducer',
+                payload: { nextSettings }
+            });
+            console.log('new settings: ', nextSettings);
+            return nextSettings;
+        }
+    }
+    else {
+        log({
+            logType: 'ERROR',
+            error: 'unable to update Settings',
+            payload: { settingName }
+        });
+        console.log('problem - old settings -: ', settings);
+        return settings;
+    }
 }

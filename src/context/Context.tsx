@@ -4,24 +4,15 @@ import { logger } from "../helpers/logger";
 import { transformJobs } from "../helpers/transformJobs";
 import { transformRequest } from "../helpers/transformRequest";
 import { MessageType } from "../types/types";
-import { Settings, isSettings, isSetting, defaultSettings } from '../types/Settings';
 import { defaultErrors, Errors } from '../types/Errors';
 import { decorateResults, removeDecorations } from '../helpers/decorateResults';
 import { determineErrors } from "../helpers/determineErrors";
 import { Job } from "../types/Job";
 import { SearchContext } from "../types/SearchContext";
-import {transformSearchContext} from "../helpers/transformSearchContext";
+import { transformSearchContext } from "../helpers/transformSearchContext";
+import { getSavedSettings, saveSettings } from "../helpers/store";
+import { userSettingsReducer, UserSettings } from "../model/model";
 
-
-import { getSavedSettings } from "../helpers/store";
-
-import { currentVersion, getDefaultUserSettings } from "../model/model";
-const version = currentVersion.version;
-
-console.log('currentVersion is: ', version);
-console.log('defaultSettings are: ', getDefaultUserSettings());
-
-console.log('savedSettings are: ', getSavedSettings());
 
 
 const moduleName = 'Context';
@@ -58,16 +49,6 @@ function settingsReducer(state: object, action: object): object {
 // @ts-ignore
 const ReduxProvider = ({ children }) => {
 
-    // todo - replace
-    const getSavedSettings = () => {
-        console.log('faking loading store...');
-        return defaultSettings;
-    }
-
-    // todo - replace
-    const saveSettings = (settings: object) => {
-        console.log('faking saving store...');
-    }
 
 
     const [settings, setSettings] = useState(getSavedSettings);
@@ -100,6 +81,8 @@ const ReduxProvider = ({ children }) => {
 
 
     const updateSettings = (settingName: string) => {
+
+        console.log(' updating settings');
         /*
             message: {
                 type: "TOGGLE_SETTING"
@@ -108,40 +91,14 @@ const ReduxProvider = ({ children }) => {
             }
         */
 
-        // todo - add check back in
-        // if (settings && isSetting(settingName)) {
-        if (settings && settingName) {
-
-            setSettings((settings: Settings) => {
-
-                // @ts-ignore
-                let prevSettingValue = settings[settingName];
-                let nextSetting = {[settingName]: !prevSettingValue};
-
-                log({
-                    logType: 'INFO',
-                    message: 'new state in reducer',
-                    payload: {...settings, ...nextSetting}
-                });
-
-                // @ts-ignore
-                let newSettings = { ...settings, [settingName]: !settings[settingName] };
-                if (isSettings(newSettings)) {
-                    saveSettings(newSettings);
-                    return newSettings;
-                }
-                else {
-                    log({
-                        logType: 'ERROR',
-                        error: 'unable to update Settings',
-                        // @ts-ignore
-                        payload: { [settingName]: !settings[settingName] }
-                    });
-                    return settings;
-                }
-            });
-        }
+        setSettings((settings: UserSettings) => {
+            let updated = userSettingsReducer(settings, settingName);
+            saveSettings(updated);
+            return updated;
+        });
     }
+
+
 
     const updateDisplay = () => {
         /*
@@ -469,9 +426,7 @@ const ReduxProvider = ({ children }) => {
             updateSelected(message.payload);
         }
 
-        // @ts-ignore    // checking property name is valid
-        // todo - move this into handler
-        if (message.type === "TOGGLE_SETTING" && defaultSettings[message.payload] !== 'undefined') {
+        if (message.type === "TOGGLE_SETTING") {
             updateSettings(message.payload);
         }
 
