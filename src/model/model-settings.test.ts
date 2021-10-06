@@ -3,8 +3,8 @@ import {
     model,
     JobProperties,
     getJobProperties,
-    getAllProperties, getAllSettingNames, needToMigrate,
-    getDefaultUserSettings, migrateFlatObject, isValidUserSettings, isValidUserSetting
+    getAllProperties, getNamesOfSettings, needToMigrate,
+    getDefaultUserSettings, migrateFlatObject, isValidUserSettings, isValidUserSetting, getNamesOfAllProperties
 } from './model';
 
 
@@ -20,33 +20,25 @@ test('getJobProperties is an array of field names', () => {
 describe('settings', () => {
 
     test('currentVersion', () => {
-        expect(currentVersion.version).toEqual('2.0.4');
+        expect(currentVersion.version).toEqual('2.0.5');
     });
 
-    test('getJobProperties matches properties listed for current version', () => {
-        let fields = getJobProperties();
-        // @ts-ignore
-        expect(fields).toEqual(JobProperties[currentVersion.version]);
-    });
+
 
     test('getAllProperties matches number of properties for current version', () => {
-        let fields = getAllProperties();
+        let props = getNamesOfAllProperties();
         // @ts-ignore
-        expect(fields.length).toEqual(Object.keys(model).length);
+        expect(props.length).toEqual(Object.keys(model).length);
     });
 
-    test('getAllProperties matches all properties for current version', () => {
-        let fields = getAllProperties();
-        // @ts-ignore
-        expect(fields).toEqual(['position', ...JobProperties[currentVersion.version]]);
-    });
+
 
 
 
     test('getSettings matches all properties for current version', () => {
-        let fields = getAllSettingNames();
+        let fields = getNamesOfSettings();
         // @ts-ignore
-        expect(fields).toEqual(['position', ...JobProperties[currentVersion.version]]);
+        expect(fields).toEqual([ ...JobProperties[currentVersion.version]]);
     });
 
 
@@ -86,7 +78,7 @@ describe('migration needed', () => {
 describe('default settings', () => {
 
     test('default settings have property for all items in schema', () => {
-        expect(getDefaultUserSettings().order.length).toEqual(Object.keys(model).length);
+        expect(getDefaultUserSettings().order.length).toEqual(Object.keys(model).length - 4);
     });
 
     test('default settings have property for all items in schema - 27', () => {
@@ -129,7 +121,7 @@ describe('default settings', () => {
 
     test('default settings have expected order', () => {
         expect(getDefaultUserSettings().order[0]).toEqual('position');
-        expect(getDefaultUserSettings().order[4]).toEqual('adProvider');
+        expect(getDefaultUserSettings().order[3]).toEqual('adProvider');
         expect(getDefaultUserSettings().order[26]).toEqual('decisionId');
     });
 
@@ -237,15 +229,17 @@ describe('isValidUserSettings', () => {
     });
 
 
+
     test('default settings - valid', () => {
         let test = isValidUserSettings(getDefaultUserSettings());
         expect(test).toEqual(true);
     });
 
+
     test('default settings with arbitrary version - valid', () => {
         let test = isValidUserSettings({
             version: '3',
-            order: getAllSettingNames(),
+            order: getNamesOfSettings(),
             settings: getDefaultUserSettings().settings
         });
         expect(test).toEqual(true);
@@ -255,7 +249,7 @@ describe('isValidUserSettings', () => {
     test('default settings with different order - valid', () => {
         let test = isValidUserSettings({
             version: '3',
-            order: getAllSettingNames().reverse(),
+            order: getNamesOfSettings().reverse(),
             settings: getDefaultUserSettings().settings
         });
         expect(test).toEqual(true);
@@ -265,7 +259,7 @@ describe('isValidUserSettings', () => {
     test('valid settings - valid', () => {
         let test = isValidUserSettings({
             version: '???',
-            order: getAllSettingNames(),
+            order: getNamesOfSettings(),
             settings: {
                 ...getDefaultUserSettings().settings,
                 position: { width: '10000px', visible: false }
@@ -278,7 +272,7 @@ describe('isValidUserSettings', () => {
     test('invalid settings - invalid', () => {
         let test = isValidUserSettings({
             version: '???',
-            order: getAllSettingNames(),
+            order: getNamesOfSettings(),
             settings: {
                 ...getDefaultUserSettings().settings,
                 position: { width: '10000px', visibility: false }

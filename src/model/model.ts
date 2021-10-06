@@ -1,5 +1,6 @@
 import {log} from "../helpers/logger";
 import {Job} from "../types/Job";
+import dayjs from "dayjs";
 
 export const currentVersion = {
     version: '2.0.5'
@@ -7,20 +8,64 @@ export const currentVersion = {
 
 
 // todo - this will provide augmented values
-export const transformJobData = (job: Job) => {
-    //?
-    let location = job.jobPosting.jobLocation;
-    let url = job?.jobAd?.tracking?.impressionUrl;
-    // todo - transfrom url
+export const getImpressionData = (impressionUrl: string) => {
 
-    const transformedLocation = location;
-    const kevelData = url;
-
-    return {
-        location: transformedLocation,
-        kevelData
-    };
 };
+
+
+
+const normalizePostLocation = (locations: object[]): string => {
+    // @ts-ignore
+    if (!locations || locations.length === 0 ) {
+        return '';
+    }
+
+    let loc = '';
+    // @ts-ignore
+    locations.forEach((a: object) => {
+        // @ts-ignore
+        let add = a?.address;
+        if (add) {
+            // @ts-ignore
+            // loc += add.addressLocality + ", " + add.addressRegion + ", " + add.postalCode + ", " + add.addressCountry + ". ";
+
+            let thisLoc = [add.addressLocality, add.addressRegion, add.postalCode,add.addressCountry].filter(Boolean).join(", ");
+            if (thisLoc) {
+                thisLoc.concat('.');
+                loc += thisLoc + '. ';
+            }
+        }
+
+    });
+
+    return loc;
+}
+
+
+const formatDate = (date: string): string => {
+    if (!date || date === '') {
+        return '';
+    }
+    let d = dayjs(date).format('D MMM YY');
+    return d || date;
+};
+
+
+
+const nowAdIds = (object: object[]): string => {
+
+    if (!object || object.length === 0) {
+        return "";
+    }
+    return object
+        // @ts-ignore
+        .filter( (identity: object) => identity?.identifierName === 'POSITION_AD_ID')
+        // @ts-ignore
+        .map((identity: object) =>  identity.identifierValue)
+            // @ts-ignore
+        .join(", ") || "";
+}
+
 
 
 
@@ -30,13 +75,16 @@ export interface Property {
     width: string,
     locked: boolean,
     reorderable: boolean,
-    orderIndex: number | null,
+    orderIndex?: number,
     visible: boolean,
     jobProperty: boolean,
+    additionalProperty: boolean,
+    tableField: boolean,
     setting: boolean,
     disabled: boolean,
-    sourceProperty: string | { (sourceProperty: string) : string } | null // position etc
-    augmentedProperty: string | null 
+    sourceProperty: string | null
+    transformProperty: { (object: object | any): string } | null;
+    augmentedProperty: string | null
     className?: string,
     headerClassName?: string
 }
@@ -59,9 +107,12 @@ export const model: Record<string, Property> = {
         orderIndex: 0,
         visible: true,
         jobProperty: false,
+        additionalProperty: true,
+        tableField: true,
         setting: true,
         disabled: true,
         sourceProperty: null,
+        transformProperty: null,
         augmentedProperty: null
     },
     decisionIndex: {
@@ -73,10 +124,13 @@ export const model: Record<string, Property> = {
         orderIndex: 0,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
         sourceProperty: null,
-        augmentedProperty: 'kevelData?.dj'
+        transformProperty:  null,
+        augmentedProperty: 'decisionIndex'
     },
     remainder: {
         field: "remainder",
@@ -87,10 +141,13 @@ export const model: Record<string, Property> = {
         orderIndex: 0,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
         sourceProperty:  null,
-        augmentedProperty: 'kevelData?.remainder'
+        transformProperty: null,
+        augmentedProperty: 'remainder'
     },
     adProvider: {
         field: "adProvider",
@@ -101,9 +158,15 @@ export const model: Record<string, Property> = {
         orderIndex: 0,
         visible: true,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: true,
-        sourceProperty: 'adProvider?.provider',
+        sourceProperty: 'jobAd',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return object?.provider || "";
+        },
         augmentedProperty: null
     },
     company: {
@@ -115,9 +178,15 @@ export const model: Record<string, Property> = {
         orderIndex: 0,
         visible: true,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: 'jobPosting?.hiringOrganization?.name',
+        sourceProperty: 'jobPosting',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return object?.hiringOrganization?.name || "";
+        },
         className:'gridBorder',
         headerClassName: 'gridBorder',
         augmentedProperty: null
@@ -128,12 +197,18 @@ export const model: Record<string, Property> = {
         width: "150px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: true,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'jobPosting',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return object?.title || "";
+        },
         augmentedProperty: null
     },
     location: {
@@ -142,12 +217,18 @@ export const model: Record<string, Property> = {
         width: "120px",
         locked: false,
         reorderable: false,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: true,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: null,
+        sourceProperty: 'jobPosting',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return normalizePostLocation(object?.jobLocation);
+        },
         augmentedProperty: 'location'
     },
     nowId: {
@@ -156,12 +237,18 @@ export const model: Record<string, Property> = {
         width: "80px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        // orderIndex: 1,
         visible: true,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'externalIdentifiers',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return nowAdIds(object);
+        },
         augmentedProperty: null
     },
     jobId: {
@@ -170,27 +257,35 @@ export const model: Record<string, Property> = {
         width: "80px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: true,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'jobId',
+        transformProperty: null,
         augmentedProperty: null
     },
-
     template: {
         field: "template",
         title: "templateId",
         width: "80px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        // orderIndex: 1,
         visible: true,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'now',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return "" + (object?.templateId || "");
+        },
         augmentedProperty: null
     },
     xCode: {
@@ -199,12 +294,18 @@ export const model: Record<string, Property> = {
         width: "80px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: true,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'enrichments',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return object?.companyKb?.code || "";
+        },
         augmentedProperty: null
     },
     applyType: {
@@ -213,12 +314,18 @@ export const model: Record<string, Property> = {
         width: "70px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        // orderIndex: 1,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'apply',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return object?.applyType.toLowerCase() || "";
+        },
         augmentedProperty: null
     },
     formattedDate: {
@@ -227,12 +334,18 @@ export const model: Record<string, Property> = {
         width: "70px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: true,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'formattedDate',
+        transformProperty:  (object: string)  =>  {
+            // @ts-ignore
+            return formatDate(object);
+        },
         augmentedProperty: null
     },
     mesco: {
@@ -241,12 +354,18 @@ export const model: Record<string, Property> = {
         width: "100px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'enrichments',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return object?.mescos.map((mesco) => mesco.name || mesco.id).join(', ');
+        },
         augmentedProperty: null
     },
     provider: {
@@ -255,12 +374,18 @@ export const model: Record<string, Property> = {
         width: "70px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'provider',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return object?.name || "";
+        },
         augmentedProperty: null
     },
     providerCode: {
@@ -269,12 +394,18 @@ export const model: Record<string, Property> = {
         width: "80px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'provider',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return object?.code || "";
+        },
         augmentedProperty: null
     },
     dateRecency: {
@@ -283,12 +414,15 @@ export const model: Record<string, Property> = {
         width: "80px",
         locked: false,
         reorderable: false,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: true,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'dateRecency',
+        transformProperty: null,
         augmentedProperty: null
     },
     ingestionMethod: {
@@ -297,12 +431,15 @@ export const model: Record<string, Property> = {
         width: "70px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'ingestionMethod',
+        transformProperty: null,
         augmentedProperty: null
     },
     pricingType: {
@@ -311,15 +448,20 @@ export const model: Record<string, Property> = {
         width: "50px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: true,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: 'now?.jobAdPricingTypeId',
+        sourceProperty: 'now',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return "" + (object?.jobAdPricingTypeId || "");
+        },
         augmentedProperty: null
     },
-
     // todo
     seoJobId: {
         field: "seoJobId",
@@ -327,12 +469,15 @@ export const model: Record<string, Property> = {
         width: "60px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'seoJobId',
+        transformProperty: null,
         augmentedProperty: null
     },
     refCode: {
@@ -341,12 +486,18 @@ export const model: Record<string, Property> = {
         width: "60px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'jobPosting',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return object?.identifier?.value || "";
+        },
         augmentedProperty: null
     },
     validThrough: {
@@ -355,12 +506,18 @@ export const model: Record<string, Property> = {
         width: "80px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'jobPosting',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return formatDate(object?.validThrough);
+        },
         augmentedProperty: null
     },
     validThroughGoogle: {
@@ -369,26 +526,39 @@ export const model: Record<string, Property> = {
         width: "80px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: 'enrichments',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return formatDate(object?.googleSyntheticValidThrough);
+        },
         augmentedProperty: null
     },
+    // todo
     remote: {
         field: "remote",
         title: "Remote?",
         width: "50px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
-        sourceProperty: '',
+        sourceProperty: null,
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return "";
+        },
         augmentedProperty: null
     },
     ecpm: {
@@ -397,13 +567,16 @@ export const model: Record<string, Property> = {
         width: "80px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        // orderIndex: 1,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
         sourceProperty: null,
-        augmentedProperty: 'kevelData?.ec'
+        transformProperty: null,
+        augmentedProperty: 'ecpm'
     },
     price: {
         field: "price",
@@ -411,13 +584,16 @@ export const model: Record<string, Property> = {
         width: "80px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
         sourceProperty: null,
-        augmentedProperty: 'kevelData?.pc'
+        transformProperty:  null,
+        augmentedProperty: 'price'
     },
     decisionId: {
         field: "decisionId",
@@ -425,34 +601,189 @@ export const model: Record<string, Property> = {
         width: "140px",
         locked: false,
         reorderable: true,
-        orderIndex: null,
+        //orderIndex: 1,
         visible: false,
         jobProperty: true,
+        additionalProperty: false,
+        tableField: true,
         setting: true,
         disabled: false,
         sourceProperty: null,
-        augmentedProperty: 'kevelData?.di'
-    }
+        transformProperty: null,
+        augmentedProperty: 'decisionId'
+    },
+    url: {
+        field: "url",
+        title: "url",
+        width: "100px",
+        locked: false,
+        reorderable: true,
+        //orderIndex: 1,
+        visible: false,
+        jobProperty: true,
+        additionalProperty: false,
+        tableField: false,
+        setting: false,
+        disabled: false,
+        sourceProperty: 'jobPosting',
+        transformProperty:  (object: object)  =>  {
+            // @ts-ignore
+            return object?.url || "";
+        },
+        augmentedProperty: null
+    },
+    selected: {
+        field: "selected",
+        title: "",
+        width: "",
+        locked: true,
+        reorderable: false,
+        //orderIndex: 0,
+        visible: true,
+        jobProperty: false,
+        additionalProperty: true,
+        tableField: false,
+        setting: false,
+        disabled: true,
+        sourceProperty: null,
+        transformProperty: null,
+        augmentedProperty: null
+    },
+    data: {
+        field: "data",
+        title: "",
+        width: "",
+        locked: true,
+        reorderable: false,
+        //orderIndex: 0,
+        visible: false,
+        jobProperty: false,
+        additionalProperty: true,
+        tableField: false,
+        setting: false,
+        disabled: true,
+        sourceProperty: null,
+        transformProperty: null,
+        augmentedProperty: null
+    },
+    kevelData: {
+        field: "kevelData",
+        title: "",
+        width: "",
+        locked: true,
+        reorderable: false,
+        //orderIndex: 0,
+        visible: false,
+        jobProperty: false,
+        additionalProperty: true,
+        tableField: false,
+        setting: false,
+        disabled: true,
+        sourceProperty: null,
+        transformProperty: null,
+        augmentedProperty: null
+    },
 };
 
+
+export const trJob = (job: Job, position?: number, aug?: object | null) => {
+    // todo - keep list so do not do it every transform
+    let obj: object = {};
+    if (!job) {
+        console.log('error - no job!')
+        return obj;
+    }
+
+    let list = getJobProperties();
+
+    list.forEach((propertyName: string) => {
+
+        let srcProp = model[propertyName]?.sourceProperty;
+        let augProp = model[propertyName]?.augmentedProperty;
+        let func = model[propertyName]?.transformProperty;
+        if (srcProp) {
+            if (func) {
+                // @ts-ignore
+                obj[propertyName] = func(job[srcProp]);
+            }
+            else {
+                // @ts-ignore
+                obj[propertyName] = job[srcProp];
+            }
+        }
+        else if (augProp) {
+            if (!aug) {
+                // @ts-ignore
+                obj[propertyName] = '';
+            }
+            /*
+            else if (func) {
+                // @ts-ignore
+                obj[propertyName] = func(aug[augProp]);
+            }
+
+             */
+            else {
+                // @ts-ignore
+                obj[propertyName] = aug[augProp];
+            }
+        }
+        else if (propertyName === 'position') {
+            // @ts-ignore
+            obj[propertyName] = _i;
+        }
+        else {
+            // @ts-ignore
+            obj[propertyName] = "";
+        }
+
+
+    });
+    // @ts-ignore
+    obj.position = position + 1;
+    // @ts-ignore
+    obj.selected = false;
+    // @ts-ignore
+    obj.data = job;
+    // @ts-ignore
+    obj.kevelData = aug;
+
+    return obj;
+}
+
+
+
+
+
+
+
+
+// return all properties that are derived from job item
 export const getJobProperties = () => {
     return Object.values(model)
         .filter((field: Property) => field.jobProperty)
         .map((field: Property) => field.field);
 };
 
-export const getAllProperties = () => {
-    return Object.keys(model); //.map((field: JobField) => field.field);
+// return all fields that need to be passed to the table
+export const getNamesOfJobFields = () => {
+    return Object.values(model)
+        .filter((field: Property) => field.tableField)
+        .map((field: Property) => field.field);
+};
+
+export const getNamesOfAllProperties = () => {
+    return Object.keys(model);
 };
 
 // should be same now as getAllProperties, but could change in future?
-export const getAllSettingNames = () => {
+export const getNamesOfSettings = () => {
     return Object.values(model)
         .filter((field: Property) => field.setting)
         .map((field: Property) => field.field);
 };
 
-export const getMapOfAllSettingNames = () => {
+export const getAllProperties = () => {
     let o = {};
     for (let key in model) {
         // @ts-ignore
@@ -461,8 +792,8 @@ export const getMapOfAllSettingNames = () => {
     return o;
 };
 
-const settingNamesMap = getMapOfAllSettingNames();
-const settingNamesList = getAllSettingNames();
+const settingNamesMap = getAllProperties();
+const settingNamesList = getNamesOfSettings();
 
 interface UserSetting {
     [key: string]: { visible: boolean, width: string };
@@ -479,17 +810,18 @@ export const getDefaultUserSettings = () => {
         settings: {},
         order: []
     }
-    Object.values(model).forEach((job: Property) => {
-         // @ts-ignore
-        newSettings.settings[job.field] = { visible: job.visible, width: job.width };
+    getNamesOfSettings().forEach((jobName: string) => {
+         let setting = model[jobName]
         // @ts-ignore
-        newSettings.order.push(job.field);
+        newSettings.settings[jobName] = { visible: setting.visible, width: setting.width };
+        // @ts-ignore
+        newSettings.order.push(jobName);
      });
     return newSettings;
 };
 
 export const JobProperties = {
-    '2.0.3': [
+    '2.0.4': [
         "company",
         "adProvider",
         "title",
@@ -516,11 +848,12 @@ export const JobProperties = {
         "pc",
         "dj",
     ],
-    '2.0.4': [
+    '2.0.5': [
+        "position",
         "decisionIndex",
         "remainder",
-        "company",
         "adProvider",
+        "company",
         "title",
         "location",
         "nowId",

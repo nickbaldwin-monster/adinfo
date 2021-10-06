@@ -108,7 +108,7 @@ test('transformed job has correct values for props', () => {
         company: 'Virtusa',
         location: 'Boston, MA, US. ',
         title: 'Java Developer',
-        xCode: 'n/a',
+        xCode: 'xcldincx',
         selected: false,
         seoJobId: 'java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
         data: {},
@@ -122,7 +122,8 @@ test('transformed job has correct values for props', () => {
         decisionId: '247cf20fbc6644bca6680c3579983c9e',
         decisionIndex: '0',
         ecpm: '30.5976',
-        price: '1.1'
+        price: '1.1',
+        remainder: ""
     });
 });
 
@@ -159,7 +160,7 @@ test('jobList transformed into display jobs', () => {
                 company: 'Virtusa',
                 location: 'Boston, MA, US. ',
                 title: 'Java Developer',
-                xCode: 'n/a',
+                xCode: 'xcldincx',
                 seoJobId: 'java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93',
                 selected: false,
                 data: {},
@@ -173,7 +174,8 @@ test('jobList transformed into display jobs', () => {
                 decisionId: '247cf20fbc6644bca6680c3579983c9e',
                 decisionIndex: '0',
                 ecpm: '30.5976',
-                price: '1.1'
+                price: '1.1',
+                remainder: ""
             }
         ]
     );

@@ -220,6 +220,7 @@ export const transformJob = (object: object, i: number) => {
             newObj.adProvider = returnAdProvider(v);
             // @ts-ignore
             let kevel = getDataFromUrl(v.tracking?.impressionUrl || '', object.jobId);
+            // @ts-ignore
             newObj = {...newObj, ...kevel}
         }
         if (k === 'jobPosting') {

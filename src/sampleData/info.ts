@@ -108,8 +108,8 @@ let ORGS_ORGIDS = {
     "enrichments": {
         "companyKb": { // all NOW customers?
             "normalizedCompanyName": "Virtusa",
-                "code": "xcldincx", // optional
-                "normalizedCompanyGuid": "k4wafni6cnf33hebxhwcdmodrf"
+            "code": "xcldincx", // optional
+            "normalizedCompanyGuid": "k4wafni6cnf33hebxhwcdmodrf"
         }
     }
 }

@@ -22,6 +22,8 @@ import {Popup} from "@progress/kendo-react-popup";
 import {MessageType} from "../types/types";
 
 
+import {getNamesOfJobFields, model} from "../model/model";
+
 
 const DATA_ITEM_KEY = "jobId";
 const SELECTED_FIELD = "selected";
@@ -32,9 +34,6 @@ const initialSort = [ {field: "position", dir: "asc"} ];
 const moduleName = 'JobTable';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
-
-
-
 
 
 
@@ -375,6 +374,40 @@ export const JobTable = () => {
 
 
 
+        let names = getNamesOfJobFields();
+        const displayVisibleColumns = () => {
+            if (!settings?.order || !settings?.settings) {
+                return (<div>nothing to see</div>);
+            }
+            return names.map((name) => {
+
+                // todo - just filter changes in onColumnReorder?
+                // todo -figure out resizing fixed items
+
+                if (model[name].orderIndex) {
+                    return (
+                        settings.settings[name]?.visible && <GridColumn
+                            field={name} title={model[name].title || ""} width={model[name].width || "200px"}
+                            locked={model[name].locked} reorderable={model[name].reorderable}
+                            headerCell={headerCell} orderIndex={model[name].orderIndex}
+                            headerClassName={model[name].headerClassName} className={model[name].className}/>
+                    );
+                }
+                else {
+                    return (
+                        settings.settings[name]?.visible && <GridColumn
+                            field={name} title={model[name].title || ""} width={model[name].width || "200px"}
+                            locked={model[name].locked} reorderable={model[name].reorderable}
+                            headerCell={headerCell}
+                            headerClassName={model[name].headerClassName} className={model[name].className}/>
+                    );
+                }
+            });
+
+
+        }
+
+
 
     return (
         <Resizable
@@ -463,33 +496,8 @@ export const JobTable = () => {
                         locked={true}
                     />
 
-                    {settings.settings.position.visible &&<GridColumn field="position" title="Position" width="50px" locked={true} reorderable={false} headerCell={headerCell} orderIndex={0 }/>}
-                    {settings.settings.company.visible && <GridColumn field="company" title="Company" width="100px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 }/>}
-                    {settings.settings.adProvider.visible && <GridColumn field="adProvider" title="Ad Provider" width="120px" locked={true} headerCell={headerCell} cell={cell} reorderable={false}  orderIndex={0 } headerClassName='gridBorder' className='gridBorder'  />}
-                    {settings.settings.title.visible && <GridColumn field="title" title="Title" width="150px" reorderable={true} headerCell={headerCell} />}
-                    {settings.settings.location.visible && <GridColumn field="location" title="Location" width="120px" reorderable={true} headerCell={headerCell} />}
-                    {settings.settings.nowId.visible && <GridColumn field="nowId" title="Now ID" width="80px" headerCell={headerCell} orderIndex={1 }/>}
-                    {settings.settings.jobId.visible && <GridColumn field="jobId" title="Job ID" width="80px" headerCell={headerCell} />}
-                    {settings.settings.template.visible && <GridColumn field="template" title="Template" width="80px" headerCell={headerCell}/>}
-                    {settings.settings.xCode.visible && <GridColumn field="xCode" title="xcode" width="80px" headerCell={headerCell} />}
-                    {settings.settings.applyType.visible && <GridColumn field="applyType" title="Apply Type" width="70px" headerCell={headerCell} />}
-                    {settings.settings.formattedDate.visible && <GridColumn field="formattedDate" title="Date" width="70px" headerCell={headerCell} />}
-                    {settings.settings.mesco.visible && <GridColumn field="mesco" title="Mesco" width="100px" headerCell={headerCell} />}
-                    {settings.settings.provider.visible && <GridColumn field="provider" title="Provider" width="70px" headerCell={headerCell} />}
-                    {settings.settings.providerCode.visible && <GridColumn field="providerCode" title="Provider Code" width="80px" headerCell={headerCell} />}
-                    {settings.settings.dateRecency.visible && <GridColumn field="dateRecency" title="Recency" width="80px" reorderable={true} headerCell={headerCell} />}
-                    {settings.settings.ingestionMethod.visible && <GridColumn field="ingestionMethod" title="Ingestion" width="70px" headerCell={headerCell} />}
-                    {settings.settings.pricingType.visible && <GridColumn field="pricingType" title="Pricing Type" width="40px" headerCell={headerCell} />}
-                    {settings.settings.seoJobId.visible && <GridColumn field="seoJobId" title="SEO Job ID" width="60px" headerCell={headerCell} />}
-                    {settings.settings.refCode.visible && <GridColumn field="refCode" title="Ref Code" width="60px" headerCell={headerCell} />}
-                    {settings.settings.validThrough.visible && <GridColumn field="validThrough" title="Valid Through" width="80px" headerCell={headerCell} />}
-                    {settings.settings.validThroughGoogle.visible && <GridColumn field="validThroughGoogle" title="Valid Google" width="80px" headerCell={headerCell} />}
-                    {false && <GridColumn field="remote" title="Remote?" width="50px" headerCell={headerCell} />}
 
-                    {settings.settings.decisionIndex.visible && <GridColumn field="decisionIndex" title="Dec index" width="60px" headerCell={headerCell} />}
-                    {settings.settings.ecpm.visible && <GridColumn field="ecpm" title="ecpm" width="80px" headerCell={headerCell} />}
-                    {settings.settings.price.visible && <GridColumn field="price" title="price" width="80px" headerCell={headerCell} />}
-                    {settings.settings.decisionId.visible && <GridColumn field="decisionId" title="Decision id" width="240px" headerCell={headerCell} />}
+                    {displayVisibleColumns()}
 
                 </Grid>
 

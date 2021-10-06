@@ -40,13 +40,15 @@ export const getDataFromUrl = (url: string, id: string) => {
                 let d = atobPollyfill(match[1]);
                 let u = JSON.parse(d);
 
-                let { di, dj, pc, ec } = JSON.parse(d);
+                let { di, dj, pc, ec, ep } = u;
 
                 return {
                     decisionId: "" + di,
                     decisionIndex: "" + dj,
                     price: "" + pc,
-                    ecpm: "" + ec
+                    ecpm: "" + ec,
+                    remainder: ep?  "Yes" : "",
+                    data: u
                 };
 
             } catch {
