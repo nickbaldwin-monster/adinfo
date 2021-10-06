@@ -1,8 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useReducer } from "react";
 
 import { logger } from "../helpers/logger";
-import { transformJobs } from "../helpers/transformJobs";
-import { transformRequest } from "../helpers/transformRequest";
+
 import { MessageType } from "../types/types";
 import { defaultErrors, Errors } from '../types/Errors';
 import { decorateResults, removeDecorations } from '../helpers/decorateResults';
@@ -11,7 +10,7 @@ import { Job } from "../types/Job";
 import { SearchContext } from "../types/SearchContext";
 import { transformSearchContext } from "../helpers/transformSearchContext";
 import { getSavedSettings, saveSettings } from "../helpers/store";
-import { userSettingsReducer, UserSettings } from "../model/model";
+import { userSettingsReducer, UserSettings, trJob, transformJobsNew } from "../model/model";
 
 
 
@@ -20,9 +19,7 @@ let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
 
-
-
-
+// todo - rename
 const ReduxContext = createContext({});
 const { Provider, Consumer } = ReduxContext;
 
@@ -45,7 +42,7 @@ function settingsReducer(state: object, action: object): object {
 
 
 
-
+// todo -rename
 // @ts-ignore
 const ReduxProvider = ({ children }) => {
 
@@ -250,16 +247,16 @@ const ReduxProvider = ({ children }) => {
 
 
 
-
+/*
     const updateJobsAndRequest = (jsonString: string) => {
 
-        /*
             message: {
                 type: "JOB_STATE"
                 payload: "" // stringified json
                 source?: "background"
             }
-        */
+
+
         let json;
         try {
             json = JSON.parse(jsonString);
@@ -342,6 +339,7 @@ const ReduxProvider = ({ children }) => {
         }
 
     }
+    */
 
 
     const updateJobs = (jobs: Job[]) => {
@@ -354,11 +352,7 @@ const ReduxProvider = ({ children }) => {
             }
         */
 
-
-        let transformedJobs = transformJobs({ jobResults: jobs });
-
-        // console.log(jobs);
-        // console.log(transformedJobs);
+        let transformedJobs = transformJobsNew({ jobResults: jobs });
 
         // @ts-ignore
         setJobs(transformedJobs);
@@ -433,7 +427,7 @@ const ReduxProvider = ({ children }) => {
         // for old views
         if (message.type === 'JOB_STATE') {
             // console.log('JOB_STATE', message.payload);
-            updateJobsAndRequest(message.payload);
+            // updateJobsAndRequest(message.payload);
         }
 
 
@@ -518,6 +512,8 @@ const ReduxProvider = ({ children }) => {
     );
 };
 
+
+// todo - rename
 const useReduxContext = () => {
     const state = useContext(ReduxContext);
     if (state === undefined) {
@@ -535,6 +531,7 @@ const useReduxContext = () => {
     };
 };
 
-export { ReduxProvider, Consumer as ReduxConsumer, useReduxContext };
 
+
+export { ReduxProvider, Consumer as ReduxConsumer, useReduxContext };
 export default ReduxContext;

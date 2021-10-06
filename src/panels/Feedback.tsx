@@ -1,5 +1,4 @@
 import React, { useReducer, useContext } from 'react';
-import ReactJson from 'react-json-view-ts';
 
 // todo - cut down css
 import './Table.css';
@@ -57,6 +56,5 @@ export const Feedback = () => {
             </iframe>
         </div>
         </Resizable>
-
     );
 };

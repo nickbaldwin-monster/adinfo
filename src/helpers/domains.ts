@@ -1,8 +1,6 @@
 
 
 export const domains = {
-
-
     "de-AT": "https://www.monster.at/jobs/",
     "en-BE": "https://www.monster.be/en/jobs/",
     "fr-BE": "https://www.monster.be/fr/emploi/",

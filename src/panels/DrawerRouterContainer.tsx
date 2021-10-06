@@ -63,97 +63,33 @@ const items = [
     {
         separator: true,
     },
-
-    /*
-    {
-        separator: true,
-    },
-    {
-        separator: true,
-    },
-    {
-        separator: true,
-    },
-    {
-        separator: true,
-    },
-    {
-        separator: true,
-    },
-    {
-        text: "Display",
-        icon: "k-i-list-unordered",
-        route: "/display",
-    },
-    {
-        separator: true,
-    },
-    {
-        separator: true,
-    },
-    {
-        text: "Display",
-        icon: "k-i-question",
-        route: "/display",
-    },
-    {
-        separator: true,
-    },
-    {
-        text: "Display",
-        icon: "k-i-checkbox-checked",
-        route: "/display",
-    },
-    {
-        separator: true,
-    },
-    {
-        text: "Display",
-        icon: "k-i-plus-circle",
-        route: "/display",
-    },
-    {
-        separator: true,
-    },
-
-
-     */
-
 ];
+
+
 
 const DrawerRouterContainer = (props: any) => {
 
-
     // @ts-ignore
     const { display, setDisplay } = useReduxContext();
-
-
     const [expanded, setExpanded] = React.useState(false);
-
     const handleClick = () => {
         setExpanded(!expanded);
     };
 
     // todo
     const onSelect = (e: any) => {
-
-        // todo - keep? or icon at bottom of toolbar
         if (e.itemTarget.props.route === '/display') {
             setDisplay(!display);
             return;
         }
-
         props.history.push(e.itemTarget.props.route);
-        // setExpanded(!expanded);
-
-        // todo - keep? if click on any icon, display
+        // if click on any icon, display
         setDisplay(true);
     };
 
     // @ts-ignore
     const setSelectedItem = (pathName: any) => {
         let currentPath = items.find((item) => item.route === pathName);
-
         // @ts-ignore
         if (currentPath.text) {
             // @ts-ignore
@@ -161,19 +97,10 @@ const DrawerRouterContainer = (props: any) => {
         }
     };
 
-    let show = () => {
-        setDisplay(!display);
-    }
-
     let selected = setSelectedItem(props.location.pathname);
-    // @ts-ignore
-
-    // todo - could add an additional ite
-
 
     return (
         <div>
-
             <Drawer
                 expanded={expanded}
                 position={"end"}
@@ -186,9 +113,7 @@ const DrawerRouterContainer = (props: any) => {
                 onSelect={onSelect}
             >
 
-                {display &&
-                    <DrawerContent>{props.children}</DrawerContent>
-                }
+                {display && <DrawerContent>{props.children}</DrawerContent>}
             </Drawer>
         </div>
     );

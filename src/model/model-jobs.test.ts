@@ -9,6 +9,25 @@ import { getDataFromUrl } from "../helpers/decodeImpUrl";
 
 
 // sanity checks
+
+describe('sanity check - json', () => {
+
+    test('can access properties', () => {
+        expect(jobsList).toHaveProperty('estimatedTotalSize');
+    });
+    test('can access job property', () => {
+        let job = jobsList.jobResults[0];
+        expect(job).toHaveProperty('jobId');
+    });
+
+    test('raw job has lots of properties', () => {
+        let job = jobsList.jobResults[0];
+        expect(job).toHaveProperty('externalIdentifiers');
+        expect(job).toHaveProperty('jobPosting');
+        expect(job).toHaveProperty('brandingExt');
+    });
+});
+
 test('getNamesOfSettings is an array of names for all fields that can be displayed in table', () => {
     let fields = getNamesOfSettings();
     expect(fields).toEqual(

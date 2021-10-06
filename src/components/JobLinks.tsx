@@ -1,14 +1,5 @@
 import * as React from "react";
 
-import { logger } from "../helpers/logger";
-
-const moduleName = 'JobLinks';
-let log = logger(moduleName);
-log({ logType: 'LOADED' });
-
-
-
-
 // @ts-ignore
 export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url, isNext }) => {
 
@@ -19,35 +10,22 @@ export const JobLinks = ({ jobId, accountId, seoJobId, nowId, url, isNext }) => 
     const nextAccount = `${nextProdUrl}/accounts/search?page=1&query=${accountId}&type=accountId`;
     const webAdmin = `https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&txtSearchJobs=${nowId}&EmailAddress=&ebill=&ebilltype=&button=&txtSearch=${nowId}&Submit=Go!&searchtype=POSITIONADID&source=&UserSearchType=`;
     //                https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&txtSearchJobs=230302770&EmailAddress=&ebill=&ebilltype=&button=&txtSearch=230302770&Submit=Go!&searchtype=POSITIONADID&source=&UserSearchType=
-    // const oldWebAdmin = "https://webadmin.monster.com/recruiters/Jobs.aspx?frmaction=search&AllUsers=1&searchtype=POSITIONADID&txtSearch=" + nowId;
-
 
     // const nowJob = `${nowUrl}${nowId}`;
     // const nowAccount = `${nowUrl}/`;
 
     // todo - all domains
     const domain = 'https://www.monster.com';
-
-    // todo
     const orgName ='Monster';
-
-    const jobDetail = `${domain}/job-openings/${seoJobId}#/`;
-    const searchId = `${domain}/jobs/search?id=${jobId}&page=1#/`;
     const orgJobs = `${domain}/jobs/search?cn=${orgName}#/`;
-
-
 
 
     let regex = /(http(s)?)?:\/\/(www\.)monster(board)?\.[a-z]{2,3}(\.[a-z]{2,3})?(\/[a-z]{2})?\/[a-z]*\/[a-z]*\?q=/ig;
 
-    let colo = /\.([a-z]{2,3)}\/[a-z]{2}\/[a-z]*\/[a-z]*\?q=/ig;
-    let co = /\.([a-z]{2,3})\/[a-z]*\/[a-z]*\?q=/ig;
-
     let href = window.location.href;
-    // let s = "https://www.monster.ie/jobs/search?q=Software+Engineer&where=#/"
+
     let test = ".lu/de/jobs/suche?q=";
 
-    let id = '';
     let searchUrl = '';
     let search = href.match(regex);
     if (search) {

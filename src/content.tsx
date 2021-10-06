@@ -15,11 +15,9 @@ import { ReduxProvider } from "./context/Context";
 import { Iframe } from "./components/Iframe";
 
 import { Drawer } from "./panels/Drawer";
-// alternative to Drawer - keep just in case
-// import {Tabs} from "./panels/Tabs";
+
 
 import "./content.css";
-import {logComponent} from "./helpers/reactHelper";
 
 const moduleName = 'content';
 let log = logger(moduleName);

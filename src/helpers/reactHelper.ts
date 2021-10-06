@@ -11,18 +11,3 @@ const findReactComponent = function(el) {
     }
     return null;
 };
-
-
-export const logComponent = (el: any) => {
-
-    let something = findReactComponent(el);
-    console.log('!!!!!!!');
-    console.log('!!!!!!!');
-
-    console.log(something);
-
-    console.log('!!!!!!!');
-    console.log('!!!!!!!');
-
-
-}

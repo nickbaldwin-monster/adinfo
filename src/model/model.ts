@@ -1,6 +1,9 @@
-import {log} from "../helpers/logger";
-import {Job} from "../types/Job";
+import { log } from "../helpers/logger";
+import { Job } from "../types/Job";
 import dayjs from "dayjs";
+import { DisplayJob } from "../types/DisplayJob";
+
+import { getDataFromUrl } from "../helpers/decodeImpUrl";
 
 export const currentVersion = {
     version: '2.0.5'
@@ -687,6 +690,25 @@ export const model: Record<string, Property> = {
 
 
 export const trJob = (job: Job, position?: number, aug?: object | null) => {
+    let message = '';
+    let kevelData = {};
+    let impressionUrl = job?.jobAd?.tracking?.impressionUrl;
+    if (job.jobAd && !impressionUrl) {
+        message = 'error - no impression url for job ' + job.jobId;
+    }
+    else {
+        kevelData = getDataFromUrl(impressionUrl || 'noUrl', job?.jobId);
+    }
+
+    // @ts-ignore
+    if (kevelData.error) {
+        message += "cannot decode impression url for job " + job.jobId;
+    }
+    if (message) {
+        console.log(message);
+    }
+
+
     // todo - keep list so do not do it every transform
     let obj: object = {};
     if (!job) {
@@ -712,7 +734,9 @@ export const trJob = (job: Job, position?: number, aug?: object | null) => {
             }
         }
         else if (augProp) {
-            if (!aug) {
+
+            // @ts-ignore
+            if (!kevelData) {
                 // @ts-ignore
                 obj[propertyName] = '';
             }
@@ -725,7 +749,7 @@ export const trJob = (job: Job, position?: number, aug?: object | null) => {
              */
             else {
                 // @ts-ignore
-                obj[propertyName] = aug[augProp];
+                obj[propertyName] = kevelData[augProp];
             }
         }
         else if (propertyName === 'position') {
@@ -752,7 +776,22 @@ export const trJob = (job: Job, position?: number, aug?: object | null) => {
 }
 
 
+export const transformJobsNew = (jobsList: object) => {
 
+    // @ts-ignore
+    if (!jobsList || !jobsList.jobResults) {
+        return [];
+    }
+
+    let list = <DisplayJob[]> [];
+    // @ts-ignore
+    jobsList.jobResults.forEach( (job: object, i: number) => {
+        // @ts-ignore
+        list.push(trJob(job, i, job.jobAd?.tracking?.impressionUrl));
+    });
+
+    return list;
+};
 
 
 

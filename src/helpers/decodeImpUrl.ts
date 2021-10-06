@@ -31,31 +31,29 @@ const atobPollyfill = function(string: string) {
 
 
 export const getDataFromUrl = (url: string, id: string) => {
-        if (!url) {
-            return null;
+    if (!url) {
+        return { error: 'no url' };
+    }
+    let match = url.match(/(?:http(?:s)?):\/\/(?:www\.)?(?:prod|preprod|dev)?.monsterview.com\/i.gif\?e=([-a-zA-Z0-9]*)&s=([\s\S]*)/);
+    if (match && match[1]) {
+        try {
+            let d = atobPollyfill(match[1]);
+            let u = JSON.parse(d);
+            let { di, dj, pc, ec, ep } = u;
+
+            return {
+                decisionId: "" + di,
+                decisionIndex: "" + dj,
+                price: "" + pc,
+                ecpm: "" + ec,
+                remainder: ep?  "Yes" : "",
+                data: u
+            };
+
+        } catch {
+            console.log('problem with impression url for job id: ', id);
+            return { error: 'cannot decode url' };
         }
-        let match = url.match(/(?:http(?:s)?):\/\/(?:www\.)?(?:prod|preprod|dev)?.monsterview.com\/i.gif\?e=([-a-zA-Z0-9]*)&s=([\s\S]*)/);
-        if (match && match[1]) {
-            try {
-                let d = atobPollyfill(match[1]);
-                let u = JSON.parse(d);
-
-                let { di, dj, pc, ec, ep } = u;
-
-                return {
-                    decisionId: "" + di,
-                    decisionIndex: "" + dj,
-                    price: "" + pc,
-                    ecpm: "" + ec,
-                    remainder: ep?  "Yes" : "",
-                    data: u
-                };
-
-            } catch {
-                //
-                console.log('problem with impression url for job id: ', id);
-                return null;
-            }
-        }
-        else return null;
+    }
+    else return { error: 'unknown' };
 }

@@ -9,7 +9,7 @@ import { Label } from "@progress/kendo-react-labels";
 import { Resizable } from "re-resizable";
 
 import "./SettingsPanel.css";
-import "../elements/Button.css";
+
 import { DragHandle } from "../elements/DragHandle";
 
 const moduleName = 'SettingsPanel';
