@@ -2,6 +2,55 @@
 
 export const monitorReactNodes = function() {
 
+    let msalInstance = null;
+    let redirectUri = null;
+
+    // have to do this in order to access window.msal
+    window.addEventListener('message', function(event) {
+        if (event.data?.type === 'AUTH_URI_RESPONSE') {
+            console.log('script: auth uri response from background: ' + event.data.payload);
+            redirectUri = event.data.payload;
+        }
+
+        if (event.data?.type === 'LOGIN_REQUEST') {
+            console.log('script: login request received for: ' + event.data.payload);
+        }
+
+        if (event.data?.type === 'LOGOUT_REQUEST') {
+            console.log('script: login request received for: ' + event.data.payload);
+        }
+    });
+
+    const msalPoller = setInterval(() => {
+
+        // both card view and split view have this when list is rendered
+        const msal = window.msal;
+        if (msal) {
+            console.log('script: msal present');
+            clearInterval(msalPoller);
+            msalInstance = new msal.PublicClientApplication({
+                auth: {
+                    authority: "https://login.microsoftonline.com/common/",
+                    //clientId: "f8653736-33ca-42d8-8e0f-b30300a837e7",
+                    clientId: "8e881663-9446-4075-99ad-7e246e457462",
+                    redirectUri,
+                    postLogoutRedirectUri: redirectUri
+                },
+                cache: {
+                    cacheLocation: "localStorage"
+                }
+            });
+
+            console.log('script: msal: ', msalInstance);
+        }
+    }, 200);
+
+
+
+
+
+
+
 
     const sendResults = (results: Element) => {
         for (const key in results) {
@@ -197,11 +246,5 @@ export const monitorReactNodes = function() {
      */
 
 
-    // @ts-ignore
-    setTimeout(function () {
-        if (window.msal) {
-            console.log('msal present');
-        }
-    }, 1000);
 
 }

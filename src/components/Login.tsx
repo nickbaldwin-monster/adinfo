@@ -14,22 +14,16 @@ export const Login = () => {
 
     let display = authenticated ? 'You are logged in!' : 'You are unauthenticated';
     let buttonText = authenticated ? "Sign out" : "Sign in";
+    let action = authenticated ? "LOGOUT_REQUEST" : "LOGIN_REQUEST";
 
-
-    let message = {
-        type: 'AUTH_URI_REQUEST',
-        source: 'login'
+    const handle = () => {
+        console.log('handle: ', action);
+        let message = {
+            type: action,
+            source: 'login'
+        };
+        window.postMessage(message, "*");
     };
-    chrome.runtime.sendMessage(message, (response) => {
-        console.log('auth uri request message sent to background');
-    });
-
-    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-        console.log('auth uri response from background');
-        console.log(message);
-    });
-
-
 
     return (
         <div id="" className="">
@@ -37,7 +31,7 @@ export const Login = () => {
                 <br />
                 <p id="message" className="message">{display}</p>
                 <br />
-                <Button id="authenticate">{buttonText}</Button>
+                <Button id="authenticate" onClick={handle}>{buttonText}</Button>
             </div>
 
             <br />

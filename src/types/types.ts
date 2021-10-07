@@ -102,6 +102,30 @@ interface AuthUriResponse {
     payload: string;
 }
 
+interface LoginRequest {
+    type: 'LOGIN_REQUEST';
+    source?: string;
+    payload?: string;
+}
+
+interface LoginResponse {
+    type: 'LOGIN_RESPONSE';
+    source?: string;
+    payload?: string;
+}
+
+interface LogoutRequest {
+    type: 'LOGOUT_REQUEST';
+    source?: string;
+    payload?: string;
+}
+
+interface LogoutResponse {
+    type: 'LOGOUT_RESPONSE';
+    source?: string;
+    payload?: string;
+}
+
 export type MessageType =
     DisplayStateRequest | DisplayStateResponse  |
     SettingsStateRequest | SettingsStateResponse |
@@ -109,4 +133,4 @@ export type MessageType =
 
     // actually used
     JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay | HoverResults | JobSelected | SearchContextUpdated |
-    AuthUriRequest | AuthUriResponse;
+    AuthUriRequest | AuthUriResponse | LoginRequest | LoginResponse | LogoutRequest | LogoutResponse;

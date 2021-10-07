@@ -86,6 +86,30 @@ if (document.readyState !== 'loading') {
     (document.head||document.documentElement).appendChild(msalScript);
     msalScript.remove();
 
+    // listen to background for uri, then pass to script *sigh*
+    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        if (message.type === 'AUTH_URI_RESPONSE') {
+            console.log('content: auth uri response from background: ' + message.payload);
+            window.postMessage(message, "*", );
+        }
+    });
+    let message = {
+        type: 'AUTH_URI_REQUEST',
+        source: 'login'
+    };
+    chrome.runtime.sendMessage(message, (response) => {
+        console.log('auth uri request message sent to background');
+    });
+
+
+
+
+    setTimeout(function () {
+        // @ts-ignore
+        if (window.msal) {
+            console.log('msal present in content');
+        }
+    }, 1000);
 }
 else {
     document.addEventListener('DOMContentLoaded', function () {
