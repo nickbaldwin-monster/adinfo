@@ -90,10 +90,23 @@ interface JobSelected {
     source?: string;
 }
 
+interface AuthUriRequest {
+    type: 'AUTH_URI_RESPONSE';
+    source?: string;
+    payload: string;
+}
+
+interface AuthUriResponse {
+    type: 'AUTH_URI_REQUEST';
+    source?: string;
+    payload: string;
+}
+
 export type MessageType =
     DisplayStateRequest | DisplayStateResponse  |
     SettingsStateRequest | SettingsStateResponse |
     SettingsUpdate | JobResultsUpdated |
 
     // actually used
-    JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay | HoverResults | JobSelected | SearchContextUpdated;
+    JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay | HoverResults | JobSelected | SearchContextUpdated |
+    AuthUriRequest | AuthUriResponse;

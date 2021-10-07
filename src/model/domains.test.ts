@@ -1,4 +1,4 @@
-import {domains} from './domains';
+import { domains } from './domains';
 
 
 

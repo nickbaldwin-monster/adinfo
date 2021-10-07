@@ -63,6 +63,24 @@ const items = [
     {
         separator: true,
     },
+    {
+        separator: true,
+    },{
+        separator: true,
+    },{
+        separator: true,
+    },{
+        separator: true,
+    },
+    // todo - temp
+    {
+        text: "Login",
+        icon: "",
+        route: "/login",
+    },
+    {
+        separator: true,
+    },
 ];
 
 

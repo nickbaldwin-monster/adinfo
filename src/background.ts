@@ -103,6 +103,17 @@ const sendStatus = (display: boolean) => {
 };
 
 
+
+const sendAuth = () => {
+    const message: MessageType = {
+        type: "AUTH_URI_RESPONSE",
+        payload: 'token',
+        source: 'background'
+    };
+    sendMessageToContent(message);
+};
+
+
 const handleMessage = (message: MessageType) => {
     log({ logType: 'MESSAGE_RECEIVED', functionName: 'N/A', payload: message });
     if (message.type === "REQ_DISPLAY_STATUS") {
@@ -117,6 +128,11 @@ const handleMessage = (message: MessageType) => {
     if (message.type === "TOGGLE_SETTING") {
         let setting = message.payload;
         sendSetting(setting);
+    }
+
+
+    if (message.type === "AUTH_URI_REQUEST") {
+        sendAuth();
     }
 };
 
