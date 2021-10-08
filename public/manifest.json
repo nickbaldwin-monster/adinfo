@@ -16,6 +16,9 @@
     "default_popup": "popup.html"
   },
   "permissions": [
+    "identity",
+    "identity.email",
+    "activeTab",
     "tabs",
     "clipboardWrite",
     "storage",

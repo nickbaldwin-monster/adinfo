@@ -126,11 +126,28 @@ interface LogoutResponse {
     payload?: string;
 }
 
+interface Check {
+    type: 'CHECK';
+    source?: string;
+    payload?: string;
+    target?: string;
+}
+
+
+interface CheckResponse {
+    type: 'CHECK_RESPONSE';
+    source?: string;
+    payload?: string;
+    target?: string;
+}
+
 export type MessageType =
     DisplayStateRequest | DisplayStateResponse  |
     SettingsStateRequest | SettingsStateResponse |
     SettingsUpdate | JobResultsUpdated |
 
     // actually used
+    Check | CheckResponse |
     JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay | HoverResults | JobSelected | SearchContextUpdated |
-    AuthUriRequest | AuthUriResponse | LoginRequest | LoginResponse | LogoutRequest | LogoutResponse;
+    AuthUriRequest | AuthUriResponse |
+    LoginRequest | LoginResponse | LogoutRequest | LogoutResponse;

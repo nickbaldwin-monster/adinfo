@@ -17,15 +17,13 @@ import { Drawer } from "./panels/Drawer";
 import { monitorReactNodes } from "./scripts/monitorReactNodes";
 import "./content.css";
 
-import { msalContent } from './scripts/msal-browser.min';
-
-
+import {sendMessageToBackgroundAndPopup} from "./helpers/messaging";
 
 const moduleName = 'content';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
-
+sendMessageToBackgroundAndPopup({type: 'CHECK'});
 
 // wrap the display with data and state managed by context
 const DrawerWithContext = () => {
@@ -79,37 +77,6 @@ if (document.readyState !== 'loading') {
     (document.head||document.documentElement).appendChild(script);
     script.remove();
 
-    // todo - hack for now - replace later
-    const msalScript = document.createElement('script');
-    msalScript.textContent = msalContent;
-    msalScript.title = 'script2';
-    (document.head||document.documentElement).appendChild(msalScript);
-    msalScript.remove();
-
-    // listen to background for uri, then pass to script *sigh*
-    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-        if (message.type === 'AUTH_URI_RESPONSE') {
-            console.log('content: auth uri response from background: ' + message.payload);
-            window.postMessage(message, "*", );
-        }
-    });
-    let message = {
-        type: 'AUTH_URI_REQUEST',
-        source: 'login'
-    };
-    chrome.runtime.sendMessage(message, (response) => {
-        console.log('auth uri request message sent to background');
-    });
-
-
-
-
-    setTimeout(function () {
-        // @ts-ignore
-        if (window.msal) {
-            console.log('msal present in content');
-        }
-    }, 1000);
 }
 else {
     document.addEventListener('DOMContentLoaded', function () {

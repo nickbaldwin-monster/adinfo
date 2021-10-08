@@ -31,8 +31,7 @@ export const monitorReactNodes = function() {
             msalInstance = new msal.PublicClientApplication({
                 auth: {
                     authority: "https://login.microsoftonline.com/common/",
-                    //clientId: "f8653736-33ca-42d8-8e0f-b30300a837e7",
-                    clientId: "8e881663-9446-4075-99ad-7e246e457462",
+                    clientId: "9deaf42c-a982-41a0-95bf-5d95fa66eb34",
                     redirectUri,
                     postLogoutRedirectUri: redirectUri
                 },
@@ -41,12 +40,61 @@ export const monitorReactNodes = function() {
                 }
             });
 
+            // todo
             console.log('script: msal: ', msalInstance);
+
+
         }
     }, 200);
 
 
+    async function getLoginUrl(request, reject) {
+        return new Promise((resolve) => {
+            msalInstance.loginRedirect({
+                ...request,
+                onRedirectNavigate: (url) => {
+                    resolve(url);
+                    return false;
+                }
+            }).catch(reject);
+        });
+    }
 
+
+    async function getLogoutUrl(request) {
+        return new Promise((resolve, reject) => {
+            msalInstance.logout({
+                ...request,
+                onRedirectNavigate: (url) => {
+                    resolve(url);
+                    return false;
+                }
+            }).catch(reject);
+        });
+    }
+
+    async function launchWebAuthFlow(url) {
+        return new Promise((resolve, reject) => {
+            chrome.identity.launchWebAuthFlow({
+                interactive: true,
+                url
+            }, (responseUrl) => {
+                // Response urls includes a hash (login, acquire token calls)
+                if (responseUrl.includes("#")) {
+
+                    // todo
+                    console.log('responseUrl includes #', responseUrl);
+
+                    msalInstance.handleRedirectPromise(`#${responseUrl.split("#")[1]}`)
+                        .then(resolve)
+                        .catch(reject)
+                } else {
+                    // Logout calls
+                    resolve();
+                }
+            })
+        })
+    }
 
 
 

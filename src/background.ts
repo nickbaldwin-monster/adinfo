@@ -7,54 +7,17 @@
 import { MessageType } from "./types/types";
 import { logger } from "./helpers/logger";
 
+import { subscribeToExtensionMessages, subscribeToWindowMessages,
+    sendMessageToBackgroundAndPopup, sendMessageToContent
+} from "./helpers/messaging";
+
 const moduleName = 'background';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
 
-
-
 // default state
 let display = false;
-
-const sendMessageToBackgroundAndPopup = (message:MessageType) => {
-    chrome.runtime.sendMessage(message);
-};
-
-const sendMessageToContent = (message:MessageType) => {
-    // todo - check this approach
-    // todo - check url match - might need to provide array of diff monster domains
-    // todo - add monsterboard
-    // todo - add query e.g. {url: '*://*.monster.co.uk/*'}
-
-    chrome.tabs.query({ active: true }, function(tabs){
-        tabs.forEach((tab) => {
-            if (tab.id) {
-                chrome.tabs.sendMessage(tab.id, message);
-            }
-        });
-    });
-
-    /*
-
-     chrome.tabs.query({url: ''}, function(tabs){
-        tabs.forEach((tab) => {
-            if (tab.id) {
-                chrome.tabs.sendMessage(tab.id, message);
-            }
-        });
-    })
-
-    e.g. url is an array of host urls like: '*://*.monster.co.uk/*'
-
-     */
-
-    log({
-        logType: 'MESSAGE_SENT',
-        payload: message
-    });
-};
-
 
 
 const sendSetting = (setting: string) => {
@@ -82,38 +45,18 @@ const sendDisplay = () => {
     sendMessageToContent(message);
 };
 
-
 const sendStatus = (display: boolean) => {
-    const functionName = 'sendStatus';
     const message: MessageType = {
         type: "DISPLAY_STATUS",
         display,
-        source: 'background'
-    };
-
-    // send message to popup
-    // todo - needed?
-    chrome.runtime.sendMessage(message);
-    log({
-        logType: 'MESSAGE_SENT',
-        functionName,
-        payload: message
-    });
-
-};
-
-
-
-const sendAuth = () => {
-    const message: MessageType = {
-        type: "AUTH_URI_RESPONSE",
-        payload: 'token',
         source: 'background'
     };
     sendMessageToContent(message);
 };
 
 
+
+// todo - check which are unused
 const handleMessage = (message: MessageType) => {
     log({ logType: 'MESSAGE_RECEIVED', functionName: 'N/A', payload: message });
     if (message.type === "REQ_DISPLAY_STATUS") {
@@ -130,28 +73,13 @@ const handleMessage = (message: MessageType) => {
         sendSetting(setting);
     }
 
+    if (message.type === "CHECK") {
+        console.log('check received');
+    }
 
     if (message.type === "AUTH_URI_REQUEST") {
-        sendAuth();
+        //
     }
 };
 
-
-
-
-
-// #####
-// ##### MAIN
-// #####
-
-
-// get initial state and notify popup and content scripts
-// todo - test out having default settings applied here
-// display = getSavedSettings();
-// todo - or applying defaults and saving
-// sendStatus(display);
-
-// respond to messages
-chrome.runtime.onMessage.addListener((message: MessageType) =>
-    handleMessage(message)
-);
+subscribeToExtensionMessages(handleMessage);
