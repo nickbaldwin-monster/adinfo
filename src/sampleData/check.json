@@ -1,0 +1,27 @@
+[
+
+  {
+    "homeAccountId": "776d0318-d023-49c5-a77c-************.1d29541b-3e78-470b-87a8-************",
+    "environment": "login.windows.net",
+    "tenantId": "1d29541b-3e78-470b-87a8-************",
+    "username": "jim@torana.xyz",
+    "localAccountId": "776d0318-d023-49c5-a77c-************",
+    "name": "Jim Jones",
+    "idTokenClaims": {
+      "aud": "9deaf42c-a982-41a0-95bf-************",
+      "iss": "https://login.microsoftonline.com/1d29541b-3e78-470b-87a8-************/v2.0",
+      "iat": 1633686906,
+      "nbf": 1633686906,
+      "exp": 1633690806,
+      "name": "Jim Jones",
+      "nonce": "52540e01-d8fc-48ff-9ea4-************",
+      "oid": "776d0318-d023-49c5-a77c-************",
+      "preferred_username": "nick@torana.xyz",
+      "rh": "0.AUEAG1QpHXg-C0eHqN0xjPrv5yz06p2Cqa*****************.",
+      "sub": "5EMxcpiMA--2g55FATipNS6PsHLTLuyr***********",
+      "tid": "1d29541b-3e78-470b-87a8-************",
+      "uti": "hmQjTcikDUK7s*********",
+      "ver": "2.0"
+    }
+  }
+]

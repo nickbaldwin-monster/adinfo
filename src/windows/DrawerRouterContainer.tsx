@@ -3,6 +3,10 @@ import { withRouter } from "react-router-dom";
 import { Drawer, DrawerContent } from "@progress/kendo-react-layout";
 import { useReduxContext } from "../context/Context";
 import { logger } from "../helpers/logger";
+import {LoginPanel} from "../panels/LoginPanel";
+import dayjs from "dayjs";
+import Duration from "dayjs/plugin/duration";
+import {sendMessageToBackgroundAndPopup} from "../helpers/messaging";
 
 
 
@@ -62,30 +66,15 @@ const items = [
     },
     {
         separator: true,
-    },
-    {
-        separator: true,
-    },{
-        separator: true,
-    },{
-        separator: true,
-    },{
-        separator: true,
-    },
-    // todo - temp
-    {
-        text: "Login",
-        icon: "",
-        route: "/login",
-    },
-    {
-        separator: true,
-    },
+    }
 ];
 
 
 
 const DrawerRouterContainer = (props: any) => {
+
+    // @ts-ignore
+    let { auth, lastAuthTime } = useReduxContext();
 
     // @ts-ignore
     const { display, setDisplay } = useReduxContext();
@@ -117,6 +106,24 @@ const DrawerRouterContainer = (props: any) => {
 
     let selected = setSelectedItem(props.location.pathname);
 
+    sendMessageToBackgroundAndPopup({type: 'AUTH_STATUS_REQUEST', source: 'content'});
+
+    if (!auth) {
+        return (
+            <div>
+                <Drawer
+                    expanded={expanded}
+                    position={"end"}
+                    mode={"overlay"}
+                    mini={true}
+                    items={items}
+                >
+
+                    <DrawerContent><LoginPanel /></DrawerContent>
+                </Drawer>
+            </div>
+        );
+    }
     return (
         <div>
             <Drawer

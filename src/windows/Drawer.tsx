@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { HashRouter, Switch, Route, withRouter } from "react-router-dom";
-import { SettingsPanel } from "./SettingsPanel";
+import { SettingsPanel } from "../panels/SettingsPanel";
 import DrawerRouterContainer from "./DrawerRouterContainer";
-import { JobTable } from "./JobTable";
-import { RequestTable } from "./RequestTable";
-import { Feedback } from "./Feedback";
+import { JobTable } from "../panels/JobTable";
+import { RequestTable } from "../panels/RequestTable";
+import { Feedback } from "../panels/Feedback";
 import { logger } from "../helpers/logger";
-import { ErrorsPanel } from "./ErrorsPanel";
-import {LoginTestPanel} from "./LoginTestPanel";
+import { ErrorsPanel } from "../panels/ErrorsPanel";
+import { LoginPanel } from "../panels/LoginPanel";
 
 
 
@@ -30,7 +30,7 @@ export const Drawer = () => {
                     <Route exact={true} path="/errors" component={ErrorsPanel} />
                     <Route exact={true} path="/feedback" component={Feedback} />
                     <Route exact={true} path="/info" component={RequestTable} />
-                    <Route exact={true} path="/login" component={LoginTestPanel} />
+                    <Route exact={true} path="/login" component={LoginPanel} />
                 </Switch>
             </DrawerRouterContainer>
         </HashRouter>

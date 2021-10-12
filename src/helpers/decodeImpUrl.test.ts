@@ -111,11 +111,11 @@ test('data from valid url', () => {
 
 test('null from wrong domain', () => {
     let u = getDataFromUrl("https://monster.com/i.gif?e=frrfrfrfrfrrf&s=eeeeded", 'fakeid-invalid');
-    expect(u).toBeNull();
+    expect(u).toMatchObject({ error: 'unknown' });
 });
 
 test('null from correct domain but incorrect string', () => {
     let u = getDataFromUrl(dodgyurl, 'fakeid-invalid');
     // expect(getDataFromUrl(dodgyurl)).toThrow();
-    expect(u).toBeNull();
+    expect(u).toMatchObject({error: 'cannot decode url'});
 });

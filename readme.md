@@ -102,13 +102,16 @@ After the project is built, a directory named `dist` will be created.
 2.0.4 - sun 3 oct 2021
 - added debug info
 
+2.0.5
+- authorization (in popup)
+- reordered & renamed kevel info fields
+- some migration for earlier versions
+- disabled key settings
+
 
 tbd
 
 - hide remote setting / explain *
-- authorization! *
-- persist settings *
-- fix excel export *
 - mesco name?
 - highlight on hover 
 - scroll to result for card view

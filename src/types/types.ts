@@ -102,29 +102,54 @@ interface AuthUriResponse {
     payload: string;
 }
 
-interface LoginRequest {
-    type: 'LOGIN_REQUEST';
-    source?: string;
-    payload?: string;
+
+
+interface LoginStarted {
+    type: 'LOGIN_STARTED';
+    source: string;
+    payload: number;
 }
 
-interface LoginResponse {
-    type: 'LOGIN_RESPONSE';
-    source?: string;
-    payload?: string;
+interface LoginCompleted {
+    type: 'LOGIN_COMPLETED';
+    source: string;
+    payload: number;
 }
 
-interface LogoutRequest {
-    type: 'LOGOUT_REQUEST';
-    source?: string;
-    payload?: string;
+interface LoginChecked {
+    type: 'LOGIN_CHECKED';
+    source: string;
+    payload: number;
 }
 
-interface LogoutResponse {
-    type: 'LOGOUT_RESPONSE';
+interface Logout {
+    type: 'LOGOUT';
     source?: string;
-    payload?: string;
 }
+
+interface AuthFlowStatusRequest {
+    type: 'AUTH_FLOW_STATUS_REQUEST';
+    source: string;
+}
+
+interface AuthFlowStatusResponse {
+    type: 'AUTH_FLOW_STATUS_RESPONSE';
+    source: string;
+    payload: boolean;
+}
+
+interface AuthStatusResponse {
+    type: 'AUTH_STATUS_RESPONSE';
+    source: string;
+    payload: boolean;
+}
+
+interface AuthStatusRequest {
+    type: 'AUTH_STATUS_REQUEST';
+    source: string;
+}
+
+
 
 interface Check {
     type: 'CHECK';
@@ -150,4 +175,5 @@ export type MessageType =
     Check | CheckResponse |
     JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay | HoverResults | JobSelected | SearchContextUpdated |
     AuthUriRequest | AuthUriResponse |
-    LoginRequest | LoginResponse | LogoutRequest | LogoutResponse;
+    LoginStarted | LoginCompleted | LoginChecked | Logout |
+    AuthStatusRequest | AuthStatusResponse | AuthFlowStatusRequest | AuthFlowStatusResponse;

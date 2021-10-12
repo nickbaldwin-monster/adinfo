@@ -11,6 +11,8 @@ import { Resizable } from "re-resizable";
 import "./SettingsPanel.css";
 
 import { DragHandle } from "../elements/DragHandle";
+import {getNamesOfJobFields, model} from "../model/model";
+
 
 const moduleName = 'SettingsPanel';
 let log = logger(moduleName);
@@ -28,7 +30,7 @@ interface Setting {
 export const SettingsPanel = () => {
 
     // @ts-ignore
-    const { loading, display, setDisplay, settings, decorate } = useReduxContext();
+    const { settings, decorate } = useReduxContext();
 
     const handleToggleSetting = (setting: string) => {
         const message: MessageType = {
@@ -46,9 +48,6 @@ export const SettingsPanel = () => {
         chrome.runtime.sendMessage(message);
     };
 
-    let settingsDisplay = (
-        <div>no settings to see :-(</div>
-    );
 
     let list: [] = settings.order;
     if (!settings || !settings.order || !settings.settings) {
@@ -62,17 +61,13 @@ export const SettingsPanel = () => {
             >
                 <div className='settingsPanel panel'>
                     <h4>Settings</h4>
-                    <p> nothing!</p>
+                    <p>Nothing to see here!</p>
                 </div>
             </Resizable>
         );
     }
 
-    let isLoading = 'loading';
-
-    const toggle = () => {
-        setDisplay(!display);
-    }
+    // todo - disable settings based on model
 
     return (
         <Resizable
@@ -87,6 +82,7 @@ export const SettingsPanel = () => {
             {list.map(setting => (
                 <div className='setting'>
                     <Switch
+                        disabled={model[setting].disabled || false}
                         onChange={() => {
                             handleToggleSetting(setting);
                         }}

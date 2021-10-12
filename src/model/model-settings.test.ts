@@ -121,7 +121,7 @@ describe('default settings', () => {
 
     test('default settings have expected order', () => {
         expect(getDefaultUserSettings().order[0]).toEqual('position');
-        expect(getDefaultUserSettings().order[3]).toEqual('adProvider');
+        expect(getDefaultUserSettings().order[5]).toEqual('adProvider');
         expect(getDefaultUserSettings().order[26]).toEqual('decisionId');
     });
 

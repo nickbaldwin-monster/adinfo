@@ -39,6 +39,7 @@
     "@progress/kendo-drawing": "^1.10.1",
     "@progress/kendo-licensing": "^1.1.4",
     "@progress/kendo-react-animation": "^4.7.0",
+    "@progress/kendo-react-common": "^4.9.0",
     "@progress/kendo-react-data-tools": "^4.7.0",
     "@progress/kendo-react-dateinputs": "^4.7.0",
     "@progress/kendo-react-dropdowns": "^4.7.0",

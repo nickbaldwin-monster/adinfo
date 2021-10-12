@@ -61,7 +61,7 @@ const ReduxProvider = ({ children }) => {
     const [redux, setRedux] = useState({});
     const [hoverResult, setHoverResult] = useState(-1);
     const [selected, setSelected] = useState(-1);
-
+    const [auth, setAuth] = useState(false);
 
     let defaultState: ContextItem[] = [];
     const [searchContext, setSearchContext] = useState(defaultState);
@@ -363,6 +363,26 @@ const ReduxProvider = ({ children }) => {
         }
 
 
+        if (message.type === 'LOGIN_COMPLETED') {
+            console.log('LOGIN COMPLETED', message);
+            setAuth(true);
+        }
+
+        if (message.type === 'LOGIN_CHECKED') {
+            console.log('LOGIN STARTED', message);
+            setAuth(true);
+        }
+
+        if (message.type === 'LOGOUT') {
+            console.log('LOGOUT', message);
+            setAuth(false);
+        }
+
+        if (message.type === 'AUTH_STATUS_RESPONSE') {
+            console.log('AUTH_STATUS_RESPONSE', message);
+            setAuth(message.payload);
+        }
+
 
     };
 
@@ -407,7 +427,9 @@ const ReduxProvider = ({ children }) => {
             loading,
             settings,
             numberResults,
-            errors
+            errors,
+
+            auth, setAuth
         }} >
             {children}
         </Provider>

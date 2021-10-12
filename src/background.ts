@@ -18,6 +18,16 @@ log({ logType: 'LOADED' });
 
 // default state
 let display = false;
+let auth = false;
+let lastCheckTime = 0;
+let started = false;
+let period = 172800000;
+
+
+const isAuthCurrent = () => {
+    let cutoff = Date.now() - period;
+    return auth && lastCheckTime > cutoff;
+}
 
 
 const sendSetting = (setting: string) => {
@@ -77,9 +87,63 @@ const handleMessage = (message: MessageType) => {
         console.log('check received');
     }
 
-    if (message.type === "AUTH_URI_REQUEST") {
-        //
+
+    if (message.type === "LOGIN_STARTED") {
+        started = true;
+        console.log('LOGIN_STARTED');
+        console.log('auth: ', auth);
+        console.log('started: ', started);
     }
+
+    if (message.type === "AUTH_FLOW_STATUS_REQUEST") {
+        console.log('AUTH_FLOW_STATUS_REQUEST');
+        console.log('auth: ', auth);
+        console.log('started: ', started);
+        sendMessageToBackgroundAndPopup({type: 'AUTH_FLOW_STATUS_RESPONSE', source: 'background', payload: started});
+    }
+
+    if (message.type === "AUTH_STATUS_REQUEST") {
+        console.log('AUTH_STATUS_REQUEST');
+        console.log('auth: ', auth);
+        console.log('started: ', started);
+        let status = isAuthCurrent();
+        sendMessageToContent({type: 'AUTH_STATUS_RESPONSE', source: 'background', payload: status});
+    }
+
+    if (message.type === "LOGIN_COMPLETED") {
+        auth = true;
+        started = false;
+        lastCheckTime = message.payload;
+        console.log('LOGIN COMPLETED');
+        console.log('auth: ', auth);
+        console.log('started: ', started);
+        sendMessageToContent({type: 'AUTH_STATUS_RESPONSE', source: 'background', payload: auth});
+
+    }
+
+    if (message.type === "LOGIN_CHECKED") {
+        auth = true;
+        lastCheckTime = message.payload;
+        console.log('LOGIN_CHECKED');
+        console.log('auth: ', auth);
+        console.log('started: ', started);
+        sendMessageToContent({type: 'AUTH_STATUS_RESPONSE', source: 'background', payload: auth});
+
+    }
+
+    if (message.type === "LOGOUT") {
+        auth = false;
+        console.log('LOGOUT');
+        console.log(auth);
+    }
+
+    if (message.type === "AUTH_URI_REQUEST") {
+
+        console.log('AUTH_URI_REQUEST');
+        console.log(auth);
+    }
+
+
 };
 
 subscribeToExtensionMessages(handleMessage);

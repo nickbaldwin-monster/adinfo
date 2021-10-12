@@ -2,41 +2,38 @@ import * as React from "react";
 import { Button } from "@progress/kendo-react-buttons";
 import { Spacer } from "../elements/Spacer";
 
+import "../windows/PopupWindow.css";
+
 
 // @ts-ignore
-export const Login = () => {
+export const Login = ({isMsal, auth, handleLogin, handleLogout, check}) => {
 
-    const [authenticated, setAuthenticated] = React.useState(false);
-    const toggle = () => {
-        console.log('current state: ', authenticated);
-        setAuthenticated(!authenticated);
-    };
+    let displayAuth = auth ? 'You are already logged in!' : 'You must login.';
+    let buttonText = auth ? "Sign out" : "Sign in";
+    let handle = auth ? handleLogout : handleLogin;
 
-    let display = authenticated ? 'You are logged in!' : 'You are unauthenticated';
-    let buttonText = authenticated ? "Sign out" : "Sign in";
-    let action = authenticated ? "LOGOUT_REQUEST" : "LOGIN_REQUEST";
-
-    const handle = () => {
-        console.log('handle: ', action);
-        let message = {
-            type: action,
-            source: 'login'
-        };
-        window.postMessage(message, "*");
-    };
-
-    return (
-        <div id="" className="">
-            <div id="loginDisplay">
-                <br />
-                <p id="message" className="message">{display}</p>
-                <br />
-                <Button id="authenticate" onClick={handle}>{buttonText}</Button>
-            </div>
-
-            <br />
-            <Button id="toggle" onClick={toggle}>Toggle status</Button>
-        </div>
-    );
+    if (!isMsal) {
+        return (
+            <>
+                <h4 className="k-h4">Monster AdInfo</h4>
+                <div id="loginDisplay">
+                    <p className="k-paragraph" >Not ready to authenticate...</p>
+                </div>
+            </>
+        );
+    }
+    else {
+        return (
+            <>
+                <h4 className="k-h4">Monster AdInfo</h4>
+                <div id="loginDisplay">
+                    <p className="k-paragraph" id="message">{displayAuth}</p>
+                    <br />
+                    <Button id="authenticate" onClick={handle} primary={!auth}>{buttonText}</Button>
+                    <br />
+                </div>
+            </>
+        );
+    }
 
 };

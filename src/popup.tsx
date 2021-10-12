@@ -5,7 +5,7 @@ import * as ReactDOM from "react-dom";
 
 import { MessageType } from "./types/types";
 import { logger } from "./helpers/logger";
-import Settings from "./components/PopupInfo";
+import PopupWindow from "./windows/PopupWindow";
 import "./popup.css";
 
 
@@ -40,7 +40,7 @@ chrome.runtime.onMessage.addListener((message: MessageType) => {
 
 // display setting in popup
 const mountNode = document.getElementById("popup");
-ReactDOM.render(<Settings />, mountNode);
+ReactDOM.render(<PopupWindow />, mountNode);
 
 
 

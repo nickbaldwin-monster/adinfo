@@ -1,0 +1,60 @@
+{
+  "authority": "https://login.microsoftonline.com/common/",
+  "uniqueId": "776d0318-d023-49c5-a77c-************",
+  "tenantId": "1d29541b-3e78-470b-87a8-************",
+  "scopes": [
+    "openid",
+    "profile",
+    "email"
+  ],
+  "account": {
+    "homeAccountId": "776d0318-d023-49c5-a77c-************.1d29541b-3e78-470b-87a8-************",
+    "environment": "login.windows.net",
+    "tenantId": "1d29541b-3e78-470b-87a8-************",
+    "username": "jim@torana.xyz",
+    "localAccountId": "776d0318-d023-49c5-a77c-************",
+    "name": "Jim Jones",
+    "idTokenClaims": {
+      "aud": "9deaf42c-a982-41a0-95bf-************",
+      "iss": "https://login.microsoftonline.com/1d29541b-3e78-470b-87a8-************/v2.0",
+      "iat": 1633687044,
+      "nbf": 1633687044,
+      "exp": 1633690944,
+      "name": "Jim Jones",
+      "nonce": "d756423e-c16a-4bb2-9760-************",
+      "oid": "776d0318-d023-49c5-a77c-************",
+      "preferred_username": "jim@torana.xyz",
+      "rh": "0.AUEAG1QpHXg-C0eHqN0xjPrv5yz06p2CqaBBlb9dl**********.",
+      "sub": "5EMxcpiMA--2g55FATipNS6PsHLTLuyr9JX********",
+      "tid": "1d29541b-3e78-470b-87a8-************",
+      "uti": "Q7c1CFFkwUiQCK4*******",
+      "ver": "2.0"
+    }
+  },
+  "idToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Imwzc*************************NSNzY4MCJ9.eyJhdWQiOiI5ZGVhZjQyYy1hOTgyLTQxYTAtOTViZi01ZDk1ZmE2NmViMzQiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vMWQyOTU0MWItM2U3OC00NzBiLTg3YTgtZGQzMThjZmFlZmU3L3YyLjAiLCJpYXQiOjE2MzM2ODcwNDQsIm5iZiI6MTYzMzY4NzA0NCwiZXhwIjoxNjMzNjkwOTQ0LCJuYW1lIjoiTmljaG9sYXMgQmFsZHdpbiIsIm5vbmNlIjoiZDc1NjQyM2UtYzE2YS00YmIyLTk3NjAtY2E1MzhlZmQzNTEyIiwib2lkIjoiNzc2ZDAzMTgtZDAyMy00OWM1LWE3N2MtOTlkODJjYzM3NDQ1IiwicHJlZmVycmVkX3VzZXJuYW1lIjoibmlja0B0b3JhbmEueHl6IiwicmgiOiIwLkFVRUFHMVFwSFhnLUMwZUhxTjB4alBydjV5ejA2cDJDcWFCQmxiOWRsZnBtNnpSQkFIVS4iLCJzdWIiOiI1RU14Y3BpTUEtLTJnNTVGQVRpcE5TNlBzSExUTHV5cjlKWHp6UThncWNNIiwidGlkIjoiMWQyOTU0MWItM2U3OC00NzBiLTg3YTgtZGQzMThjZmFlZmU3IiwidXRpIjoiUTdjMUNGRmt3VWlRQ0s0dm9xenVBQSIsInZlciI6IjIuMCJ9.iLPGEmp1b5dTgxM7pjbjz4ZPuvEP87sck1xcQ7Ed2wtYDwHMoUxhZPvbNQk2dLF7BUC1roePkX9e-xOIZ3e6Xe52zwMZsJOnWRULdeFF589m2E-BL2a0KuyPQnbv2P04HZ4jSxPeXslVQo1z1SPN5B7PQpVs7G80mKmygW22nHsUqwywjSUkviTgWBo-z5wex7TiQU-qWtdkP0FemoyAK05IqgzelhtqLKhi8N_Aw1IRY-wuoMbAHfAUYVxN6oPFHcheADc0KRB0M18V3W3CxX5H-00p3yz3AjPkUc4RfJ0mq8SQ87-5MYKBXzqNS6FYE_mWNEiMFaW9-N9CNYbyeg",
+  "idTokenClaims": {
+    "aud": "9deaf42c-a982-41a0-95bf-************",
+    "iss": "https://login.microsoftonline.com/1d29541b-3e78-470b-87a8-************/v2.0",
+    "iat": 1633687044,
+    "nbf": 1633687044,
+    "exp": 1633690944,
+    "name": "Jim Jones",
+    "nonce": "d756423e-c16a-4bb2-9760-************",
+    "oid": "776d0318-d023-49c5-a77c-************",
+    "preferred_username": "jim@torana.xyz",
+    "rh": "0.AUEAG1QpHXg-C0eHqN0xjPrv5yz06p2CqaBBlb9dl**********.",
+    "sub": "5EMxcpiMA--2g55FATipNS6PsHLTLuyr9JX********",
+    "tid": "1d29541b-3e78-470b-87a8-************",
+    "uti": "Q7c1CFFkwUiQCK4*******",
+    "ver": "2.0"
+  },
+  "accessToken": "eyJ0eXAiOiJKV1QiLC*********************3N0JCVXVpTzdrOUZZNnRVSVBuY0lEZW9ZNndONHl5MDNLNkEiLCJhbGciOiJSUzI1NiIsIng1dCI6Imwzc*************************NSNzY4MCIsImtpZCI6Imwzc*************************NSNzY4MCJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTAwMDAtYzAwMC0wMDAwMDAwMDAwMDAiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xZDI5NTQxYi0zZTc4LTQ3MGItODdhOC1kZDMxOGNmYWVmZTcvIiwiaWF0IjoxNjMzNjg3MDQ0LCJuYmYiOjE2MzM2ODcwNDQsImV4cCI6MTYzMzY5MDk0NCwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyWmdZTmloMFp1cllhRzhkSVZMeE1mMmpXNkZUbnVVeGRlMnZJblo1bjlrT2VQTXFub0EiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkNocm9tZSBQbHVnaW4gU1NPIC0gTmljayIsImFwcGlkIjoiOWRlYWY0MmMtYTk4Mi00MWEwLTk1YmYtNWQ5NWZhNjZlYjM0IiwiYXBwaWRhY3IiOiIwIiwiZmFtaWx5X25hbWUiOiJCYWxkd2luIiwiZ2l2ZW5fbmFtZSI6Ik5pY2siLCJpZHR5cCI6InVzZXIiLCJpcGFkZHIiOiIxNTkuMTk2LjE3MC4zMyIsIm5hbWUiOiJOaWNob2xhcyBCYWxkd2luIiwib2lkIjoiNzc2ZDAzMTgtZDAyMy00OWM1LWE3N2MtOTlkODJjYzM3NDQ1IiwicGxhdGYiOiI1IiwicHVpZCI6IjEwMDMyMDAxOTI2QkVGQzMiLCJyaCI6IjAuQVVFQUcxUXBIWGctQzBlSHFOMHhqUHJ2NXl6MDZwMkNxYUJCbGI5ZGxmcG02elJCQUhVLiIsInNjcCI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwic3ViIjoiQWpDWjgzMVc0OHh5bmxTSTBPLWllcmwwc2JMRG9vTUFKTUx6NmpPeTVBZyIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJPQyIsInRpZCI6IjFkMjk1NDFiLTNlNzgtNDcwYi04N2E4LWRkMzE4Y2ZhZWZlNyIsInVuaXF1ZV9uYW1lIjoibmlja0B0b3JhbmEueHl6IiwidXBuIjoibmlja0B0b3JhbmEueHl6IiwidXRpIjoiUTdjMUNGRmt3VWlRQ0s0dm9xenVBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc19zdCI6eyJzdWIiOiI1RU14Y3BpTUEtLTJnNTVGQVRpcE5TNlBzSExUTHV5cjlKWHp6UThncWNNIn0sInhtc190Y2R0IjoxNTkzNTY1NzI2fQ.kg4QfTWn9j1EjtOHXRCkP7OJU-BjK5CmiOClFZhEPBhVZxk2vHlsikRNjuJkwCbqxEd1OF8c3Hvwp8VtDIeKIX-gKshhuk92ww5jQScQ36HrV5ek3m4hohSWF6MKEER2vk7JGHH8uyU32UVRu6oDrnrrZpFMHWaqZozCsDJg8rla51b7po_rLDBWoaCNcHyJsnt8N2IwyisuQhjtBreKbu5YG_3x7aisQx3tcXNx8SG59IykR3vf-ukNYTw28TNdnIujQWmwBHupb7ewZB-qEg-vThojHvh_Np8PVe5D4zUKe9HXmcOOobRZ_jf5aKMcY-dJRtA67nPKPPmCp0ZhCQ",
+  "fromCache": false,
+  "expiresOn": "2021-10-08T11:02:23.000Z",
+  "extExpiresOn": "2021-10-08T12:02:22.000Z",
+  "familyId": "",
+  "tokenType": "Bearer",
+  "state": "",
+  "cloudGraphHostName": "",
+  "msGraphHost": ""
+}

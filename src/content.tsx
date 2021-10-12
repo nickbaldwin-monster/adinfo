@@ -13,7 +13,7 @@ import * as ReactDOM from "react-dom";
 
 import { logger } from "./helpers/logger";
 import { ReduxProvider } from "./context/Context";
-import { Drawer } from "./panels/Drawer";
+import { Drawer } from "./windows/Drawer";
 import { monitorReactNodes } from "./scripts/monitorReactNodes";
 import "./content.css";
 

@@ -4,19 +4,20 @@ import { useReduxContext } from "../context/Context";
 
 import { logger } from "../helpers/logger";
 
-import { Login } from "../components/Login";
 import { Resizable } from "re-resizable";
 import { DragHandle } from "../elements/DragHandle";
+import { Button } from "@progress/kendo-react-buttons";
+import {MessageType} from "../types/types";
 
-const moduleName = 'LoginTestPanel';
+const moduleName = 'LoginPanel';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
 
+// @ts-ignore
+export const LoginPanel = () => {
 
-export const LoginTestPanel = () => {
-    // @ts-ignore
-    const { loading } = useReduxContext();
+    let message = "You may need to login. Please click the plugin icon in the extension toolbar above.";
 
     return (
         <Resizable
@@ -28,7 +29,8 @@ export const LoginTestPanel = () => {
         >
             <div className='settingsPanel panel'>
                 <h4>Login</h4>
-                <Login />
+                <p>{message}</p>
+                <br />
             </div>
         </Resizable>
     );
