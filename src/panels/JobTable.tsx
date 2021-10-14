@@ -376,7 +376,7 @@ export const JobTable = () => {
 
         let names = getNamesOfJobFields();
         const displayVisibleColumns = () => {
-            if (!settings?.order || !settings?.settings) {
+            if (!settings?.dataOrder || !settings?.dataSettings) {
                 return (<div>nothing to see</div>);
             }
             return names.map((name) => {
@@ -386,7 +386,7 @@ export const JobTable = () => {
 
                 if (DataModel[name].orderIndex) {
                     return (
-                        settings.settings[name]?.visible && <GridColumn
+                        settings.dataSettings[name]?.visible && <GridColumn
                             field={name} title={DataModel[name].title || ""} width={DataModel[name].width || "200px"}
                             locked={DataModel[name].locked} reorderable={DataModel[name].reorderable}
                             headerCell={headerCell} orderIndex={DataModel[name].orderIndex}
@@ -395,7 +395,7 @@ export const JobTable = () => {
                 }
                 else {
                     return (
-                        settings.settings[name]?.visible && <GridColumn
+                        settings.dataSettings[name]?.visible && <GridColumn
                             field={name} title={DataModel[name].title || ""} width={DataModel[name].width || "200px"}
                             locked={DataModel[name].locked} reorderable={DataModel[name].reorderable}
                             headerCell={headerCell}

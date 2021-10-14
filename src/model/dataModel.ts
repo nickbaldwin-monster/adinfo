@@ -727,6 +727,7 @@ export interface FeatureProperty {
     title: string // label used in UI
     sensitive: boolean,
     setting: boolean, // should appear as a setting
+    enabled: boolean, // default on or off
     disabled: boolean, // should setting be able to be changed
 }
 
@@ -736,6 +737,7 @@ export const FeatureModel: Record<string, FeatureProperty> = {
         title: 'Decorate results',
         sensitive: false,
         setting: true,
+        enabled: true,
         disabled: false,
     },
     displayDevInfo: {
@@ -743,6 +745,7 @@ export const FeatureModel: Record<string, FeatureProperty> = {
         title: 'Display Dev Info' ,
         sensitive: false,
         setting: true,
+        enabled: true,
         disabled: false,
     },
 }
@@ -750,14 +753,13 @@ export const FeatureModel: Record<string, FeatureProperty> = {
 
 export const trJob = (job: Job, position: string) => {
 
-
     let obj: object = {};
     if (!job) {
         console.log('error - no job!')
         return obj;
     }
     if (!position) {
-        position ="";
+        position = "";
     }
 
     let message = '';
@@ -782,7 +784,7 @@ export const trJob = (job: Job, position: string) => {
     // todo - keep list so do not do it every transform
 
 
-    let list = getJobProperties();
+    let list = getNamesOfJobProperties();
 
     list.forEach((propertyName: string) => {
 
@@ -860,14 +862,14 @@ export const transformJobsNew = (jobsList: object) => {
 
 
 
-// return all properties that are derived from job item
-export const getJobProperties = () => {
+// return all properties that are derived from job item (incl from impression url)
+export const getNamesOfJobProperties = () => {
     return Object.values(DataModel)
         .filter((field: DataProperty) => field.jobProperty)
         .map((field: DataProperty) => field.field);
 };
 
-// return all fields that need to be passed to the table
+// return all fields that can be displayed in the table
 export const getNamesOfJobFields = () => {
     return Object.values(DataModel)
         .filter((field: DataProperty) => field.tableField)
@@ -878,11 +880,17 @@ export const getNamesOfAllProperties = () => {
     return Object.keys(DataModel);
 };
 
-// should be same now as getAllProperties, but could change in future?
-export const getNamesOfSettings = () => {
+// should be same now as getNamesOfJobFields, but could change in future?
+export const getNamesOfDataSettings = () => {
     return Object.values(DataModel)
         .filter((field: DataProperty) => field.setting)
         .map((field: DataProperty) => field.field);
+};
+
+export const getNamesOfFeatureSettings = () => {
+    return Object.values(FeatureModel)
+        .filter((field: FeatureProperty) => field.setting)
+        .map((field: FeatureProperty) => field.field);
 };
 
 export const getAllProperties = () => {
@@ -894,31 +902,56 @@ export const getAllProperties = () => {
     return o;
 };
 
-const settingNamesMap = getAllProperties();
-const settingNamesList = getNamesOfSettings();
+export const getAllFeatureSettings = () => {
+    let o = {};
+    for (let key in FeatureModel) {
+        // @ts-ignore
+        o[key] = true
+    }
+    return o;
+};
 
-interface UserSetting {
+const featureSettingNamesMap = getAllFeatureSettings();
+const settingNamesMap = getAllProperties();
+const dataSettingNamesList = getNamesOfDataSettings();
+const featureSettingNamesList = getNamesOfFeatureSettings();
+
+interface DataSetting {
     [key: string]: { visible: boolean, width: string };
+}
+interface FeatureSetting {
+    [key: string]: { enabled: boolean };
 }
 export interface UserSettings {
     version?: string;
-    settings: UserSetting | {};
-    order: string[] | [];
+    dataSettings: DataSetting | {};
+    dataOrder: string[] | [];
+    featureSettings: FeatureSetting | {};
+    featureOrder: string[];
 }
 
 export const getDefaultUserSettings = () => {
     let newSettings: UserSettings = {
         version: currentVersion.version,
-        settings: {},
-        order: []
+        dataSettings: {},
+        dataOrder: [],
+        featureSettings: {},
+        featureOrder: []
     }
-    getNamesOfSettings().forEach((jobName: string) => {
-         let setting = DataModel[jobName]
+    getNamesOfDataSettings().forEach((name: string) => {
+         let setting = DataModel[name];
         // @ts-ignore
-        newSettings.settings[jobName] = { visible: setting.visible, width: setting.width };
+        newSettings.dataSettings[name] = { visible: setting.visible, width: setting.width };
         // @ts-ignore
-        newSettings.order.push(jobName);
+        newSettings.dataOrder.push(name);
      });
+    getNamesOfFeatureSettings().forEach((name: string) => {
+        let setting = FeatureModel[name];
+        // @ts-ignore
+        newSettings.featureSettings[name] = { enabled: setting.enabled, disabled: setting.disabled };
+        // @ts-ignore
+        newSettings.featureOrder.push(name);
+    });
     return newSettings;
 };
 
@@ -1006,43 +1039,69 @@ export const migrateFlatObject = (store: object | null | undefined) => {
 
     Object.keys(store).forEach((key) => {
         // @ts-ignore
-        if (newStore.settings[key]) {
+        if (newStore.dataSettings[key]) {
             // @ts-ignore
-            newStore.settings[key].visible = store[key];
+            newStore.dataSettings[key].visible = store[key];
         }
     });
 
     return newStore;
 }
 
-export const isValidUserSetting = (userSetting: UserSetting | any) : boolean => {
-    if (!userSetting || typeof userSetting !== 'object' || userSetting === {}) {
+
+
+export const isValidDataSetting = (dataSetting: DataSetting | any) : boolean => {
+    if (!dataSetting || typeof dataSetting !== 'object' || dataSetting === {}) {
         return false
     }
-    let key = Object.keys(userSetting)[0];
-    return !(!userSetting[key] || typeof userSetting[key] !== 'object' ||
+    let key = Object.keys(dataSetting)[0];
+    return !(!dataSetting[key] || typeof dataSetting[key] !== 'object' ||
         !(key in settingNamesMap) ||
-        userSetting[key].visible === undefined || typeof userSetting[key].visible !== 'boolean' ||
-        !userSetting[key].width || typeof userSetting[key].width !== 'string');
+        dataSetting[key].visible === undefined || typeof dataSetting[key].visible !== 'boolean' ||
+        !dataSetting[key].width || typeof dataSetting[key].width !== 'string');
 }
 
-export const isValidUserSettings = (store: UserSettings | any | null | undefined) : boolean => {
+export const isValidFeatureSetting = (featureSetting: FeatureSetting | any ) : boolean => {
+    if (!featureSetting || typeof featureSetting !== 'object' || featureSetting === {}) {
+        return false
+    }
+    let key = Object.keys(featureSetting)[0];
+    return !(!featureSetting[key] || typeof featureSetting[key] !== 'object' ||
+        !(key in featureSettingNamesMap) ||
+        featureSetting[key].enabled === undefined || typeof featureSetting[key].enabled !== 'boolean' ||
+        featureSetting[key].disabled === undefined || typeof featureSetting[key].disabled !== 'boolean');
+}
 
-    if (!store || !store.settings || typeof store.settings !== 'object' ||
-        !store.order || typeof store.order !== 'object' ||
-        !store.version || typeof store.version !== 'string') {
+export const isValidUserSettings = (store: UserSettings | any | null | undefined) : any => {
+
+    if (!store || !store.version || typeof store.version !== 'string' ||
+        !store.dataSettings || typeof store.dataSettings !== 'object' ||
+        !store.dataOrder || typeof store.dataOrder !== 'object' ||
+        !store.featureSettings || typeof store.featureSettings !== 'object' ||
+        !store.featureOrder || typeof store.featureOrder !== 'object') {
         return false;
     }
-    let storeSettingNames = (Object.keys(store.settings));
-    if (storeSettingNames.length !== settingNamesList.length ||
-        store.order.length !== settingNamesList.length) {
-        return false;
+    let dataSettingNames = (Object.keys(store.dataSettings));
+    if (dataSettingNames.length !== dataSettingNamesList.length ||
+        store.dataOrder.length !== dataSettingNamesList.length) {
+        return 2;
     }
-    for (let i = 0; i < storeSettingNames.length; i++) {
-        if (!isValidUserSetting({
-            [storeSettingNames[i]]: store.settings[storeSettingNames[i]]
+    for (let i = 0; i < dataSettingNames.length; i++) {
+        if (!isValidDataSetting({
+            [dataSettingNames[i]]: store.dataSettings[dataSettingNames[i]]
         })) {
-            return false;
+            return 3;
+        }
+    }
+    let featureSettingNames = (Object.keys(store.featureSettings));
+    if (featureSettingNames.length !== featureSettingNamesList.length ) {
+        return 4;
+    }
+    for (let i = 0; i < featureSettingNames.length; i++) {
+        if (!isValidFeatureSetting({
+            [featureSettingNames[i]]: store.featureSettings[featureSettingNames[i]]
+        })) {
+            return 5;
         }
     }
     return true;
@@ -1062,15 +1121,15 @@ export const userSettingsReducer = (settings: UserSettings, settingName: string)
     }
 
     // @ts-ignore
-    let prevSettingValue = settings.settings[settingName].visible;
+    let prevSettingValue = settings.dataSettings[settingName].visible;
     let nextSetting = {
         [settingName]: {
             // @ts-ignore
-            ...settings.settings[settingName],
+            ...settings.dataSettings[settingName],
             visible: !prevSettingValue
         }
     };
-    if (!isValidUserSetting(nextSetting)) {
+    if (!isValidDataSetting(nextSetting)) {
         log({
             logType: 'ERROR',
             error: 'unable to update Settings',
@@ -1082,8 +1141,8 @@ export const userSettingsReducer = (settings: UserSettings, settingName: string)
     else {
         let nextSettings = {
             ...settings,
-            settings: {
-                ...settings.settings,
+            dataSettings: {
+                ...settings.dataSettings,
                 ...nextSetting
             }
         }

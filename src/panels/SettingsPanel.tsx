@@ -57,8 +57,8 @@ export const SettingsPanel = () => {
     };
 
 
-    let list: string[] = settings.order;
-    if (!settings || !settings.order || !settings.settings) {
+    let list: string[] = settings.dataOrder;
+    if (!settings || !settings.dataOrder || !settings.dataSettings) {
         return (
             <Resizable
                 defaultSize={{ width: '320px', height: '100%' }}
@@ -94,7 +94,7 @@ export const SettingsPanel = () => {
                         onChange={() => {
                             handleToggleSetting(setting);
                         }}
-                        checked={settings.settings[setting].visible}
+                        checked={settings.dataSettings[setting].visible}
                     />
                     <span className='settingSpacer' />
                     <Label>{setting}</Label>

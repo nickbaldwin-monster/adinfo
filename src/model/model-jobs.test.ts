@@ -1,6 +1,6 @@
 import {
     trJob,
-    getAllProperties, getNamesOfSettings, getJobProperties,
+    getAllProperties, getNamesOfDataSettings, getNamesOfJobProperties,
 } from './dataModel';
 
 import jobsList from '../sampleData/jobsList.json';
@@ -29,7 +29,7 @@ describe('sanity check - json', () => {
 });
 
 test.skip('getNamesOfSettings is an array of names for all fields that can be displayed in table', () => {
-    let fields = getNamesOfSettings();
+    let fields = getNamesOfDataSettings();
     expect(fields).toEqual(
         expect.arrayContaining(["position", "decisionIndex", "remainder", "adProvider", "company", "title", "location", "nowId", "jobId", "template", "xCode", "applyType", "formattedDate", "mesco", "provider", "providerCode", "dateRecency", "ingestionMethod", "pricingType", "seoJobId", "refCode", "validThrough", "validThroughGoogle", "remote", "ecpm", "price", "decisionId"]
         )
@@ -69,7 +69,7 @@ describe('trJob', () => {
     test('trJob - expected properties - with added items', () => {
         const job = jobsList.jobResults[0];
         let props = Object.keys(trJob(job, "5"));
-        let propNames = getJobProperties();
+        let propNames = getNamesOfJobProperties();
         expect(props).toEqual([
             ...propNames,
             'position',

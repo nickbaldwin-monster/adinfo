@@ -146,7 +146,12 @@ export const getSavedSettings = () => {
     console.log('current plugin version is: ', currentVersion.version);
     let store = loadStore();
 
-    if (!store || !store.version || store?.version === '2.0.3' || store?.version === '2.0.4') {
+    if (!store ) {
+        console.log('youdo not have any saved settings');
+        store = getDefaultUserSettings();
+    }
+
+    if (!store.version || store?.version === '2.0.3' || store?.version === '2.0.4') {
         console.log('your saved settings are for version ' +  store?.version || 'unknown');
 
         let migratedStore = migrateFlatObject(store);
@@ -160,7 +165,7 @@ export const getSavedSettings = () => {
         }
     }
 
-    if (store?.version && store.settings) {
+    if (store?.version && store.dataSettings) {
         saveStore(store);
         return store;
     }

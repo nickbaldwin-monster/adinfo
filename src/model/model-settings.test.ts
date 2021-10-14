@@ -2,16 +2,152 @@ import {
     currentVersion,
     DataModel,
     JobProperties,
-    getJobProperties,
-    getAllProperties, getNamesOfSettings, needToMigrate,
-    getDefaultUserSettings, migrateFlatObject, isValidUserSettings, isValidUserSetting, getNamesOfAllProperties
+    getNamesOfJobProperties,
+    getAllProperties,
+    getNamesOfDataSettings,
+    getNamesOfFeatureSettings,
+    needToMigrate,
+    getDefaultUserSettings,
+    migrateFlatObject,
+    isValidUserSettings,
+    isValidDataSetting,
+    getNamesOfAllProperties,
+    isValidFeatureSetting
 } from './dataModel';
 
 
 
+let prevStore = {
+    "version": "2.0.5",
+    "settings": {
+        "position": {
+            "visible": true,
+            "width": "50px"
+        },
+        "decisionIndex": {
+            "visible": true,
+            "width": "50px"
+        },
+        "remainder": {
+            "visible": true,
+            "width": "40px"
+        },
+        "adProvider": {
+            "visible": true,
+            "width": "120px"
+        },
+        "company": {
+            "visible": true,
+            "width": "100px"
+        },
+        "title": {
+            "visible": true,
+            "width": "150px"
+        },
+        "location": {
+            "visible": true,
+            "width": "120px"
+        },
+        "nowId": {
+            "visible": true,
+            "width": "80px"
+        },
+        "jobId": {
+            "visible": true,
+            "width": "80px"
+        },
+        "template": {
+            "visible": true,
+            "width": "80px"
+        },
+        "xCode": {
+            "visible": true,
+            "width": "80px"
+        },
+        "applyType": {
+            "visible": false,
+            "width": "70px"
+        },
+        "formattedDate": {
+            "visible": true,
+            "width": "70px"
+        },
+        "mesco": {
+            "visible": false,
+            "width": "100px"
+        },
+        "provider": {
+            "visible": false,
+            "width": "70px"
+        },
+        "providerCode": {
+            "visible": false,
+            "width": "80px"
+        },
+        "dateRecency": {
+            "visible": true,
+            "width": "80px"
+        },
+        "ingestionMethod": {
+            "visible": false,
+            "width": "70px"
+        },
+        "pricingType": {
+            "visible": true,
+            "width": "50px"
+        },
+        "seoJobId": {
+            "visible": false,
+            "width": "60px"
+        },
+        "refCode": {
+            "visible": false,
+            "width": "60px"
+        },
+        "validThrough": {
+            "visible": false,
+            "width": "80px"
+        },
+        "validThroughGoogle": {
+            "visible": true,
+            "width": "80px"
+        },
+        "remote": {
+            "visible": true,
+            "width": "50px"
+        }
+    },
+    "order": [
+        "position",
+        "decisionIndex",
+        "remainder",
+        "adProvider",
+        "company",
+        "title",
+        "location",
+        "nowId",
+        "jobId",
+        "template",
+        "xCode",
+        "applyType",
+        "formattedDate",
+        "mesco",
+        "provider",
+        "providerCode",
+        "dateRecency",
+        "ingestionMethod",
+        "pricingType",
+        "seoJobId",
+        "refCode",
+        "validThrough",
+        "validThroughGoogle",
+        "remote"
+    ]
+};
+
 // sanity check
 test('getJobProperties is an array of field names', () => {
-    let fields = getJobProperties();
+    let fields = getNamesOfJobProperties();
     expect(fields).toEqual(
         expect.arrayContaining(['company', 'title'])
     );
@@ -36,7 +172,7 @@ describe('settings', () => {
 
 
     test.skip('getSettings matches all properties for current version', () => {
-        let fields = getNamesOfSettings();
+        let fields = getNamesOfDataSettings();
         // @ts-ignore
         expect(fields).toEqual([ ...JobProperties[currentVersion.version]]);
     });
@@ -78,15 +214,15 @@ describe('migration needed', () => {
 describe('default settings', () => {
 
     test.skip('default settings have property for all items in schema', () => {
-        expect(getDefaultUserSettings().order.length).toEqual(Object.keys(DataModel).length - 4);
+        expect(getDefaultUserSettings().dataOrder.length).toEqual(Object.keys(DataModel).length - 4);
     });
 
     test.skip('default settings have property for all items in schema - 27', () => {
-        expect(getDefaultUserSettings().order.length).toEqual(27);
+        expect(getDefaultUserSettings().dataOrder.length).toEqual(27);
     });
 
     test.skip('default settings have expected properties', () => {
-        expect(getDefaultUserSettings().settings).toEqual(expect.objectContaining({
+        expect(getDefaultUserSettings().dataSettings).toEqual(expect.objectContaining({
 
             adProvider: {
                     visible: true,
@@ -120,9 +256,9 @@ describe('default settings', () => {
     });
 
     test.skip('default settings have expected order', () => {
-        expect(getDefaultUserSettings().order[0]).toEqual('position');
-        expect(getDefaultUserSettings().order[5]).toEqual('adProvider');
-        expect(getDefaultUserSettings().order[26]).toEqual('decisionId');
+        expect(getDefaultUserSettings().dataOrder[0]).toEqual('position');
+        expect(getDefaultUserSettings().dataOrder[5]).toEqual('adProvider');
+        expect(getDefaultUserSettings().dataOrder[26]).toEqual('decisionId');
     });
 
 
@@ -153,26 +289,37 @@ describe('migration', () => {
     test.skip('flat store with valid prop gets default with prop visibility', () => {
         let store= { ecpm: true };
         let newStore = migrateFlatObject(store);
-        expect(newStore.settings).toEqual((expect.objectContaining({
+        expect(newStore.dataSettings).toEqual((expect.objectContaining({
             decisionIndex: { "visible": false, "width": "50px" }
         })));
 
-        expect(newStore.order).toEqual((expect.arrayContaining([
+        expect(newStore.dataOrder).toEqual((expect.arrayContaining([
             'position', 'decisionIndex', 'adProvider', 'company', 'title'
         ])));
 
-        expect(newStore.order.length).toEqual(27);
+        expect(newStore.dataOrder.length).toEqual(27);
 
     });
 
     test('flat store with valid prop and version gets default with prop visibility', () => {
         let store= {version: '2.0.3', ecpm: true};
         let newStore = migrateFlatObject(store);
-        expect(newStore.settings).toEqual((expect.objectContaining({
+        expect(newStore.dataSettings).toEqual((expect.objectContaining({
             decisionIndex: { "visible": false, "width": "50px" }
         })));
         expect(newStore.version).toEqual(currentVersion.version);
     });
+
+
+    test('prev valid store structure  - return deftault? ', () => {
+        let store= {...prevStore};
+        let newStore = migrateFlatObject(store);
+        expect(newStore.version).toEqual(currentVersion.version);
+        expect(newStore.dataSettings).toEqual(getDefaultUserSettings().dataSettings);
+        expect(newStore).toEqual(getDefaultUserSettings());
+    });
+
+
 
 
 
@@ -199,6 +346,102 @@ describe('need to migrate', () => {
 
 
 });
+
+
+
+
+
+describe('isValidDataSetting', () => {
+
+    test('', () => {
+        let test = isValidDataSetting({ });
+        expect(test).toEqual(false);
+    });
+
+    test('', () => {
+        let test = isValidDataSetting('eee');
+        expect(test).toEqual(false);
+    });
+
+    test('', () => {
+        let test = isValidDataSetting(null);
+        expect(test).toEqual(false);
+    });
+
+    test('flat object, valid name - should fail', () => {
+        let test = isValidDataSetting({ position: false });
+        expect(test).toEqual(false);
+    });
+
+    test('invalid name - should fail', () => {
+        let test = isValidDataSetting({ pos: { visible: false, width: '50px'} });
+        expect(test).toEqual(false);
+    });
+
+    test('valid - should pass', () => {
+        let test = isValidDataSetting({ position: { visible: false, width: '50px'} });
+        expect(test).toEqual(true);
+    });
+
+    test('missing req prop - fails', () => {
+        let test = isValidDataSetting({ position: {  visi: false, width: '50px'} });
+        expect(test).toEqual(false);
+    });
+
+    test('note - it ignores extra props', () => {
+        let test = isValidDataSetting({ position: { blah: '', visible: false, width: '50px'} });
+        expect(test).toEqual(true);
+    });
+});
+
+
+
+
+describe('isValidFeatureSetting', () => {
+
+    test('', () => {
+        let test = isValidFeatureSetting({ });
+        expect(test).toEqual(false);
+    });
+
+    test('', () => {
+        let test = isValidFeatureSetting('eee');
+        expect(test).toEqual(false);
+    });
+
+    test('', () => {
+        let test = isValidFeatureSetting(null);
+        expect(test).toEqual(false);
+    });
+
+    test('flat object, valid name - should fail', () => {
+        let test = isValidFeatureSetting({ decorateResults: false });
+        expect(test).toEqual(false);
+    });
+
+    test('invalid name - should fail', () => {
+        let test = isValidFeatureSetting({ decorate: { enabled: false, disabled: false } });
+        expect(test).toEqual(false);
+    });
+
+    test('valid - should pass', () => {
+        let test = isValidFeatureSetting({ displayDevInfo: { enabled: false, disabled: false } });
+        expect(test).toEqual(true);
+    });
+
+    test('missing req prop - fails', () => {
+        let test = isValidFeatureSetting({ displayDevInfo: {  en: false, disabled: false } });
+        expect(test).toEqual(false);
+    });
+
+    test('note - it ignores extra props', () => {
+        let test = isValidFeatureSetting({ displayDevInfo: { enabled: false, disabled: false, blah: true } });
+        expect(test).toEqual(true);
+    });
+
+});
+
+
 
 describe('isValidUserSettings', () => {
 
@@ -240,8 +483,10 @@ describe('isValidUserSettings', () => {
     test('default settings with arbitrary version - valid', () => {
         let test = isValidUserSettings({
             version: '3',
-            order: getNamesOfSettings(),
-            settings: getDefaultUserSettings().settings
+            dataOrder: getNamesOfDataSettings(),
+            dataSettings: getDefaultUserSettings().dataSettings,
+            featureOrder: getNamesOfFeatureSettings(),
+            featureSettings: getDefaultUserSettings().featureSettings,
         });
         expect(test).toEqual(true);
     });
@@ -250,8 +495,10 @@ describe('isValidUserSettings', () => {
     test('default settings with different order - valid', () => {
         let test = isValidUserSettings({
             version: '3',
-            order: getNamesOfSettings().reverse(),
-            settings: getDefaultUserSettings().settings
+            dataOrder: getNamesOfDataSettings().reverse(),
+            dataSettings: getDefaultUserSettings().dataSettings,
+            featureOrder: getNamesOfFeatureSettings().reverse(),
+            featureSettings: getDefaultUserSettings().featureSettings,
         });
         expect(test).toEqual(true);
     });
@@ -260,22 +507,24 @@ describe('isValidUserSettings', () => {
     test('valid settings - valid', () => {
         let test = isValidUserSettings({
             version: '???',
-            order: getNamesOfSettings(),
-            settings: {
-                ...getDefaultUserSettings().settings,
+            dataOrder: getNamesOfDataSettings(),
+            dataSettings: {
+                ...getDefaultUserSettings().dataSettings,
                 position: { width: '10000px', visible: false }
             },
+            featureOrder: getNamesOfFeatureSettings().reverse(),
+            featureSettings: getDefaultUserSettings().featureSettings,
         });
         expect(test).toEqual(true);
     });
 
 
-    test('invalid settings - invalid', () => {
+    test('invalid settings - missing feature settings', () => {
         let test = isValidUserSettings({
             version: '???',
-            order: getNamesOfSettings(),
-            settings: {
-                ...getDefaultUserSettings().settings,
+            dataOrder: getNamesOfDataSettings(),
+            dataSettings: {
+                ...getDefaultUserSettings().dataSettings,
                 position: { width: '10000px', visibility: false }
             },
         });
@@ -283,51 +532,8 @@ describe('isValidUserSettings', () => {
     });
 
 
-
 });
 
-describe('isValidUserSetting', () => {
-
-    test('', () => {
-        let test = isValidUserSetting({ });
-        expect(test).toEqual(false);
-    });
-
-    test('', () => {
-        let test = isValidUserSetting('eee');
-        expect(test).toEqual(false);
-    });
-
-    test('', () => {
-        let test = isValidUserSetting(null);
-        expect(test).toEqual(false);
-    });
-
-    test('flat object, valid name - should fail', () => {
-        let test = isValidUserSetting({ position: false });
-        expect(test).toEqual(false);
-    });
-
-    test('invalid name - should fail', () => {
-        let test = isValidUserSetting({ pos: { visible: false, width: '50px'} });
-        expect(test).toEqual(false);
-    });
-
-    test('valid - should pass', () => {
-        let test = isValidUserSetting({ position: { visible: false, width: '50px'} });
-        expect(test).toEqual(true);
-    });
-
-    test('missing req prop - fails', () => {
-        let test = isValidUserSetting({ position: {  visi: false, width: '50px'} });
-        expect(test).toEqual(false);
-    });
-
-    test('note - it ignores extra props', () => {
-        let test = isValidUserSetting({ position: { blah: '', visible: false, width: '50px'} });
-        expect(test).toEqual(true);
-    });
-});
 
 
 

@@ -1,0 +1,141 @@
+{
+  "version": "2.0.5",
+  "dataSettings": {
+    "position": {
+      "visible": true,
+      "width": "50px"
+    },
+    "decisionIndex": {
+      "visible": true,
+      "width": "50px"
+    },
+    "remainder": {
+      "visible": false,
+      "width": "40px"
+    },
+    "adProvider": {
+      "visible": true,
+      "width": "120px"
+    },
+    "company": {
+      "visible": true,
+      "width": "100px"
+    },
+    "title": {
+      "visible": true,
+      "width": "150px"
+    },
+    "location": {
+      "visible": true,
+      "width": "120px"
+    },
+    "nowId": {
+      "visible": false,
+      "width": "80px"
+    },
+    "jobId": {
+      "visible": false,
+      "width": "80px"
+    },
+    "template": {
+      "visible": false,
+      "width": "80px"
+    },
+    "xCode": {
+      "visible": false,
+      "width": "80px"
+    },
+    "applyType": {
+      "visible": false,
+      "width": "70px"
+    },
+    "formattedDate": {
+      "visible": false,
+      "width": "70px"
+    },
+    "mesco": {
+      "visible": false,
+      "width": "100px"
+    },
+    "provider": {
+      "visible": false,
+      "width": "70px"
+    },
+    "providerCode": {
+      "visible": false,
+      "width": "80px"
+    },
+    "dateRecency": {
+      "visible": false,
+      "width": "80px"
+    },
+    "ingestionMethod": {
+      "visible": false,
+      "width": "70px"
+    },
+    "pricingType": {
+      "visible": false,
+      "width": "50px"
+    },
+    "seoJobId": {
+      "visible": false,
+      "width": "60px"
+    },
+    "refCode": {
+      "visible": false,
+      "width": "60px"
+    },
+    "validThrough": {
+      "visible": false,
+      "width": "80px"
+    },
+    "validThroughGoogle": {
+      "visible": false,
+      "width": "80px"
+    },
+    "remote": {
+      "visible": false,
+      "width": "50px"
+    }
+  },
+  "dataOrder": [
+    "position",
+    "decisionIndex",
+    "remainder",
+    "adProvider",
+    "company",
+    "title",
+    "location",
+    "nowId",
+    "jobId",
+    "template",
+    "xCode",
+    "applyType",
+    "formattedDate",
+    "mesco",
+    "provider",
+    "providerCode",
+    "dateRecency",
+    "ingestionMethod",
+    "pricingType",
+    "seoJobId",
+    "refCode",
+    "validThrough",
+    "validThroughGoogle",
+    "remote"
+  ],
+  "featureSettings": {
+    "decorateResults": {
+      "enabled": true,
+      "disabled": false
+    },
+    "displayDevInfo": {
+      "enabled": true,
+      "disabled": false
+    }
+  },
+  "featureOrder": [
+    "decorateResults",
+    "displayDevInfo"
+  ]
+}
