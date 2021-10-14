@@ -1,5 +1,5 @@
 import { currentVersion, getDefaultUserSettings, isValidUserSettings, migrateFlatObject }
-    from "../model/model";
+    from "../model/dataModel";
 
 const settingsKey = 'savedReduxState';
 const storeKey = 'adinfo';

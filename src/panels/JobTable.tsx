@@ -22,7 +22,7 @@ import {Popup} from "@progress/kendo-react-popup";
 import {MessageType} from "../types/types";
 
 
-import {getNamesOfJobFields, model} from "../model/model";
+import {getNamesOfJobFields, DataModel} from "../model/dataModel";
 
 
 const DATA_ITEM_KEY = "jobId";
@@ -384,22 +384,22 @@ export const JobTable = () => {
                 // todo - just filter changes in onColumnReorder?
                 // todo -figure out resizing fixed items
 
-                if (model[name].orderIndex) {
+                if (DataModel[name].orderIndex) {
                     return (
                         settings.settings[name]?.visible && <GridColumn
-                            field={name} title={model[name].title || ""} width={model[name].width || "200px"}
-                            locked={model[name].locked} reorderable={model[name].reorderable}
-                            headerCell={headerCell} orderIndex={model[name].orderIndex}
-                            headerClassName={model[name].headerClassName} className={model[name].className}/>
+                            field={name} title={DataModel[name].title || ""} width={DataModel[name].width || "200px"}
+                            locked={DataModel[name].locked} reorderable={DataModel[name].reorderable}
+                            headerCell={headerCell} orderIndex={DataModel[name].orderIndex}
+                            headerClassName={DataModel[name].headerClassName} className={DataModel[name].className}/>
                     );
                 }
                 else {
                     return (
                         settings.settings[name]?.visible && <GridColumn
-                            field={name} title={model[name].title || ""} width={model[name].width || "200px"}
-                            locked={model[name].locked} reorderable={model[name].reorderable}
+                            field={name} title={DataModel[name].title || ""} width={DataModel[name].width || "200px"}
+                            locked={DataModel[name].locked} reorderable={DataModel[name].reorderable}
                             headerCell={headerCell}
-                            headerClassName={model[name].headerClassName} className={model[name].className}/>
+                            headerClassName={DataModel[name].headerClassName} className={DataModel[name].className}/>
                     );
                 }
             });

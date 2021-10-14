@@ -103,11 +103,14 @@ After the project is built, a directory named `dist` will be created.
 - added debug info
 
 2.0.5
-- authorization (in popup)
 - reordered & renamed kevel info fields
+- position (and adrank) start from 0
 - some migration for earlier versions
-- disabled key settings
+- disabled primary field settings
 
+
+next
+- authorization (in popup)
 
 tbd
 

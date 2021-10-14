@@ -72,25 +72,26 @@ const nowAdIds = (object: object[]): string => {
 
 
 
-export interface Property {
-    field: string
-    title: string,
-    width: string,
+export interface DataProperty {
+    field: string // identifier used in code
+    title: string, // name displayed in UI
+    width: string, // default width of field if shown in table
     sensitive: boolean,
-    locked: boolean,
-    reorderable: boolean,
-    orderIndex?: number,
-    visible: boolean,
-    jobProperty: boolean,
-    additionalProperty: boolean,
-    tableField: boolean,
-    setting: boolean,
-    disabled: boolean,
-    sourceProperty: string | null
-    transformProperty: { (object: object | any): string } | null;
-    augmentedProperty: string | null
-    className?: string,
-    headerClassName?: string
+    locked: boolean, // locks field in table
+                     // if locked, reorderable should be false
+    reorderable: boolean, // stops field from being moved, if shown in table
+    orderIndex?: number, // 0 indicates it should always be displayed before reorderable fields
+    visible: boolean, // default visibility of field in table
+    jobProperty: boolean, // is it derived from job info
+    additionalProperty: boolean, // is it derived outside of job info
+    tableField: boolean, // shown in table ui
+    setting: boolean, // should appear as a setting
+    disabled: boolean, // should setting be able to be changed
+    sourceProperty: string | null // if jobProperty, which base field does the value get derived from
+    transformProperty: { (object: object | any): string } | null; // if the base field need to be computed, use this fn
+    augmentedProperty: string | null // if derived from aug info, which base field does the value get derived from
+    className?: string, // pass in a classname to the field in the table view
+    headerClassName?: string // pass in a classname to the field header in the table view
 }
 
 
@@ -101,7 +102,7 @@ export interface Property {
 
 
 
-export const model: Record<string, Property> = {
+export const DataModel: Record<string, DataProperty> = {
     position: {
         field: "position",
         title: "Position",
@@ -122,7 +123,7 @@ export const model: Record<string, Property> = {
     },
     decisionIndex: {
         field: "decisionIndex",
-        title: "Decision index",
+        title: "Ad rank",
         width: "50px",
         sensitive: false,
         locked: true,
@@ -167,8 +168,8 @@ export const model: Record<string, Property> = {
         visible: false,
         jobProperty: true,
         additionalProperty: false,
-        tableField: true,
-        setting: true,
+        tableField: false, // temp
+        setting: false, // temp
         disabled: false,
         sourceProperty: null,
         transformProperty: null,
@@ -176,7 +177,7 @@ export const model: Record<string, Property> = {
     },
     price: {
         field: "price",
-        title: "Bid",
+        title: "Clearing price",
         width: "80px",
         sensitive: true,
         locked: true,
@@ -185,8 +186,8 @@ export const model: Record<string, Property> = {
         visible: false,
         jobProperty: true,
         additionalProperty: false,
-        tableField: true,
-        setting: true,
+        tableField: false, // temp
+        setting: false, // temp
         disabled: false,
         sourceProperty: null,
         transformProperty:  null,
@@ -606,7 +607,7 @@ export const model: Record<string, Property> = {
     // todo
     remote: {
         field: "remote",
-        title: "Remote?",
+        title: "Remote? ",
         width: "50px",
         sensitive: false,
         locked: false,
@@ -617,7 +618,7 @@ export const model: Record<string, Property> = {
         additionalProperty: false,
         tableField: true,
         setting: true,
-        disabled: false,
+        disabled: true,
         sourceProperty: null,
         transformProperty:  (object: object)  =>  {
             // @ts-ignore
@@ -636,8 +637,8 @@ export const model: Record<string, Property> = {
         visible: false,
         jobProperty: true,
         additionalProperty: false,
-        tableField: true,
-        setting: true,
+        tableField: false,
+        setting: false,
         disabled: false,
         sourceProperty: null,
         transformProperty: null,
@@ -721,19 +722,56 @@ export const model: Record<string, Property> = {
 };
 
 
-export const trJob = (job: Job, position?: number) => {
+export interface FeatureProperty {
+    field: string // identifier used in code
+    title: string // label used in UI
+    sensitive: boolean,
+    setting: boolean, // should appear as a setting
+    disabled: boolean, // should setting be able to be changed
+}
+
+export const FeatureModel: Record<string, FeatureProperty> = {
+    decorateResults: {
+        field: 'decorateResults',
+        title: 'Decorate results',
+        sensitive: false,
+        setting: true,
+        disabled: false,
+    },
+    displayDevInfo: {
+        field: 'displayDevInfo' ,
+        title: 'Display Dev Info' ,
+        sensitive: false,
+        setting: true,
+        disabled: false,
+    },
+}
+
+
+export const trJob = (job: Job, position: string) => {
+
+
+    let obj: object = {};
+    if (!job) {
+        console.log('error - no job!')
+        return obj;
+    }
+    if (!position) {
+        position ="";
+    }
+
     let message = '';
     let kevelData = {};
     let impressionUrl = job?.jobAd?.tracking?.impressionUrl;
     if (job.jobAd && !impressionUrl) {
         message = 'error - no impression url for job ' + job.jobId;
     }
-    else {
+    else if (job.jobAd && impressionUrl) {
         kevelData = getDataFromUrl(impressionUrl || 'noUrl', job?.jobId);
     }
 
     // @ts-ignore
-    if (kevelData.error) {
+    if (job.jobAd && kevelData?.error) {
         message += "cannot decode impression url for job " + job.jobId;
     }
     if (message) {
@@ -742,19 +780,15 @@ export const trJob = (job: Job, position?: number) => {
 
 
     // todo - keep list so do not do it every transform
-    let obj: object = {};
-    if (!job) {
-        console.log('error - no job!')
-        return obj;
-    }
+
 
     let list = getJobProperties();
 
     list.forEach((propertyName: string) => {
 
-        let srcProp = model[propertyName]?.sourceProperty;
-        let augProp = model[propertyName]?.augmentedProperty;
-        let func = model[propertyName]?.transformProperty;
+        let srcProp = DataModel[propertyName]?.sourceProperty;
+        let augProp = DataModel[propertyName]?.augmentedProperty;
+        let func = DataModel[propertyName]?.transformProperty;
         if (srcProp) {
             if (func) {
                 // @ts-ignore
@@ -784,10 +818,6 @@ export const trJob = (job: Job, position?: number) => {
                 obj[propertyName] = kevelData[augProp];
             }
         }
-        else if (propertyName === 'position') {
-            // @ts-ignore
-            obj[propertyName] = _i;
-        }
         else {
             // @ts-ignore
             obj[propertyName] = "";
@@ -795,8 +825,9 @@ export const trJob = (job: Job, position?: number) => {
 
 
     });
+
     // @ts-ignore
-    obj.position = position + 1;
+    obj.position = position;
     // @ts-ignore
     obj.selected = false;
     // @ts-ignore
@@ -817,9 +848,9 @@ export const transformJobsNew = (jobsList: object) => {
 
     let list = <DisplayJob[]> [];
     // @ts-ignore
-    jobsList.jobResults.forEach( (job: object, i: number) => {
+    jobsList.jobResults.forEach( (job: object, _i: number) => {
         // @ts-ignore
-        list.push(trJob(job, i, job.jobAd?.tracking?.impressionUrl));
+        list.push(trJob(job, "" + _i, job.jobAd?.tracking?.impressionUrl));
     });
 
     return list;
@@ -831,32 +862,32 @@ export const transformJobsNew = (jobsList: object) => {
 
 // return all properties that are derived from job item
 export const getJobProperties = () => {
-    return Object.values(model)
-        .filter((field: Property) => field.jobProperty)
-        .map((field: Property) => field.field);
+    return Object.values(DataModel)
+        .filter((field: DataProperty) => field.jobProperty)
+        .map((field: DataProperty) => field.field);
 };
 
 // return all fields that need to be passed to the table
 export const getNamesOfJobFields = () => {
-    return Object.values(model)
-        .filter((field: Property) => field.tableField)
-        .map((field: Property) => field.field);
+    return Object.values(DataModel)
+        .filter((field: DataProperty) => field.tableField)
+        .map((field: DataProperty) => field.field);
 };
 
 export const getNamesOfAllProperties = () => {
-    return Object.keys(model);
+    return Object.keys(DataModel);
 };
 
 // should be same now as getAllProperties, but could change in future?
 export const getNamesOfSettings = () => {
-    return Object.values(model)
-        .filter((field: Property) => field.setting)
-        .map((field: Property) => field.field);
+    return Object.values(DataModel)
+        .filter((field: DataProperty) => field.setting)
+        .map((field: DataProperty) => field.field);
 };
 
 export const getAllProperties = () => {
     let o = {};
-    for (let key in model) {
+    for (let key in DataModel) {
         // @ts-ignore
         o[key] = true
     }
@@ -882,7 +913,7 @@ export const getDefaultUserSettings = () => {
         order: []
     }
     getNamesOfSettings().forEach((jobName: string) => {
-         let setting = model[jobName]
+         let setting = DataModel[jobName]
         // @ts-ignore
         newSettings.settings[jobName] = { visible: setting.visible, width: setting.width };
         // @ts-ignore
@@ -1020,43 +1051,7 @@ export const isValidUserSettings = (store: UserSettings | any | null | undefined
 
 export const userSettingsReducer = (settings: UserSettings, settingName: string) => {
 
-    if (settings && settingName) {
-        // @ts-ignore
-        let prevSettingValue = settings.settings[settingName].visible;
-        let nextSetting = {
-            [settingName]: {
-                // @ts-ignore
-                ...settings.settings[settingName],
-                visible: !prevSettingValue
-            }
-        };
-        if (!isValidUserSetting(nextSetting)) {
-            log({
-                logType: 'ERROR',
-                error: 'unable to update Settings',
-                payload: { nextSetting }
-            });
-            console.log('invalid setting');
-            return settings;
-        }
-        else {
-            let nextSettings = {
-                ...settings,
-                settings: {
-                    ...settings.settings,
-                    ...nextSetting
-                }
-            }
-            log({
-                logType: 'INFO',
-                message: 'new state in reducer',
-                payload: { nextSettings }
-            });
-            console.log('new settings: ', nextSettings);
-            return nextSettings;
-        }
-    }
-    else {
+    if (!settings || !settingName || !DataModel[settingName] || DataModel[settingName]?.setting === false) {
         log({
             logType: 'ERROR',
             error: 'unable to update Settings',
@@ -1065,4 +1060,41 @@ export const userSettingsReducer = (settings: UserSettings, settingName: string)
         console.log('problem - old settings -: ', settings);
         return settings;
     }
+
+    // @ts-ignore
+    let prevSettingValue = settings.settings[settingName].visible;
+    let nextSetting = {
+        [settingName]: {
+            // @ts-ignore
+            ...settings.settings[settingName],
+            visible: !prevSettingValue
+        }
+    };
+    if (!isValidUserSetting(nextSetting)) {
+        log({
+            logType: 'ERROR',
+            error: 'unable to update Settings',
+            payload: { nextSetting }
+        });
+        console.log('invalid setting');
+        return settings;
+    }
+    else {
+        let nextSettings = {
+            ...settings,
+            settings: {
+                ...settings.settings,
+                ...nextSetting
+            }
+        }
+        log({
+            logType: 'INFO',
+            message: 'new state in reducer',
+            payload: { nextSettings }
+        });
+        console.log('new settings: ', nextSettings);
+        return nextSettings;
+    }
+
+
 }

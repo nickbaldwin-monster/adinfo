@@ -10,7 +10,7 @@ import { Job } from "../types/Job";
 import { SearchContext } from "../types/SearchContext";
 import { transformSearchContext } from "../helpers/transformSearchContext";
 import { getSavedSettings, saveSettings } from "../helpers/store";
-import { userSettingsReducer, UserSettings, trJob, transformJobsNew } from "../model/model";
+import { userSettingsReducer, UserSettings, trJob, transformJobsNew } from "../model/dataModel";
 
 
 
@@ -54,6 +54,7 @@ const ReduxProvider = ({ children }) => {
     const [results, setResults] = useState(true);
     const [mobileResults, setMobileResults] = useState(true);
     const [decorate, setDecorate] = useState(true);
+    const [displayDevInfo, setDisplayDevInfo] = useState(false);
     const [display, setDisplay] = useState(true);
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -325,6 +326,14 @@ const ReduxProvider = ({ children }) => {
         if (message.type === "TOGGLE_SETTING") {
             updateSettings(message.payload);
         }
+
+        if (message.type === "TOGGLE_DISPLAY_DEV_INFO") {
+            setDisplayDevInfo((prevState: boolean) => !prevState);
+        }
+
+
+
+
 
         // for old views
         if (message.type === 'JOB_STATE') {

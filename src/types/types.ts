@@ -166,12 +166,18 @@ interface CheckResponse {
     target?: string;
 }
 
+interface ToggleDisplayDevInfo {
+    type: 'TOGGLE_DISPLAY_DEV_INFO';
+    source: string;
+}
+
 export type MessageType =
     DisplayStateRequest | DisplayStateResponse  |
     SettingsStateRequest | SettingsStateResponse |
     SettingsUpdate | JobResultsUpdated |
 
     // actually used
+    ToggleDisplayDevInfo |
     Check | CheckResponse |
     JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay | HoverResults | JobSelected | SearchContextUpdated |
     AuthUriRequest | AuthUriResponse |

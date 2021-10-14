@@ -11,7 +11,7 @@ import { Resizable } from "re-resizable";
 import "./SettingsPanel.css";
 
 import { DragHandle } from "../elements/DragHandle";
-import {getNamesOfJobFields, model} from "../model/model";
+import {getNamesOfJobFields, DataModel} from "../model/dataModel";
 
 
 const moduleName = 'SettingsPanel';
@@ -30,7 +30,7 @@ interface Setting {
 export const SettingsPanel = () => {
 
     // @ts-ignore
-    const { settings, decorate } = useReduxContext();
+    const { settings, decorate, displayDevInfo } = useReduxContext();
 
     const handleToggleSetting = (setting: string) => {
         const message: MessageType = {
@@ -48,8 +48,16 @@ export const SettingsPanel = () => {
         chrome.runtime.sendMessage(message);
     };
 
+    const handleToggleDisplayDevInfo = () => {
+        const message: MessageType = {
+            type: "TOGGLE_DISPLAY_DEV_INFO",
+            source: 'SettingsPanel',
+        };
+        chrome.runtime.sendMessage(message);
+    };
 
-    let list: [] = settings.order;
+
+    let list: string[] = settings.order;
     if (!settings || !settings.order || !settings.settings) {
         return (
             <Resizable
@@ -75,14 +83,14 @@ export const SettingsPanel = () => {
             enable={{ top:false, right:false, bottom:false, left:true,
                 topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
             minWidth='310px'
-            handleComponent={{left: DragHandle}}
+            handleComponent={{ left: DragHandle }}
         >
         <div className='settingsPanel panel'>
             <h4>Settings</h4>
             {list.map(setting => (
                 <div className='setting'>
                     <Switch
-                        disabled={model[setting].disabled || false}
+                        disabled={DataModel[setting].disabled || false}
                         onChange={() => {
                             handleToggleSetting(setting);
                         }}
@@ -98,13 +106,20 @@ export const SettingsPanel = () => {
 
             <div className='setting'>
                 <Switch
-                    onChange={() => {
-                        handleToggleDecorate();
-                    }}
+                    onChange={handleToggleDecorate}
                     checked={decorate}
                 />
                 <span className='settingSpacer' />
                 <Label>Overlay info on search results</Label>
+            </div>
+
+            <div className='setting'>
+                <Switch
+                    onChange={handleToggleDisplayDevInfo}
+                    checked={displayDevInfo}
+                />
+                <span className='settingSpacer' />
+                <Label>Display dev info</Label>
             </div>
 
         </div>
