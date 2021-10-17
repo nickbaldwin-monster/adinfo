@@ -436,7 +436,7 @@ export const RequestTable = () => {
             </ul>
             <br />
 
-            {searchId && <DatadogLink searchId={searchId} toTs={toTs} fromTs={fromTs} />}
+            {searchId && <DatadogLink searchId={searchId}  />}
             <br />
 
             <p>Request info</p>

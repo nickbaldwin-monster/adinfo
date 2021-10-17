@@ -57,18 +57,18 @@ describe('trJob', () => {
     test('trJob - without position - position undefined', () => {
         const job = jobsList.jobResults[0];
         // @ts-ignore
-        expect(trJob(job).position).toBe("");
+        expect(trJob(job).position).toBe(undefined);
     });
 
     test('trJob - with position - position defined', () => {
         const job = jobsList.jobResults[0];
         // @ts-ignore
-        expect(trJob(job, "1").position).toEqual("1");
+        expect(trJob(job, 1).position).toEqual(1);
     });
 
     test('trJob - expected properties - with added items', () => {
         const job = jobsList.jobResults[0];
-        let props = Object.keys(trJob(job, "5"));
+        let props = Object.keys(trJob(job, 5));
         let propNames = getNamesOfJobProperties();
         expect(props).toEqual([
             ...propNames,
@@ -82,7 +82,7 @@ describe('trJob', () => {
 
     test('trJob - job', () => {
         const job = jobsList.jobResults[0];
-        expect(trJob(job, "1")).toMatchObject({
+        expect(trJob(job, 1)).toMatchObject({
             adProvider: "ADZERK",
             applyType: "offsite",
             pricingType: "2",
@@ -105,7 +105,7 @@ describe('trJob', () => {
             nowId: "230572257",
             url: "https://www.monster.com/job-openings/java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93",
             seoJobId: "java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93",
-            position: '1',
+            position: 1,
             decisionId: "247cf20fbc6644bca6680c3579983c9e",
             decisionIndex: "0",
             ecpm: "30.5976",

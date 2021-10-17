@@ -39,14 +39,16 @@ export const getDataFromUrl = (url: string, id: string) => {
         try {
             let d = atobPollyfill(match[1]);
             let u = JSON.parse(d);
-            let { di, dj, pc, ec, ep } = u;
+            let { ba, di, dj, pc, ec, ep } = u;
 
             return {
                 decisionId: "" + di,
-                decisionIndex: "" + dj,
+                decisionIndex:  dj,
+                adRank:  dj, // same
                 price: "" + pc,
                 ecpm: "" + ec,
                 remainder: ep?  "Yes" : "",
+                auctionBids: ba,
                 data: u
             };
 

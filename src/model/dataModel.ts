@@ -123,8 +123,8 @@ export const DataModel: Record<string, DataProperty> = {
     },
     decisionIndex: {
         field: "decisionIndex",
-        title: "Ad rank",
-        width: "50px",
+        title: "AdRank",
+        width: "70px",
         sensitive: false,
         locked: true,
         reorderable: false,
@@ -751,15 +751,12 @@ export const FeatureModel: Record<string, FeatureProperty> = {
 }
 
 
-export const trJob = (job: Job, position: string) => {
+export const trJob = (job: Job, position: number) => {
 
     let obj: object = {};
     if (!job) {
         console.log('error - no job!')
         return obj;
-    }
-    if (!position) {
-        position = "";
     }
 
     let message = '';
@@ -852,7 +849,7 @@ export const transformJobsNew = (jobsList: object) => {
     // @ts-ignore
     jobsList.jobResults.forEach( (job: object, _i: number) => {
         // @ts-ignore
-        list.push(trJob(job, "" + _i, job.jobAd?.tracking?.impressionUrl));
+        list.push(trJob(job, _i, job.jobAd?.tracking?.impressionUrl));
     });
 
     return list;

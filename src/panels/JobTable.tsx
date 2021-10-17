@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from 'react';
+import React, {useReducer, useContext, useState} from 'react';
 
 import { Tooltip } from "@progress/kendo-react-tooltip";
 import { logger } from "../helpers/logger";
@@ -23,6 +23,13 @@ import {MessageType} from "../types/types";
 
 
 import {getNamesOfJobFields, DataModel} from "../model/dataModel";
+import {DatadogLink} from "../components/DatadogLink";
+import {DatadogUrl} from "../elements/DatadogUrl";
+import {DecisionId} from "../elements/DecisionId";
+import {AuctionBids} from "../elements/AuctionBids";
+import {DevInfo} from "../components/DevInfo";
+import {Button} from "@progress/kendo-react-buttons";
+import {Info} from "../components/Info";
 
 
 const DATA_ITEM_KEY = "jobId";
@@ -128,11 +135,11 @@ export const JobTable = () => {
                 </>
             );
         }
-        if (props.title === 'Decision Index') {
+        if (props.title === 'AdRank') {
             message = (
                 <>
-                    <p>This should be the same as position</p>
-                    <p>But...</p>
+                    <p>Ad order is determined by the auction engine.</p>
+                    <p>This should generally be the same as position, but some ads may be skipped resulting in differences.</p>
                 </>
             );
         }
@@ -158,7 +165,7 @@ export const JobTable = () => {
                     </a>
 
                     {/* @ts-ignore */}
-                    <span onClick={onClick} ref={anchor} className="k-icon k-i-information" style={{margin: '0 0 0 15px'}}></span>
+                    <span onClick={onClick} ref={anchor} className="k-icon k-i-information" style={{margin: '0 0 0 5px'}}></span>
 
                     <Popup
                         anchor={anchor.current}
@@ -185,8 +192,9 @@ export const JobTable = () => {
 
 
     // @ts-ignore
-    const { loading, jobs, setJobs, settings, numberResults, errors, hoverResult, setHoverResult }
+    const { loading, displayDevInfo, searchId, auctionBids, decisionId, jobs, setJobs, settings, numberResults, errors, hoverResult, setHoverResult }
         = useReduxContext();
+
     const _export = React.useRef(null);
 
     const excelExport = () => {
@@ -408,7 +416,8 @@ export const JobTable = () => {
         }
 
 
-
+    let toTs = Date.now();
+    let fromTs = toTs - 900000;
     return (
         <Resizable
             defaultSize={{ width: '600px', height: '100%' }}
@@ -465,24 +474,35 @@ export const JobTable = () => {
 
 
                     <GridToolbar>
-                        <button
-                            title="Export Excel"
-                            className="k-button k-primary"
-                            onClick={excelExport}
-                        >
-                            Export to Excel
-                        </button>
-
-                        <button
-                            title="Export JSON"
-                            className="k-button k-primary"
-                            onClick={saveJson}
-                        >
-                            Export to JSON
-                        </button>
 
 
-                        {numberResults} results | {errors.message}
+                            <div style={{display: "flex", gap: "8px"}}>
+                                <Button
+                                    title="Export Excel"
+                                    className="k-button k-primary"
+                                    onClick={excelExport}
+                                >
+                                    Export to Excel
+                                </Button>
+
+                                <Button
+                                    title="Export JSON"
+                                    className="k-button k-primary"
+                                    onClick={saveJson}
+                                >
+                                    Export to JSON
+                                </Button>
+                            </div>
+
+                            <Info numberResults={numberResults} errors={errors} auctionBids={auctionBids} />
+
+
+                                {displayDevInfo && <DevInfo searchId={searchId} decisionId={decisionId} />}
+
+
+
+
+
 
                     </GridToolbar>
 

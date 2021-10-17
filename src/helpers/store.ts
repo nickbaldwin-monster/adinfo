@@ -32,7 +32,7 @@ const defaultSettings = getDefaultUserSettings();
 
 
 // todo interface of settings and store
-const loadState = (key: string, storage: any = 'LOCAL') => {
+const loadFromStorage = (key: string, storage: any = 'LOCAL') => {
     try {
         let serializedState;
         if (storage === 'SESSION') {
@@ -51,7 +51,6 @@ const loadState = (key: string, storage: any = 'LOCAL') => {
         }
         return JSON.parse(serializedState);
     } catch (err) {
-        // todo log
         console.log('error loading store')
         return undefined;
     }
@@ -62,7 +61,7 @@ const loadState = (key: string, storage: any = 'LOCAL') => {
 
 
 // todo: interface for state
-const saveState = (key: string, state: any, storage: string = 'LOCAL') => {
+const saveToStorage = (key: string, state: any, storage: string = 'LOCAL') => {
     try {
         const serializedState = JSON.stringify(state);
         if (storage === 'LOCAL') {
@@ -82,11 +81,11 @@ const saveState = (key: string, state: any, storage: string = 'LOCAL') => {
 
 
 export const loadStore = () => {
-    return loadState(storeKey, 'LOCAL');
+    return loadFromStorage(storeKey, 'LOCAL');
 }
 
 export const saveStore = (state: any) => {
-    saveState(storeKey, state, 'LOCAL');
+    saveToStorage(storeKey, state, 'LOCAL');
 };
 
 
@@ -147,11 +146,12 @@ export const getSavedSettings = () => {
     let store = loadStore();
 
     if (!store ) {
-        console.log('youdo not have any saved settings');
+        console.log('youdo not have any saved settings - using default settings');
         store = getDefaultUserSettings();
+
     }
 
-    if (!store.version || store?.version === '2.0.3' || store?.version === '2.0.4') {
+    else if (!store.version || store?.version === '2.0.3' || store?.version === '2.0.4') {
         console.log('your saved settings are for version ' +  store?.version || 'unknown');
 
         let migratedStore = migrateFlatObject(store);
@@ -163,16 +163,37 @@ export const getSavedSettings = () => {
             console.log('your saved settings could not be migrated. updated settings to defaults for version ' + currentVersion.version);
             store = getDefaultUserSettings();
         }
+
     }
 
-    if (store?.version && store.dataSettings) {
-        saveStore(store);
-        return store;
+    else if (!isValidUserSettings(store)) {
+        store = getDefaultUserSettings();
     }
 
-    return null;
+    saveStore(store);
+    return store;
 }
 
+
+export const getDecorateSetting = () => {
+    let store = loadStore();
+    if (store && store.featureSettings) {
+        return store.featureSettings.decorateResults?.enabled;
+    }
+    else {
+        return true;
+    }
+}
+
+export const getDisplayDevInfoSetting = () => {
+    let store = loadStore();
+    if (store && store.featureSettings) {
+        return store.featureSettings.displayDevInfo?.enabled;
+    }
+    else {
+        return false;
+    }
+}
 
 
 export const saveSettings = (store: object) => {

@@ -9,7 +9,7 @@ import { determineErrors } from "../helpers/determineErrors";
 import { Job } from "../types/Job";
 import { SearchContext } from "../types/SearchContext";
 import { transformSearchContext } from "../helpers/transformSearchContext";
-import { getSavedSettings, saveSettings } from "../helpers/store";
+import {getDecorateSetting, getDisplayDevInfoSetting, getSavedSettings, saveSettings} from "../helpers/store";
 import { userSettingsReducer, UserSettings, trJob, transformJobsNew } from "../model/dataModel";
 
 
@@ -53,8 +53,8 @@ const ReduxProvider = ({ children }) => {
     const [numberResults, setNumberResults] = useState(0);
     const [results, setResults] = useState(true);
     const [mobileResults, setMobileResults] = useState(true);
-    const [decorate, setDecorate] = useState(true);
-    const [displayDevInfo, setDisplayDevInfo] = useState(false);
+    const [decorate, setDecorate] = useState(getDecorateSetting);
+    const [displayDevInfo, setDisplayDevInfo] = useState(getDisplayDevInfoSetting);
     const [display, setDisplay] = useState(true);
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -63,6 +63,9 @@ const ReduxProvider = ({ children }) => {
     const [hoverResult, setHoverResult] = useState(-1);
     const [selected, setSelected] = useState(-1);
     const [auth, setAuth] = useState(false);
+
+    const [auctionBids, setAuctionBids] = useState("");
+    const [decisionId, setDecisionId] = useState("");
 
     let defaultState: ContextItem[] = [];
     const [searchContext, setSearchContext] = useState(defaultState);
@@ -208,11 +211,31 @@ const ReduxProvider = ({ children }) => {
                 payload: {decorate: !decorate}
             });
             decorateRef.current = !decorate;
+            // todo - save
             return !decorate;
         });
     }
 
 
+    const displayDevInfoRef = React.useRef(displayDevInfo);
+    const updateDisplayDevInfo = () => {
+        /*
+            message: {
+                type: "TOGGLE_DISPLAY_DEV_INFO"
+                source?: "background" // ?
+            }
+        */
+        setDisplayDevInfo((displayDevInfo: boolean) => {
+            log({
+                logType: 'INFO',
+                message: 'new displayDevInfo state in reducer',
+                payload: {displayDevInfo: !displayDevInfo}
+            });
+            displayDevInfoRef.current = !displayDevInfo;
+            // todo - save
+            return !displayDevInfo;
+        });
+    }
 
 
 
@@ -261,7 +284,13 @@ const ReduxProvider = ({ children }) => {
         setJobs(transformedJobs);
         setNumberResults(transformedJobs.length);
         setLoading(false);
-
+        if (transformedJobs.length > 0) {
+            // @ts-ignore
+            setDecisionId(transformedJobs[0].decisionId);
+            // @ts-ignore
+            let bids = transformedJobs[0]?.kevelData?.auctionBids || "";
+            setAuctionBids(bids);
+        }
 
         let e = determineErrors(transformedJobs);
 
@@ -316,6 +345,10 @@ const ReduxProvider = ({ children }) => {
         }
         if (message.type === "TOGGLE_DECORATE") {
             updateDecorate();
+        }
+
+        if (message.type === "TOGGLE_DISPLAY_DEV_INFO") {
+            updateDisplayDevInfo();
         }
 
         if (message.type === "JOB_SELECTED") {
@@ -437,7 +470,8 @@ const ReduxProvider = ({ children }) => {
             settings,
             numberResults,
             errors,
-
+            auctionBids, decisionId,
+            displayDevInfo,
             auth, setAuth
         }} >
             {children}
