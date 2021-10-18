@@ -102,7 +102,7 @@ test('data from valid url', () => {
     expect(u).toEqual(
         expect.objectContaining({
             decisionId: "bad9ccdb89544d00b4011f083bdd66fa",
-            decisionIndex: "2",
+            decisionIndex: 2,
             price: "1.18",
             ecpm: "41.71536"
         })

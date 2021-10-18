@@ -30,7 +30,7 @@ const isAuthCurrent = () => {
 }
 
 
-const sendSetting = (setting: string) => {
+const sendDataSetting = (setting: string) => {
     const message: MessageType = {
         type: "TOGGLE_SETTING",
         payload: setting,
@@ -39,10 +39,24 @@ const sendSetting = (setting: string) => {
     sendMessageToContent(message);
 };
 
+interface FeatureSetting  {
+    settingName: string;
+    property: string;
+}
+const sendFeatureSetting = (props: FeatureSetting) => {
+    const message: MessageType = {
+        type: "TOGGLE_FEATURE_SETTING",
+        payload: props,
+        source: 'background'
+    };
+    sendMessageToContent(message);
+};
+
+
 const sendDecorate = () => {
     const message: MessageType = {
         type: "TOGGLE_DECORATE",
-        source: 'background'
+        source: 'background',
     };
     sendMessageToContent(message);
 };
@@ -80,32 +94,39 @@ const handleMessage = (message: MessageType) => {
     }
     if (message.type === "TOGGLE_SETTING") {
         let setting = message.payload;
-        sendSetting(setting);
+        sendDataSetting(setting);
     }
 
+    if (message.type === "TOGGLE_FEATURE_SETTING") {
+        let setting = message.payload;
+        sendFeatureSetting(setting);
+    }
+
+
+
     if (message.type === "CHECK") {
-        console.log('check received');
+       // console.log('check received');
     }
 
 
     if (message.type === "LOGIN_STARTED") {
         started = true;
-        console.log('LOGIN_STARTED');
-        console.log('auth: ', auth);
-        console.log('started: ', started);
+        //console.log('LOGIN_STARTED');
+        //console.log('auth: ', auth);
+        //console.log('started: ', started);
     }
 
     if (message.type === "AUTH_FLOW_STATUS_REQUEST") {
-        console.log('AUTH_FLOW_STATUS_REQUEST');
-        console.log('auth: ', auth);
-        console.log('started: ', started);
+        //console.log('AUTH_FLOW_STATUS_REQUEST');
+        //console.log('auth: ', auth);
+        //console.log('started: ', started);
         sendMessageToBackgroundAndPopup({type: 'AUTH_FLOW_STATUS_RESPONSE', source: 'background', payload: started});
     }
 
     if (message.type === "AUTH_STATUS_REQUEST") {
-        console.log('AUTH_STATUS_REQUEST');
-        console.log('auth: ', auth);
-        console.log('started: ', started);
+       // console.log('AUTH_STATUS_REQUEST');
+        //console.log('auth: ', auth);
+        //console.log('started: ', started);
         let status = isAuthCurrent();
         sendMessageToContent({type: 'AUTH_STATUS_RESPONSE', source: 'background', payload: status});
     }
@@ -114,9 +135,9 @@ const handleMessage = (message: MessageType) => {
         auth = true;
         started = false;
         lastCheckTime = message.payload;
-        console.log('LOGIN COMPLETED');
-        console.log('auth: ', auth);
-        console.log('started: ', started);
+        //console.log('LOGIN COMPLETED');
+        //console.log('auth: ', auth);
+        //console.log('started: ', started);
         sendMessageToContent({type: 'AUTH_STATUS_RESPONSE', source: 'background', payload: auth});
 
     }
@@ -124,23 +145,22 @@ const handleMessage = (message: MessageType) => {
     if (message.type === "LOGIN_CHECKED") {
         auth = true;
         lastCheckTime = message.payload;
-        console.log('LOGIN_CHECKED');
-        console.log('auth: ', auth);
-        console.log('started: ', started);
+        //console.log('LOGIN_CHECKED');
+        //console.log('auth: ', auth);
+        //console.log('started: ', started);
         sendMessageToContent({type: 'AUTH_STATUS_RESPONSE', source: 'background', payload: auth});
 
     }
 
     if (message.type === "LOGOUT") {
         auth = false;
-        console.log('LOGOUT');
-        console.log(auth);
+        //console.log('LOGOUT');
+        //console.log(auth);
     }
 
     if (message.type === "AUTH_URI_REQUEST") {
-
-        console.log('AUTH_URI_REQUEST');
-        console.log(auth);
+        //console.log('AUTH_URI_REQUEST');
+        //console.log(auth);
     }
 
 

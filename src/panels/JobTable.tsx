@@ -143,6 +143,13 @@ export const JobTable = () => {
                 </>
             );
         }
+        if (props.title === 'Remainder?') {
+            message = (
+                <>
+                    <p>The auction engine generally returns the best performing ads for a given search, but can also include some other 'remainder' ads that otherwise might not get served.</p>
+                </>
+            );
+        }
 
         if (!message) {
             return (
@@ -329,14 +336,14 @@ export const JobTable = () => {
             if (hoverResult !== -1 && jobs && jobs.length > 0) {
 
                 // console.log(jobs);
-                let job = jobs[hoverResult - 1];
+                let job = jobs[hoverResult];
                 // console.log(job.position);
                 let jobId = job.jobId;
                 setSelectedState({[jobId]: true});
                 // console.log(selectedState);
 
                 let parent = document.querySelector('.k-grid-content.k-virtual-content');
-                let row = document.querySelector(`[data-grid-row-index="${hoverResult - 1}"]`);
+                let row = document.querySelector(`[data-grid-row-index="${hoverResult}"]`);
 
                 // @ts-ignore
                 let parentRectangle = parent.getBoundingClientRect();

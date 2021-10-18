@@ -102,11 +102,21 @@ After the project is built, a directory named `dist` will be created.
 2.0.4 - sun 3 oct 2021
 - added debug info
 
-2.0.5
+2.1.0 - mon 18 oct 2021
 - reordered & renamed kevel info fields
-- position (and adrank) start from 0
-- some migration for earlier versions
-- disabled primary field settings
+- renamed decisionIndex to AdRank
+- changed position value to start from 0, as for AdRank
+- changed position overlaid on search results to start from 0
+- added info popup for AdRank and remainder
+- migration of user settings for some earlier versions
+- disabled primary field settings (position, adProvider and company) so always shown
+- moved request info above domain list in info panel
+- removed eCPM and Bid values from table and settings (for now)
+- removed auth (for now)
+- added 'display dev info' as a new setting (default turned off)
+- 'Dev info' shows a Link to DataDog and button to copy decision id above the table
+- displayed number auction bids
+- persisted 'display dev info' and 'overlay ad info on results' settings
 
 
 next

@@ -44,14 +44,18 @@ export const SettingsPanel = () => {
         const message: MessageType = {
             type: "TOGGLE_DECORATE",
             source: 'SettingsPanel',
+            payload: {settingName: 'decorateResults', property: 'enabled'}
         };
         chrome.runtime.sendMessage(message);
     };
 
-    const handleToggleDisplayDevInfo = () => {
+
+    const handleToggleFeatureSetting = (settingName: string) => {
+
         const message: MessageType = {
-            type: "TOGGLE_DISPLAY_DEV_INFO",
+            type: "TOGGLE_FEATURE_SETTING",
             source: 'SettingsPanel',
+            payload: { settingName, property: 'enabled' }
         };
         chrome.runtime.sendMessage(message);
     };
@@ -104,22 +108,25 @@ export const SettingsPanel = () => {
 
             <br />
 
-            <div className='setting'>
-                <Switch
-                    onChange={handleToggleDecorate}
-                    checked={decorate}
-                />
-                <span className='settingSpacer' />
-                <Label>Overlay info on search results</Label>
-            </div>
+
 
             <div className='setting'>
                 <Switch
-                    onChange={handleToggleDisplayDevInfo}
+                    onChange={()=> { handleToggleFeatureSetting('displayDevInfo') }}
+
                     checked={displayDevInfo}
                 />
                 <span className='settingSpacer' />
                 <Label>Display dev info</Label>
+            </div>
+
+            <div className='setting'>
+                <Switch
+                    onChange={()=> { handleToggleFeatureSetting('decorateResults') }}
+                    checked={decorate}
+                />
+                <span className='settingSpacer' />
+                <Label>Overlay ad info on results</Label>
             </div>
 
         </div>

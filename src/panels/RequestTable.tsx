@@ -58,7 +58,18 @@ export const RequestTable = () => {
             </p>
             <br />
 
-            <p>It works on all Monster domains:</p>
+            <p>It works on all Monster domains - see list below.</p>
+            <br />
+
+            {searchId && <DatadogLink searchId={searchId}  />}
+            <br />
+
+            <p>Request info</p>
+            <Grid data={searchContext} >
+                <GridColumn field="key" title="key" />
+                <GridColumn field="value" title="value" />
+            </Grid>
+            <br />
 
             <ul className="">
 
@@ -436,15 +447,9 @@ export const RequestTable = () => {
             </ul>
             <br />
 
-            {searchId && <DatadogLink searchId={searchId}  />}
-            <br />
 
-            <p>Request info</p>
-            <Grid data={searchContext} >
-                <GridColumn field="key" title="key" />
-                <GridColumn field="value" title="value" />
-            </Grid>
-            <br />
+
+
 
             <p>Request/response data</p>
             <ReactJson src={redux} collapsed={0} collapseStringsAfterLength={120}/>

@@ -222,7 +222,7 @@ export const monitorReactNodes = function() {
 
                                 let pos;
                                 if (match) {
-                                    pos = parseInt(match[1]) + 1;
+                                    pos = parseInt(match[1]);
 
 
                                     window.postMessage({
@@ -238,7 +238,7 @@ export const monitorReactNodes = function() {
                                 // console.log(pos);
                                 let child = path[i].children[0];
                                 let link = child?.href;
-                                let decoration = child.children[child.children.length - 1];
+                                let decoration = child.children[child.children.length];
                                 if (decoration && decoration.nodeName === 'DIV') {
                                     let position = parseInt(decoration.children[0]?.children[2]?.innerText);
                                     if (position !== pos) {

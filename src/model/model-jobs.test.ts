@@ -28,10 +28,10 @@ describe('sanity check - json', () => {
     });
 });
 
-test.skip('getNamesOfSettings is an array of names for all fields that can be displayed in table', () => {
+test('getNamesOfSettings is an array of names for all fields that can be displayed in table', () => {
     let fields = getNamesOfDataSettings();
     expect(fields).toEqual(
-        expect.arrayContaining(["position", "decisionIndex", "remainder", "adProvider", "company", "title", "location", "nowId", "jobId", "template", "xCode", "applyType", "formattedDate", "mesco", "provider", "providerCode", "dateRecency", "ingestionMethod", "pricingType", "seoJobId", "refCode", "validThrough", "validThroughGoogle", "remote", "ecpm", "price", "decisionId"]
+        expect.arrayContaining(["position", "adRank", "remainder", "adProvider", "company", "title", "location", "nowId", "jobId", "template", "xCode", "applyType", "formattedDate", "mesco", "provider", "providerCode", "dateRecency", "ingestionMethod", "pricingType", "seoJobId", "refCode", "validThrough", "validThroughGoogle", "remote"]
         )
     );
 });
@@ -107,7 +107,7 @@ describe('trJob', () => {
             seoJobId: "java-developer-boston-ma--db65fdbe-cba4-4ecb-8c56-a88f76cf6f93",
             position: 1,
             decisionId: "247cf20fbc6644bca6680c3579983c9e",
-            decisionIndex: "0",
+            adRank: 0,
             ecpm: "30.5976",
             price: "1.1",
             remainder: "",

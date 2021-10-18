@@ -9,7 +9,7 @@ import { determineErrors } from "../helpers/determineErrors";
 import { Job } from "../types/Job";
 import { SearchContext } from "../types/SearchContext";
 import { transformSearchContext } from "../helpers/transformSearchContext";
-import {getDecorateSetting, getDisplayDevInfoSetting, getSavedSettings, saveSettings} from "../helpers/store";
+import { getDecorateSetting, getDisplayDevInfoSetting, getSavedSettings, saveSettings } from "../helpers/store";
 import { userSettingsReducer, UserSettings, trJob, transformJobsNew } from "../model/dataModel";
 
 
@@ -46,15 +46,12 @@ function settingsReducer(state: object, action: object): object {
 // @ts-ignore
 const ReduxProvider = ({ children }) => {
 
-
-
     const [settings, setSettings] = useState(getSavedSettings);
     const [errors, setErrors] = useState(defaultErrors);
     const [numberResults, setNumberResults] = useState(0);
     const [results, setResults] = useState(true);
     const [mobileResults, setMobileResults] = useState(true);
-    const [decorate, setDecorate] = useState(getDecorateSetting);
-    const [displayDevInfo, setDisplayDevInfo] = useState(getDisplayDevInfoSetting);
+
     const [display, setDisplay] = useState(true);
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -71,9 +68,6 @@ const ReduxProvider = ({ children }) => {
     const [searchContext, setSearchContext] = useState(defaultState);
     const [searchId, setSearchId] = useState('');
 
-
-
-
     log({
         logType: 'INFO',
         message: 'ReduxProvider mounted'
@@ -81,23 +75,32 @@ const ReduxProvider = ({ children }) => {
 
 
 
-    const updateSettings = (settingName: string) => {
+    const decorateRef = React.useRef(settings?.featureSettings?.decorateResults?.enabled);
 
-        console.log(' updating settings');
-        /*
-            message: {
-                type: "TOGGLE_SETTING"
-                payload: "title"
-                source?: "background" // ?
-            }
-        */
-
+    const updateDataSettings = (settingName: string) => {
         setSettings((settings: UserSettings) => {
-            let updated = userSettingsReducer(settings, settingName);
+            let updated = userSettingsReducer(settings, settingName, 'dataSettings', 'visible');
             saveSettings(updated);
             return updated;
         });
     }
+    // @ts-ignore
+    const updateFeatureSettings = ({ settingName, property } ) => {
+
+        if (settingName === 'decorateResults') {
+            decorateRef.current = !decorateRef.current;
+        }
+        setSettings((settings: UserSettings) => {
+            let updated = userSettingsReducer(settings, settingName, 'featureSettings', property);
+            saveSettings(updated);
+            return updated;
+        });
+    }
+
+
+
+
+
 
 
 
@@ -122,7 +125,6 @@ const ReduxProvider = ({ children }) => {
 
 
     const updateSelected = (position: number) => {
-        console.log('Need to highlight and scroll to item in results');
 
         // todo!!!!
         // for split view
@@ -196,49 +198,6 @@ const ReduxProvider = ({ children }) => {
     }
 
 
-    const decorateRef = React.useRef(decorate);
-    const updateDecorate = () => {
-        /*
-            message: {
-                type: "TOGGLE_DECORATE"
-                source?: "background" // ?
-            }
-        */
-        setDecorate((decorate: boolean) => {
-            log({
-                logType: 'INFO',
-                message: 'new decorate state in reducer',
-                payload: {decorate: !decorate}
-            });
-            decorateRef.current = !decorate;
-            // todo - save
-            return !decorate;
-        });
-    }
-
-
-    const displayDevInfoRef = React.useRef(displayDevInfo);
-    const updateDisplayDevInfo = () => {
-        /*
-            message: {
-                type: "TOGGLE_DISPLAY_DEV_INFO"
-                source?: "background" // ?
-            }
-        */
-        setDisplayDevInfo((displayDevInfo: boolean) => {
-            log({
-                logType: 'INFO',
-                message: 'new displayDevInfo state in reducer',
-                payload: {displayDevInfo: !displayDevInfo}
-            });
-            displayDevInfoRef.current = !displayDevInfo;
-            // todo - save
-            return !displayDevInfo;
-        });
-    }
-
-
-
 
 
     const updateSearchContextAndId = (context: SearchContext) => {
@@ -310,6 +269,7 @@ const ReduxProvider = ({ children }) => {
 
 
         // todo - hack? - can this be moved into useEffect now that there is a ref???
+        // if (decorateRef.current) {
         if (decorateRef.current) {
             decorateResults(transformedJobs);
         }
@@ -326,53 +286,42 @@ const ReduxProvider = ({ children }) => {
 
     const handleMessage = (message: MessageType) => {
 
-        // @ts-ignore
-        if (message.type === "__REACT_CONTEXT_DEVTOOL_GLOBAL_HOOK_EVENT") return;
-        log({
-            logType: 'MESSAGE_RECEIVED',
-            functionName: 'handleMessage',
-            payload: message
-        });
-
         if (message.type === "DISPLAY_STATUS") {
             // updateDisplay(message.display);
         }
         if (message.type === "SETTINGS_STATUS") {
             // todo - apply settings
         }
-        if (message.type === "TOGGLE_DISPLAY") {
-            updateDisplay();
-        }
-        if (message.type === "TOGGLE_DECORATE") {
-            updateDecorate();
-        }
 
-        if (message.type === "TOGGLE_DISPLAY_DEV_INFO") {
-            updateDisplayDevInfo();
-        }
+
+
 
         if (message.type === "JOB_SELECTED") {
-            console.log('selection message recieved');
             updateSelected(message.payload);
         }
 
+
+
         if (message.type === "TOGGLE_SETTING") {
-            updateSettings(message.payload);
+            updateDataSettings(message.payload);
+        }
+        if (message.type === "TOGGLE_DECORATE") {
+            // @ts-ignore
+            updateFeatureSettings(message.payload);
+        }
+        if (message.type === "TOGGLE_FEATURE_SETTING") {
+            // @ts-ignore
+            updateFeatureSettings(message.payload);
         }
 
-        if (message.type === "TOGGLE_DISPLAY_DEV_INFO") {
-            setDisplayDevInfo((prevState: boolean) => !prevState);
+
+
+
+
+        if (message.type === "TOGGLE_DISPLAY") {
+            updateDisplay();
         }
 
-
-
-
-
-        // for old views
-        if (message.type === 'JOB_STATE') {
-            // console.log('JOB_STATE', message.payload);
-            // updateJobsAndRequest(message.payload);
-        }
 
 
 
@@ -387,7 +336,6 @@ const ReduxProvider = ({ children }) => {
 
 
         if (message.type === 'HOVER_RESULTS') {
-            console.log('HOVER_RESULTS', message.payload);
             setHoverResult(message.payload);
         }
 
@@ -406,22 +354,22 @@ const ReduxProvider = ({ children }) => {
 
 
         if (message.type === 'LOGIN_COMPLETED') {
-            console.log('LOGIN COMPLETED', message);
+            //console.log('LOGIN COMPLETED', message);
             setAuth(true);
         }
 
         if (message.type === 'LOGIN_CHECKED') {
-            console.log('LOGIN STARTED', message);
+            //console.log('LOGIN STARTED', message);
             setAuth(true);
         }
 
         if (message.type === 'LOGOUT') {
-            console.log('LOGOUT', message);
+            //console.log('LOGOUT', message);
             setAuth(false);
         }
 
         if (message.type === 'AUTH_STATUS_RESPONSE') {
-            console.log('AUTH_STATUS_RESPONSE', message);
+            //console.log('AUTH_STATUS_RESPONSE', message);
             setAuth(message.payload);
         }
 
@@ -458,7 +406,7 @@ const ReduxProvider = ({ children }) => {
             hoverResult, setHoverResult,
             selected, setSelected,
             display, setDisplay,
-            decorate,
+            decorate: settings?.featureSettings?.decorateResults?.enabled,
             jobs, setJobs,
 
             searchContext,
@@ -471,7 +419,7 @@ const ReduxProvider = ({ children }) => {
             numberResults,
             errors,
             auctionBids, decisionId,
-            displayDevInfo,
+            displayDevInfo: settings?.featureSettings?.displayDevInfo?.enabled,
             auth, setAuth
         }} >
             {children}

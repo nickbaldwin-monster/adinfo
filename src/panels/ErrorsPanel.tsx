@@ -49,6 +49,8 @@ export const ErrorsPanel = () => {
         >
             <div className='panel'>
                 <h4>Error info</h4>
+                <p>Currently errors are not being determined.</p>
+                <br />
                 <p>As a rule, all ads should be displayed before organic results. Currently there can be up to 50 ads displayed within the combined results.</p>
                 <br />
                 <p>Ads can be distinguished by the presence of an AdProvider value - an organic result will not have a value in that field.</p>

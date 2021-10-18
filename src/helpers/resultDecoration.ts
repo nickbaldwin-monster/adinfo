@@ -10,7 +10,7 @@ export const resultDecoration = (job: DisplayJob, i: number): HTMLDivElement => 
             <div class="resultRow alignRight">
             <div class="resultText">${adProvider} </div>
             <div class="resultSpacer" >&nbsp;</div>
-            <div class="resultPosition">${i + 1}</div>
+            <div class="resultPosition">${i}</div>
             </div>
         `;
     container.setAttribute('class', 'resultDecoration');

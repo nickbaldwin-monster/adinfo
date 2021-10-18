@@ -61,6 +61,12 @@ interface ToggleSetting {
     source: string;
 }
 
+interface ToggleSetting {
+    type: "TOGGLE_SETTING";
+    payload: string;
+    source: string;
+}
+
 
 interface ToggleDisplay {
     type: "TOGGLE_DISPLAY";
@@ -171,13 +177,19 @@ interface ToggleDisplayDevInfo {
     source: string;
 }
 
+interface ToggleFeatureSetting {
+    type: 'TOGGLE_FEATURE_SETTING';
+    source: string;
+    payload: { settingName: string, property: string };
+}
+
 export type MessageType =
     DisplayStateRequest | DisplayStateResponse  |
     SettingsStateRequest | SettingsStateResponse |
     SettingsUpdate | JobResultsUpdated |
 
     // actually used
-    ToggleDisplayDevInfo |
+    ToggleDisplayDevInfo | ToggleFeatureSetting |
     Check | CheckResponse |
     JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay | HoverResults | JobSelected | SearchContextUpdated |
     AuthUriRequest | AuthUriResponse |

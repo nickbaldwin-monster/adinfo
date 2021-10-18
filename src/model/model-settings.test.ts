@@ -24,7 +24,7 @@ let prevStore = {
             "visible": true,
             "width": "50px"
         },
-        "decisionIndex": {
+        "adRank": {
             "visible": true,
             "width": "50px"
         },
@@ -119,7 +119,7 @@ let prevStore = {
     },
     "order": [
         "position",
-        "decisionIndex",
+        "adRank",
         "remainder",
         "adProvider",
         "company",
@@ -305,7 +305,7 @@ describe('migration', () => {
         let store= {version: '2.0.3', ecpm: true};
         let newStore = migrateFlatObject(store);
         expect(newStore.dataSettings).toEqual((expect.objectContaining({
-            decisionIndex: { "visible": false, "width": "50px" }
+            adRank: { "visible": false, "width": "70px" }
         })));
         expect(newStore.version).toEqual(currentVersion.version);
     });

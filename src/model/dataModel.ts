@@ -6,7 +6,7 @@ import { DisplayJob } from "../types/DisplayJob";
 import { getDataFromUrl } from "../helpers/decodeImpUrl";
 
 export const currentVersion = {
-    version: '2.0.5'
+    version: '2.1.0'
 };
 
 
@@ -121,8 +121,8 @@ export const DataModel: Record<string, DataProperty> = {
         transformProperty: null,
         augmentedProperty: null
     },
-    decisionIndex: {
-        field: "decisionIndex",
+    adRank: {
+        field: "adRank",
         title: "AdRank",
         width: "70px",
         sensitive: false,
@@ -142,7 +142,7 @@ export const DataModel: Record<string, DataProperty> = {
     remainder: {
         field: "remainder",
         title: "Remainder?",
-        width: "40px",
+        width: "90px",
         sensitive: false,
         locked: true,
         reorderable: false,
@@ -745,7 +745,7 @@ export const FeatureModel: Record<string, FeatureProperty> = {
         title: 'Display Dev Info' ,
         sensitive: false,
         setting: true,
-        enabled: true,
+        enabled: false,
         disabled: false,
     },
 }
@@ -982,7 +982,7 @@ export const JobProperties = {
     ],
     '2.0.5': [
         "position",
-        "decisionIndex",
+        "adRank",
         "remainder",
         "ecpm",
         "price",
@@ -1006,8 +1006,7 @@ export const JobProperties = {
         "refCode",
         "validThrough",
         "validThroughGoogle",
-        "remote",
-        "decisionId",
+        "remote"
     ]
 }
 
@@ -1081,33 +1080,94 @@ export const isValidUserSettings = (store: UserSettings | any | null | undefined
     let dataSettingNames = (Object.keys(store.dataSettings));
     if (dataSettingNames.length !== dataSettingNamesList.length ||
         store.dataOrder.length !== dataSettingNamesList.length) {
-        return 2;
+        return false;
     }
     for (let i = 0; i < dataSettingNames.length; i++) {
         if (!isValidDataSetting({
             [dataSettingNames[i]]: store.dataSettings[dataSettingNames[i]]
         })) {
-            return 3;
+            return false;
         }
     }
     let featureSettingNames = (Object.keys(store.featureSettings));
     if (featureSettingNames.length !== featureSettingNamesList.length ) {
-        return 4;
+        return false;
     }
     for (let i = 0; i < featureSettingNames.length; i++) {
         if (!isValidFeatureSetting({
             [featureSettingNames[i]]: store.featureSettings[featureSettingNames[i]]
         })) {
-            return 5;
+            return false;
         }
     }
     return true;
 }
 
 
-export const userSettingsReducer = (settings: UserSettings, settingName: string) => {
+// @ts-ignore
+export const userSettingsReducer = (settings: UserSettings, settingName: string, settingType: string, settingProperty: string, newValue?: string ) => {
 
-    if (!settings || !settingName || !DataModel[settingName] || DataModel[settingName]?.setting === false) {
+    // @ts-ignore
+    if (!settings || !settingName || !settingProperty || !settingType || !settings[settingType]) {
+        log({
+            logType: 'ERROR',
+            error: 'unable to update Settings',
+            payload: { settingName, settingProperty, settingType, newValue }
+        });
+        console.log('problem - old settings -: ', settings);
+        return settings;
+    }
+
+
+    let toggle = (settingProperty !== 'width');
+    // @ts-ignore
+    let type = settings[settingType];
+    let setting = null;
+    let prevSettingValue = null;
+    if (type) {
+        // @ts-ignore
+        setting = type[settingName];
+    }
+    if (setting) {
+        prevSettingValue = setting[settingProperty];
+    }
+    if ((!toggle && !newValue) || setting === undefined) {
+        log({
+            logType: 'ERROR',
+            error: 'unable to update Settings',
+            payload: { settingName, settingProperty, settingType, newValue }
+        });
+        console.log('problem - old settings -: ', settings);
+        return settings;
+    }
+
+    let nextSettings = null;
+
+    if (toggle) {
+        nextSettings = {
+            ...settings,
+            // @ts-ignore
+            [settingType]: {
+                // @ts-ignore
+                ...settings[settingType],
+                [settingName]: {
+                    ...setting,
+                    [settingProperty]: !prevSettingValue
+                }
+            }
+        }
+
+        return nextSettings;
+    }
+
+
+    return settings;
+
+
+
+    /*
+
+    if (!DataModel[settingName] ) {
         log({
             logType: 'ERROR',
             error: 'unable to update Settings',
@@ -1151,6 +1211,8 @@ export const userSettingsReducer = (settings: UserSettings, settingName: string)
         console.log('new settings: ', nextSettings);
         return nextSettings;
     }
+
+     */
 
 
 }

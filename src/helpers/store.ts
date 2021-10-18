@@ -166,7 +166,13 @@ export const getSavedSettings = () => {
 
     }
 
+    else if (store?.version === '2.0.5') {
+        console.log('your saved settings are for version ' + store?.version + ". Updated settings to defaults for version " + currentVersion.version);
+        store = getDefaultUserSettings();
+    }
+
     else if (!isValidUserSettings(store)) {
+        console.log('your saved settings could nare invalid. updated settings to defaults for version ' + currentVersion.version);
         store = getDefaultUserSettings();
     }
 
