@@ -109,7 +109,7 @@ const DrawerRouterContainer = (props: any) => {
     sendMessageToBackgroundAndPopup({type: 'AUTH_STATUS_REQUEST', source: 'content'});
 
     // todo - replace with !auth
-    if (false ) {
+    if (!auth ) {
         return (
             <div>
                 <Drawer

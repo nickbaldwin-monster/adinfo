@@ -10,9 +10,9 @@ import { Job } from "../types/Job";
 import { SearchContext } from "../types/SearchContext";
 import { transformSearchContext } from "../helpers/transformSearchContext";
 import { getDecorateSetting, getDisplayDevInfoSetting, getSavedSettings, saveSettings } from "../helpers/store";
-import { userSettingsReducer, UserSettings, trJob, transformJobsNew } from "../model/dataModel";
+import { userSettingsReducer, UserSettings, transformJobsNew } from "../model/dataModel";
 
-
+import {subscribeToExtensionMessages, subscribeToWindowMessages} from "../helpers/messaging";
 
 const moduleName = 'Context';
 let log = logger(moduleName);
@@ -325,32 +325,23 @@ const ReduxProvider = ({ children }) => {
 
 
 
-        // for new views
+        // injected script monitors the page and sends a message via window
         if (message.type === 'JOB_PROPS') {
             updateJobs(message.payload);
         }
         if (message.type === 'SEARCH_CONTEXT_UPDATED') {
             updateSearchContextAndId(message.payload);
         }
-
-
-
         if (message.type === 'HOVER_RESULTS') {
             setHoverResult(message.payload);
         }
 
-        // todo - needed????
-        if (message.type === 'RESULTS_UPDATED') {
 
-            // todo - cannot receive dom elements - so instead, just need to respond to x new elements
 
-            // decorateResults(message.payload);
-            log({
-                logType: 'INFO',
-                message: message.type,
-                payload: message
-            });
-        }
+
+
+
+
 
 
         if (message.type === 'LOGIN_COMPLETED') {
@@ -380,21 +371,35 @@ const ReduxProvider = ({ children }) => {
 
     useEffect(() => {
 
-        // todo - read hooks doc - will adding dependencies here remove unnecessary re-renders?!?!?!
-        // todo - need to detach this? does listener get added every render?
-
+        // todo use subscribeToExtensionMessages(handleMessage);
         chrome.runtime.onMessage.addListener((message: MessageType) => {
             handleMessage(message);
         });
 
 
-        // todo - augmenting message with jobs
+
+
+        // todo - refactor into types
+        // todo - may need to pass on other messageTypes e.g. with auth, startup etc
+        const messagesToPassOn = {
+            'SEARCH_CONTEXT_UPDATED': true,
+            'JOB_PROPS': true,
+            'HOVER_RESULTS': true,
+            'JOB_SELECTED': true
+        }
+
+        // todo - replace
+        // subscribeToWindowMessages(handleMessage);
         window.addEventListener("message", function (e) {
-            if (e.data?.type) {
-                let message = { ...e.data, jobs };
+            // @ts-ignore
+            if (e.data?.type && messagesToPassOn[e.data.type]) {
+                let message = { ...e.data };
                 handleMessage(message);
             }
         });
+
+        // todo - remove event listeners as cleanup function
+        // return () => {};
 
     }, []);
 
@@ -404,14 +409,12 @@ const ReduxProvider = ({ children }) => {
     return (
         <Provider value={{
             hoverResult, setHoverResult,
+            jobs, setJobs,
+            searchContext,
+
             selected, setSelected,
             display, setDisplay,
-            decorate: settings?.featureSettings?.decorateResults?.enabled,
-            jobs, setJobs,
-
-            searchContext,
             searchId,
-
             request,
             redux,
             loading,
@@ -419,6 +422,8 @@ const ReduxProvider = ({ children }) => {
             numberResults,
             errors,
             auctionBids, decisionId,
+
+            decorate: settings?.featureSettings?.decorateResults?.enabled,
             displayDevInfo: settings?.featureSettings?.displayDevInfo?.enabled,
             auth, setAuth
         }} >

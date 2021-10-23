@@ -8,10 +8,12 @@ import { Switch } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
 import { Resizable } from "re-resizable";
 
+import { sendMessageToBackgroundAndPopup } from '../helpers/messaging';
+
 import "./SettingsPanel.css";
 
 import { DragHandle } from "../elements/DragHandle";
-import {getNamesOfJobFields, DataModel} from "../model/dataModel";
+import { getNamesOfJobFields, DataModel } from "../model/dataModel";
 
 
 const moduleName = 'SettingsPanel';
@@ -19,13 +21,10 @@ let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
 
-
 interface Setting {
     key: string;
     value: boolean;
 }
-
-
 
 export const SettingsPanel = () => {
 
@@ -38,26 +37,27 @@ export const SettingsPanel = () => {
             source: 'SettingsPanel',
             payload: setting
         };
-        chrome.runtime.sendMessage(message);
+        sendMessageToBackgroundAndPopup(message);
+
     };
+    // todo - remove once confirmed not needed
     const handleToggleDecorate = () => {
         const message: MessageType = {
             type: "TOGGLE_DECORATE",
             source: 'SettingsPanel',
             payload: {settingName: 'decorateResults', property: 'enabled'}
         };
-        chrome.runtime.sendMessage(message);
+        sendMessageToBackgroundAndPopup(message);
     };
 
 
     const handleToggleFeatureSetting = (settingName: string) => {
-
         const message: MessageType = {
             type: "TOGGLE_FEATURE_SETTING",
             source: 'SettingsPanel',
             payload: { settingName, property: 'enabled' }
         };
-        chrome.runtime.sendMessage(message);
+        sendMessageToBackgroundAndPopup(message);
     };
 
 
@@ -95,9 +95,7 @@ export const SettingsPanel = () => {
                 <div className='setting'>
                     <Switch
                         disabled={DataModel[setting].disabled || false}
-                        onChange={() => {
-                            handleToggleSetting(setting);
-                        }}
+                        onChange={() => { handleToggleSetting(setting) }}
                         checked={settings.dataSettings[setting].visible}
                     />
                     <span className='settingSpacer' />
@@ -108,12 +106,9 @@ export const SettingsPanel = () => {
 
             <br />
 
-
-
             <div className='setting'>
                 <Switch
                     onChange={()=> { handleToggleFeatureSetting('displayDevInfo') }}
-
                     checked={displayDevInfo}
                 />
                 <span className='settingSpacer' />

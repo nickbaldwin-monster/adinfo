@@ -119,12 +119,16 @@ After the project is built, a directory named `dist` will be created.
 - persisted 'display dev info' and 'overlay ad info on results' settings
 
 
-next
+2.2.0
 - authorization (in popup)
+
+todo
+- check auth process in popup
+
 
 tbd
 
-- hide remote setting / explain *
+- show remote info
 - mesco name?
 - highlight on hover 
 - scroll to result for card view
@@ -132,28 +136,21 @@ tbd
 - show more than 2x (per category) jobs for company as error
 - show duplicates as error
 - loading indicator
-- style panels
 - "jobViewPreferences":"hiringOrganizationConfidential"}
-- figure out remote - followup
-- occupation type / remote - followup
-- table of all values in detail view (as per request)?
 - apply xcode 'aggregated' for jobs pt 3 in eu - followup
+
+check these:
 - add link to job detail
 - add link to search using job id
 - add link to webadmin using now id
 - title for other cell values? (not tooltip)
 - match settings to titles
 - remove checkbox on items in table?
-- resize width?
 - copy cell/row values
 - link to accounts in next admin?
 - link to accounts in webadmin?
 - get request info from new views 
 
-
-Sonali todo:
-- other info to include - copy current plugin? ask team what is useful?
-- confirm source of fields matches current plugin
 
 
 open q's
@@ -165,8 +162,12 @@ open q's
 
 order of fields (* = default setting):
 - Position *
-- Company *
+- AdRank
+- Remainder
+- eCPM ^
+- Clearing Price ^
 - Ad Provider *
+- Company *
 - Title *
 - Location *
 - Now ID *

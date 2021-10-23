@@ -17,13 +17,13 @@ import { Drawer } from "./windows/Drawer";
 import { monitorReactNodes } from "./scripts/monitorReactNodes";
 import "./content.css";
 
-import {sendMessageToBackgroundAndPopup} from "./helpers/messaging";
+import { sendMessageToBackgroundAndPopup } from "./helpers/messaging";
 
 const moduleName = 'content';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
-sendMessageToBackgroundAndPopup({type: 'CHECK'});
+sendMessageToBackgroundAndPopup({ type: 'CHECK' });
 
 // wrap the display with data and state managed by context
 const DrawerWithContext = () => {

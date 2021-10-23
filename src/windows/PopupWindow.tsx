@@ -9,6 +9,7 @@ import { Login } from "../components/Login";
 
 import "./PopupInfo.css";
 import { useEffect, useState } from "react";
+import { log } from "../helpers/logger";
 
 
 
@@ -206,6 +207,13 @@ const PopupWindow = () => {
 
 
         const handler = (message: MessageType) => {
+
+            log({
+                logType: 'MESSAGE_RECEIVED',
+                functionName: 'N/A',
+                payload: message
+            });
+
             if (message.type === 'AUTH_FLOW_STATUS_RESPONSE') {
                 console.log('AUTH_FLOW_STATUS_RESPONSE');
                 console.log('started: ', message.payload);
