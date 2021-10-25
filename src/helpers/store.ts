@@ -1,34 +1,16 @@
-import { currentVersion, getDefaultUserSettings, isValidUserSettings, migrateFlatObject }
+import {
+    currentVersion,
+    getDefaultUserSettings,
+    isValidDataSetting,
+    isValidUserSettings,
+    migrateFlatObject,
+    UserSettings
+}
     from "../model/dataModel";
 
-const settingsKey = 'savedReduxState';
 const storeKey = 'adinfo';
 
 const defaultSettings = getDefaultUserSettings();
-
-
-// todo use local storage
-// todo in context
-// window.localStorage.setItem("snowing", "true");
-// chrome.storage.local.set({ display: display });
-
-
-/*
-    let savedSettings;
-    chrome.storage.local.get(['adinfoSettings'], function(result) {
-        savedSettings = result.key;
-        console.log('savedSettings are: ', savedSettings);
-    });
- */
-
-
-
-
-
-
-
-
-
 
 
 // todo interface of settings and store
@@ -98,42 +80,37 @@ export const saveStore = (state: any) => {
 
 
 
-const getSavedSettingsOld = () => {
+// @ts-ignore
+export const getSavedExtensionSettings = () => {
     let savedSettings;
-    chrome.storage.local.get(['adinfoSettings'], function(result) {
-        savedSettings = result.key;
+    chrome.storage.local.get([storeKey], function(result) {
+        savedSettings = result[storeKey];
         console.log('savedSettings are: ', savedSettings);
+        if (!savedSettings) {
+            console.log('no saved settings. going to use and save default settings: ', savedSettings);
+            savedSettings = defaultSettings;
+            saveExtensionSettings(defaultSettings);
+            return defaultSettings;
+        }
+        return savedSettings;
     });
-
-    let local = window.localStorage.getItem('adinfo');
-    let localSettings;
-    if (local) {
-        localSettings = JSON.parse(local);
-    }
-    console.log('local Settings are: ', localSettings);
-
-    if (!localSettings?.version || localSettings.version !== '2.0.4') {
-        return defaultSettings;
-    }
-    delete localSettings?.version;
-    return localSettings || defaultSettings;
 }
 
-const saveSettingsOld = (settings: object) => {
-    chrome.storage.local.set({ adinfoSettings: settings }, function() {
-        // console.log('saved these settings', settings);
-        // console.log('checking...');
-        // chrome.storage.local.get(['adinfoSettings'], function(result) {
-        //    console.log('savedSettings are: ', result.adinfoSettings);
-        // });
-    });
 
-    // @ts-ignore
-    let s = { ...settings, version };
-    let string = JSON.stringify(s);
-    window.localStorage.setItem('adinfo', string);
-    let local = window.localStorage.getItem('adinfo');
-    // console.log('local Settings are: ', local);
+
+
+
+
+
+
+export const saveExtensionSettings = (settings: object) => {
+    chrome.storage.local.set({ [storeKey]: settings }, function() {
+        console.log('saving these settings', settings);
+
+        chrome.storage.local.get([storeKey], function(result) {
+            console.log('savedSettings is: ', result[storeKey]);
+        });
+    });
 }
 
 
@@ -205,3 +182,63 @@ export const getDisplayDevInfoSetting = () => {
 export const saveSettings = (store: object) => {
     saveStore(store);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// todo - WIP
+
+
+export const getObjectFromLocalStorage = async () => {
+    return new Promise((resolve, reject) => {
+        try {
+            chrome.storage.local.get([storeKey], function(value) {
+                if (value[storeKey] === undefined) {
+                    // todo - save default settings
+                    reject();
+                } else {
+                    resolve(value[storeKey]);
+                }
+            });
+        } catch (ex) {
+            console.log('err - caught');
+            reject(ex);
+        }
+    });
+};
+
+
+const saveObjectInLocalStorage = async (obj: object) => {
+    return new Promise((resolve, reject) => {
+        try {
+            chrome.storage.local.set(obj, function() {
+                resolve();
+            });
+        } catch (ex) {
+            reject(ex);
+        }
+    });
+};
+
+
+const removeObjectFromLocalStorage = async () => {
+    return new Promise((resolve, reject) => {
+        try {
+            chrome.storage.local.remove([storeKey], function() {
+                resolve();
+            });
+        } catch (ex) {
+            reject(ex);
+        }
+    });
+};
+

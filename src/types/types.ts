@@ -1,6 +1,7 @@
 // Popup or content script requesting the current status
 import {Job} from "./Job";
 import {SearchContext} from "./SearchContext";
+import {UserSettings} from "../model/dataModel";
 
 interface DisplayStateRequest {
     type: "REQ_DISPLAY_STATUS";
@@ -37,14 +38,13 @@ interface JobState {
     source: string;
 }
 
-interface SettingsStateRequest {
-    type: "REQ_SETTINGS_STATUS";
-    payload: object;
+interface SavedSettingsRequest {
+    type: "SAVED_SETTINGS_REQUEST";
     source: string;
 }
 
-interface SettingsStateResponse {
-    type: "SETTINGS_STATUS";
+interface SavedSettingsResponse {
+    type: "SAVED_SETTINGS_RESPONSE";
     payload: object;
     source: string;
 }
@@ -183,12 +183,32 @@ interface ToggleFeatureSetting {
     payload: { settingName: string, property: string };
 }
 
+
+interface SettingsRequest {
+    type: 'SETTINGS_REQUEST';
+    source: string;
+}
+
+interface SettingsResponse {
+    type: 'SETTINGS_RESPONSE';
+    source: string;
+    payload: UserSettings;
+}
+
+interface SettingsNotReady {
+    type: 'SETTINGS_NOT_READY';
+    source: string;
+}
+
+
 export type MessageType =
     DisplayStateRequest | DisplayStateResponse  |
-    SettingsStateRequest | SettingsStateResponse |
+    SavedSettingsRequest | SavedSettingsResponse |
     SettingsUpdate | JobResultsUpdated |
 
     // actually used
+
+    SettingsRequest | SettingsResponse | SettingsNotReady |
     ToggleDisplayDevInfo | ToggleFeatureSetting |
     Check | CheckResponse |
     JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay | HoverResults | JobSelected | SearchContextUpdated |

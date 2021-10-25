@@ -12,7 +12,11 @@ import { transformSearchContext } from "../helpers/transformSearchContext";
 import { getDecorateSetting, getDisplayDevInfoSetting, getSavedSettings, saveSettings } from "../helpers/store";
 import { userSettingsReducer, UserSettings, transformJobsNew } from "../model/dataModel";
 
-import {subscribeToExtensionMessages, subscribeToWindowMessages} from "../helpers/messaging";
+import {
+    sendMessageToBackgroundAndPopup,
+    subscribeToExtensionMessages,
+    subscribeToWindowMessages
+} from "../helpers/messaging";
 
 const moduleName = 'Context';
 let log = logger(moduleName);
@@ -289,8 +293,10 @@ const ReduxProvider = ({ children }) => {
         if (message.type === "DISPLAY_STATUS") {
             // updateDisplay(message.display);
         }
-        if (message.type === "SETTINGS_STATUS") {
+        // todo - WIP
+        if (message.type === "SAVED_SETTINGS_RESPONSE") {
             // todo - apply settings
+            console.log('extension settings from background', message.payload);
         }
 
 
@@ -371,12 +377,15 @@ const ReduxProvider = ({ children }) => {
 
     useEffect(() => {
 
+        sendMessageToBackgroundAndPopup({
+            type: 'SAVED_SETTINGS_REQUEST',
+            source: 'context'
+        })
+
         // todo use subscribeToExtensionMessages(handleMessage);
         chrome.runtime.onMessage.addListener((message: MessageType) => {
             handleMessage(message);
         });
-
-
 
 
         // todo - refactor into types

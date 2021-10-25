@@ -11,9 +11,35 @@ import { subscribeToExtensionMessages, subscribeToWindowMessages,
     sendMessageToBackgroundAndPopup, sendMessageToContent
 } from "./helpers/messaging";
 
+
+import {
+    getObjectFromLocalStorage,
+    getSavedExtensionSettings,
+
+    saveExtensionSettings
+} from './helpers/store';
+import { getDefaultUserSettings } from "./model/dataModel";
 const moduleName = 'background';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
+
+
+let settings = getDefaultUserSettings();
+let loading = true;
+let error = false;
+
+getObjectFromLocalStorage().then( savedSettings => {
+    console.log('default settings: ', settings);
+    console.log('settings in chrome extension storage: ', savedSettings);
+    console.log('retrieved at: ', Date.now());
+    // @ts-ignore
+    settings = savedSettings;
+    loading = false;
+    // todo - save
+}).catch(err => {
+    console.log('err: ', err);
+    error = true;
+})
 
 
 // default state
@@ -29,6 +55,27 @@ const isAuthCurrent = () => {
     return auth && lastCheckTime > cutoff;
 }
 
+
+// todo - WIP
+const sendSettings = () => {
+    // todo - when error
+    if (!loading) {
+        let message: MessageType = {
+            type: "SAVED_SETTINGS_RESPONSE",
+            payload: settings,
+            source: 'background'
+        };
+        sendMessageToContent(message);
+    }
+    else {
+        let message : MessageType = {
+            type: "SETTINGS_NOT_READY",
+            source: 'background'
+        };
+        sendMessageToContent(message);
+    }
+
+};
 
 const sendDataSetting = (setting: string) => {
     const message: MessageType = {
@@ -83,6 +130,13 @@ const sendStatus = (display: boolean) => {
 // todo - check which are unused
 const handleMessage = (message: MessageType) => {
     log({ logType: 'MESSAGE_RECEIVED', functionName: 'N/A', payload: message });
+
+    // todo - WIP
+    // for tabs created after extension already active
+    if (message.type === "SAVED_SETTINGS_REQUEST") {
+        sendSettings();
+    }
+
     if (message.type === "REQ_DISPLAY_STATUS") {
         sendStatus(display);
     }
