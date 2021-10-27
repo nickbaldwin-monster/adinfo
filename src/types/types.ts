@@ -201,12 +201,57 @@ interface SettingsNotReady {
 }
 
 
+interface LoginStatusRequest {
+    type: 'LOGIN_STATUS_REQUEST';
+    source: string;
+}
+interface LoginStatusResponse {
+    type: 'LOGIN_STATUS_RESPONSE';
+    source: string;
+    payload: boolean;
+}
+interface LoginRequest {
+    type: 'LOGIN_REQUEST';
+    source: string;
+}
+interface LoginResponse {
+    type: 'LOGIN_RESPONSE';
+    source: string;
+    payload: boolean;
+}
+
+interface LogoutRequest {
+    type: 'LOGOUT_REQUEST';
+    source: string;
+}
+interface LogoutResponse {
+    type: 'LOGOUT_RESPONSE';
+    source: string;
+    payload: boolean;
+}
+
+interface VersionResponse {
+    type: 'VERSION_RESPONSE';
+    source: string;
+    payload: string;
+}
+
+interface VersionRequest {
+    type: 'VERSION_REQUEST';
+    source: string;
+}
+
+
 export type MessageType =
     DisplayStateRequest | DisplayStateResponse  |
     SavedSettingsRequest | SavedSettingsResponse |
     SettingsUpdate | JobResultsUpdated |
 
     // actually used
+    VersionRequest | VersionResponse |
+
+    LoginStatusRequest | LoginStatusResponse |
+    LoginRequest | LoginResponse | LogoutRequest | LogoutResponse |
 
     SettingsRequest | SettingsResponse | SettingsNotReady |
     ToggleDisplayDevInfo | ToggleFeatureSetting |

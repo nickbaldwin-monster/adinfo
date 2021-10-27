@@ -15,21 +15,16 @@ import { HandleComponent, Resizable } from "re-resizable";
 
 import { DragHandle } from "../elements/DragHandle";
 
-// original css - '@progress/kendo-theme-default/dist/all.css';
 // todo - cut down css
 import './Table.css';
 import { Popup } from "@progress/kendo-react-popup";
 import { MessageType } from "../types/types";
 
-
 import { getNamesOfJobFields, DataModel } from "../model/dataModel";
-import { DatadogLink } from "../components/DatadogLink";
-import { DatadogUrl } from "../elements/DatadogUrl";
-import { AuctionBids } from "../elements/AuctionBids";
 import { DevInfo } from "../components/DevInfo";
 import { Button } from "@progress/kendo-react-buttons";
 import { Info } from "../components/Info";
-
+import { AuthButtons } from "./AuthButtons";
 
 const DATA_ITEM_KEY = "jobId";
 const SELECTED_FIELD = "selected";
@@ -198,7 +193,7 @@ export const JobTable = () => {
 
 
     // @ts-ignore
-    const { loading, displayDevInfo, searchId, auctionBids, decisionId, jobs, setJobs, settings, numberResults, errors, hoverResult, setHoverResult }
+    const { auth, loading, displayDevInfo, searchId, auctionBids, decisionId, jobs, setJobs, settings, numberResults, errors, hoverResult, setHoverResult }
         = useReduxContext();
 
     const _export = React.useRef(null);
@@ -433,6 +428,7 @@ export const JobTable = () => {
             handleComponent={{left: DragHandle}}
 
         >
+            <AuthButtons auth={true} name="dude" />
         <div className='jobTable'>
 
             <ExcelExport data={jobs} ref={_export}>

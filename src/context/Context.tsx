@@ -51,26 +51,31 @@ function settingsReducer(state: object, action: object): object {
 const ReduxProvider = ({ children }) => {
 
     const [settings, setSettings] = useState(getSavedSettings);
-    const [errors, setErrors] = useState(defaultErrors);
-    const [numberResults, setNumberResults] = useState(0);
-    const [results, setResults] = useState(true);
-    const [mobileResults, setMobileResults] = useState(true);
-
     const [display, setDisplay] = useState(true);
     const [jobs, setJobs] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [request, setRequest] = useState([]);
-    const [redux, setRedux] = useState({});
+    const [auctionBids, setAuctionBids] = useState("");
+    const [decisionId, setDecisionId] = useState("");
     const [hoverResult, setHoverResult] = useState(-1);
     const [selected, setSelected] = useState(-1);
     const [auth, setAuth] = useState(false);
-
-    const [auctionBids, setAuctionBids] = useState("");
-    const [decisionId, setDecisionId] = useState("");
+    const [version, setVersion] = useState("");
 
     let defaultState: ContextItem[] = [];
     const [searchContext, setSearchContext] = useState(defaultState);
     const [searchId, setSearchId] = useState('');
+
+    const [request, setRequest] = useState([]);
+
+
+    const [loading, setLoading] = useState(true);
+    const [errors, setErrors] = useState(defaultErrors);
+    const [numberResults, setNumberResults] = useState(0);
+    const [results, setResults] = useState(true);
+    const [mobileResults, setMobileResults] = useState(true);
+    const [redux, setRedux] = useState({});
+
+
+
 
     log({
         logType: 'INFO',
@@ -350,24 +355,26 @@ const ReduxProvider = ({ children }) => {
 
 
 
-        if (message.type === 'LOGIN_COMPLETED') {
-            //console.log('LOGIN COMPLETED', message);
-            setAuth(true);
+
+
+        if (message.type === 'VERSION_RESPONSE') {
+            console.log("VERSION", version);
+            setVersion(message.payload);
         }
 
-        if (message.type === 'LOGIN_CHECKED') {
-            //console.log('LOGIN STARTED', message);
-            setAuth(true);
-        }
 
-        if (message.type === 'LOGOUT') {
-            //console.log('LOGOUT', message);
-            setAuth(false);
-        }
 
-        if (message.type === 'AUTH_STATUS_RESPONSE') {
-            //console.log('AUTH_STATUS_RESPONSE', message);
+        if (message.type === 'LOGIN_STATUS_RESPONSE') {
             setAuth(message.payload);
+            console.log("LOGIN_STATUS_RESPONSE", message.payload);
+        }
+        if (message.type === 'LOGOUT_RESPONSE') {
+            setAuth(message.payload);
+            console.log("LOGOUT_RESPONSE", message.payload);
+        }
+        if (message.type === 'LOGIN_RESPONSE') {
+            setAuth(message.payload);
+            console.log("LOGIN_RESPONSE", message.payload);
         }
 
 
@@ -377,10 +384,6 @@ const ReduxProvider = ({ children }) => {
 
     useEffect(() => {
 
-        sendMessageToBackgroundAndPopup({
-            type: 'SAVED_SETTINGS_REQUEST',
-            source: 'context'
-        })
 
         // todo use subscribeToExtensionMessages(handleMessage);
         chrome.runtime.onMessage.addListener((message: MessageType) => {
@@ -407,6 +410,23 @@ const ReduxProvider = ({ children }) => {
             }
         });
 
+        sendMessageToBackgroundAndPopup({
+            type: 'SAVED_SETTINGS_REQUEST',
+            source: 'context'
+        });
+
+        // request auth status
+        sendMessageToBackgroundAndPopup({
+            type: "LOGIN_STATUS_REQUEST",
+            source: "context"
+        });
+
+        sendMessageToBackgroundAndPopup({
+            type: "VERSION_REQUEST",
+            source: "context"
+        });
+
+
         // todo - remove event listeners as cleanup function
         // return () => {};
 
@@ -431,6 +451,7 @@ const ReduxProvider = ({ children }) => {
             numberResults,
             errors,
             auctionBids, decisionId,
+            version,
 
             decorate: settings?.featureSettings?.decorateResults?.enabled,
             displayDevInfo: settings?.featureSettings?.displayDevInfo?.enabled,

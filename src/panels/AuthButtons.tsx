@@ -7,16 +7,16 @@ import { logger } from "../helpers/logger";
 import { Resizable } from "re-resizable";
 import { DragHandle } from "../elements/DragHandle";
 import { Button } from "@progress/kendo-react-buttons";
-import { MessageType } from "../types/types";
-import { sendMessageToBackgroundAndPopup, sendMessageToContent } from "../helpers/messaging";
+import {MessageType} from "../types/types";
+import {sendMessageToBackgroundAndPopup, sendMessageToContent} from "../helpers/messaging";
 
 const moduleName = 'LoginPanel';
 let log = logger(moduleName);
+log({ logType: 'LOADED' });
 
 
 // @ts-ignore
-export const LoginPanel = () => {
-
+export const AuthButtons = ({ auth, name} ) => {
 
     const handleCheck = () => {
         sendMessageToBackgroundAndPopup({
@@ -37,27 +37,29 @@ export const LoginPanel = () => {
         });
     };
 
-    let message = "You may need to login. Please click the plugin icon in the extension toolbar above.";
+    if (auth) {
+        return (
+            <div>
+                <span>Authenticated: {name}</span>
+                <Button onClick={handleLogout}>Logout</Button>
 
-    return (
-        <Resizable
-            defaultSize={{ width: '320px', height: '100%' }}
-            enable={{ top:false, right:false, bottom:false, left:true,
-                topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
-            minWidth='310px'
-            handleComponent={{left: DragHandle}}
-        >
-            <div className='settingsPanel panel'>
-                <h4>Login</h4>
-                <p>{message}</p>
-                <br />
-                <Button onClick={handleCheck}>Check</Button>
-                <Button onClick={handleLogin}>Login</Button>
+                &nbsp;&nbsp;&nbsp;
+                <Button onClick={handleCheck}>Check</Button>&nbsp;
+                <Button onClick={handleLogin}>Login</Button>&nbsp;
+            </div>
+        );
+    }
+    else {
+        return (
+            <div>
+                <span>You need to login</span>&nbsp;
+                <Button onClick={handleLogin}>Login</Button>&nbsp;
+                &nbsp;&nbsp;&nbsp;
+                <Button onClick={handleCheck}>Check</Button>&nbsp;
                 <Button onClick={handleLogout}>Logout</Button>
             </div>
+        );
+    }
 
-
-        </Resizable>
-    );
 }
 

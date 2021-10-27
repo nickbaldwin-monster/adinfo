@@ -1,8 +1,6 @@
 import * as React from "react";
-import { DatadogUrl } from "../elements/DatadogUrl";
-import { AuctionBids } from "../elements/AuctionBids";
-import {Button} from "@progress/kendo-react-buttons";
 
+import { Button } from "@progress/kendo-react-buttons";
 
 
 

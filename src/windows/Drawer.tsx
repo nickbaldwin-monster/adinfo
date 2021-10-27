@@ -6,20 +6,10 @@ import DrawerRouterContainer from "./DrawerRouterContainer";
 import { JobTable } from "../panels/JobTable";
 import { RequestTable } from "../panels/RequestTable";
 import { Feedback } from "../panels/Feedback";
-import { logger } from "../helpers/logger";
 import { ErrorsPanel } from "../panels/ErrorsPanel";
 import { LoginPanel } from "../panels/LoginPanel";
 
-
-
-
-const moduleName = 'Drawer';
-let log = logger(moduleName);
-log({ logType: 'LOADED' });
-
-
 export const Drawer = () => {
-
     return (
     <>
         <HashRouter>

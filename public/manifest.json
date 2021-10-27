@@ -59,6 +59,7 @@
     ],
     "persistent": false
   },
+  "web_accessible_resources":  ["popup'html"],
   "content_scripts": [
     {
       "matches": [

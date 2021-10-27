@@ -3,18 +3,12 @@ import { withRouter } from "react-router-dom";
 import { Drawer, DrawerContent } from "@progress/kendo-react-layout";
 import { useReduxContext } from "../context/Context";
 import { logger } from "../helpers/logger";
-import {LoginPanel} from "../panels/LoginPanel";
+import { LoginPanel } from "../panels/LoginPanel";
+import { sendMessageToBackgroundAndPopup } from "../helpers/messaging";
+
+// todo
 import dayjs from "dayjs";
 import Duration from "dayjs/plugin/duration";
-import {sendMessageToBackgroundAndPopup} from "../helpers/messaging";
-
-
-
-const moduleName = 'DrawerRouterContainer';
-let log = logger(moduleName);
-log({ logType: 'LOADED' });
-
-
 
 const items = [
     {
@@ -106,9 +100,10 @@ const DrawerRouterContainer = (props: any) => {
 
     let selected = setSelectedItem(props.location.pathname);
 
+    // todo  - WIP
     sendMessageToBackgroundAndPopup({type: 'AUTH_STATUS_REQUEST', source: 'content'});
 
-    // todo - replace with !auth
+
     if (!auth ) {
         return (
             <div>
@@ -119,8 +114,9 @@ const DrawerRouterContainer = (props: any) => {
                     mini={true}
                     items={items}
                 >
-
-                    <DrawerContent><LoginPanel /></DrawerContent>
+                    <DrawerContent>
+                        <LoginPanel />
+                    </DrawerContent>
                 </Drawer>
             </div>
         );

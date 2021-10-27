@@ -11,19 +11,15 @@
 import React from 'react';
 import * as ReactDOM from "react-dom";
 
-import { logger } from "./helpers/logger";
 import { ReduxProvider } from "./context/Context";
 import { Drawer } from "./windows/Drawer";
 import { monitorReactNodes } from "./scripts/monitorReactNodes";
 import "./content.css";
-
-import { sendMessageToBackgroundAndPopup } from "./helpers/messaging";
-
+import { logger } from "./helpers/logger";
 const moduleName = 'content';
 let log = logger(moduleName);
-log({ logType: 'LOADED' });
 
-sendMessageToBackgroundAndPopup({ type: 'CHECK' });
+
 
 // wrap the display with data and state managed by context
 const DrawerWithContext = () => {
@@ -33,7 +29,6 @@ const DrawerWithContext = () => {
         </ReduxProvider>
     );
 };
-
 
 
 const injectApp = () => {
@@ -62,6 +57,7 @@ const injectApp = () => {
                 error: 'display mounted'
             });
         }
+
     }
 };
 
@@ -72,11 +68,9 @@ if (document.readyState !== 'loading') {
 
     const script = document.createElement('script');
     script.textContent = '(' + monitorReactNodes + ')();';
-
     script.title = 'script';
     (document.head||document.documentElement).appendChild(script);
     script.remove();
-
 }
 else {
     document.addEventListener('DOMContentLoaded', function () {

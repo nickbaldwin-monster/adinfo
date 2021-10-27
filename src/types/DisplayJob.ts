@@ -1,10 +1,16 @@
 export interface DisplayJob  {
     position: number;
-    title: string;
-    company: string;
-    jobId: string;
-    location: string;
+    di: string;
+    dj: string;
+    ec: string;
+    pc: string;
     adProvider: string;
+    company: string;
+    title: string;
+    location: string;
+    nowId: string;
+    jobId: string;
+
     mesco: string;
     ingestionMethod: string; // IngestionMethod
     pricingType: string; // PricingType;
@@ -16,15 +22,12 @@ export interface DisplayJob  {
     xCode: string;
     data: object;
     seoJobId: string;
-    nowId: string;
+
     template: string;
     url: string;
     refCode: string;
     validThrough: string;
     validThroughGoogle: string;
     remote: string;
-    di: string;
-    dj: string;
-    ec: string;
-    pc: string;
+
 }

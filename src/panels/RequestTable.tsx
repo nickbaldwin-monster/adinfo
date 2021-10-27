@@ -25,7 +25,7 @@ export const RequestTable = () => {
 
 
     // @ts-ignore
-    const { loading, request, redux, searchContext, searchId } = useReduxContext();
+    const { version, loading, request, redux, searchContext, searchId } = useReduxContext();
 
     log({
         logType: 'INFO',
@@ -39,6 +39,8 @@ export const RequestTable = () => {
     let toTs = Date.now();
     let fromTs = toTs - 900000;
 
+    let versionInfo = version ? `v${version}` : "";
+
     return (
         <Resizable
             defaultSize={{ width: '320px', height: '100%' }}
@@ -48,7 +50,7 @@ export const RequestTable = () => {
             handleComponent={{left: DragHandle}}
         >
             <div className='panel'>
-            <h4>Info</h4>
+            <h4>Info: {version && versionInfo}</h4>
 
             <p>This plugin aids the interpretation of the job search results.</p>
             <br />
