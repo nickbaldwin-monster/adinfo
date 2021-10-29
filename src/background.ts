@@ -16,7 +16,7 @@ import {
 
     saveExtensionSettings
 } from './helpers/store';
-import { getDefaultUserSettings } from "./model/dataModel";
+import { getDefaultUserSettings } from "./model/UserSettings";
 
 import { PublicClientApplication } from "@azure/msal-browser";
 import { msalConfig } from "./auth/authConfig";

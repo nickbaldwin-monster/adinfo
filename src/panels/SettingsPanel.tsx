@@ -6,14 +6,12 @@ import { logger } from "../helpers/logger";
 
 import { Switch } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
-import { Resizable } from "re-resizable";
-
+import { Panel } from "./Panel";
 import { sendMessageToBackgroundAndPopup } from '../helpers/messaging';
 
 import "./SettingsPanel.css";
 
-import { DragHandle } from "../elements/DragHandle";
-import { getNamesOfJobFields, DataModel } from "../model/dataModel";
+import { getNamesOfJobFields, DataModel } from "../model/DataModel";
 
 
 const moduleName = 'SettingsPanel';
@@ -29,7 +27,7 @@ interface Setting {
 export const SettingsPanel = () => {
 
     // @ts-ignore
-    const { settings, decorate, displayDevInfo } = useReduxContext();
+    const { settings, decorate, displayDevInfo, auth, name } = useReduxContext();
 
     const handleToggleSetting = (setting: string) => {
         const message: MessageType = {
@@ -60,71 +58,48 @@ export const SettingsPanel = () => {
         sendMessageToBackgroundAndPopup(message);
     };
 
-
+    let showSettings = (settings?.dataOrder && settings?.dataSettings);
     let list: string[] = settings.dataOrder;
-    if (!settings || !settings.dataOrder || !settings.dataSettings) {
-        return (
-            <Resizable
-                defaultSize={{ width: '320px', height: '100%' }}
-                enable={{ top:false, right:false, bottom:false, left:true,
-                    topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
-                minWidth='310px'
-                handleComponent={{left: DragHandle}}
-            >
-                <div className='settingsPanel panel'>
-                    <h4>Settings</h4>
-                    <p>Nothing to see here!</p>
-                </div>
-            </Resizable>
-        );
-    }
-
-    // todo - disable settings based on model
 
     return (
-        <Resizable
-            defaultSize={{ width: '320px', height: '100%' }}
-            enable={{ top:false, right:false, bottom:false, left:true,
-                topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
-            minWidth='310px'
-            handleComponent={{ left: DragHandle }}
-        >
-        <div className='settingsPanel panel'>
-            <h4>Settings</h4>
-            {list.map(setting => (
+        <Panel>
+            <div className="scrollInPanel">
+                <h4>Settings</h4>
+                {showSettings && list.map(setting => (
+                    <div className='setting'>
+                        <Switch
+                            disabled={DataModel[setting].disabled || false}
+                            onChange={ () => { handleToggleSetting(setting) } }
+                            checked={settings.dataSettings[setting].visible}
+                        />
+                        <span className='settingSpacer' />
+                        <Label>{setting}</Label>
+                    </div>
+
+                ))}
+                {!showSettings && <p>Nothing to see here!</p>}
+
+                <br />
+
                 <div className='setting'>
                     <Switch
-                        disabled={DataModel[setting].disabled || false}
-                        onChange={() => { handleToggleSetting(setting) }}
-                        checked={settings.dataSettings[setting].visible}
+                        onChange={()=> { handleToggleFeatureSetting('displayDevInfo') }}
+                        checked={displayDevInfo}
                     />
                     <span className='settingSpacer' />
-                    <Label>{setting}</Label>
+                    <Label>Display dev info</Label>
                 </div>
 
-            ))}
+                <div className='setting'>
+                    <Switch
+                        onChange={()=> { handleToggleFeatureSetting('decorateResults') }}
+                        checked={decorate}
+                    />
+                    <span className='settingSpacer' />
+                    <Label>Overlay ad info on results</Label>
+                </div>
 
-            <br />
-
-            <div className='setting'>
-                <Switch
-                    onChange={()=> { handleToggleFeatureSetting('displayDevInfo') }}
-                    checked={displayDevInfo}
-                />
-                <span className='settingSpacer' />
-                <Label>Display dev info</Label>
             </div>
-
-            <div className='setting'>
-                <Switch
-                    onChange={()=> { handleToggleFeatureSetting('decorateResults') }}
-                    checked={decorate}
-                />
-                <span className='settingSpacer' />
-                <Label>Overlay ad info on results</Label>
-            </div>
-
-        </div>
-        </Resizable>
+        </Panel>
     );
 };

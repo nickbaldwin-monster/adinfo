@@ -1,75 +1,10 @@
-import { log } from "../helpers/logger";
-import { Job } from "../types/Job";
-import dayjs from "dayjs";
-import { DisplayJob } from "../types/DisplayJob";
+import { normalizePostLocation, nowAdIds, formatDate, getImpressionData } from "./transformJob";
 
-import { getDataFromUrl } from "../helpers/decodeImpUrl";
+
 
 export const currentVersion = {
-    version: '2.1.0'
+    version: '2.3.0'
 };
-
-
-// todo - this will provide augmented values
-export const getImpressionData = (impressionUrl: string) => {
-
-};
-
-
-
-const normalizePostLocation = (locations: object[]): string => {
-    // @ts-ignore
-    if (!locations || locations.length === 0 ) {
-        return '';
-    }
-
-    let loc = '';
-    // @ts-ignore
-    locations.forEach((a: object) => {
-        // @ts-ignore
-        let add = a?.address;
-        if (add) {
-            // @ts-ignore
-            // loc += add.addressLocality + ", " + add.addressRegion + ", " + add.postalCode + ", " + add.addressCountry + ". ";
-
-            let thisLoc = [add.addressLocality, add.addressRegion, add.postalCode,add.addressCountry].filter(Boolean).join(", ");
-            if (thisLoc) {
-                thisLoc.concat('.');
-                loc += thisLoc + '. ';
-            }
-        }
-
-    });
-
-    return loc;
-}
-
-
-const formatDate = (date: string): string => {
-    if (!date || date === '') {
-        return '';
-    }
-    let d = dayjs(date).format('D MMM YY');
-    return d || date;
-};
-
-
-
-const nowAdIds = (object: object[]): string => {
-
-    if (!object || object.length === 0) {
-        return "";
-    }
-    return object
-        // @ts-ignore
-        .filter( (identity: object) => identity?.identifierName === 'POSITION_AD_ID')
-        // @ts-ignore
-        .map((identity: object) =>  identity.identifierValue)
-            // @ts-ignore
-        .join(", ") || "";
-}
-
-
 
 
 export interface DataProperty {
@@ -161,15 +96,15 @@ export const DataModel: Record<string, DataProperty> = {
         field: "ecpm",
         title: "eCPM",
         width: "80px",
-        sensitive: true,
+        sensitive: false,
         locked: true,
         reorderable: true,
         orderIndex: 0,
         visible: false,
         jobProperty: true,
         additionalProperty: false,
-        tableField: false, // temp
-        setting: false, // temp
+        tableField: true, // temp
+        setting: true, // temp
         disabled: false,
         sourceProperty: null,
         transformProperty: null,
@@ -179,15 +114,15 @@ export const DataModel: Record<string, DataProperty> = {
         field: "price",
         title: "Clearing price",
         width: "80px",
-        sensitive: true,
+        sensitive: false,
         locked: true,
         reorderable: true,
         orderIndex: 0,
         visible: false,
         jobProperty: true,
         additionalProperty: false,
-        tableField: false, // temp
-        setting: false, // temp
+        tableField: true,
+        setting: true,
         disabled: false,
         sourceProperty: null,
         transformProperty:  null,
@@ -637,8 +572,8 @@ export const DataModel: Record<string, DataProperty> = {
         visible: false,
         jobProperty: true,
         additionalProperty: false,
-        tableField: false,
-        setting: false,
+        tableField: true,
+        setting: true,
         disabled: false,
         sourceProperty: null,
         transformProperty: null,
@@ -751,109 +686,28 @@ export const FeatureModel: Record<string, FeatureProperty> = {
 }
 
 
-export const trJob = (job: Job, position: number) => {
+export interface DisplayProperty {
+    field: string // identifier used in code
+    title: string // label used in UI
+    setting: boolean, // should appear as a setting?
+    value: string;
+}
 
-    let obj: object = {};
-    if (!job) {
-        console.log('error - no job!')
-        return obj;
+export const DisplayModel: Record<string, DisplayProperty> = {
+    tableWidth: {
+        field: 'tableWidth',
+        title: 'Table width',
+        setting: false,
+        value: "600px"
     }
-
-    let message = '';
-    let kevelData = {};
-    let impressionUrl = job?.jobAd?.tracking?.impressionUrl;
-    if (job.jobAd && !impressionUrl) {
-        message = 'error - no impression url for job ' + job.jobId;
-    }
-    else if (job.jobAd && impressionUrl) {
-        kevelData = getDataFromUrl(impressionUrl || 'noUrl', job?.jobId);
-    }
-
-    // @ts-ignore
-    if (job.jobAd && kevelData?.error) {
-        message += "cannot decode impression url for job " + job.jobId;
-    }
-    if (message) {
-        console.log(message);
-    }
-
-
-    // todo - keep list so do not do it every transform
-
-
-    let list = getNamesOfJobProperties();
-
-    list.forEach((propertyName: string) => {
-
-        let srcProp = DataModel[propertyName]?.sourceProperty;
-        let augProp = DataModel[propertyName]?.augmentedProperty;
-        let func = DataModel[propertyName]?.transformProperty;
-        if (srcProp) {
-            if (func) {
-                // @ts-ignore
-                obj[propertyName] = func(job[srcProp]);
-            }
-            else {
-                // @ts-ignore
-                obj[propertyName] = job[srcProp];
-            }
-        }
-        else if (augProp) {
-
-            // @ts-ignore
-            if (!kevelData) {
-                // @ts-ignore
-                obj[propertyName] = '';
-            }
-            /*
-            else if (func) {
-                // @ts-ignore
-                obj[propertyName] = func(aug[augProp]);
-            }
-
-             */
-            else {
-                // @ts-ignore
-                obj[propertyName] = kevelData[augProp];
-            }
-        }
-        else {
-            // @ts-ignore
-            obj[propertyName] = "";
-        }
-
-
-    });
-
-    // @ts-ignore
-    obj.position = position;
-    // @ts-ignore
-    obj.selected = false;
-    // @ts-ignore
-    obj.data = job;
-    // @ts-ignore
-    obj.kevelData = kevelData;
-
-    return obj;
 }
 
 
-export const transformJobsNew = (jobsList: object) => {
 
-    // @ts-ignore
-    if (!jobsList || !jobsList.jobResults) {
-        return [];
-    }
 
-    let list = <DisplayJob[]> [];
-    // @ts-ignore
-    jobsList.jobResults.forEach( (job: object, _i: number) => {
-        // @ts-ignore
-        list.push(trJob(job, _i, job.jobAd?.tracking?.impressionUrl));
-    });
 
-    return list;
-};
+
+
 
 
 
@@ -890,6 +744,12 @@ export const getNamesOfFeatureSettings = () => {
         .map((field: FeatureProperty) => field.field);
 };
 
+export const getNamesOfDisplaySettings = () => {
+    return Object.values(DisplayModel)
+        // .filter((field: FeatureProperty) => field.setting)
+        .map((field: DisplayProperty) => field.field);
+};
+
 export const getAllProperties = () => {
     let o = {};
     for (let key in DataModel) {
@@ -908,311 +768,11 @@ export const getAllFeatureSettings = () => {
     return o;
 };
 
-const featureSettingNamesMap = getAllFeatureSettings();
-const settingNamesMap = getAllProperties();
-const dataSettingNamesList = getNamesOfDataSettings();
-const featureSettingNamesList = getNamesOfFeatureSettings();
-
-interface DataSetting {
-    [key: string]: { visible: boolean, width: string };
-}
-interface FeatureSetting {
-    [key: string]: { enabled: boolean };
-}
-export interface UserSettings {
-    version?: string;
-    dataSettings: DataSetting | {};
-    dataOrder: string[] | [];
-    featureSettings: FeatureSetting | {};
-    featureOrder: string[];
-}
-
-export const getDefaultUserSettings = () => {
-    let newSettings: UserSettings = {
-        version: currentVersion.version,
-        dataSettings: {},
-        dataOrder: [],
-        featureSettings: {},
-        featureOrder: []
+export const getAllDisplaySettings = () => {
+    let o = {};
+    for (let key in DisplayModel) {
+        // @ts-ignore
+        o[key] = true
     }
-    getNamesOfDataSettings().forEach((name: string) => {
-         let setting = DataModel[name];
-        // @ts-ignore
-        newSettings.dataSettings[name] = { visible: setting.visible, width: setting.width };
-        // @ts-ignore
-        newSettings.dataOrder.push(name);
-     });
-    getNamesOfFeatureSettings().forEach((name: string) => {
-        let setting = FeatureModel[name];
-        // @ts-ignore
-        newSettings.featureSettings[name] = { enabled: setting.enabled, disabled: setting.disabled };
-        // @ts-ignore
-        newSettings.featureOrder.push(name);
-    });
-    return newSettings;
+    return o;
 };
-
-export const JobProperties = {
-    '2.0.4': [
-        "company",
-        "adProvider",
-        "title",
-        "location",
-        "nowId",
-        "jobId",
-        "template",
-        "xCode",
-        "applyType",
-        "formattedDate",
-        "mesco",
-        "provider",
-        "providerCode",
-        "dateRecency",
-        "ingestionMethod",
-        "pricingType",
-        "seoJobId",
-        "refCode",
-        "validThrough",
-        "validThroughGoogle",
-        "remote",
-        "di",
-        "ec",
-        "pc",
-        "dj",
-    ],
-    '2.0.5': [
-        "position",
-        "adRank",
-        "remainder",
-        "ecpm",
-        "price",
-        "adProvider",
-        "company",
-        "title",
-        "location",
-        "nowId",
-        "jobId",
-        "template",
-        "xCode",
-        "applyType",
-        "formattedDate",
-        "mesco",
-        "provider",
-        "providerCode",
-        "dateRecency",
-        "ingestionMethod",
-        "pricingType",
-        "seoJobId",
-        "refCode",
-        "validThrough",
-        "validThroughGoogle",
-        "remote"
-    ]
-}
-
-
-
-const migrationNeeded: Record<string, boolean> = {
-    '': true,
-    '2.0.3': true,
-    '2.0.4': true,
-    '2.0.5': false
-}
-
-export const needToMigrate = (version: string | null | undefined) => {
-    if (!version || version === 'null' || version === 'undefined') {
-        return true;
-    }
-    return migrationNeeded[version] || false;
-}
-
-
-export const migrateFlatObject = (store: object | null | undefined) => {
-    let newStore = { ...getDefaultUserSettings() };
-    if (!store) {
-        return newStore;
-    }
-
-    Object.keys(store).forEach((key) => {
-        // @ts-ignore
-        if (newStore.dataSettings[key]) {
-            // @ts-ignore
-            newStore.dataSettings[key].visible = store[key];
-        }
-    });
-
-    return newStore;
-}
-
-
-
-export const isValidDataSetting = (dataSetting: DataSetting | any) : boolean => {
-    if (!dataSetting || typeof dataSetting !== 'object' || dataSetting === {}) {
-        return false
-    }
-    let key = Object.keys(dataSetting)[0];
-    return !(!dataSetting[key] || typeof dataSetting[key] !== 'object' ||
-        !(key in settingNamesMap) ||
-        dataSetting[key].visible === undefined || typeof dataSetting[key].visible !== 'boolean' ||
-        !dataSetting[key].width || typeof dataSetting[key].width !== 'string');
-}
-
-export const isValidFeatureSetting = (featureSetting: FeatureSetting | any ) : boolean => {
-    if (!featureSetting || typeof featureSetting !== 'object' || featureSetting === {}) {
-        return false
-    }
-    let key = Object.keys(featureSetting)[0];
-    return !(!featureSetting[key] || typeof featureSetting[key] !== 'object' ||
-        !(key in featureSettingNamesMap) ||
-        featureSetting[key].enabled === undefined || typeof featureSetting[key].enabled !== 'boolean' ||
-        featureSetting[key].disabled === undefined || typeof featureSetting[key].disabled !== 'boolean');
-}
-
-export const isValidUserSettings = (store: UserSettings | any | null | undefined) : any => {
-
-    if (!store || !store.version || typeof store.version !== 'string' ||
-        !store.dataSettings || typeof store.dataSettings !== 'object' ||
-        !store.dataOrder || typeof store.dataOrder !== 'object' ||
-        !store.featureSettings || typeof store.featureSettings !== 'object' ||
-        !store.featureOrder || typeof store.featureOrder !== 'object') {
-        return false;
-    }
-    let dataSettingNames = (Object.keys(store.dataSettings));
-    if (dataSettingNames.length !== dataSettingNamesList.length ||
-        store.dataOrder.length !== dataSettingNamesList.length) {
-        return false;
-    }
-    for (let i = 0; i < dataSettingNames.length; i++) {
-        if (!isValidDataSetting({
-            [dataSettingNames[i]]: store.dataSettings[dataSettingNames[i]]
-        })) {
-            return false;
-        }
-    }
-    let featureSettingNames = (Object.keys(store.featureSettings));
-    if (featureSettingNames.length !== featureSettingNamesList.length ) {
-        return false;
-    }
-    for (let i = 0; i < featureSettingNames.length; i++) {
-        if (!isValidFeatureSetting({
-            [featureSettingNames[i]]: store.featureSettings[featureSettingNames[i]]
-        })) {
-            return false;
-        }
-    }
-    return true;
-}
-
-
-// @ts-ignore
-export const userSettingsReducer = (settings: UserSettings, settingName: string, settingType: string, settingProperty: string, newValue?: string ) => {
-
-    // @ts-ignore
-    if (!settings || !settingName || !settingProperty || !settingType || !settings[settingType]) {
-        log({
-            logType: 'ERROR',
-            error: 'unable to update Settings',
-            payload: { settingName, settingProperty, settingType, newValue }
-        });
-        console.log('problem - old settings -: ', settings);
-        return settings;
-    }
-
-
-    let toggle = (settingProperty !== 'width');
-    // @ts-ignore
-    let type = settings[settingType];
-    let setting = null;
-    let prevSettingValue = null;
-    if (type) {
-        // @ts-ignore
-        setting = type[settingName];
-    }
-    if (setting) {
-        prevSettingValue = setting[settingProperty];
-    }
-    if ((!toggle && !newValue) || setting === undefined) {
-        log({
-            logType: 'ERROR',
-            error: 'unable to update Settings',
-            payload: { settingName, settingProperty, settingType, newValue }
-        });
-        console.log('problem - old settings -: ', settings);
-        return settings;
-    }
-
-    let nextSettings = null;
-
-    if (toggle) {
-        nextSettings = {
-            ...settings,
-            // @ts-ignore
-            [settingType]: {
-                // @ts-ignore
-                ...settings[settingType],
-                [settingName]: {
-                    ...setting,
-                    [settingProperty]: !prevSettingValue
-                }
-            }
-        }
-
-        return nextSettings;
-    }
-
-
-    return settings;
-
-
-
-    /*
-
-    if (!DataModel[settingName] ) {
-        log({
-            logType: 'ERROR',
-            error: 'unable to update Settings',
-            payload: { settingName }
-        });
-        console.log('problem - old settings -: ', settings);
-        return settings;
-    }
-
-    // @ts-ignore
-    let prevSettingValue = settings.dataSettings[settingName].visible;
-    let nextSetting = {
-        [settingName]: {
-            // @ts-ignore
-            ...settings.dataSettings[settingName],
-            visible: !prevSettingValue
-        }
-    };
-    if (!isValidDataSetting(nextSetting)) {
-        log({
-            logType: 'ERROR',
-            error: 'unable to update Settings',
-            payload: { nextSetting }
-        });
-        console.log('invalid setting');
-        return settings;
-    }
-    else {
-        let nextSettings = {
-            ...settings,
-            dataSettings: {
-                ...settings.dataSettings,
-                ...nextSetting
-            }
-        }
-        log({
-            logType: 'INFO',
-            message: 'new state in reducer',
-            payload: { nextSettings }
-        });
-        console.log('new settings: ', nextSettings);
-        return nextSettings;
-    }
-
-     */
-
-
-}

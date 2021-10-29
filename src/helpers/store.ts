@@ -1,16 +1,7 @@
-import {
-    currentVersion,
-    getDefaultUserSettings,
-    isValidDataSetting,
-    isValidUserSettings,
-    migrateFlatObject,
-    UserSettings
-}
-    from "../model/dataModel";
+import { currentVersion } from "../model/DataModel";
+import { isValidUserSettings, defaultUserSettings } from "../model/UserSettings";
 
 const storeKey = 'adinfo';
-
-const defaultSettings = getDefaultUserSettings();
 
 
 // todo interface of settings and store
@@ -88,9 +79,9 @@ export const getSavedExtensionSettings = () => {
         console.log('savedSettings are: ', savedSettings);
         if (!savedSettings) {
             console.log('no saved settings. going to use and save default settings: ', savedSettings);
-            savedSettings = defaultSettings;
-            saveExtensionSettings(defaultSettings);
-            return defaultSettings;
+            savedSettings = defaultUserSettings;
+            saveExtensionSettings(defaultUserSettings);
+            return defaultUserSettings;
         }
         return savedSettings;
     });
@@ -114,7 +105,16 @@ export const saveExtensionSettings = (settings: object) => {
 }
 
 
-
+const needToMigrate = {
+    "2.0.0" : true,
+    "2.0.1" : true,
+    "2.0.2" : true,
+    "2.0.3" : true,
+    "2.0.4" : true,
+    "2.0.5" : true,
+    "2.1.0" : true,
+    "2.2.0" : true,
+}
 
 
 export const getSavedSettings = () => {
@@ -122,42 +122,28 @@ export const getSavedSettings = () => {
     console.log('current plugin version is: ', currentVersion.version);
     let store = loadStore();
 
-    if (!store ) {
-        console.log('youdo not have any saved settings - using default settings');
-        store = getDefaultUserSettings();
+    if (!store || !store.version ) {
+        console.log('you do not have any saved settings - using default settings');
+        store = defaultUserSettings;
 
     }
-
-    else if (!store.version || store?.version === '2.0.3' || store?.version === '2.0.4') {
+    // @ts-ignore
+    else if (needToMigrate[store.version]) {
         console.log('your saved settings are for version ' +  store?.version || 'unknown');
-
-        let migratedStore = migrateFlatObject(store);
-        if (isValidUserSettings(migratedStore)) {
-            console.log('your saved settings have been migrated to version ' + currentVersion.version);
-            store = migratedStore;
-        }
-        else {
-            console.log('your saved settings could not be migrated. updated settings to defaults for version ' + currentVersion.version);
-            store = getDefaultUserSettings();
-        }
-
-    }
-
-    else if (store?.version === '2.0.5') {
-        console.log('your saved settings are for version ' + store?.version + ". Updated settings to defaults for version " + currentVersion.version);
-        store = getDefaultUserSettings();
+        console.log('updated settings to defaults for version ' + currentVersion.version);
+        store = defaultUserSettings;
     }
 
     else if (!isValidUserSettings(store)) {
-        console.log('your saved settings could nare invalid. updated settings to defaults for version ' + currentVersion.version);
-        store = getDefaultUserSettings();
+        console.log('your saved settings are invalid. updated settings to defaults for version ' + currentVersion.version);
+        store = defaultUserSettings
     }
 
     saveStore(store);
     return store;
 }
 
-
+// todo - remove
 export const getDecorateSetting = () => {
     let store = loadStore();
     if (store && store.featureSettings) {
@@ -167,7 +153,7 @@ export const getDecorateSetting = () => {
         return true;
     }
 }
-
+// todo - remove
 export const getDisplayDevInfoSetting = () => {
     let store = loadStore();
     if (store && store.featureSettings) {

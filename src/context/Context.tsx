@@ -10,8 +10,8 @@ import { Job } from "../types/Job";
 import { SearchContext } from "../types/SearchContext";
 import { transformSearchContext } from "../helpers/transformSearchContext";
 import { getDecorateSetting, getDisplayDevInfoSetting, getSavedSettings, saveSettings } from "../helpers/store";
-import { userSettingsReducer, UserSettings, transformJobsNew } from "../model/dataModel";
-
+import { userSettingsReducer, UserSettings,  } from "../model/UserSettings";
+import {  transformJobsNew } from "../model/transformJob";
 import {
     sendMessageToBackgroundAndPopup,
     subscribeToExtensionMessages,
@@ -62,6 +62,7 @@ const ReduxProvider = ({ children }) => {
 
     let defaultState: ContextItem[] = [];
     const [searchContext, setSearchContext] = useState(defaultState);
+    const [rawSearchContext, setRawSearchContext] = useState({});
     const [searchId, setSearchId] = useState('');
 
     const [request, setRequest] = useState([]);
@@ -72,7 +73,7 @@ const ReduxProvider = ({ children }) => {
     const [numberResults, setNumberResults] = useState(0);
     const [results, setResults] = useState(true);
     const [mobileResults, setMobileResults] = useState(true);
-    const [redux, setRedux] = useState({});
+
 
 
 
@@ -224,12 +225,15 @@ const ReduxProvider = ({ children }) => {
             }
         */
 
+        // todo - useMemo?
+
         let searchId = context?.location?.searchId;
         setSearchId(searchId);
+        setRawSearchContext(context);
         let flattened = transformSearchContext(context);
         if (Array.isArray(flattened )) {
             // @ts-ignore
-            setSearchContext( flattened);
+            setSearchContext(flattened);
         }
     }
 
@@ -440,12 +444,12 @@ const ReduxProvider = ({ children }) => {
             hoverResult, setHoverResult,
             jobs, setJobs,
             searchContext,
-
+            rawSearchContext,
             selected, setSelected,
             display, setDisplay,
             searchId,
             request,
-            redux,
+
             loading,
             settings,
             numberResults,

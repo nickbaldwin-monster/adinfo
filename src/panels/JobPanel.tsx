@@ -20,11 +20,12 @@ import './Table.css';
 import { Popup } from "@progress/kendo-react-popup";
 import { MessageType } from "../types/types";
 
-import { getNamesOfJobFields, DataModel } from "../model/dataModel";
+import { getNamesOfJobFields, DataModel } from "../model/DataModel";
 import { DevInfo } from "../components/DevInfo";
 import { Button } from "@progress/kendo-react-buttons";
 import { Info } from "../components/Info";
-import { AuthButtons } from "./AuthButtons";
+import { AuthButtons } from "../components/AuthButtons";
+import { Panel } from './Panel';
 
 const DATA_ITEM_KEY = "jobId";
 const SELECTED_FIELD = "selected";
@@ -32,7 +33,7 @@ const idGetter = getter(DATA_ITEM_KEY);
 const initialSort = [ {field: "position", dir: "asc"} ];
 
 
-const moduleName = 'JobTable';
+const moduleName = 'JobPanel';
 let log = logger(moduleName);
 log({ logType: 'LOADED' });
 
@@ -108,7 +109,7 @@ const handleColumnReorder = (event: any) => {
     console.log('handleColumnReorder', event);
 }
 
-export const JobTable = () => {
+export const JobPanel = () => {
 
 
 
@@ -249,7 +250,7 @@ export const JobTable = () => {
                     window.postMessage({
                         type: 'JOB_SELECTED',
                         payload: position,
-                        source: 'JobTable'
+                        source: 'JobPanel'
                     }, "*");
                 }
             }
@@ -416,11 +417,8 @@ export const JobTable = () => {
 
         }
 
-
-    let toTs = Date.now();
-    let fromTs = toTs - 900000;
-    return (
-        <Resizable
+        /*
+         <Resizable
             defaultSize={{ width: '600px', height: '100%' }}
             enable={{ top:false, right:false, bottom:false, left:true,
                 topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
@@ -428,7 +426,12 @@ export const JobTable = () => {
             handleComponent={{left: DragHandle}}
 
         >
-            <AuthButtons auth={true} name="dude" />
+         */
+
+    let toTs = Date.now();
+    let fromTs = toTs - 900000;
+    return (
+        <Panel width={"600px"} enabled={true}>
         <div className='jobTable'>
 
             <ExcelExport data={jobs} ref={_export}>
@@ -526,7 +529,7 @@ export const JobTable = () => {
             </ExcelExport>
 
         </div>
-        </Resizable>
+        </Panel>
     );
 };
 

@@ -1,7 +1,7 @@
 // Popup or content script requesting the current status
 import {Job} from "./Job";
 import {SearchContext} from "./SearchContext";
-import {UserSettings} from "../model/dataModel";
+import {UserSettings} from "../model/UserSettings";
 
 interface DisplayStateRequest {
     type: "REQ_DISPLAY_STATUS";

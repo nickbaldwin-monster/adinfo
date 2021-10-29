@@ -1,22 +1,14 @@
 import * as React from "react";
 
 import { useReduxContext } from "../context/Context";
-
-import { logger } from "../helpers/logger";
-
 import { Resizable } from "re-resizable";
 import { DragHandle } from "../elements/DragHandle";
 import { Button } from "@progress/kendo-react-buttons";
 import { MessageType } from "../types/types";
 import { sendMessageToBackgroundAndPopup, sendMessageToContent } from "../helpers/messaging";
-import { Panel } from "./Panel";
-const moduleName = 'LoginPanel';
-let log = logger(moduleName);
-
 
 // @ts-ignore
-export const LoginPanel = () => {
-
+export const AuthButtons = ({ auth, name} ) => {
 
     const handleCheck = () => {
         sendMessageToBackgroundAndPopup({
@@ -37,19 +29,18 @@ export const LoginPanel = () => {
         });
     };
 
-    let message = "You may need to login. Please click the plugin icon in the extension toolbar above.";
-
     return (
-        <Panel>
-            <div className="scrollInPanel">
-                <h4>Login</h4>
-                <p>{message}</p>
-                <br />
-                <Button onClick={handleCheck}>Check</Button>
-                <Button onClick={handleLogin}>Login</Button>
-                <Button onClick={handleLogout}>Logout</Button>
-            </div>
-        </Panel>
+        <div style={{padding: "5px 0"}}>
+            {auth && <span>Authenticated: {name}</span>}
+            {!auth && <span>You need to login </span>}
+            <Button onClick={auth? handleLogout: handleLogin}>Logout</Button>
+
+            &nbsp;&nbsp;
+            <Button look="flat" onClick={handleCheck}>Check</Button>&nbsp;
+            <Button look="flat" onClick={handleLogin}>Login</Button>&nbsp;
+            <Button look="flat" onClick={handleLogout}>Logout</Button>
+        </div>
     );
+
 }
 

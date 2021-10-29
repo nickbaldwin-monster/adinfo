@@ -1,78 +1,11 @@
-import React, { useReducer, useContext } from 'react';
-import { Grid, GridColumn, GridToolbar } from '@progress/kendo-react-grid';
-
-import { logger } from "../helpers/logger";
-import { useReduxContext } from "../context/Context";
-import { DatadogLink } from "../components/DatadogLink";
-import { Resizable } from "re-resizable";
+import React from 'react';
 
 // todo - cut down css
-import './Table.css';
-import ReactJson from "react-json-view-ts";
-import { DragHandle } from "../elements/DragHandle";
+// import './Table.css';
 
-const moduleName = 'RequestTable';
-let log = logger(moduleName);
-log({ logType: 'LOADED' });
-
-
-
-export const RequestTable = () => {
-    log({
-        logType: 'INFO',
-        message: 'RequestTable mounted'
-    });
-
-
-    // @ts-ignore
-    const { version, loading, request, redux, searchContext, searchId } = useReduxContext();
-
-    log({
-        logType: 'INFO',
-        message: 'RequestTable',
-        payload: {request}
-    });
-
-
-
-    // let toTs = Date.now() + 90000;
-    let toTs = Date.now();
-    let fromTs = toTs - 900000;
-
-    let versionInfo = version ? `v${version}` : "";
-
+// todo - extract data and map over it
+export const Domains = () => {
     return (
-        <Resizable
-            defaultSize={{ width: '320px', height: '100%' }}
-            enable={{ top:false, right:false, bottom:false, left:true,
-                topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
-            minWidth='310px'
-            handleComponent={{left: DragHandle}}
-        >
-            <div className='panel'>
-            <h4>Info: {version && versionInfo}</h4>
-
-            <p>This plugin aids the interpretation of the job search results.</p>
-            <br />
-
-            <p>Read the guide to the various data fields/functions available in this extension:&nbsp;
-                <a target="_blank" href="https://monster-next.atlassian.net/wiki/spaces/STCT/pages/2138538091/JSP+Version+guide">here</a>
-            </p>
-            <br />
-
-            <p>It works on all Monster domains - see list below.</p>
-            <br />
-
-            {searchId && <DatadogLink searchId={searchId}  />}
-            <br />
-
-            <p>Request info</p>
-            <Grid data={searchContext} >
-                <GridColumn field="key" title="key" />
-                <GridColumn field="value" title="value" />
-            </Grid>
-            <br />
-
             <ul className="">
 
                 <li className="">
@@ -447,16 +380,6 @@ export const RequestTable = () => {
                 </li>
 
             </ul>
-            <br />
 
-
-
-
-
-            <p>Request/response data</p>
-            <ReactJson src={redux} collapsed={0} collapseStringsAfterLength={120}/>
-
-        </div>
-        </Resizable>
     );
 };

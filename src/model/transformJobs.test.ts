@@ -1,47 +1,17 @@
 import {
-    trJob,
     getAllProperties, getNamesOfDataSettings, getNamesOfJobProperties,
-} from './dataModel';
+} from './DataModel';
+
+import {
+    trJob,
+} from './transformJob';
+
 
 import jobsList from '../sampleData/jobsList.json';
 import impressionObject from '../sampleData/impressionObject.json';
 import { getDataFromUrl } from "../helpers/decodeImpUrl";
 
 
-// sanity checks
-
-describe('sanity check - json', () => {
-
-    test('can access properties', () => {
-        expect(jobsList).toHaveProperty('estimatedTotalSize');
-    });
-    test('can access job property', () => {
-        let job = jobsList.jobResults[0];
-        expect(job).toHaveProperty('jobId');
-    });
-
-    test('raw job has lots of properties', () => {
-        let job = jobsList.jobResults[0];
-        expect(job).toHaveProperty('externalIdentifiers');
-        expect(job).toHaveProperty('jobPosting');
-        expect(job).toHaveProperty('brandingExt');
-    });
-});
-
-test('getNamesOfSettings is an array of names for all fields that can be displayed in table', () => {
-    let fields = getNamesOfDataSettings();
-    expect(fields).toEqual(
-        expect.arrayContaining(["position", "adRank", "remainder", "adProvider", "company", "title", "location", "nowId", "jobId", "template", "xCode", "applyType", "formattedDate", "mesco", "provider", "providerCode", "dateRecency", "ingestionMethod", "pricingType", "seoJobId", "refCode", "validThrough", "validThroughGoogle", "remote"]
-        )
-    );
-});
-
-test('can access chained properties', () => {
-    const job = jobsList.jobResults[0];
-    // @ts-ignore
-    let ad = job['jobAd']['provider'];
-    expect(ad).toEqual('ADZERK');
-});
 
 test('can access imp properties', () => {
     const shim = impressionObject;

@@ -6,26 +6,17 @@ import './Table.css';
 
 import { logger } from "../helpers/logger";
 import { useReduxContext } from "../context/Context";
-import {DatadogLink} from "../components/DatadogLink";
+import { DatadogLink } from "../components/DatadogLink";
 import ReactJson from "react-json-view-ts";
-import { Resizable} from "re-resizable";
-import { DragHandle } from "../elements/DragHandle";
+import { Panel } from "./Panel";
 
 
 const moduleName = 'ErrorsPanel';
 let log = logger(moduleName);
-log({ logType: 'LOADED' });
 
 
 
 export const ErrorsPanel = () => {
-
-
-    log({
-        logType: 'INFO',
-        message: 'ErrorsPanel mounted'
-    });
-
 
     // @ts-ignore
     const { errors } = useReduxContext();
@@ -33,21 +24,13 @@ export const ErrorsPanel = () => {
     log({
         logType: 'INFO',
         message: 'ErrorsPanel',
-        payload: {errors}
+        payload: { errors }
     });
 
 
     return (
-        <Resizable
-            defaultSize={{ width: '320px', height: '100%' }}
-            enable={{ top:false, right:false, bottom:false, left:true,
-                topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
-            minWidth='310px'
-            handleComponent={{left: DragHandle}}
-            // maxWidth='90%'
-
-        >
-            <div className='panel'>
+        <Panel>
+            <div className="scrollInPanel">
                 <h4>Error info</h4>
                 <p>Currently errors are not being determined.</p>
                 <br />
@@ -67,6 +50,6 @@ export const ErrorsPanel = () => {
                     <ReactJson src={errors} collapsed={0} collapseStringsAfterLength={120} />
                 </div>
             </div>
-        </Resizable>
+        </Panel>
     );
 };
