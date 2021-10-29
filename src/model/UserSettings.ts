@@ -188,8 +188,8 @@ export const userSettingsReducer = (settings: UserSettings, settingName: string,
     // @ts-ignore
     let type = settings[settingType] ?? {};
     let setting = type[settingName] ?? {};
-    let prevValue = setting[settingProperty] ?? null;
-    if (!type || !setting || !prevValue) {
+    let prevValue = setting[settingProperty];
+    if (!type || !setting || prevValue === undefined || prevValue === null) {
         return settings;
     }
 
