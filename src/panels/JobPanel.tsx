@@ -16,7 +16,7 @@ import { HandleComponent, Resizable } from "re-resizable";
 import { DragHandle } from "../elements/DragHandle";
 
 // todo - cut down css
-import './Table.css';
+import './styles.css';
 import { Popup } from "@progress/kendo-react-popup";
 import { MessageType } from "../types/types";
 
