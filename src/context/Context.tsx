@@ -107,6 +107,16 @@ const ReduxProvider = ({ children }) => {
         });
     }
 
+    // @ts-ignore
+    const updateDisplaySettings = (  value: string ) => {
+
+        setSettings((settings: UserSettings) => {
+            let updated = userSettingsReducer(settings, "tableWidth", 'displaySettings', 'value', value);
+            saveSettings(updated);
+            return updated;
+        });
+    }
+
 
 
 
@@ -328,6 +338,10 @@ const ReduxProvider = ({ children }) => {
             // @ts-ignore
             updateFeatureSettings(message.payload);
         }
+        if (message.type === "TOGGLE_DISPLAY_SETTING") {
+            // @ts-ignore
+            updateDisplaySettings(message.payload);
+        }
 
 
 
@@ -459,6 +473,7 @@ const ReduxProvider = ({ children }) => {
 
             decorate: settings?.featureSettings?.decorateResults?.enabled,
             displayDevInfo: settings?.featureSettings?.displayDevInfo?.enabled,
+            tableWidth: settings?.displaySettings?.tableWidth?.value,
             auth, setAuth
         }} >
             {children}

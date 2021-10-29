@@ -1,17 +1,12 @@
 import React from 'react';
 import { Grid, GridColumn, GridToolbar } from '@progress/kendo-react-grid';
-
+import ReactJson from "react-json-view-ts";
 
 import { useReduxContext } from "../context/Context";
 import { DatadogLink } from "../components/DatadogLink";
-
 import { Domains } from "../components/Domains";
 import { Panel } from "./Panel";
-
-
-
-import ReactJson from "react-json-view-ts";
-import {AuthButtons} from "../components/AuthButtons";
+import { AuthButtons } from "../components/AuthButtons";
 
 
 

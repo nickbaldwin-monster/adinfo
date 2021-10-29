@@ -424,7 +424,7 @@ export const JobPanel = () => {
     let toTs = Date.now();
     let fromTs = toTs - 900000;
     return (
-        <Panel width={"600px"} enabled={true}>
+        <Panel enabled={true}>
         <div className='jobTable'>
 
             <ExcelExport data={jobs} ref={_export}>

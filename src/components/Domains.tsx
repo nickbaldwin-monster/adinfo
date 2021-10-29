@@ -1,8 +1,5 @@
 import React from 'react';
 
-// todo - cut down css
-// import './Table.css';
-
 // todo - extract data and map over it
 export const Domains = () => {
     return (

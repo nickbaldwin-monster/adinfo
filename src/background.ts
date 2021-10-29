@@ -16,7 +16,7 @@ import {
 
     saveExtensionSettings
 } from './helpers/store';
-import { getDefaultUserSettings } from "./model/UserSettings";
+import {DisplaySetting, getDefaultUserSettings} from "./model/UserSettings";
 
 import { PublicClientApplication } from "@azure/msal-browser";
 import { msalConfig } from "./auth/authConfig";
@@ -97,6 +97,8 @@ const sendDataSetting = (setting: string) => {
     sendMessageToContent(message);
 };
 
+
+
 interface FeatureSetting  {
     settingName: string;
     property: string;
@@ -105,6 +107,15 @@ const sendFeatureSetting = (props: FeatureSetting) => {
     const message: MessageType = {
         type: "TOGGLE_FEATURE_SETTING",
         payload: props,
+        source: 'background'
+    };
+    sendMessageToContent(message);
+};
+
+const sendDisplaySetting = (value: string) => {
+    const message: MessageType = {
+        type: "TOGGLE_DISPLAY_SETTING",
+        payload: value,
         source: 'background'
     };
     sendMessageToContent(message);
@@ -165,6 +176,10 @@ const handleMessage = (message: MessageType) => {
     if (message.type === "TOGGLE_FEATURE_SETTING") {
         let setting = message.payload;
         sendFeatureSetting(setting);
+    }
+    if (message.type === "TOGGLE_DISPLAY_SETTING") {
+        let setting = message.payload;
+        sendDisplaySetting(setting);
     }
 
 

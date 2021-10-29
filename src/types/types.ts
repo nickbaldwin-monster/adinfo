@@ -242,6 +242,12 @@ interface VersionRequest {
 }
 
 
+interface ToggleDisplaySetting {
+    type: "TOGGLE_DISPLAY_SETTING";
+    payload: string;
+    source: string;
+}
+
 export type MessageType =
     DisplayStateRequest | DisplayStateResponse  |
     SavedSettingsRequest | SavedSettingsResponse |
@@ -249,6 +255,7 @@ export type MessageType =
 
     // actually used
     VersionRequest | VersionResponse |
+    ToggleDisplaySetting |
 
     LoginStatusRequest | LoginStatusResponse |
     LoginRequest | LoginResponse | LogoutRequest | LogoutResponse |

@@ -1,10 +1,8 @@
-import React, { useReducer, useContext } from 'react';
-import { Grid, GridColumn, GridToolbar } from '@progress/kendo-react-grid';
-
+import React from 'react';
+import { Grid, GridColumn } from '@progress/kendo-react-grid';
 
 import { logger } from "../helpers/logger";
 import { useReduxContext } from "../context/Context";
-import { DatadogLink } from "../components/DatadogLink";
 import ReactJson from "react-json-view-ts";
 import { Panel } from "./Panel";
 

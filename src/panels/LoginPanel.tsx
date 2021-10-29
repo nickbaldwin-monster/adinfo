@@ -1,13 +1,8 @@
 import * as React from "react";
 
-import { useReduxContext } from "../context/Context";
-
 import { logger } from "../helpers/logger";
 
-import { Resizable } from "re-resizable";
-import { DragHandle } from "../elements/DragHandle";
 import { Button } from "@progress/kendo-react-buttons";
-import { MessageType } from "../types/types";
 import { sendMessageToBackgroundAndPopup, sendMessageToContent } from "../helpers/messaging";
 import { Panel } from "./Panel";
 const moduleName = 'LoginPanel';
@@ -16,7 +11,6 @@ let log = logger(moduleName);
 
 // @ts-ignore
 export const LoginPanel = () => {
-
 
     const handleCheck = () => {
         sendMessageToBackgroundAndPopup({

@@ -3,7 +3,6 @@ import * as React from "react";
 import { Button } from "@progress/kendo-react-buttons";
 
 
-
 // @ts-ignore
 export const DevInfo = ({ searchId, decisionId }) => {
     let toTs = Date.now();

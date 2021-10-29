@@ -29,6 +29,8 @@ export const SettingsPanel = () => {
     // @ts-ignore
     const { settings, decorate, displayDevInfo, auth, name } = useReduxContext();
 
+
+    // todo - refactor into single setting message with params
     const handleToggleSetting = (setting: string) => {
         const message: MessageType = {
             type: "TOGGLE_SETTING",
@@ -69,7 +71,7 @@ export const SettingsPanel = () => {
                     <div className='setting'>
                         <Switch
                             disabled={DataModel[setting].disabled || false}
-                            onChange={ () => { handleToggleSetting(setting) } }
+                            onChange={() => { handleToggleSetting(setting) }}
                             checked={settings.dataSettings[setting].visible}
                         />
                         <span className='settingSpacer' />
