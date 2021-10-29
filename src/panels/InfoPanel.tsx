@@ -8,8 +8,8 @@ import { DatadogLink } from "../components/DatadogLink";
 import { Domains } from "../components/Domains";
 import { Panel } from "./Panel";
 
-// todo - cut down css
-import './Table.css';
+
+
 import ReactJson from "react-json-view-ts";
 import {AuthButtons} from "../components/AuthButtons";
 

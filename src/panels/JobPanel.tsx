@@ -1,30 +1,23 @@
 import React, { useReducer, useContext, useState } from 'react';
 
-import { Tooltip } from "@progress/kendo-react-tooltip";
 import { logger } from "../helpers/logger";
 import { useReduxContext } from "../context/Context";
 
-import { process } from '@progress/kendo-data-query';
 import { Grid, GridColumn, getSelectedState, GridToolbar } from '@progress/kendo-react-grid';
 import { orderBy } from "@progress/kendo-data-query";
 import { getter } from "@progress/kendo-react-common";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
 import { JobDetail } from '../components/JobDetail';
-import { HandleComponent, Resizable } from "re-resizable";
-
-import { DragHandle } from "../elements/DragHandle";
 
 // todo - cut down css
-import './styles.css';
+import './Table.css';
 import { Popup } from "@progress/kendo-react-popup";
-import { MessageType } from "../types/types";
 
 import { getNamesOfJobFields, DataModel } from "../model/DataModel";
 import { DevInfo } from "../components/DevInfo";
 import { Button } from "@progress/kendo-react-buttons";
 import { Info } from "../components/Info";
-import { AuthButtons } from "../components/AuthButtons";
 import { Panel } from './Panel';
 
 const DATA_ITEM_KEY = "jobId";

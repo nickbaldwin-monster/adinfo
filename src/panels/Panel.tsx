@@ -1,7 +1,7 @@
 import React from 'react';
 
-// todo - cut down css
-import './Table.css';
+
+
 import { Resizable} from "re-resizable";
 import { DragHandle } from "../elements/DragHandle";
 

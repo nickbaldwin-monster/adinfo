@@ -1,7 +1,5 @@
 import React from 'react';
 
-// todo - cut down css
-import './Table.css';
 
 import { Panel } from "./Panel";
 

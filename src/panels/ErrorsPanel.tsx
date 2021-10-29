@@ -1,8 +1,6 @@
 import React, { useReducer, useContext } from 'react';
 import { Grid, GridColumn, GridToolbar } from '@progress/kendo-react-grid';
 
-// todo - cut down css
-import './Table.css';
 
 import { logger } from "../helpers/logger";
 import { useReduxContext } from "../context/Context";
