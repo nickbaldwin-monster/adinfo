@@ -87,6 +87,13 @@ const ReduxProvider = ({ children }) => {
 
     const decorateRef = React.useRef(settings?.featureSettings?.decorateResults?.enabled);
 
+
+    // todo - combine these
+    // todo - pass it into settings panel
+    // todo - stop listening to each message
+    // todo - within combined updater, send new settings to background (and thus onto other tabs)
+    // todo - by listening for single updated settings from background
+
     const updateDataSettings = (settingName: string) => {
         setSettings((settings: UserSettings) => {
             let updated = userSettingsReducer(settings, settingName, 'dataSettings', 'visible');
@@ -108,7 +115,7 @@ const ReduxProvider = ({ children }) => {
     }
 
     // @ts-ignore
-    const updateDisplaySettings = (  value: string ) => {
+     const updateDisplaySettings = (  value: string ) => {
 
         setSettings((settings: UserSettings) => {
             let updated = userSettingsReducer(settings, "tableWidth", 'displaySettings', 'value', value);
@@ -124,21 +131,11 @@ const ReduxProvider = ({ children }) => {
 
 
 
-    const updateDisplay = () => {
-        /*
-            message: {
-                type: "TOGGLE_DISPLAY"
-                source?: "background" // ?
-            }
-        */
-        setDisplay((display: boolean) => {
-            log({
-                logType: 'INFO',
-                message: 'new display state in reducer',
-                payload: { display: !display }
-            });
-            return !display;
-        });
+    const toggleDisplay = () => {
+        setDisplay((display: boolean) => { return !display; });
+    }
+    const showDisplay = () => {
+        setDisplay(true);
     }
 
 
@@ -348,7 +345,7 @@ const ReduxProvider = ({ children }) => {
 
 
         if (message.type === "TOGGLE_DISPLAY") {
-            updateDisplay();
+            toggleDisplay();
         }
 
 
@@ -470,6 +467,9 @@ const ReduxProvider = ({ children }) => {
             errors,
             auctionBids, decisionId,
             version,
+
+            updateDisplaySettings,
+            toggleDisplay, showDisplay,
 
             decorate: settings?.featureSettings?.decorateResults?.enabled,
             displayDevInfo: settings?.featureSettings?.displayDevInfo?.enabled,

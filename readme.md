@@ -120,10 +120,14 @@ After the project is built, a directory named `dist` will be created.
 
 
 2.2.0
-- authorization (in popup)
+- authorization
+- persist panel widths
 
-todo
-- check auth process in popup
+todo:
+- delete settings
+- save settings in chrome storage - share across tabs
+- see/manage cookie
+
 
 
 tbd
@@ -132,7 +136,6 @@ tbd
 - mesco name?
 - highlight on hover 
 - scroll to result for card view
-- persist panel widths
 - show more than 2x (per category) jobs for company as error
 - show duplicates as error
 - loading indicator

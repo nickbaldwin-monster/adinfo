@@ -1,14 +1,11 @@
 import * as React from "react";
 import { withRouter } from "react-router-dom";
+
 import { Drawer, DrawerContent } from "@progress/kendo-react-layout";
+
 import { useReduxContext } from "../context/Context";
-import { logger } from "../helpers/logger";
 import { LoginPanel } from "../panels/LoginPanel";
 import { sendMessageToBackgroundAndPopup } from "../helpers/messaging";
-
-// todo
-import dayjs from "dayjs";
-import Duration from "dayjs/plugin/duration";
 
 const items = [
     {
@@ -17,7 +14,6 @@ const items = [
         selected: true,
         route: "/",
     },
-
     {
         separator: true,
     },
@@ -65,27 +61,25 @@ const items = [
 
 
 
-const DrawerRouterContainer = (props: any) => {
+const PluginWindow = (props: any) => {
 
     // @ts-ignore
-    let { auth, lastAuthTime } = useReduxContext();
+    const { auth, display, toggleDisplay, showDisplay } = useReduxContext();
+    // not expanding the toolbar
+    const expanded = false;
 
-    // @ts-ignore
-    const { display, setDisplay } = useReduxContext();
-    const [expanded, setExpanded] = React.useState(false);
-    const handleClick = () => {
-        setExpanded(!expanded);
-    };
-
-    // todo
     const onSelect = (e: any) => {
         if (e.itemTarget.props.route === '/display') {
-            setDisplay(!display);
+            toggleDisplay();
+        }
+        else if (auth) {
+            props.history.push(e.itemTarget.props.route);
+            // if click on any icon, display
+            showDisplay();
+        }
+        else {
             return;
         }
-        props.history.push(e.itemTarget.props.route);
-        // if click on any icon, display
-        setDisplay(true);
     };
 
     // @ts-ignore
@@ -97,30 +91,11 @@ const DrawerRouterContainer = (props: any) => {
             return currentPath.text;
         }
     };
-
     let selected = setSelectedItem(props.location.pathname);
 
     // todo  - WIP
-    sendMessageToBackgroundAndPopup({type: 'AUTH_STATUS_REQUEST', source: 'content'});
+    sendMessageToBackgroundAndPopup({type: 'AUTH_STATUS_REQUEST', source: 'plugin'});
 
-
-    if (!auth ) {
-        return (
-            <div>
-                <Drawer
-                    expanded={expanded}
-                    position={"end"}
-                    mode={"overlay"}
-                    mini={true}
-                    items={items}
-                >
-                    <DrawerContent>
-                        <LoginPanel />
-                    </DrawerContent>
-                </Drawer>
-            </div>
-        );
-    }
     return (
         <div>
             <Drawer
@@ -134,11 +109,13 @@ const DrawerRouterContainer = (props: any) => {
                 }))}
                 onSelect={onSelect}
             >
-
-                {display && <DrawerContent>{props.children}</DrawerContent>}
+                {display && <DrawerContent>
+                    {!auth && <LoginPanel />}
+                    {auth && <DrawerContent>{props.children}</DrawerContent>}
+                </DrawerContent>}
             </Drawer>
         </div>
     );
 };
 
-export default withRouter(DrawerRouterContainer);
+export default withRouter(PluginWindow);

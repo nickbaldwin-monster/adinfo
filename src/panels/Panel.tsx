@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Resizable, ResizeCallback } from "re-resizable";
 import { DragHandle } from "../elements/DragHandle";
-import { useReduxContext } from "../context/Context";
+import { useReduxContext} from "../context/Context";
 import { MessageType } from "../types/types";
 import { sendMessageToBackgroundAndPopup, sendMessageToContent } from "../helpers/messaging";
 
@@ -13,20 +13,25 @@ export const Panel = ({ children , enabled = false }) => {
     console.log('panel rendered');
 
     // @ts-ignore
-    const { tableWidth } = useReduxContext();
+    const { tableWidth, updateDisplaySettings } = useReduxContext();
     let defaultWidth = enabled ? 600 : 330;
     // using local state to avoid render issue when waiting for new state to arrive
-    const [width, setWidth] = useState(enabled ? (parseInt(tableWidth) || 600) : 330);
 
+
+    // const [width, setWidth] = useState(enabled ? (parseInt(tableWidth) || 600) : 330);
+
+    const width = enabled ? (parseInt(tableWidth) || 600) : 330;
 
     const handleResize :  ResizeCallback = (event, direction, ref, delta) : void => {
-        setWidth((width) => {
-            return width + delta.width;
-        });
+        // setWidth((width) => { return width + delta.width;});
+
+        let newWidth = width + delta.width;
+        updateDisplaySettings(newWidth);
+
         sendMessageToBackgroundAndPopup({
             type: "TOGGLE_DISPLAY_SETTING",
             source: 'Panel',
-            payload:  "" + (width + delta.width)
+            payload:  "" + newWidth
         });
     }
 

@@ -290,19 +290,9 @@ export const JobPanel = () => {
             return item;
         });
 
-
-
         // todo
-        // todo
-        // todo - CHECK!!!!!!!!!
         setJobs(newData);
     };
-
-
-
-
-
-
 
 
 
@@ -315,11 +305,6 @@ export const JobPanel = () => {
                 functionName: 'useEffect',
                 message: 'executed'
             });
-
-            // console.log('Grid useEffect');
-            // console.log('hoverResult', hoverResult);
-            // console.log('selectedState', selectedState);
-
 
             if (hoverResult !== -1 && jobs && jobs.length > 0) {
 

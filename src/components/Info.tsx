@@ -8,7 +8,7 @@ export const Info = ({ numberResults, auctionBids, errors }) => {
         <div style={{display: "flex"}}>
             { auctionBids && <div>{auctionBids} bids.&nbsp;</div>}
             { isResults && <div>{numberResults} results.&nbsp;</div> }
-            { errors && <div>{errors}.&nbsp;</div> }
+            { errors && <div>{errors.number || 0}.&nbsp;</div> }
         </div>
     );
 };

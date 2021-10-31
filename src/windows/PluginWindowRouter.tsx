@@ -1,19 +1,19 @@
 import React from 'react';
-
 import { HashRouter, Switch, Route, withRouter } from "react-router-dom";
+
 import { SettingsPanel } from "../panels/SettingsPanel";
-import DrawerRouterContainer from "./DrawerRouterContainer";
+import PluginWindow from "./PluginWindow";
 import { JobPanel } from "../panels/JobPanel";
 import { InfoPanel } from "../panels/InfoPanel";
 import { FeedbackPanel } from "../panels/FeedbackPanel";
 import { ErrorsPanel } from "../panels/ErrorsPanel";
 import { LoginPanel } from "../panels/LoginPanel";
 
-export const Drawer = () => {
+export const PluginWindowRouter = () => {
     return (
     <>
         <HashRouter>
-            <DrawerRouterContainer>
+            <PluginWindow>
                 <Switch>
                     <Route exact={true} path="/" component={JobPanel} />
                     <Route exact={true} path="/settings" component={SettingsPanel} />
@@ -22,7 +22,7 @@ export const Drawer = () => {
                     <Route exact={true} path="/info" component={InfoPanel} />
                     <Route exact={true} path="/login" component={LoginPanel} />
                 </Switch>
-            </DrawerRouterContainer>
+            </PluginWindow>
         </HashRouter>
     </>
     );

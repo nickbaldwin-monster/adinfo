@@ -12,7 +12,7 @@ import React from 'react';
 import * as ReactDOM from "react-dom";
 
 import { ReduxProvider } from "./context/Context";
-import { Drawer } from "./windows/Drawer";
+import { PluginWindowRouter } from "./windows/PluginWindowRouter";
 import { monitorReactNodes } from "./scripts/monitorReactNodes";
 import "./content.css";
 import { logger } from "./helpers/logger";
@@ -25,7 +25,7 @@ let log = logger(moduleName);
 const DrawerWithContext = () => {
     return (
         <ReduxProvider>
-            <Drawer />
+            <PluginWindowRouter />
         </ReduxProvider>
     );
 };
