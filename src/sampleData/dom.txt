@@ -1,0 +1,61 @@
+
+
+
+
+load more results
+
+<div class="job-search-resultsstyle__LoadMoreContainer-sc-1wpt60k-1 htsqfC">
+    <button aria-pressed="false" class="sc-dkPtyc hVjBwZ  ds-button" role="button" type="button" shape="rectangle">
+        Load more
+    </button>
+</div>
+
+document.querySelector("[class^='job-search-resultsstyle__LoadMoreContainer-']").children[0].click();
+
+
+
+document.body.clientHeight - header, content (scrolling) and footer
+2341
+
+document.documentElement.clientHeight - inner height of viewport
+
+document.documentElement.getBoundingClientRect()
+    DOMRect {x: 0, y: -489, width: 1175, height: 2340.546875, top: -489, bottom, left, right}
+
+    all relative to viewport
+    top = dist from top of element to top viewport
+    bottom = dist from bottom of element to top viewport
+    top + height = bottom
+    left + width = right
+
+document.documentElement.scrollHeight
+    2341
+    height of an element's content, including content not visible on the screen due to overflow.
+
+window.visualViewport
+    VisualViewport {offsetLeft: 0, offsetTop: 0, pageLeft: 0, pageTop: 0, width: 1175, height: 756 }
+    offset - is distance from doc edge
+
+
+
+when window.visualViewport.pageTop > 350, then card at top of container will be clipped
+
+offset = window.visualViewport.pageTop - 350
+
+scroll to y of top of card - offset
+
+
+
+
+
+
+
+
+
+let getCard = (position) => {
+    return document.querySelector(`[data-test-id='svx-job-card-component-${position}']`);
+}
+
+let getContainer = () => {
+    return document.querySelector('[class^="splitviewstyle__CardGridSplitView-zpzpmg-1 gUpAsK"]');
+}

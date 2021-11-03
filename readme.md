@@ -122,12 +122,13 @@ After the project is built, a directory named `dist` will be created.
 2.2.0
 - authorization
 - persist panel widths
+- better scrolling of selected results
 
 todo:
 - delete settings
 - save settings in chrome storage - share across tabs
 - see/manage cookie
-
+- deal with multiple now ids
 
 
 tbd

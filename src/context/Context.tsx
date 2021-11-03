@@ -10,8 +10,8 @@ import { Job } from "../types/Job";
 import { SearchContext } from "../types/SearchContext";
 import { transformSearchContext } from "../helpers/transformSearchContext";
 import { getDecorateSetting, getDisplayDevInfoSetting, getSavedSettings, saveSettings } from "../helpers/store";
-import { userSettingsReducer, UserSettings,  } from "../model/UserSettings";
-import {  transformJobsNew } from "../model/transformJob";
+import { userSettingsReducer, UserSettings } from "../model/UserSettings";
+import { transformJobsNew } from "../model/transformJob";
 import {
     sendMessageToBackgroundAndPopup,
     subscribeToExtensionMessages,
@@ -77,7 +77,6 @@ const ReduxProvider = ({ children }) => {
 
 
 
-
     log({
         logType: 'INFO',
         message: 'ReduxProvider mounted'
@@ -103,7 +102,6 @@ const ReduxProvider = ({ children }) => {
     }
     // @ts-ignore
     const updateFeatureSettings = ({ settingName, property } ) => {
-
         if (settingName === 'decorateResults') {
             decorateRef.current = !decorateRef.current;
         }
@@ -116,19 +114,12 @@ const ReduxProvider = ({ children }) => {
 
     // @ts-ignore
      const updateDisplaySettings = (  value: string ) => {
-
         setSettings((settings: UserSettings) => {
             let updated = userSettingsReducer(settings, "tableWidth", 'displaySettings', 'value', value);
             saveSettings(updated);
             return updated;
         });
     }
-
-
-
-
-
-
 
 
     const toggleDisplay = () => {
@@ -140,65 +131,24 @@ const ReduxProvider = ({ children }) => {
 
 
 
-
+    // scroll selected result into view
+    // scrolls element to top of visible scrollable container
     const updateSelected = (position: number) => {
 
-        // todo!!!!
+
         // for split view
         let parent = document.querySelector('#card-scroll-container');
-
-
-
-        let row = document.querySelector(`[data-test-id="svx-job-card-component-${position}"]`);
-
-        let offset = position * 278;
-        parent?.scrollTo(0, offset);
-        /*
-        // @ts-ignore
-        let parentRectangle = parent.getBoundingClientRect();
-        console.log('parentRectangle', parentRectangle);
-        let parentViewableArea = {
-            // @ts-ignore
-            height: parent.clientHeight,
-            // @ts-ignore
-            width: parent.clientWidth
-        };
-
-        // @ts-ignore
-        let childRectangle = row.getBoundingClientRect();
-        console.log('childRectangle', childRectangle);
-        let isViewable = (childRectangle.top >= parentRectangle.top)
-            && (childRectangle.bottom <= parentRectangle.top + parentViewableArea.height);
-        if (!isViewable) {
-            const scrollTop = childRectangle.top - parentRectangle.top;
-            const scrollBottom = childRectangle.bottom - parentRectangle.bottom;
-            if (Math.abs(scrollTop) < Math.abs(scrollBottom)) {
-                // @ts-ignore
-                parent.scrollTop += scrollTop;
-            }
-            else {
-                // @ts-ignore
-                parent.scrollTop += scrollBottom;
-            }
+        let windowOffset = window.visualViewport.pageTop - 350;
+        if (windowOffset < 0) {
+            windowOffset = 0;
         }
-
-         */
-
+        let offset = position * 275 - windowOffset; // card height = 259, margin top 16
+        parent?.scrollTo(0, offset);
 
     }
 
 
-    /* useref pattern
 
-
-    const [myState, _setMyState] = useState(0);
-    const myStateRef = React.useRef(myState);
-    const setMyState = data => {
-        myStateRef.current = data;
-        _setMyState(data);
-    };
-
-     */
 
     const errorsRef = React.useRef(errors);
     const updateErrors = (newErrors: Errors) => {

@@ -1,6 +1,7 @@
 import { LogLevel } from "@azure/msal-browser";
 
 // or use chrome.identity.getRedirectURL()
+// todo - replace with webstore uri
 let redirectUri = 'https://nnimmgedomeeljdbgghchnbgncnggdcc.chromiumapp.org/';
 
 /**
@@ -11,6 +12,7 @@ let redirectUri = 'https://nnimmgedomeeljdbgghchnbgncnggdcc.chromiumapp.org/';
 export const msalConfig = {
     auth: {
         authority: "https://login.microsoftonline.com/common/",
+        // todo - replace with webstore id
         clientId: "9deaf42c-a982-41a0-95bf-5d95fa66eb34",
         redirectUri,
         postLogoutRedirectUri: redirectUri
@@ -54,4 +56,3 @@ export const msalConfig = {
 export const loginRequest = {
     scopes: ["User.Read"]
 };
-;

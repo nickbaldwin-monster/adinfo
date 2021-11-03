@@ -346,21 +346,26 @@ export const JobPanel = () => {
             }
 
 
-
-            /*
-            chrome.runtime.onMessage.addListener((message: MessageType) => {
-                log({ logType: 'MESSAGE_RECEIVED', functionName: 'N/A', payload: message });
-                if (message.type === "JOB_STATE") {
-                    console.log('payload: ', message.payload);
-                    // @ts-ignore
-                    setJobs(message.payload);
-                }
-            });
-
-             */
         }, [hoverResult]);
 
 
+    // alternative approach - scroll results so selected item is displayed as top item
+    // at least, until reach last few results
+    /*
+    React.useEffect(() => {
+        if (hoverResult !== -1 && jobs?.length > 0) {
+            let job = jobs[hoverResult];
+            let jobId = job.jobId;
+            setSelectedState({[jobId]: true});
+            let row = document.querySelector(`[data-grid-row-index="${hoverResult}"]`);
+            if (row) {
+                row.scrollIntoView();
+            }
+        }
+    }, [hoverResult]);
+
+
+    */
 
         let names = getNamesOfJobFields();
         const displayVisibleColumns = () => {
