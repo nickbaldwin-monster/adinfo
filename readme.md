@@ -118,17 +118,18 @@ After the project is built, a directory named `dist` will be created.
 - displayed number auction bids
 - persisted 'display dev info' and 'overlay ad info on results' settings
 
-
 2.2.0
 - authorization
+
+2.3.0
 - persist panel widths
 - better scrolling of selected results
+- fixed webadmin link - use first nowId
 
 todo:
 - delete settings
 - save settings in chrome storage - share across tabs
 - see/manage cookie
-- deal with multiple now ids
 
 
 tbd
