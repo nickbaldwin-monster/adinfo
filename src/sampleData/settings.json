@@ -1,17 +1,25 @@
 {
-  "version": "2.0.5",
+  "version": "2.3.0",
   "dataSettings": {
     "position": {
       "visible": true,
       "width": "50px"
     },
-    "decisionIndex": {
-      "visible": true,
-      "width": "50px"
+    "adRank": {
+      "visible": false,
+      "width": "70px"
     },
     "remainder": {
       "visible": false,
-      "width": "40px"
+      "width": "90px"
+    },
+    "ecpm": {
+      "visible": false,
+      "width": "80px"
+    },
+    "price": {
+      "visible": false,
+      "width": "80px"
     },
     "adProvider": {
       "visible": true,
@@ -30,19 +38,19 @@
       "width": "120px"
     },
     "nowId": {
-      "visible": false,
+      "visible": true,
       "width": "80px"
     },
     "jobId": {
-      "visible": false,
+      "visible": true,
       "width": "80px"
     },
     "template": {
-      "visible": false,
+      "visible": true,
       "width": "80px"
     },
     "xCode": {
-      "visible": false,
+      "visible": true,
       "width": "80px"
     },
     "applyType": {
@@ -50,7 +58,7 @@
       "width": "70px"
     },
     "formattedDate": {
-      "visible": false,
+      "visible": true,
       "width": "70px"
     },
     "mesco": {
@@ -66,7 +74,7 @@
       "width": "80px"
     },
     "dateRecency": {
-      "visible": false,
+      "visible": true,
       "width": "80px"
     },
     "ingestionMethod": {
@@ -74,7 +82,7 @@
       "width": "70px"
     },
     "pricingType": {
-      "visible": false,
+      "visible": true,
       "width": "50px"
     },
     "seoJobId": {
@@ -96,12 +104,18 @@
     "remote": {
       "visible": false,
       "width": "50px"
+    },
+    "decisionId": {
+      "visible": false,
+      "width": "140px"
     }
   },
   "dataOrder": [
     "position",
-    "decisionIndex",
+    "adRank",
     "remainder",
+    "ecpm",
+    "price",
     "adProvider",
     "company",
     "title",
@@ -122,7 +136,8 @@
     "refCode",
     "validThrough",
     "validThroughGoogle",
-    "remote"
+    "remote",
+    "decisionId"
   ],
   "featureSettings": {
     "decorateResults": {
@@ -130,12 +145,20 @@
       "disabled": false
     },
     "displayDevInfo": {
-      "enabled": true,
+      "enabled": false,
       "disabled": false
     }
   },
   "featureOrder": [
     "decorateResults",
     "displayDevInfo"
+  ],
+  "displaySettings": {
+    "tableWidth": {
+      "value": "600px"
+    }
+  },
+  "displayOrder": [
+    "tableWidth"
   ]
 }
