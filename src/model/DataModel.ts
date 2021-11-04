@@ -1,4 +1,4 @@
-import { normalizePostLocation, nowAdIds, formatDate, getImpressionData } from "./transformJob";
+import { normalizePostLocation, nowAdIds, formatDate, getImpressionData, formatLocationType } from "./transformJob";
 
 
 
@@ -539,11 +539,11 @@ export const DataModel: Record<string, DataProperty> = {
         },
         augmentedProperty: null
     },
-    // todo
+
     remote: {
         field: "remote",
-        title: "Remote? ",
-        width: "50px",
+        title: "Remote?",
+        width: "100px",
         sensitive: false,
         locked: false,
         reorderable: true,
@@ -553,12 +553,12 @@ export const DataModel: Record<string, DataProperty> = {
         additionalProperty: false,
         tableField: true,
         setting: true,
-        disabled: true,
-        sourceProperty: null,
-        transformProperty:  (object: object)  =>  {
-            // @ts-ignore
-            return "";
-        },
+        disabled: false,
+        sourceProperty: 'enrichments',
+                transformProperty:  (object: object)  =>  {
+                // @ts-ignore
+                return formatLocationType(object?.jobLocationType);
+            },
         augmentedProperty: null
     },
     decisionId: {
@@ -673,7 +673,7 @@ export const FeatureModel: Record<string, FeatureProperty> = {
         sensitive: false,
         setting: true,
         enabled: true,
-        disabled: false,
+        disabled: true,
     },
     displayDevInfo: {
         field: 'displayDevInfo' ,

@@ -125,6 +125,8 @@ After the project is built, a directory named `dist` will be created.
 - persist panel widths
 - better scrolling of selected results
 - fixed webadmin link - use first nowId
+- remote field displays data from jobLocationType
+- 
 
 todo:
 - delete settings

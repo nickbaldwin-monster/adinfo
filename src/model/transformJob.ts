@@ -12,7 +12,10 @@ export const getImpressionData = (impressionUrl: string) => {
 
 };
 
-
+export const formatLocationType = (obj: object ) => {
+    // @ts-ignore
+    return obj?.name || "";
+}
 
 export const normalizePostLocation = (locations: object[]): string => {
     // @ts-ignore

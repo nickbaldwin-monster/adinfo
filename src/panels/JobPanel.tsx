@@ -138,6 +138,13 @@ export const JobPanel = () => {
                 </>
             );
         }
+        if (props.title === 'Remote?') {
+            message = (
+                <>
+                    <p>This field relies on a specific job property provided by the employer. In many cases this will not be provided for remote (or other jobs) and may only be described in the title or description.</p>
+                </>
+            );
+        }
 
         if (!message) {
             return (
