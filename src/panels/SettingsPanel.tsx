@@ -8,10 +8,11 @@ import { Switch } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
 import { Panel } from "./Panel";
 import { sendMessageToBackgroundAndPopup } from '../helpers/messaging';
+import { getNamesOfJobFields, DataModel, FeatureModel } from "../model/DataModel";
 
 import "./SettingsPanel.css";
 
-import { getNamesOfJobFields, DataModel } from "../model/DataModel";
+
 
 
 const moduleName = 'SettingsPanel';
@@ -94,6 +95,7 @@ export const SettingsPanel = () => {
 
                 <div className='setting'>
                     <Switch
+                        disabled={FeatureModel.decorateResults.disabled || false}
                         onChange={()=> { handleToggleFeatureSetting('decorateResults') }}
                         checked={decorate}
                     />

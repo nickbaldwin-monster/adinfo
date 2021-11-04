@@ -126,7 +126,7 @@ After the project is built, a directory named `dist` will be created.
 - better scrolling of selected results
 - fixed webadmin link - use first nowId
 - remote field displays data from jobLocationType
-- 
+- disabled feature to overlay info on results
 
 todo:
 - delete settings
