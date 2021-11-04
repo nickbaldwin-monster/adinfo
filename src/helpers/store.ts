@@ -1,5 +1,5 @@
 import { currentVersion } from "../model/DataModel";
-import { isValidUserSettings, defaultUserSettings } from "../model/UserSettings";
+import { isValidUserSettings, defaultUserSettings, UserSettings } from "../model/UserSettings";
 
 const storeKey = 'adinfo';
 
@@ -183,30 +183,34 @@ export const saveSettings = (store: object) => {
 
 // todo - WIP
 
+interface Store {
+    [key: string]: UserSettings;
+}
 
-export const getObjectFromLocalStorage = async () => {
+export const getSettingsFromExtensionStorage = async () => {
     return new Promise((resolve, reject) => {
         try {
-            chrome.storage.local.get([storeKey], function(value) {
-                if (value[storeKey] === undefined) {
+            chrome.storage.local.get([storeKey], function(value: Store ) {
+                if (!value || value[storeKey] === undefined) {
                     // todo - save default settings
                     reject();
                 } else {
                     resolve(value[storeKey]);
                 }
             });
-        } catch (ex) {
+        } catch (err) {
             console.log('err - caught');
-            reject(ex);
+            reject(err);
         }
     });
 };
 
 
-const saveObjectInLocalStorage = async (obj: object) => {
+// todo - use settings type
+export const saveSettingsToExtensionStorage = async (settings: object) => {
     return new Promise((resolve, reject) => {
         try {
-            chrome.storage.local.set(obj, function() {
+            chrome.storage.local.set({[storeKey]: settings}, function() {
                 resolve();
             });
         } catch (ex) {
@@ -216,7 +220,7 @@ const saveObjectInLocalStorage = async (obj: object) => {
 };
 
 
-const removeObjectFromLocalStorage = async () => {
+export const removeObjectFromLocalStorage = async () => {
     return new Promise((resolve, reject) => {
         try {
             chrome.storage.local.remove([storeKey], function() {
