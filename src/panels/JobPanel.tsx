@@ -1,24 +1,23 @@
 import React, { useReducer, useContext, useState } from 'react';
 
-import { logger } from "../helpers/logger";
-import { useReduxContext } from "../context/Context";
-
 import { Grid, GridColumn, getSelectedState, GridToolbar } from '@progress/kendo-react-grid';
 import { orderBy } from "@progress/kendo-data-query";
 import { getter } from "@progress/kendo-react-common";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
+import { Button } from "@progress/kendo-react-buttons";
+
+import { logger } from "../helpers/logger";
+import { useReduxContext } from "../context/Context";
 import { JobDetail } from '../components/JobDetail';
+import { Popup } from "@progress/kendo-react-popup";
+import { getNamesOfJobFields, DataModel } from "../model/DataModel";
+import { DevInfo } from "../components/DevInfo";
+import { Info } from "../components/Info";
+import { Panel } from './Panel';
 
 // todo - cut down css
 import './Table.css';
-import { Popup } from "@progress/kendo-react-popup";
-
-import { getNamesOfJobFields, DataModel } from "../model/DataModel";
-import { DevInfo } from "../components/DevInfo";
-import { Button } from "@progress/kendo-react-buttons";
-import { Info } from "../components/Info";
-import { Panel } from './Panel';
 
 const DATA_ITEM_KEY = "jobId";
 const SELECTED_FIELD = "selected";
@@ -211,7 +210,6 @@ export const JobPanel = () => {
 
     const onSelectionChange = React.useCallback(
         (event) => {
-
             const newSelectedState = getSelectedState({
                 event,
                 selectedState: selectedState,
@@ -221,19 +219,14 @@ export const JobPanel = () => {
 
             setHoverResult(-1);
 
-
             // todo - in progress
             // note: this does not get called upon selection changed by hover
-            // console.log('selection has changed to: ', newSelectedState);
 
             // todo - deal with errors, unselections etc
             let id = Object.keys(newSelectedState)[0];
             let isSelect = newSelectedState[id];
-            // console.log('item selected: ', isSelect);
-
 
             if (id && isSelect) {
-
                 let position = -1;
                 for (let i = 0; i < jobs.length; i++) {
                     if (jobs[i].jobId === id) {
@@ -258,20 +251,16 @@ export const JobPanel = () => {
         [selectedState]
     );
 
-
-
     const onHeaderSelectionChange = React.useCallback((event) => {
         const checkboxElement = event.syntheticEvent.target;
         const checked = checkboxElement.checked;
         const newSelectedState = {};
         event.dataItems.forEach((item: any) => {
-
             // @ts-ignore
             newSelectedState[idGetter(item)] = checked;
         });
         setSelectedState(newSelectedState);
     }, []);
-
 
     const saveJson = () => {
         let json = JSON.stringify(jobs, null, 4);
@@ -283,7 +272,6 @@ export const JobPanel = () => {
         let keys = Object.keys(selectedState);
 
         // todo
-        //console.log(keys);
     }
 
 
@@ -305,55 +293,48 @@ export const JobPanel = () => {
 
 
 
-        React.useEffect(() => {
+    React.useEffect(() => {
 
-            log({
-                logType: 'INFO',
-                functionName: 'useEffect',
-                message: 'executed'
-            });
+        log({
+            logType: 'INFO',
+            functionName: 'useEffect',
+            message: 'executed'
+        });
 
-            if (hoverResult !== -1 && jobs && jobs.length > 0) {
+        if (hoverResult !== -1 && jobs && jobs.length > 0) {
+            let job = jobs[hoverResult];
+            let jobId = job.jobId;
+            setSelectedState({[jobId]: true});
 
-                // console.log(jobs);
-                let job = jobs[hoverResult];
-                // console.log(job.position);
-                let jobId = job.jobId;
-                setSelectedState({[jobId]: true});
-                // console.log(selectedState);
-
-                let parent = document.querySelector('.k-grid-content.k-virtual-content');
-                let row = document.querySelector(`[data-grid-row-index="${hoverResult}"]`);
-
+            let parent = document.querySelector('.k-grid-content.k-virtual-content');
+            let row = document.querySelector(`[data-grid-row-index="${hoverResult}"]`);
+            // @ts-ignore
+            let parentRectangle = parent.getBoundingClientRect();
+            let parentViewableArea = {
                 // @ts-ignore
-                let parentRectangle = parent.getBoundingClientRect();
-                let parentViewableArea = {
-                    // @ts-ignore
-                    height: parent.clientHeight,
-                    // @ts-ignore
-                    width: parent.clientWidth
-                };
-
+                height: parent.clientHeight,
                 // @ts-ignore
-                let childRectangle = row.getBoundingClientRect();
-                let isViewable = (childRectangle.top >= parentRectangle.top)
-                    && (childRectangle.bottom <= parentRectangle.top + parentViewableArea.height);
-                if (!isViewable) {
-                    const scrollTop = childRectangle.top - parentRectangle.top;
-                    const scrollBottom = childRectangle.bottom - parentRectangle.bottom;
-                    if (Math.abs(scrollTop) < Math.abs(scrollBottom)) {
-                        // @ts-ignore
-                        parent.scrollTop += scrollTop;
-                    }
-                    else {
-                        // @ts-ignore
-                        parent.scrollTop += scrollBottom;
-                    }
+                width: parent.clientWidth
+            };
+
+            // @ts-ignore
+            let childRectangle = row.getBoundingClientRect();
+            let isViewable = (childRectangle.top >= parentRectangle.top)
+                && (childRectangle.bottom <= parentRectangle.top + parentViewableArea.height);
+            if (!isViewable) {
+                const scrollTop = childRectangle.top - parentRectangle.top;
+                const scrollBottom = childRectangle.bottom - parentRectangle.bottom;
+                if (Math.abs(scrollTop) < Math.abs(scrollBottom)) {
+                    // @ts-ignore
+                    parent.scrollTop += scrollTop;
+                }
+                else {
+                    // @ts-ignore
+                    parent.scrollTop += scrollBottom;
                 }
             }
-
-
-        }, [hoverResult]);
+        }
+    }, [hoverResult]);
 
 
     // alternative approach - scroll results so selected item is displayed as top item
@@ -374,103 +355,96 @@ export const JobPanel = () => {
 
     */
 
-        let names = getNamesOfJobFields();
-        const displayVisibleColumns = () => {
-            if (!settings?.dataOrder || !settings?.dataSettings) {
-                return (<div>nothing to see</div>);
-            }
-            return names.map((name) => {
-
-                // todo - just filter changes in onColumnReorder?
-                // todo -figure out resizing fixed items
-
-                if (DataModel[name].orderIndex) {
-                    return (
-                        settings.dataSettings[name]?.visible && <GridColumn
-                            field={name} title={DataModel[name].title || ""} width={DataModel[name].width || "200px"}
-                            locked={DataModel[name].locked} reorderable={DataModel[name].reorderable}
-                            headerCell={headerCell} orderIndex={DataModel[name].orderIndex}
-                            headerClassName={DataModel[name].headerClassName} className={DataModel[name].className}/>
-                    );
-                }
-                else {
-                    return (
-                        settings.dataSettings[name]?.visible && <GridColumn
-                            field={name} title={DataModel[name].title || ""} width={DataModel[name].width || "200px"}
-                            locked={DataModel[name].locked} reorderable={DataModel[name].reorderable}
-                            headerCell={headerCell}
-                            headerClassName={DataModel[name].headerClassName} className={DataModel[name].className}/>
-                    );
-                }
-            });
-
-
+    let names = getNamesOfJobFields();
+    const displayVisibleColumns = () => {
+        if (!settings?.dataOrder || !settings?.dataSettings) {
+            return (<div>nothing to see</div>);
         }
+        return names.map((name) => {
 
-        /*
-         <Resizable
-            defaultSize={{ width: '600px', height: '100%' }}
-            enable={{ top:false, right:false, bottom:false, left:true,
-                topRight:false, bottomRight:false, bottomLeft:false, topLeft:false }}
-            minWidth='500px'
-            handleComponent={{left: DragHandle}}
+            // todo - just filter changes in onColumnReorder?
+            // todo -figure out resizing fixed items
+            // todo - conditionally add just orderindex
 
-        >
-         */
+            if (DataModel[name].orderIndex) {
+                return (
+                    settings.dataSettings[name]?.visible && <GridColumn
+                        field={name} title={DataModel[name].title || ""}
+                        width={DataModel[name].width || "200px"}
+                        locked={DataModel[name].locked}
+                        reorderable={DataModel[name].reorderable}
+                        headerCell={headerCell}
+                        orderIndex={DataModel[name].orderIndex}
+                        headerClassName={DataModel[name].headerClassName}
+                        className={DataModel[name].className}/>
+                );
+            }
+            else {
+                return (
+                    settings.dataSettings[name]?.visible && <GridColumn
+                        field={name} title={DataModel[name].title || ""}
+                        width={DataModel[name].width || "200px"}
+                        locked={DataModel[name].locked}
+                        reorderable={DataModel[name].reorderable}
+                        headerCell={headerCell}
+                        headerClassName={DataModel[name].headerClassName}
+                        className={DataModel[name].className}/>
+                );
+            }
+        });
+    }
 
     let toTs = Date.now();
     let fromTs = toTs - 900000;
+
     return (
         <Panel enabled={true}>
-        <div className='jobTable'>
+            <div className='jobTable'>
+                <ExcelExport data={jobs} ref={_export}>
 
-            <ExcelExport data={jobs} ref={_export}>
+                    <Grid
+                        className='gridJobs'
+                        reorderable={true}
+                        resizable={true}
+                        onColumnReorder={handleColumnReorder}
+                       // data={orderBy(jobs, sort)}
+                        data={orderBy(jobs.map((item: any) => ({
+                            // @ts-ignore
+                            ...item,
+                            // @ts-ignore
+                            [SELECTED_FIELD]: selectedState[idGetter(item)],
+                            // @ts-ignore
+                        })), sort)}
+                        dataItemKey={DATA_ITEM_KEY}
+                        selectedField={SELECTED_FIELD}
+                        selectable={{
+                            enabled: false,
+                            drag: false,
+                            cell: false,
+                            mode: "single",
+                        }}
+                        onSelectionChange={onSelectionChange}
+                        onHeaderSelectionChange={onHeaderSelectionChange}
+                        fixedScroll={true}
 
-                <Grid
-                    className='gridJobs'
-                    reorderable={true}
-                    resizable={true}
-                    onColumnReorder={handleColumnReorder}
-                   // data={orderBy(jobs, sort)}
-                    data={orderBy(jobs.map((item: any) => ({
+                        // style={{ height: '100%', overflow: 'auto', paddingBottom: '10px' }}
+                        // style={{ height: '100vh - 145px'}}
+
+                        sortable={true}
                         // @ts-ignore
-                        ...item,
-                        // @ts-ignore
-                        [SELECTED_FIELD]: selectedState[idGetter(item)],
-                        // @ts-ignore
-                    })), sort)}
-                    dataItemKey={DATA_ITEM_KEY}
-                    selectedField={SELECTED_FIELD}
-                    selectable={{
-                        enabled: false,
-                        drag: false,
-                        cell: false,
-                        mode: "single",
-                    }}
-                    onSelectionChange={onSelectionChange}
-                    onHeaderSelectionChange={onHeaderSelectionChange}
-                    fixedScroll={true}
+                        sort={sort}
+                        onSortChange={(e) => {
+                            // @ts-ignore
+                            setSort(e.sort);
+                        }}
+                        detail={JobDetail}
 
-                    // style={{ height: '100%', overflow: 'auto', paddingBottom: '10px' }}
-                    // style={{ height: '100vh - 145px'}}
-
-                    sortable={true}
-                    // @ts-ignore
-                    sort={sort}
-                    onSortChange={(e) => {
-                        // @ts-ignore
-                        setSort(e.sort);
-                    }}
-                    detail={JobDetail}
-
-                    expandField="expanded"
-                    onExpandChange={expandChange}
-                >
+                        expandField="expanded"
+                        onExpandChange={expandChange}
+                    >
 
 
-                    <GridToolbar>
-
-
+                        <GridToolbar>
                             <div style={{display: "flex", gap: "8px"}}>
                                 <Button
                                     title="Export Excel"
@@ -479,7 +453,6 @@ export const JobPanel = () => {
                                 >
                                     Export to Excel
                                 </Button>
-
                                 <Button
                                     title="Export JSON"
                                     className="k-button k-primary"
@@ -488,37 +461,24 @@ export const JobPanel = () => {
                                     Export to JSON
                                 </Button>
                             </div>
-
                             <Info numberResults={numberResults} errors={errors} auctionBids={auctionBids} />
+                            {displayDevInfo && <DevInfo searchId={searchId} decisionId={decisionId} />}
+                        </GridToolbar>
 
+                        <GridColumn
+                            field={SELECTED_FIELD}
+                            width="30px"
+                            headerSelectionValue={
+                                // @ts-ignore
+                                jobs.findIndex((item) => !selectedState[idGetter(item)]) === -1
+                            }
+                            locked={true}
+                        />
+                        {displayVisibleColumns()}
+                    </Grid>
 
-                                {displayDevInfo && <DevInfo searchId={searchId} decisionId={decisionId} />}
-
-
-
-
-
-
-                    </GridToolbar>
-
-                    <GridColumn
-                        field={SELECTED_FIELD}
-                        width="30px"
-                        headerSelectionValue={
-                            // @ts-ignore
-                            jobs.findIndex((item) => !selectedState[idGetter(item)]) === -1
-                        }
-                        locked={true}
-                    />
-
-
-                    {displayVisibleColumns()}
-
-                </Grid>
-
-            </ExcelExport>
-
-        </div>
+                </ExcelExport>
+            </div>
         </Panel>
     );
 };

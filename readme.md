@@ -127,6 +127,7 @@ After the project is built, a directory named `dist` will be created.
 - fixed webadmin link - use first nowId
 - remote field displays data from jobLocationType
 - disabled feature to overlay info on results
+- default width 800px for jobs, other panels set to 330px
 
 todo:
 - delete settings

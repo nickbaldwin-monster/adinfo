@@ -698,7 +698,7 @@ export const DisplayModel: Record<string, DisplayProperty> = {
         field: 'tableWidth',
         title: 'Table width',
         setting: false,
-        value: "600px"
+        value: "800px"
     }
 }
 
