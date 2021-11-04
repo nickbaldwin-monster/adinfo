@@ -17,8 +17,9 @@ export const resultDecoration = (job: DisplayJob, i: number): HTMLDivElement => 
     if (adProvider === '') {
         container.setAttribute('style', 'background-color: transparent');
     }
-    else if (adProvider !== 'ADZERK') {
-        container.setAttribute('style', 'background-color: red');
+
+    else if (adProvider !== 'GCTS_ADQUERY') {
+        container.setAttribute('style', 'background-color: color: #ff9999;');
     }
     return container;
 };
