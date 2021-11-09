@@ -1,8 +1,10 @@
 import { LogLevel } from "@azure/msal-browser";
 
-// or use chrome.identity.getRedirectURL()
-// todo - replace with webstore uri
-let redirectUri = 'https://nnimmgedomeeljdbgghchnbgncnggdcc.chromiumapp.org/';
+// use chrome.identity.getRedirectURL()
+// let redirectUri = 'https://nnimmgedomeeljdbgghchnbgncnggdcc.chromiumapp.org/';
+// todo - webstore uri
+let redirectUri = 'https://mehlfnjlhegodgejadikdffeaomnhmao.chromiumapp.org/';
+
 
 /**
  * Configuration object to be passed to MSAL instance on creation.
@@ -11,13 +13,16 @@ let redirectUri = 'https://nnimmgedomeeljdbgghchnbgncnggdcc.chromiumapp.org/';
  */
 export const msalConfig = {
     auth: {
-        authority: "https://login.microsoftonline.com/common/",
-        // todo - replace with webstore id
-        clientId: "9deaf42c-a982-41a0-95bf-5d95fa66eb34",
+        // for dev app
+        // authority: "https://login.microsoftonline.com/common/",
+        // clientId: "9deaf42c-a982-41a0-95bf-5d95fa66eb34",
+        authority: "https://login.microsoftonline.com/85b7f285-aa5f-4394-8316-ec7116aa9ef5/",
+        clientId: "059f4de3-2965-453d-8170-63422207028a",
         redirectUri,
         postLogoutRedirectUri: redirectUri
     },
     cache: {
+        // used for multi-tab support
         cacheLocation: "localStorage", // This configures where your cache will be stored
         storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
     },
