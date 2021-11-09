@@ -1,6 +1,6 @@
 import { Errors, ErrorItem, defaultErrors } from '../types/Errors';
 import { DisplayJob } from "../types/DisplayJob";
-import {Job} from "../types/Job";
+import { Job } from "../types/Job";
 
 export const determineErrors = (jobs: DisplayJob[]): Errors => {
 

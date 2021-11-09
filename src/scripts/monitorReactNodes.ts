@@ -36,6 +36,7 @@ export const monitorReactNodes = function() {
     }
 
 
+    // have to use poller here, as memoized state is partially set then updated later with the data
     const sendRequest = (nodeWithRequestInfo: Element) => {
         if (nodeWithRequestInfo) {
             const poll = setInterval(() => {
@@ -95,7 +96,6 @@ export const monitorReactNodes = function() {
 
             const cardList = document.querySelector("[class^='job-search-resultsstyle__CardGrid']");
             // console.log('cardList: ', cardList);
-
             const cardListSplit = document.querySelector("[class^='splitviewstyle__CardGridSplitView']");
             // console.log('cardListSplit: ', cardListSplit);
 
@@ -112,7 +112,6 @@ export const monitorReactNodes = function() {
             const handleMove = (event: Event) => {
                 clearTimeout(timeout);
                 timeout = setTimeout(() => {
-                    // console.log("mousemove!", event);
                     // @ts-ignore
                     let path = event.path || evwnt.composedPath();
                     try {
@@ -121,23 +120,17 @@ export const monitorReactNodes = function() {
                                 // console.log(path[i]);
                                 let id = path[i].getAttribute('data-test-id');
                                 let match = id.match(/-component-(\d*)$/);
-
                                 let pos;
                                 if (match) {
                                     pos = parseInt(match[1]);
-
-
                                     window.postMessage({
                                         type: 'HOVER_RESULTS',
                                         payload: pos,
                                         source: 'content'
                                     }, "*");
-
-
                                 }
 
                                 // todo - want to do any checks???!!!
-                                // console.log(pos);
                                 let child = path[i].children[0];
                                 let link = child?.href;
                                 let decoration = child.children[child.children.length];
@@ -156,7 +149,7 @@ export const monitorReactNodes = function() {
                 }, 200);
             }
 
-            // monitor updates to card list
+            // monitor updates to card list and listen for mouse hovers
             if (results) {
 
                 if (window.PointerEvent) {
@@ -195,6 +188,7 @@ export const monitorReactNodes = function() {
         </div>
      */
 
-
+    const style = 'background: #444; color: #fff; font-weight: bold; padding-top: 3px; padding-bottom: 3px;';
+    console.log(" ::: ", style, { logType: "LOADED", moduleName: "injected script", time: Date.now() });
 
 }

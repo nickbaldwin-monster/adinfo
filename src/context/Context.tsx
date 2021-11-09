@@ -20,7 +20,6 @@ import {
 
 const moduleName = 'Context';
 let log = logger(moduleName);
-log({ logType: 'LOADED' });
 
 
 // todo - rename
@@ -133,9 +132,7 @@ const ReduxProvider = ({ children }) => {
 
     // scroll selected result into view
     // scrolls element to top of visible scrollable container
-    const updateSelected = (position: number) => {
-
-
+    const showSelected = (position: number) => {
         // for split view
         let parent = document.querySelector('#card-scroll-container');
         let windowOffset = window.visualViewport.pageTop - 350;
@@ -145,14 +142,12 @@ const ReduxProvider = ({ children }) => {
         let offset = position * 275 - windowOffset; // card height = 259, margin top 16
         parent?.scrollTo(0, offset);
 
+        // todo - card view
     }
-
-
 
 
     const errorsRef = React.useRef(errors);
     const updateErrors = (newErrors: Errors) => {
-
         setErrors(() => {
             log({
                 logType: 'INFO',
@@ -166,9 +161,7 @@ const ReduxProvider = ({ children }) => {
 
 
 
-
     const updateSearchContextAndId = (context: SearchContext) => {
-
         /*
             message: {
                 type: "SEARCH_CONTEXT_UPDATED",
@@ -198,7 +191,6 @@ const ReduxProvider = ({ children }) => {
 
 
     const updateJobs = (jobs: Job[]) => {
-
         /*
             message: {
                 type: "JOB_PROPS"
@@ -246,8 +238,6 @@ const ReduxProvider = ({ children }) => {
         else {
             removeDecorations();
         }
-
-
     }
 
 
@@ -256,20 +246,36 @@ const ReduxProvider = ({ children }) => {
 
     const handleMessage = (message: MessageType) => {
 
-        if (message.type === "DISPLAY_STATUS") {
-            // updateDisplay(message.display);
-        }
-        // todo - WIP
+        // startup responses
         if (message.type === "SAVED_SETTINGS_RESPONSE") {
             // todo - apply settings
             console.log('extension settings from background', message.payload);
         }
+        if (message.type === 'VERSION_RESPONSE') {
+            console.log("VERSION", version);
+            setVersion(message.payload);
+        }
+        if (message.type === 'LOGIN_STATUS_RESPONSE') {
+            setAuth(message.payload);
+        }
+
+        //
+        if (message.type === 'LOGOUT_RESPONSE') {
+            setAuth(message.payload);
+        }
+        if (message.type === 'LOGIN_RESPONSE') {
+            setAuth(message.payload);
+        }
 
 
 
+        if (message.type === "DISPLAY_STATUS") {
+            // updateDisplay(message.display);
+        }
+        // todo - WIP
 
         if (message.type === "JOB_SELECTED") {
-            updateSelected(message.payload);
+            showSelected(message.payload);
         }
 
 
@@ -322,25 +328,6 @@ const ReduxProvider = ({ children }) => {
 
 
 
-        if (message.type === 'VERSION_RESPONSE') {
-            console.log("VERSION", version);
-            setVersion(message.payload);
-        }
-
-
-
-        if (message.type === 'LOGIN_STATUS_RESPONSE') {
-            setAuth(message.payload);
-            console.log("LOGIN_STATUS_RESPONSE", message.payload);
-        }
-        if (message.type === 'LOGOUT_RESPONSE') {
-            setAuth(message.payload);
-            console.log("LOGOUT_RESPONSE", message.payload);
-        }
-        if (message.type === 'LOGIN_RESPONSE') {
-            setAuth(message.payload);
-            console.log("LOGIN_RESPONSE", message.payload);
-        }
 
 
     };
@@ -454,3 +441,6 @@ const useReduxContext = () => {
 
 export { ReduxProvider, Consumer as ReduxConsumer, useReduxContext };
 export default ReduxContext;
+
+
+log({ logType: 'LOADED' });

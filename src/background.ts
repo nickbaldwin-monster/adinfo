@@ -407,3 +407,5 @@ auth = isLoggedIn();
 let version = chrome.runtime.getManifest()?.version;
 console.log("VERSION", version);
 
+
+log({ logType: 'LOADED' });

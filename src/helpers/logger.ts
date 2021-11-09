@@ -2,7 +2,7 @@ const app = '%c adinfo';
 const style = 'background: #444; color: #fff; font-weight: bold; padding-top: 3px; padding-bottom: 3px;';
 
 
-const isLog = false;
+const isLog = true;
 
 interface Log {
     moduleName?: string,
@@ -59,7 +59,7 @@ export const log = ({ moduleName, functionName, logType, message, payload, error
         functionName = "unknown";
     }
     if (logType === 'LOADED') {
-        console.log(msg, style, { logType, moduleName });
+        console.log(msg, style, { logType, moduleName, time: Date.now() });
     }
     if (logType === 'FUNCTION') {
         console.log(msg, style, { logType, moduleName, functionName, message });
