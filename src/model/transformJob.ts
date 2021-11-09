@@ -1,9 +1,9 @@
+import dayjs from "dayjs";
+
 import { Job } from "../types/Job";
 import { DisplayJob } from "../types/DisplayJob";
 import { getDataFromUrl } from "../helpers/decodeImpUrl";
 import { DataModel, getNamesOfJobProperties } from "./DataModel";
-import dayjs from "dayjs";
-
 
 
 

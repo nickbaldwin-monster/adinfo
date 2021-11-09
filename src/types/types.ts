@@ -1,13 +1,12 @@
 // Popup or content script requesting the current status
-import {Job} from "./Job";
-import {SearchContext} from "./SearchContext";
-import {UserSettings} from "../model/UserSettings";
+import { Job } from "./Job";
+import { SearchContext } from "./SearchContext";
+import { UserSettings } from "../model/UserSettings";
 
 interface DisplayStateRequest {
     type: "REQ_DISPLAY_STATUS";
     source: string;
 }
-
 
 // Background script broadcasting current status
 interface DisplayStateResponse {
@@ -15,8 +14,6 @@ interface DisplayStateResponse {
     display: boolean;
     source: string;
 }
-
-
 
 interface JobProps {
     type: "JOB_PROPS";

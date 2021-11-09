@@ -12,9 +12,6 @@ export const subscribeToWindowMessages = (eventHandler: (event: MessageEvent<Mes
 }
 
 
-
-
-
 export const sendMessageToBackgroundAndPopup = (message: MessageType) => {
     chrome.runtime.sendMessage(message);
     log({
@@ -25,7 +22,7 @@ export const sendMessageToBackgroundAndPopup = (message: MessageType) => {
 };
 
 export const sendMessageToContent = (message: MessageType) => {
-    // todo - check this approach
+    // todo - send to all inactive tabs!
     // check url match - might need to provide array of diff monster domains
     // add monsterboard
     // add query e.g. {url: '*://*.monster.co.uk/*'}

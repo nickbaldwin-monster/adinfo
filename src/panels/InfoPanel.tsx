@@ -10,7 +10,6 @@ import { AuthButtons } from "../components/AuthButtons";
 
 
 
-
 export const InfoPanel = () => {
     // todo - persist searchContext as object too
     // @ts-ignore

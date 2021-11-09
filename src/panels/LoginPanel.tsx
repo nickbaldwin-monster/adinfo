@@ -1,12 +1,10 @@
 import * as React from "react";
 
-import { logger } from "../helpers/logger";
-
 import { Button } from "@progress/kendo-react-buttons";
+
 import { sendMessageToBackgroundAndPopup, sendMessageToContent } from "../helpers/messaging";
 import { Panel } from "./Panel";
-const moduleName = 'LoginPanel';
-let log = logger(moduleName);
+
 
 
 // @ts-ignore

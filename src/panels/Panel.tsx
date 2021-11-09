@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Resizable, ResizeCallback } from "re-resizable";
+
 import { DragHandle } from "../elements/DragHandle";
 import { useReduxContext} from "../context/Context";
 import { MessageType } from "../types/types";

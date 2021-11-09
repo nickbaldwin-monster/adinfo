@@ -1,11 +1,11 @@
 import * as React from "react";
 
+import { Switch } from "@progress/kendo-react-inputs";
+import { Label } from "@progress/kendo-react-labels";
+
 import { useReduxContext } from "../context/Context";
 import { MessageType } from "../types/types";
 import { logger } from "../helpers/logger";
-
-import { Switch } from "@progress/kendo-react-inputs";
-import { Label } from "@progress/kendo-react-labels";
 import { Panel } from "./Panel";
 import { sendMessageToBackgroundAndPopup } from '../helpers/messaging';
 import { getNamesOfJobFields, DataModel, FeatureModel } from "../model/DataModel";
@@ -14,11 +14,8 @@ import "./SettingsPanel.css";
 
 
 
-
 const moduleName = 'SettingsPanel';
 let log = logger(moduleName);
-log({ logType: 'LOADED' });
-
 
 interface Setting {
     key: string;
@@ -29,7 +26,6 @@ export const SettingsPanel = () => {
 
     // @ts-ignore
     const { settings, decorate, displayDevInfo, auth, name } = useReduxContext();
-
 
     // todo - refactor into single setting message with params
     const handleToggleSetting = (setting: string) => {

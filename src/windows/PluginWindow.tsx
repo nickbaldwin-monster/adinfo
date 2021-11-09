@@ -94,7 +94,7 @@ const PluginWindow = (props: any) => {
     let selected = setSelectedItem(props.location.pathname);
 
     // todo  - WIP
-    sendMessageToBackgroundAndPopup({type: 'AUTH_STATUS_REQUEST', source: 'plugin'});
+    sendMessageToBackgroundAndPopup({ type: 'AUTH_STATUS_REQUEST', source: 'plugin' });
 
     return (
         <div>

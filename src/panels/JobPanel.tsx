@@ -6,11 +6,12 @@ import { getter } from "@progress/kendo-react-common";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { saveAs, encodeBase64 } from '@progress/kendo-file-saver';
 import { Button } from "@progress/kendo-react-buttons";
+import { Popup } from "@progress/kendo-react-popup";
 
 import { logger } from "../helpers/logger";
 import { useReduxContext } from "../context/Context";
 import { JobDetail } from '../components/JobDetail';
-import { Popup } from "@progress/kendo-react-popup";
+
 import { getNamesOfJobFields, DataModel } from "../model/DataModel";
 import { DevInfo } from "../components/DevInfo";
 import { Info } from "../components/Info";
@@ -23,12 +24,6 @@ const DATA_ITEM_KEY = "jobId";
 const SELECTED_FIELD = "selected";
 const idGetter = getter(DATA_ITEM_KEY);
 const initialSort = [ {field: "position", dir: "asc"} ];
-
-
-const moduleName = 'JobPanel';
-let log = logger(moduleName);
-log({ logType: 'LOADED' });
-
 
 
 /*
@@ -294,13 +289,6 @@ export const JobPanel = () => {
 
 
     React.useEffect(() => {
-
-        log({
-            logType: 'INFO',
-            functionName: 'useEffect',
-            message: 'executed'
-        });
-
         if (hoverResult !== -1 && jobs && jobs.length > 0) {
             let job = jobs[hoverResult];
             let jobId = job.jobId;

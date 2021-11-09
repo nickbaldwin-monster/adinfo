@@ -14,7 +14,9 @@ import * as ReactDOM from "react-dom";
 import { ReduxProvider } from "./context/Context";
 import { PluginWindowRouter } from "./windows/PluginWindowRouter";
 import { monitorReactNodes } from "./scripts/monitorReactNodes";
+
 import "./content.css";
+
 import { logger } from "./helpers/logger";
 const moduleName = 'content';
 let log = logger(moduleName);
@@ -54,7 +56,7 @@ const injectApp = () => {
         else {
             log({
                 logType: 'INFO',
-                error: 'display mounted'
+                error: 'UI mounted'
             });
         }
 
