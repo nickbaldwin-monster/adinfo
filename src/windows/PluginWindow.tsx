@@ -105,6 +105,7 @@ const PluginWindow = (props: any) => {
                 mini={true}
                 items={items.map((item) => ({
                     ...item,
+                    title: item.text,
                     selected: item.text === selected,
                 }))}
                 onSelect={onSelect}

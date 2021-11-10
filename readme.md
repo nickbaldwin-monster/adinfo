@@ -129,9 +129,11 @@ After the project is built, a directory named `dist` will be created.
 - disabled feature to overlay info on results
 - default width 800px for jobs, other panels set to 330px
 
-
 2.4.0
 - export and display (truncated) job description
+- added hover titles for panel icons
+
+
 
 
 todo:
