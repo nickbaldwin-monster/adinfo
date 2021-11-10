@@ -1,7 +1,10 @@
 import * as React from "react";
 
 import { Button } from "@progress/kendo-react-buttons";
+
 import { sendMessageToBackgroundAndPopup, sendMessageToContent } from "../helpers/messaging";
+
+
 
 // @ts-ignore
 export const AuthButtons = ({ auth, name} ) => {
@@ -37,6 +40,5 @@ export const AuthButtons = ({ auth, name} ) => {
             <Button look="flat" onClick={handleLogout}>Logout</Button>
         </div>
     );
-
 }
 

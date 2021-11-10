@@ -6,6 +6,7 @@ import { DisplayJob } from "../types/DisplayJob";
 import { JobLinks } from "./JobLinks";
 
 
+
 interface DataProps {
     dataItem: DisplayJob;
 }
@@ -16,6 +17,7 @@ export const JobDetail = (props: DataProps) => {
 
     return (
         <section>
+
             <JobLinks
                 jobId={dataItem.jobId}
                 accountId={undefined}
@@ -25,12 +27,14 @@ export const JobDetail = (props: DataProps) => {
                 isNext={isNext}
             />
 
-            <p>
-                <strong>NEXT jobId:</strong> {dataItem.jobId || 'N/A'}
-            </p>
+            {dataItem.jobId && (
+                <p>
+                    <strong>.NEXT jobId:</strong> {dataItem.jobId || 'N/A'}
+                </p>
+            )}
             {dataItem.nowId && (
                 <p>
-                    <strong>Now jobId:</strong> {dataItem.nowId || 'N/A'}
+                    <strong>.NOW jobId:</strong> {dataItem.nowId || 'N/A'}
                 </p>
             )}
 

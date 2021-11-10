@@ -1,11 +1,13 @@
 import React from 'react';
+
 import { Grid, GridColumn, GridToolbar } from '@progress/kendo-react-grid';
 import ReactJson from "react-json-view-ts";
 
 import { useReduxContext } from "../context/Context";
+
+import { Panel } from "./Panel";
 import { DatadogLink } from "../components/DatadogLink";
 import { Domains } from "../components/Domains";
-import { Panel } from "./Panel";
 import { AuthButtons } from "../components/AuthButtons";
 
 
@@ -14,8 +16,8 @@ export const InfoPanel = () => {
     // todo - persist searchContext as object too
     // @ts-ignore
     const { version, loading, rawSearchContext, searchContext, searchId, auth, name } = useReduxContext();
-    let versionInfo = version ? `v${version}` : "";
 
+    let versionInfo = version ? `v${version}` : "";
 
     // <div className='panel'>
     return (
