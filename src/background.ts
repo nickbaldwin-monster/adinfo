@@ -1,47 +1,39 @@
-// this is run as a background script (visible only by clicking inspect
+// this is run as a background script - visible only by clicking inspect
 // on the extension's background page (within chrome://extensions/)
 
 // run as a separate instance in browser
-// used to manage a browser wide state via messages
+// used to manage browser wide state via messages
 
-import { MessageType } from "./types/types";
+import { PublicClientApplication } from "@azure/msal-browser";
+
+import { MessageType } from "./types/messageTypes";
 import { logger } from "./helpers/logger";
-
-import { subscribeToExtensionMessages, subscribeToWindowMessages,
-    sendMessageToBackgroundAndPopup, sendMessageToContent
-} from "./helpers/messaging";
+import { subscribeToExtensionMessages, sendMessageToContent } from "./helpers/messaging";
 import {
     getSettingsFromExtensionStorage,
     saveSettingsToExtensionStorage,
     getSavedExtensionSettings,
-
     saveExtensionSettings
 } from './helpers/store';
-import {DisplaySetting, getDefaultUserSettings, UserSettings} from "./model/UserSettings";
-
-import { PublicClientApplication } from "@azure/msal-browser";
+import { DisplaySetting, getDefaultUserSettings, UserSettings } from "./model/UserSettings";
 import { msalConfig } from "./auth/authConfig";
+
+
 
 // @ts-ignore
 const instance = new PublicClientApplication(msalConfig);
-
-import { loginRequest } from "./auth/authConfig";
-import {currentVersion} from "./model/DataModel";
-
-// @ts-ignore
-
-
-
-
 const moduleName = 'background';
 let log = logger(moduleName);
-log({ logType: 'LOADED' });
-
-
+let version = chrome.runtime.getManifest()?.version;
 let settings = getDefaultUserSettings();
 let loading = true;
 let error = false;
+// default state
+let display = false;
+let auth = false;
 
+
+// todo - make use of this!
 getSettingsFromExtensionStorage().then((savedSettings: any) => {
     console.log('default settings: ', settings);
     console.log('settings in chrome extension storage: ', savedSettings);
@@ -66,25 +58,13 @@ getSettingsFromExtensionStorage().then((savedSettings: any) => {
 
 }).catch(err => {
     console.log('err: ', err);
+    loading = false;
     error = true;
-
     // todo - send message with error...
 })
 
 
 
-
-// default state
-let display = false;
-let auth = false;
-let lastCheckTime = 0;
-let period = 172800000;
-
-
-const isAuthCurrent = () => {
-    let cutoff = Date.now() - period;
-    return auth && lastCheckTime > cutoff;
-}
 
 
 const sendSettings = () => {
@@ -203,7 +183,7 @@ const handleMessage = (message: MessageType) => {
     }
 
 
-
+    // todo - do an intial check that background is ready
     if (message.type === "CHECK") {
        // console.log('check received');
     }
@@ -259,13 +239,13 @@ subscribeToExtensionMessages(handleMessage);
 
 
 const check = () => {
-        // @ts-ignore
-        let accounts = instance.getAllAccounts();
-        if (accounts.length) {
-            console.log('already logged in');
-            return accounts;
-        }
-        return null;
+    // @ts-ignore
+    let accounts = instance.getAllAccounts();
+    if (accounts.length) {
+        console.log('already logged in');
+        return accounts;
+    }
+    return null;
 }
 
 const getAccounts = () => {
@@ -358,7 +338,7 @@ const handleLogin = () => {
 
     let completed: MessageType = {
         type: 'LOGIN_RESPONSE',
-        source: 'popup',
+        source: 'background',
         payload: true
     };
     login().then(res => {
@@ -396,7 +376,6 @@ window["adinfo"] = {
     instance,
     login,
     logout,
-    check,
     getAccounts,
     getFirstAccount,
     isLoggedIn,
@@ -404,8 +383,6 @@ window["adinfo"] = {
 
 auth = isLoggedIn();
 
-let version = chrome.runtime.getManifest()?.version;
-console.log("VERSION", version);
 
 
 log({ logType: 'LOADED' });
