@@ -1,4 +1,4 @@
-import { MessageType } from "../types/types";
+import { MessageType } from "../types/messageTypes";
 import { logger } from "./logger";
 
 let log = logger('');

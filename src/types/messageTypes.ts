@@ -3,6 +3,29 @@ import { Job } from "./Job";
 import { SearchContext } from "./SearchContext";
 import { UserSettings } from "../model/UserSettings";
 
+
+
+
+
+
+
+// todo -remove
+interface LoginStarted {
+    type: 'LOGIN_STARTED';
+    source: string;
+    payload: number;
+}
+interface LoginCompleted {
+    type: 'LOGIN_COMPLETED';
+    source: string;
+    payload: number;
+}
+
+
+
+
+
+
 interface DisplayStateRequest {
     type: "REQ_DISPLAY_STATUS";
     source: string;
@@ -107,17 +130,6 @@ interface AuthUriResponse {
 
 
 
-interface LoginStarted {
-    type: 'LOGIN_STARTED';
-    source: string;
-    payload: number;
-}
-
-interface LoginCompleted {
-    type: 'LOGIN_COMPLETED';
-    source: string;
-    payload: number;
-}
 
 interface LoginChecked {
     type: 'LOGIN_CHECKED';
@@ -262,5 +274,5 @@ export type MessageType =
     Check | CheckResponse |
     JobState | JobProps | ToggleSetting | ToggleDecorate | ToggleDisplay | HoverResults | JobSelected | SearchContextUpdated |
     AuthUriRequest | AuthUriResponse |
-    LoginStarted | LoginCompleted | LoginChecked | Logout |
+    LoginChecked | Logout |
     AuthStatusRequest | AuthStatusResponse | AuthFlowStatusRequest | AuthFlowStatusResponse;

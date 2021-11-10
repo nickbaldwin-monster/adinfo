@@ -4,7 +4,7 @@ import { Switch } from "@progress/kendo-react-inputs";
 import { Label } from "@progress/kendo-react-labels";
 
 import { useReduxContext } from "../context/Context";
-import { MessageType } from "../types/types";
+import { MessageType } from "../types/messageTypes";
 import { logger } from "../helpers/logger";
 import { Panel } from "./Panel";
 import { sendMessageToBackgroundAndPopup } from '../helpers/messaging';

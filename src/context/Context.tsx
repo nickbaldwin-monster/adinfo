@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useReducer } fro
 
 import { logger } from "../helpers/logger";
 
-import { MessageType } from "../types/types";
+import { MessageType } from "../types/messageTypes";
 import { defaultErrors, Errors } from '../types/Errors';
 import { decorateResults, removeDecorations } from '../helpers/decorateResults';
 import { determineErrors } from "../helpers/determineErrors";

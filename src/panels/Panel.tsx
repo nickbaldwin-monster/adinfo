@@ -4,7 +4,7 @@ import { Resizable, ResizeCallback } from "re-resizable";
 
 import { DragHandle } from "../elements/DragHandle";
 import { useReduxContext} from "../context/Context";
-import { MessageType } from "../types/types";
+import { MessageType } from "../types/messageTypes";
 import { sendMessageToBackgroundAndPopup, sendMessageToContent } from "../helpers/messaging";
 
 // @ts-ignore
