@@ -114,6 +114,7 @@ const needToMigrate = {
     "2.0.5" : true,
     "2.1.0" : true,
     "2.2.0" : true,
+    "2.3.0" : true
 }
 
 

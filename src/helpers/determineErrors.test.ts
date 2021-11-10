@@ -1,12 +1,17 @@
 import { Errors, ErrorsSchema, ErrorItem, defaultErrors, isErrorItem, isErrors, ErrorsKey, ErrorItemKey}
     from '../types/Errors';
 import { determineErrors } from './determineErrors';
-import {DisplayJob} from '../types/DisplayJob';
+import { DisplayJob } from '../types/DisplayJob';
 
 
 const job1: DisplayJob =  {
     position: 1,
+    adRank: 5,
+    remainder: "",
+    ecpm: '3.12',
+    price: '21.22',
     title: 'job1',
+    description: 'job description stuff',
     company: 'company1',
     jobId: '1',
     location: '',
@@ -29,14 +34,16 @@ const job1: DisplayJob =  {
     validThrough: '1 Jan 2000',
     validThroughGoogle: '2 Feb 2000',
     remote: '',
-    di: 'wfwewef',
-    dj: '5',
-    ec: '3.12',
-    pc: '21.22'
+    decisionId: 'wfwewef'
 };
 const job2: DisplayJob =  {
     position: 2,
+    adRank: 5,
+    remainder: "",
+    ecpm: '3.12',
+    price: '21.22',
     title: 'job2',
+    description: 'job description stuff',
     company: 'company2',
     jobId: '2',
     location: '',
@@ -59,14 +66,16 @@ const job2: DisplayJob =  {
     validThrough: '1 Jan 2000',
     validThroughGoogle: '2 Feb 2000',
     remote: '',
-    di: 'wfwewef',
-    dj: '5',
-    ec: '3.12',
-    pc: '21.22'
+    decisionId: 'wfwewef'
 }
 const job3: DisplayJob =  {
     position: 3,
+    adRank: 5,
+    remainder: "",
+    ecpm: '3.12',
+    price: '21.22',
     title: 'job3',
+    description: 'job description stuff',
     company: 'company3',
     jobId: '3',
     location: '',
@@ -89,14 +98,16 @@ const job3: DisplayJob =  {
     validThrough: '1 Jan 2000',
     validThroughGoogle: '2 Feb 2000',
     remote: '',
-    di: 'wfwewef',
-    dj: '5',
-    ec: '3.12',
-    pc: '21.22'
+    decisionId: 'wfwewef'
 }
 const job4: DisplayJob =  {
     position: 4,
+    adRank: 5,
+    remainder: "",
+    ecpm: '3.12',
+    price: '21.22',
     title: 'job4',
+    description: 'job description stuff',
     company: 'company4',
     jobId: '4',
     location: '',
@@ -119,15 +130,17 @@ const job4: DisplayJob =  {
     validThrough: '1 Jan 2000',
     validThroughGoogle: '2 Feb 2000',
     remote: '',
-    di: 'wfwewef',
-    dj: '5',
-    ec: '3.12',
-    pc: '21.22'
+    decisionId: 'wfwewef'
 }
 
 const job5: DisplayJob =  {
     position: 5,
+    adRank: 5,
+    remainder: "",
+    ecpm: '3.12',
+    price: '21.22',
     title: 'job5',
+    description: 'job description stuff',
     company: 'company4',
     jobId: '5',
     location: '',
@@ -150,10 +163,7 @@ const job5: DisplayJob =  {
     validThrough: '1 Jan 2000',
     validThroughGoogle: '2 Feb 2000',
     remote: '',
-    di: 'wfwewef',
-    dj: '5',
-    ec: '3.12',
-    pc: '21.22'
+    decisionId: 'wfwewef'
 }
 
 

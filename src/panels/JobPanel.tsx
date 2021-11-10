@@ -1,6 +1,6 @@
-import React, { useReducer, useContext, useState } from 'react';
+import React, {useReducer, useContext, useState, PropsWithChildren} from 'react';
 
-import { Grid, GridColumn, getSelectedState, GridToolbar } from '@progress/kendo-react-grid';
+import {Grid, GridColumn, getSelectedState, GridToolbar, GridCellProps} from '@progress/kendo-react-grid';
 import { orderBy } from "@progress/kendo-data-query";
 import { getter } from "@progress/kendo-react-common";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
@@ -66,29 +66,37 @@ const linkedCell = (props: any) => {
     );
 };
 
-const cell = (props: any) => {
-    /*
-    props = {
-        "dataItem": {},
-        "field": "adProvider",
-        "className": "k-grid-content-sticky",
-        "columnIndex": 3,
-        "columnsCount": 17,
-        "rowType": "data",
-        "level": 0,
-        "dataIndex": 5,
-        "style": {},
-        "ariaColumnIndex": 4,
-        "isSelected": false
-    }
-     */
 
+/*
+props = {
+    "id": "123...",
+    "colSpan": 1;
+    "dataItem": { ... },
+    "field": "adProvider",
+    "className": "k-grid-content-sticky",
+    "columnIndex": 3,
+    "columnsCount": 17,
+    "rowType": "data",
+    "level": 0,
+    "dataIndex": 5,
+    "style": { ... },
+    "ariaColumnIndex": 4,
+    "isSelected": false
+}
+ */
+
+const truncatedDescriptionCell = (props: PropsWithChildren<GridCellProps>) => {
+    let desc = props.dataItem.description?.substring(0, 250) + "...";
     return (
-        <td title={props.dataItem[props.field]} className={props.className} style={props.style}>
-            {props.dataItem[props.field]}
+        <td colSpan={props.colSpan} className="" role="gridcell" aria-colindex={props.ariaColumnIndex}
+            aria-selected={props.isSelected} data-grid-col-index={props.columnIndex}>
+            {desc}
         </td>
     );
 };
+
+
+
 
 const handleColumnReorder = (event: any) => {
 
@@ -198,6 +206,12 @@ export const JobPanel = () => {
             // @ts-ignore
             _export.current.save();
         }
+        // @ts-ignore
+        window._export = _export.current;
+        console.log(_export.current);
+
+        // @ts-ignore
+        console.log(_export.current.getExportData());
     };
 
     const [sort, setSort] = React.useState(initialSort);
@@ -348,15 +362,18 @@ export const JobPanel = () => {
         if (!settings?.dataOrder || !settings?.dataSettings) {
             return (<div>nothing to see</div>);
         }
-        return names.map((name) => {
+        return names.map((name, i) => {
 
             // todo - just filter changes in onColumnReorder?
             // todo -figure out resizing fixed items
             // todo - conditionally add just orderindex
 
+            if (!name || !settings.dataSettings[name]?.visible) {
+                return null;
+            }
             if (DataModel[name].orderIndex) {
                 return (
-                    settings.dataSettings[name]?.visible && <GridColumn
+                     <GridColumn
                         field={name} title={DataModel[name].title || ""}
                         width={DataModel[name].width || "200px"}
                         locked={DataModel[name].locked}
@@ -367,23 +384,37 @@ export const JobPanel = () => {
                         className={DataModel[name].className}/>
                 );
             }
-            else {
+            else if (DataModel[name].title === 'Description') {
                 return (
-                    settings.dataSettings[name]?.visible && <GridColumn
+                    <GridColumn
                         field={name} title={DataModel[name].title || ""}
                         width={DataModel[name].width || "200px"}
                         locked={DataModel[name].locked}
                         reorderable={DataModel[name].reorderable}
                         headerCell={headerCell}
                         headerClassName={DataModel[name].headerClassName}
-                        className={DataModel[name].className}/>
+                        className={DataModel[name].className}
+                        cell={truncatedDescriptionCell}
+                    />
+                );
+            }
+            else {
+                return (
+                    <GridColumn
+                        field={name} title={DataModel[name].title || ""}
+                        width={DataModel[name].width || "200px"}
+                        locked={DataModel[name].locked}
+                        reorderable={DataModel[name].reorderable}
+                        headerCell={headerCell}
+                        headerClassName={DataModel[name].headerClassName}
+                        className={DataModel[name].className}
+                    />
                 );
             }
         });
     }
 
-    let toTs = Date.now();
-    let fromTs = toTs - 900000;
+
 
     return (
         <Panel enabled={true}>

@@ -1,16 +1,19 @@
+
+// todo - move into model
+
 export interface DisplayJob  {
     position: number;
-    di: string;
-    dj: string;
-    ec: string;
-    pc: string;
+    adRank: number;
+    remainder: string; // todo - not being passed
+    ecpm: string;
+    price: string;
     adProvider: string;
     company: string;
     title: string;
+    description: string;
     location: string;
     nowId: string;
     jobId: string;
-
     mesco: string;
     ingestionMethod: string; // IngestionMethod
     pricingType: string; // PricingType;
@@ -22,12 +25,11 @@ export interface DisplayJob  {
     xCode: string;
     data: object;
     seoJobId: string;
-
     template: string;
     url: string;
     refCode: string;
     validThrough: string;
     validThroughGoogle: string;
     remote: string;
-
+    decisionId: string;
 }

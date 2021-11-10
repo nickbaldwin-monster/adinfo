@@ -292,7 +292,7 @@ let almostCurrentStore = {
 }
 
 
-let currentStore = {
+let currentStoreMinusOne = {
     "version": "2.3.0",
     "dataSettings": {
         "position": {
@@ -455,7 +455,177 @@ let currentStore = {
     "displayOrder": [
         "tableWidth",
     ]
-}
+};
+
+let currentStore = {
+    "version": "2.4.0",
+    "dataSettings": {
+        "position": {
+            "visible": true,
+            "width": "50px"
+        },
+        "adRank": {
+            "visible": true,
+            "width": "70px"
+        },
+        "remainder": {
+            "visible": true,
+            "width": "90px"
+        },
+        "ecpm": {
+            "visible": false,
+            "width": "290px"
+        },
+        "price": {
+            "visible": true,
+            "width": "190px"
+        },
+        "adProvider": {
+            "visible": true,
+            "width": "120px"
+        },
+        "company": {
+            "visible": true,
+            "width": "100px"
+        },
+        "title": {
+            "visible": true,
+            "width": "150px"
+        },
+        "description": {
+            "visible": false,
+            "width": "200px"
+        },
+        "location": {
+            "visible": true,
+            "width": "120px"
+        },
+        "nowId": {
+            "visible": true,
+            "width": "80px"
+        },
+        "jobId": {
+            "visible": false,
+            "width": "80px"
+        },
+        "template": {
+            "visible": false,
+            "width": "80px"
+        },
+        "xCode": {
+            "visible": true,
+            "width": "80px"
+        },
+        "applyType": {
+            "visible": false,
+            "width": "70px"
+        },
+        "formattedDate": {
+            "visible": false,
+            "width": "70px"
+        },
+        "mesco": {
+            "visible": false,
+            "width": "100px"
+        },
+        "provider": {
+            "visible": false,
+            "width": "70px"
+        },
+        "providerCode": {
+            "visible": false,
+            "width": "80px"
+        },
+        "dateRecency": {
+            "visible": false,
+            "width": "80px"
+        },
+        "ingestionMethod": {
+            "visible": false,
+            "width": "70px"
+        },
+        "pricingType": {
+            "visible": false,
+            "width": "50px"
+        },
+        "seoJobId": {
+            "visible": false,
+            "width": "60px"
+        },
+        "refCode": {
+            "visible": false,
+            "width": "60px"
+        },
+        "validThrough": {
+            "visible": false,
+            "width": "80px"
+        },
+        "validThroughGoogle": {
+            "visible": false,
+            "width": "80px"
+        },
+        "remote": {
+            "visible": false,
+            "width": "50px"
+        },
+        "decisionId": {
+            "visible": false,
+            "width": "500px"
+        }
+    },
+    "dataOrder": [
+        "position",
+        "adRank",
+        "remainder",
+        "ecpm",
+        "price",
+        "adProvider",
+        "company",
+        "title",
+        "description",
+        "location",
+        "nowId",
+        "jobId",
+        "template",
+        "xCode",
+        "applyType",
+        "formattedDate",
+        "mesco",
+        "provider",
+        "providerCode",
+        "dateRecency",
+        "ingestionMethod",
+        "pricingType",
+        "seoJobId",
+        "refCode",
+        "validThrough",
+        "validThroughGoogle",
+        "remote",
+        "decisionId"
+    ],
+    "featureSettings": {
+        "decorateResults": {
+            "enabled": true,
+            "disabled": false
+        },
+        "displayDevInfo": {
+            "enabled": false,
+            "disabled": false
+        }
+    },
+    "featureOrder": [
+        "decorateResults",
+        "displayDevInfo"
+    ],
+    "displaySettings": {
+        "tableWidth": {
+            "value": "600px"
+        }
+    },
+    "displayOrder": [
+        "tableWidth",
+    ]
+};
 
 
 // sanity check
@@ -494,12 +664,8 @@ describe('default settings', () => {
         expect(getDefaultUserSettings().dataOrder.length).toEqual(Object.keys(DataModel).length - 4);
     });
 
-    test('default settings have property for all items in schema - 27', () => {
-        expect(getDefaultUserSettings().dataOrder.length).toEqual(27);
-    });
-
-    test('default settings have property for all items in schema - 27', () => {
-        expect(getDefaultUserSettings().dataOrder.length).toEqual(27);
+    test('default settings have property for all items in schema - 28', () => {
+        expect(getDefaultUserSettings().dataOrder.length).toEqual(28);
     });
 
     // todo - check matching array
@@ -556,7 +722,7 @@ describe('default settings', () => {
         expect(getDefaultUserSettings().dataOrder[0]).toEqual('position');
         expect(getDefaultUserSettings().dataOrder[3]).toEqual('ecpm');
         expect(getDefaultUserSettings().dataOrder[5]).toEqual('adProvider');
-        expect(getDefaultUserSettings().dataOrder[26]).toEqual('decisionId');
+        expect(getDefaultUserSettings().dataOrder[27]).toEqual('decisionId');
     });
 
 

@@ -69,6 +69,7 @@ describe('trJob', () => {
             validThroughGoogle: "16 Jun 22",
             refCode: "CREQ62192",
             title: "Java Developer",
+            // description: "long string",
             template: "1",
             remote: "",
             xCode: "xcldincx",
