@@ -639,10 +639,8 @@ test('getJobProperties is an array of field names', () => {
 describe('settings', () => {
 
     test('currentVersion', () => {
-        expect(currentVersion.version).toEqual('2.3.0');
+        expect(currentVersion.version).toEqual('2.4.0');
     });
-
-
 
     test('getAllProperties matches number of properties for current version', () => {
         let props = getNamesOfAllProperties();

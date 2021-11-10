@@ -132,7 +132,7 @@ After the project is built, a directory named `dist` will be created.
 2.4.0
 - export and display (truncated) job description
 - added hover titles for panel icons
-
+- added copy search id to dev info section
 
 
 

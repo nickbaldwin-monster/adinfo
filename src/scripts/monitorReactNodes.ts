@@ -1,5 +1,8 @@
 //@ts-nocheck
 
+// injected via script tag into webpage
+// lets Context know (via window messages) about results, search context and hover events
+
 export const monitorReactNodes = function() {
 
     const sendResults = (results: Element) => {
