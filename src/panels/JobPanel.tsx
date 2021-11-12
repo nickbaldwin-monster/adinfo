@@ -140,13 +140,6 @@ export const JobPanel = () => {
                 </>
             );
         }
-        if (props.title === 'Remainder?') {
-            message = (
-                <>
-                    <p>The auction engine generally returns the best performing ads for a given search, but can also include some other 'remainder' ads that otherwise might not get served.</p>
-                </>
-            );
-        }
         if (props.title === 'Remote?') {
             message = (
                 <>
@@ -154,7 +147,6 @@ export const JobPanel = () => {
                 </>
             );
         }
-
         if (!message) {
             return (
                 <a className="k-link" onClick={props.onClick}>
@@ -165,31 +157,35 @@ export const JobPanel = () => {
             );
         }
 
-            // @ts-ignore
-            return (
-                <div>
-                    <a className="k-link" onClick={props.onClick}>
-                        <span title={props.title}>
-                            {props.title}
-                            {props.children}
-                        </span>
-                    </a>
+        // @ts-ignore
+        return (
+            <div>
+                <a className="k-link" onClick={props.onClick}>
+                    <span title={props.title}>
+                        {props.title}
+                        {props.children}
+                    </span>
+                </a>
 
-                    {/* @ts-ignore */}
-                    <span onClick={onClick} ref={anchor} className="k-icon k-i-information" style={{margin: '0 0 0 5px'}}></span>
+                {/* @ts-ignore */}
+                <span ref={anchor}
+                    onClick={onClick}
+                    className="k-icon k-i-information"
+                    style={{ margin: '0 0 0 5px' }}
+                />
 
-                    <Popup
-                        anchor={anchor.current}
-                        show={show}
-                        className={"wrapper"}
-                        popupClass={"inner-wrapper"}
-                        style={{width: "200px"}}
-                    >
-                        {message}
-                    </Popup>
+                <Popup
+                    anchor={anchor.current}
+                    show={show}
+                    className={"wrapper"}
+                    popupClass={"inner-wrapper"}
+                    style={{width: "200px"}}
+                >
+                    {message}
+                </Popup>
 
-                </div>
-            );
+            </div>
+        );
 
     };
 

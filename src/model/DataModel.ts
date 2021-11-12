@@ -74,24 +74,6 @@ export const DataModel: Record<string, DataProperty> = {
         transformProperty:  null,
         augmentedProperty: 'decisionIndex'
     },
-    remainder: {
-        field: "remainder",
-        title: "Remainder?",
-        width: "90px",
-        sensitive: false,
-        locked: true,
-        reorderable: false,
-        orderIndex: 0,
-        visible: false,
-        jobProperty: true,
-        additionalProperty: false,
-        tableField: true,
-        setting: true,
-        disabled: false,
-        sourceProperty:  null,
-        transformProperty: null,
-        augmentedProperty: 'remainder'
-    },
     ecpm: {
         field: "ecpm",
         title: "eCPM",

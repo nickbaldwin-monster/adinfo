@@ -468,10 +468,6 @@ let currentStore = {
             "visible": true,
             "width": "70px"
         },
-        "remainder": {
-            "visible": true,
-            "width": "90px"
-        },
         "ecpm": {
             "visible": false,
             "width": "290px"
@@ -576,7 +572,6 @@ let currentStore = {
     "dataOrder": [
         "position",
         "adRank",
-        "remainder",
         "ecpm",
         "price",
         "adProvider",
@@ -662,14 +657,14 @@ describe('default settings', () => {
         expect(getDefaultUserSettings().dataOrder.length).toEqual(Object.keys(DataModel).length - 4);
     });
 
-    test('default settings have property for all items in schema - 28', () => {
-        expect(getDefaultUserSettings().dataOrder.length).toEqual(28);
+    test('default settings have property for all items in schema - 27', () => {
+        expect(getDefaultUserSettings().dataOrder.length).toEqual(27);
     });
 
     // todo - check matching array
     test.skip('default settings have property for all items in schema - 27', () => {
         expect(getDefaultUserSettings().dataOrder).toContain([
-            "position", "adRank", "remainder", "ecpm", "price",  "adProvider", "company", "title", "location", "nowId", "jobId", "template", "xCode", "applyType", "formattedDate", "mesco", "provider", "providerCode", "dateRecency", "ingestionMethod", "pricingType", "seoJobId", "refCode", "validThrough", "validThroughGoogle", "remote", "decisionId"
+            "position", "adRank", "ecpm", "price",  "adProvider", "company", "title", "location", "nowId", "jobId", "template", "xCode", "applyType", "formattedDate", "mesco", "provider", "providerCode", "dateRecency", "ingestionMethod", "pricingType", "seoJobId", "refCode", "validThrough", "validThroughGoogle", "remote", "decisionId"
         ]);
     });
 
@@ -688,10 +683,6 @@ describe('default settings', () => {
             adRank: {
                 visible: false,
                 width: "70px"
-            },
-            remainder:  {
-                visible: false,
-                width: "90px"
             },
             company: {
                 visible: true,
@@ -718,9 +709,9 @@ describe('default settings', () => {
 
     test('default settings have expected order', () => {
         expect(getDefaultUserSettings().dataOrder[0]).toEqual('position');
-        expect(getDefaultUserSettings().dataOrder[3]).toEqual('ecpm');
-        expect(getDefaultUserSettings().dataOrder[5]).toEqual('adProvider');
-        expect(getDefaultUserSettings().dataOrder[27]).toEqual('decisionId');
+        expect(getDefaultUserSettings().dataOrder[2]).toEqual('ecpm');
+        expect(getDefaultUserSettings().dataOrder[4]).toEqual('adProvider');
+        expect(getDefaultUserSettings().dataOrder[26]).toEqual('decisionId');
     });
 
 

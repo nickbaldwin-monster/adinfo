@@ -80,9 +80,7 @@ describe('trJob', () => {
             decisionId: "247cf20fbc6644bca6680c3579983c9e",
             adRank: 0,
             ecpm: "30.5976",
-            price: "1.1",
-            remainder: "",
-
+            price: "1.1"
         });
     });
 
