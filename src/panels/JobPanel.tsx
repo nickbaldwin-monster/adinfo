@@ -1,6 +1,13 @@
 import React, {useReducer, useContext, useState, PropsWithChildren} from 'react';
 
-import {Grid, GridColumn, getSelectedState, GridToolbar, GridCellProps} from '@progress/kendo-react-grid';
+import {
+    Grid,
+    GridColumn,
+    getSelectedState,
+    GridToolbar,
+    GridCellProps,
+    GridNoRecords
+} from '@progress/kendo-react-grid';
 import { orderBy } from "@progress/kendo-data-query";
 import { getter } from "@progress/kendo-react-common";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
@@ -381,7 +388,8 @@ export const JobPanel = () => {
                         headerCell={headerCell}
                         orderIndex={DataModel[name].orderIndex}
                         headerClassName={DataModel[name].headerClassName}
-                        className={DataModel[name].className}/>
+                        className={DataModel[name].className}
+                     />
                 );
             }
             else if (DataModel[name].title === 'Description') {
@@ -415,6 +423,7 @@ export const JobPanel = () => {
     }
 
 
+    // todo - loading...
 
     return (
         <Panel enabled={true}>
@@ -483,6 +492,10 @@ export const JobPanel = () => {
                             <Info numberResults={numberResults} errors={errors} auctionBids={auctionBids} />
                             {displayDevInfo && <DevInfo searchId={searchId} decisionId={decisionId} />}
                         </GridToolbar>
+
+                        <GridNoRecords>
+                            There are no results matching your search.
+                        </GridNoRecords>
 
                         <GridColumn
                             field={SELECTED_FIELD}
