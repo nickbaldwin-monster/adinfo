@@ -28,16 +28,28 @@ export const AuthButtons = ({ auth, name} ) => {
         });
     };
 
+    if (false) {
+        return (
+            <div style={{ padding: "5px 0" }}>
+                {auth && <span>Authenticated: {name}</span>}
+                {!auth && <span>You need to login </span>}
+                <Button onClick={auth? handleLogout: handleLogin}>Logout</Button>
+
+                &nbsp;&nbsp;
+                <Button look="flat" onClick={handleCheck}>Check</Button>&nbsp;
+                <Button look="flat" onClick={handleLogin}>Login</Button>&nbsp;
+                <Button look="flat" onClick={handleLogout}>Logout</Button>
+            </div>
+        );
+    }
     return (
         <div style={{ padding: "5px 0" }}>
-            {auth && <span>Authenticated: {name}</span>}
-            {!auth && <span>You need to login </span>}
-            <Button onClick={auth? handleLogout: handleLogin}>Logout</Button>
-
-            &nbsp;&nbsp;
-            <Button look="flat" onClick={handleCheck}>Check</Button>&nbsp;
-            <Button look="flat" onClick={handleLogin}>Login</Button>&nbsp;
-            <Button look="flat" onClick={handleLogout}>Logout</Button>
+            {auth ?
+                <span>Authenticated: {name}</span>
+                :
+                <span>You need to login </span>
+            }
+            <Button onClick={auth ? handleLogout : handleLogin}>Logout</Button>
         </div>
     );
 }

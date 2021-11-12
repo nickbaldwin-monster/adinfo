@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Button } from "@progress/kendo-react-buttons";
 
-import { sendMessageToBackgroundAndPopup, sendMessageToContent } from "../helpers/messaging";
+import { sendMessageToBackgroundAndPopup } from "../helpers/messaging";
 import { Panel } from "./Panel";
 
 
@@ -29,7 +29,17 @@ export const LoginPanel = () => {
         });
     };
 
-    let message = "You may need to login. Please click the plugin icon in the extension toolbar above.";
+    let message = "You may need to login.";
+
+    if (false) {
+        return (
+            <>
+                <Button onClick={handleCheck}>Check</Button>
+                <Button onClick={handleLogin}>Login</Button>
+                <Button onClick={handleLogout}>Logout</Button>
+            </>
+        );
+    }
 
     return (
         <Panel>
@@ -37,9 +47,7 @@ export const LoginPanel = () => {
                 <h4>Login</h4>
                 <p>{message}</p>
                 <br />
-                <Button onClick={handleCheck}>Check</Button>
                 <Button onClick={handleLogin}>Login</Button>
-                <Button onClick={handleLogout}>Logout</Button>
             </div>
         </Panel>
     );
