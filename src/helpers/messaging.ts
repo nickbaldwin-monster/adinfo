@@ -26,8 +26,9 @@ export const sendMessageToContent = (message: MessageType) => {
     // check url match - might need to provide array of diff monster domains
     // add monsterboard
     // add query e.g. {url: '*://*.monster.co.uk/*'}
+    // chrome.tabs.query({url: "*://*.example.com/*"}, function(tabs) {
 
-    chrome.tabs.query({ active: true }, function(tabs){
+    chrome.tabs.query({}, function(tabs){
         tabs.forEach((tab) => {
             if (tab.id) {
                 chrome.tabs.sendMessage(tab.id, message);

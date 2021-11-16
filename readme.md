@@ -134,6 +134,8 @@ After the project is built, a directory named `dist` will be created.
 - added hover titles for panel icons
 - added copy search id to dev info section
 
+2.4.1
+  (removed active tab and tabs permissions)
 
 
 todo:
