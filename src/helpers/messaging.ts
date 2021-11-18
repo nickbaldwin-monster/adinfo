@@ -14,11 +14,7 @@ export const subscribeToWindowMessages = (eventHandler: (event: MessageEvent<Mes
 
 export const sendMessageToBackgroundAndPopup = (message: MessageType) => {
     chrome.runtime.sendMessage(message);
-    log({
-        logType: 'MESSAGE_SENT',
-        payload: message,
-        message: 'sent to background | popup'
-    });
+    // log({ logType: 'MESSAGE_SENT', payload: message, message: 'sent to background | popup' });
 };
 
 export const sendMessageToContent = (message: MessageType) => {
@@ -36,9 +32,5 @@ export const sendMessageToContent = (message: MessageType) => {
         });
     });
 
-    log({
-        logType: 'MESSAGE_SENT',
-        payload: message,
-        message: 'sent to content'
-    });
+    // log({ logType: 'MESSAGE_SENT', payload: message, message: 'sent to content'});
 };
