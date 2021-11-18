@@ -73,18 +73,7 @@ const ReduxProvider = ({ children }) => {
     const [results, setResults] = useState(true);
     const [mobileResults, setMobileResults] = useState(true);
 
-
-
-
-    log({
-        logType: 'INFO',
-        message: 'ReduxProvider mounted'
-    });
-
-
-
     const decorateRef = React.useRef(settings?.featureSettings?.decorateResults?.enabled);
-
 
     // todo - combine these
     // todo - pass it into settings panel
@@ -223,12 +212,7 @@ const ReduxProvider = ({ children }) => {
 
         setErrors(e);
 
-        log({
-            logType: 'INFO',
-            message: 'Context - useEffect: state is updated:  ReduxProvider updated',
-            payload: { jobs, loading, errors }
-        });
-
+        // log({ logType: 'INFO', message: 'Context - useEffect: state is updated:  ReduxProvider updated', payload: { jobs, loading, errors }});
 
         // todo - hack? - can this be moved into useEffect now that there is a ref???
         // if (decorateRef.current) {
@@ -426,11 +410,7 @@ const useReduxContext = () => {
         throw new Error("adInfo: useReduxContext must be called within ReduxProvider");
     }
 
-    log({
-        logType: 'INFO',
-        message: 'Context used',
-        payload: state
-    });
+    // log({ logType: 'INFO',  message: 'Context used',  payload: state });
 
     return {
         ...state
