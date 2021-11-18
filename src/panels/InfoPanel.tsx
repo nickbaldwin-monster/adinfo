@@ -23,7 +23,7 @@ export const InfoPanel = () => {
     return (
         <Panel>
             <div className="scrollInPanel">
-
+                <AuthButtons auth={auth} name={name} />
 
                 <h4>Info: {version && versionInfo}</h4>
                 <p>This plugin aids the interpretation of the job search results.</p>
