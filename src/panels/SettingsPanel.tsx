@@ -5,17 +5,12 @@ import { Label } from "@progress/kendo-react-labels";
 
 import { useReduxContext } from "../context/Context";
 import { MessageType } from "../types/messageTypes";
-import { logger } from "../helpers/logger";
 import { Panel } from "./Panel";
 import { sendMessageToBackgroundAndPopup } from '../helpers/messaging';
 import { getNamesOfJobFields, DataModel, FeatureModel } from "../model/DataModel";
 
 import "./SettingsPanel.css";
 
-
-
-const moduleName = 'SettingsPanel';
-let log = logger(moduleName);
 
 interface Setting {
     key: string;

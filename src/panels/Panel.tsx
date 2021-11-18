@@ -11,16 +11,14 @@ import { sendMessageToBackgroundAndPopup, sendMessageToContent } from "../helper
 export const Panel = ({ children , enabled = false }) => {
 
     // todo
-    console.log('panel rendered');
+    // console.log('panel rendered');
 
     // @ts-ignore
     const { tableWidth, updateDisplaySettings } = useReduxContext();
     let defaultWidth = enabled ? 600 : 330;
     // using local state to avoid render issue when waiting for new state to arrive
 
-
     // const [width, setWidth] = useState(enabled ? (parseInt(tableWidth) || 600) : 330);
-
     const width = enabled ? (parseInt(tableWidth) || 600) : 330;
 
     const handleResize :  ResizeCallback = (event, direction, ref, delta) : void => {

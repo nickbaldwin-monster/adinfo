@@ -4,7 +4,6 @@ import { Grid, GridColumn, GridToolbar } from '@progress/kendo-react-grid';
 import ReactJson from "react-json-view-ts";
 
 import { useReduxContext } from "../context/Context";
-
 import { Panel } from "./Panel";
 import { DatadogLink } from "../components/DatadogLink";
 import { Domains } from "../components/Domains";

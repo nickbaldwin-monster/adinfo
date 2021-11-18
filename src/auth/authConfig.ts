@@ -1,10 +1,8 @@
 import { LogLevel } from "@azure/msal-browser";
 
-// use chrome.identity.getRedirectURL()
-// let redirectUri = 'https://nnimmgedomeeljdbgghchnbgncnggdcc.chromiumapp.org/';
-// todo - webstore uri
-let redirectUri = 'https://mehlfnjlhegodgejadikdffeaomnhmao.chromiumapp.org/';
 
+
+let redirectUri = 'https://mehlfnjlhegodgejadikdffeaomnhmao.chromiumapp.org/';
 
 /**
  * Configuration object to be passed to MSAL instance on creation.
@@ -13,9 +11,6 @@ let redirectUri = 'https://mehlfnjlhegodgejadikdffeaomnhmao.chromiumapp.org/';
  */
 export const msalConfig = {
     auth: {
-        // for dev app
-        // authority: "https://login.microsoftonline.com/common/",
-        // clientId: "9deaf42c-a982-41a0-95bf-5d95fa66eb34",
         authority: "https://login.microsoftonline.com/85b7f285-aa5f-4394-8316-ec7116aa9ef5/",
         clientId: "059f4de3-2965-453d-8170-63422207028a",
         redirectUri,

@@ -3,6 +3,31 @@ import { Errors, ErrorsSchema, ErrorItem, defaultErrors, isErrorItem, isErrors, 
 import { determineErrors } from './determineErrors';
 import { DisplayJob } from '../types/DisplayJob';
 
+// test cases
+
+// skip an ad - 1 error
+// 0. ad 0
+// 1. organic - error (replaced an ad)
+// 2. ad 2
+
+// skip an ad - 1 error, 1 potential error
+// 0. ad 0
+// 1. organic - error (replaced an ad)
+// 2. ad 2
+// ...
+// 8. organic - could be potential error - as last item before next page is organic
+
+// insert organic - 1 error
+// 0. ad 0
+// 1. organic - error (inserted organic)
+// 2. ad 1
+
+// insert organic - 1 error
+// 0. ad 0
+// 1. organic - error (inserted organic)
+// 2. ad 1
+// 3. ad 2
+
 
 const job1: DisplayJob =  {
     position: 1,
@@ -349,4 +374,20 @@ test('create Errors - 1 ad & 2 organic & 1 ad - 2 errors', () => {
         adPositions: [1,4]
     }
     expect(error).toEqual(exp);
+});
+
+
+// skip an ad
+// 0. ad 0
+// 1. organic
+// 2. ad 2
+
+// insert organic
+// 0. ad 0
+// 1. organic
+// 2. ad 1
+
+
+test('if 1 ad has mi', () => {
+
 });

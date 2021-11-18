@@ -1,29 +1,21 @@
 import React from 'react';
+
 import { Grid, GridColumn } from '@progress/kendo-react-grid';
+import ReactJson from "react-json-view-ts";
 
 import { logger } from "../helpers/logger";
 import { useReduxContext } from "../context/Context";
-import ReactJson from "react-json-view-ts";
 import { Panel } from "./Panel";
+
 
 
 const moduleName = 'ErrorsPanel';
 let log = logger(moduleName);
 
 
-
 export const ErrorsPanel = () => {
-
     // @ts-ignore
     const { errors } = useReduxContext();
-
-    log({
-        logType: 'INFO',
-        message: 'ErrorsPanel',
-        payload: { errors }
-    });
-
-
     return (
         <Panel>
             <div className="scrollInPanel">

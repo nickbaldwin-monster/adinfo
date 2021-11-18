@@ -1,7 +1,6 @@
 import { normalizePostLocation, nowAdIds, formatDate, getImpressionData, formatLocationType } from "./transformJob";
 
 
-
 export const currentVersion = {
     version: '2.5.0'
 };

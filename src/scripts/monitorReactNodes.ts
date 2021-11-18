@@ -187,6 +187,6 @@ export const monitorReactNodes = function() {
      */
 
     const style = 'background: #444; color: #fff; font-weight: bold; padding-top: 3px; padding-bottom: 3px;';
-    console.log(" ::: ", style, { logType: "LOADED", moduleName: "injected script", time: Date.now() });
+    console.log("%c adinfo ::: LOADED ", style, { logType: "LOADED", moduleName: "injected script", time: Date.now() });
 
 }

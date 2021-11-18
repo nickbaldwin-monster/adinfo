@@ -146,6 +146,7 @@ After the project is built, a directory named `dist` will be created.
 
 
 todo:
+- remove decision id
 - delete settings
 - save settings in chrome storage - share across tabs
 - see/manage cookie

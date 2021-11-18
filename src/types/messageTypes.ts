@@ -5,10 +5,6 @@ import { UserSettings } from "../model/UserSettings";
 
 
 
-
-
-
-
 // todo -remove
 interface LoginStarted {
     type: 'LOGIN_STARTED';
