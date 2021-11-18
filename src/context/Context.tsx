@@ -9,7 +9,7 @@ import { determineErrors } from "../helpers/determineErrors";
 import { Job } from "../types/Job";
 import { SearchContext } from "../types/SearchContext";
 import { transformSearchContext } from "../helpers/transformSearchContext";
-import { getDecorateSetting, getDisplayDevInfoSetting, getSavedSettings, saveSettings } from "../helpers/store";
+import { getSavedSettings, saveSettings } from "../helpers/store";
 import { userSettingsReducer, UserSettings } from "../model/UserSettings";
 import { transformJobsNew } from "../model/transformJob";
 import {

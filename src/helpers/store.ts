@@ -1,6 +1,6 @@
 import { currentVersion } from "../model/DataModel";
 import { isValidUserSettings, defaultUserSettings, UserSettings } from "../model/UserSettings";
-
+import { needToMigrate } from '../model/migration';
 const storeKey = 'adinfo';
 
 
@@ -105,24 +105,6 @@ export const saveExtensionSettings = (settings: object) => {
 }
 
 
-// todo - duplication with migration file
-const needToMigrate = {
-    "2.0.0" : true,
-    "2.0.1" : true,
-    "2.0.2" : true,
-    "2.0.3" : true,
-    "2.0.4" : true,
-    "2.0.5" : true,
-    "2.1.0" : true,
-    "2.2.0" : true,
-    "2.3.0" : true,
-    "2.4.0" : true,
-    "2.4.1" : true,
-    "2.4.2" : true,
-    "2.4.3" : true,
-    "2.4.4" : true,
-}
-
 
 export const getSavedSettings = () => {
 
@@ -135,7 +117,7 @@ export const getSavedSettings = () => {
 
     }
     // @ts-ignore
-    else if (needToMigrate[store.version]) {
+    else if (needToMigrate(store.version)) {
         console.log('your saved settings are for version ' +  store?.version || 'unknown');
         console.log('updated settings to defaults for version ' + currentVersion.version);
         store = defaultUserSettings;
@@ -150,26 +132,6 @@ export const getSavedSettings = () => {
     return store;
 }
 
-// todo - remove
-export const getDecorateSetting = () => {
-    let store = loadStore();
-    if (store && store.featureSettings) {
-        return store.featureSettings.decorateResults?.enabled;
-    }
-    else {
-        return true;
-    }
-}
-// todo - remove
-export const getDisplayDevInfoSetting = () => {
-    let store = loadStore();
-    if (store && store.featureSettings) {
-        return store.featureSettings.displayDevInfo?.enabled;
-    }
-    else {
-        return false;
-    }
-}
 
 
 export const saveSettings = (store: object) => {
