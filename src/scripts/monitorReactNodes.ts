@@ -61,29 +61,24 @@ export const monitorReactNodes = function() {
     const header = document.querySelector('.ds-header');
 
     const findRequest = () => {
-
         for (const key in header) {
             if (key.startsWith('__reactFiber$')) {
                 // console.log('header has key');
-
                 // @ts-ignore
                 let item = header[key];
-                // console.log(item);
-
                 let numberIt = 0;
-                // numberIt should be 16
-                while (item.memoizedState?.baseState?.client === undefined && numberIt < 20) {
+                // todo!
+                while (item.memoizedState?.baseState?.client === undefined && numberIt < 40) {
                     item = item?.return;
                     numberIt++;
                 }
-
                 if (item.memoizedState?.baseState) {
                     return item;
-                } else return null;
+                } else {
+                    return null;
+                }
             }
         }
-
-
     }
 
 
@@ -159,7 +154,7 @@ export const monitorReactNodes = function() {
                     results.addEventListener("pointermove", handleMove);
                 } else {
                     results.addEventListener("mousemove", handleMove);
-                    console.log('no pointer?!')
+                    console.log('no pointer?!');
                 }
 
                 // todo - need to send initial results, or observer does that now?
