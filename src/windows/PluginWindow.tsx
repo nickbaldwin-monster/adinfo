@@ -112,7 +112,7 @@ const PluginWindow = (props: any) => {
             >
                 {display && <DrawerContent>
                     {!auth && <LoginPanel />}
-                    {auth && <DrawerContent>{props.children}</DrawerContent>}
+                    {auth && props.children}
                 </DrawerContent>}
             </Drawer>
         </div>

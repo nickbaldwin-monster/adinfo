@@ -137,7 +137,7 @@ After the project is built, a directory named `dist` will be created.
 2.4.1
   (removed active tab and tabs permissions)
 
-2.4.2
+2.4.2 & 2.4.3 & 2.4.4!
 - temp removed ecpm and price fields and authentication
 
 2.5.0

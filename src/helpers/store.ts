@@ -105,6 +105,7 @@ export const saveExtensionSettings = (settings: object) => {
 }
 
 
+// todo - duplication with migration file
 const needToMigrate = {
     "2.0.0" : true,
     "2.0.1" : true,
@@ -118,6 +119,8 @@ const needToMigrate = {
     "2.4.0" : true,
     "2.4.1" : true,
     "2.4.2" : true,
+    "2.4.3" : true,
+    "2.4.4" : true,
 }
 
 
