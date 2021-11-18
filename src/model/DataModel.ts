@@ -3,7 +3,7 @@ import { normalizePostLocation, nowAdIds, formatDate, getImpressionData, formatL
 
 
 export const currentVersion = {
-    version: '2.5.0'
+    version: '2.4.3'
 };
 
 
@@ -74,42 +74,7 @@ export const DataModel: Record<string, DataProperty> = {
         transformProperty:  null,
         augmentedProperty: 'decisionIndex'
     },
-    ecpm: {
-        field: "ecpm",
-        title: "eCPM",
-        width: "80px",
-        sensitive: false,
-        locked: true,
-        reorderable: true,
-        orderIndex: 0,
-        visible: false,
-        jobProperty: true,
-        additionalProperty: false,
-        tableField: true, // temp
-        setting: true, // temp
-        disabled: false,
-        sourceProperty: null,
-        transformProperty: null,
-        augmentedProperty: 'ecpm'
-    },
-    price: {
-        field: "price",
-        title: "Clearing price",
-        width: "80px",
-        sensitive: false,
-        locked: true,
-        reorderable: true,
-        orderIndex: 0,
-        visible: false,
-        jobProperty: true,
-        additionalProperty: false,
-        tableField: true,
-        setting: true,
-        disabled: false,
-        sourceProperty: null,
-        transformProperty:  null,
-        augmentedProperty: 'price'
-    },
+
     adProvider: {
         field: "adProvider",
         title: "Ad Provider",

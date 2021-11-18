@@ -111,8 +111,7 @@ const PluginWindow = (props: any) => {
                 onSelect={onSelect}
             >
                 {display && <DrawerContent>
-                    {!auth && <LoginPanel />}
-                    {auth && <DrawerContent>{props.children}</DrawerContent>}
+                    {props.children}
                 </DrawerContent>}
             </Drawer>
         </div>
